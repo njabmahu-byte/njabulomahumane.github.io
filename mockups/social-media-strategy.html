@@ -1,0 +1,1657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Booking.com Social Media Strategy 2026–2027 | Njabulo Mahumane</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0d0f;
+    --surface: #141416;
+    --surface-2: #1a1a1e;
+    --border: rgba(255,255,255,0.07);
+    --border-bright: rgba(255,255,255,0.13);
+    --amber: #f5a623;
+    --amber-dim: rgba(245,166,35,0.12);
+    --amber-glow: rgba(245,166,35,0.25);
+    --blue: #0071c2;
+    --blue-dim: rgba(0,113,194,0.12);
+    --blue-bright: #3b9eeb;
+    --text: #e8e6e0;
+    --text-muted: #6e6c68;
+    --text-dim: #a09e9a;
+    --white: #f5f3ee;
+    --danger: #e05a5a;
+    --success: #4caf82;
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'DM Mono', monospace;
+    --radius: 8px;
+    --radius-lg: 16px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── SCROLLBAR ─── */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--amber); border-radius: 2px; }
+
+  /* ─── NOISE OVERLAY ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: clamp(2rem, 6vw, 5rem);
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 30%, rgba(0,113,194,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 20% 80%, rgba(245,166,35,0.1) 0%, transparent 55%),
+      var(--bg);
+    z-index: -1;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 60px 60px;
+    z-index: -1;
+    mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
+  }
+
+  .hero-meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--amber);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .hero-meta span { opacity: 0.7; color: var(--text-dim); }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.8rem, 7vw, 7rem);
+    font-weight: 800;
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+    color: var(--white);
+    max-width: 14ch;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--amber);
+    position: relative;
+  }
+
+  .hero-sub {
+    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+    color: var(--text-dim);
+    max-width: 55ch;
+    margin-bottom: 3rem;
+    font-weight: 300;
+  }
+
+  .hero-badges {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+  }
+
+  .badge {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    padding: 6px 14px;
+    border-radius: 100px;
+    text-transform: uppercase;
+  }
+  .badge-amber { background: var(--amber-dim); color: var(--amber); border: 1px solid rgba(245,166,35,0.3); }
+  .badge-blue { background: var(--blue-dim); color: var(--blue-bright); border: 1px solid rgba(0,113,194,0.3); }
+  .badge-dim { background: rgba(255,255,255,0.04); color: var(--text-muted); border: 1px solid var(--border); }
+
+  .hero-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, var(--amber) 0%, rgba(245,166,35,0.2) 40%, transparent 70%);
+    margin-top: 2rem;
+  }
+
+  /* ─── NAV ─── */
+  .toc-bar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(13,13,15,0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 clamp(1rem, 4vw, 3rem);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .toc-bar::-webkit-scrollbar { display: none; }
+
+  .toc-inner {
+    display: flex;
+    gap: 0;
+    min-width: max-content;
+    align-items: center;
+  }
+
+  .toc-inner a {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 14px 16px;
+    white-space: nowrap;
+    transition: color 0.2s;
+    border-bottom: 2px solid transparent;
+  }
+  .toc-inner a:hover { color: var(--amber); border-bottom-color: var(--amber); }
+
+  /* ─── LAYOUT ─── */
+  .page-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 clamp(1.25rem, 5vw, 4rem);
+  }
+
+  /* ─── SECTION ANATOMY ─── */
+  .section {
+    padding: clamp(4rem, 8vw, 8rem) 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: clamp(2rem, 4vw, 4rem);
+    flex-wrap: wrap;
+  }
+
+  .section-num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--amber);
+    letter-spacing: 0.1em;
+    opacity: 0.8;
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+  }
+
+  .section-title em {
+    font-style: normal;
+    color: var(--amber);
+  }
+
+  /* ─── CALLOUT / INSIGHT CARD ─── */
+  .insight-card {
+    background: var(--surface);
+    border: 1px solid var(--border-bright);
+    border-left: 3px solid var(--amber);
+    border-radius: var(--radius);
+    padding: 1.5rem 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .insight-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--amber);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .insight-card p {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+  }
+
+  .insight-card strong { color: var(--white); }
+
+  /* ─── TABLES ─── */
+  .table-wrap {
+    overflow-x: auto;
+    margin: 2rem 0;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+  }
+
+  thead tr {
+    background: var(--surface-2);
+    border-bottom: 1px solid var(--border-bright);
+  }
+
+  th {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--amber);
+    padding: 14px 16px;
+    text-align: left;
+    white-space: nowrap;
+    font-weight: 500;
+  }
+
+  td {
+    padding: 12px 16px;
+    color: var(--text-dim);
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  tr:last-child td { border-bottom: none; }
+
+  tbody tr { background: var(--surface); transition: background 0.15s; }
+  tbody tr:hover { background: var(--surface-2); }
+  tbody tr:nth-child(even) { background: rgba(26,26,30,0.5); }
+  tbody tr:nth-child(even):hover { background: var(--surface-2); }
+
+  td strong { color: var(--white); font-weight: 500; }
+
+  .td-platform {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--blue-bright);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .td-metric {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--amber);
+  }
+
+  /* ─── STAT GRID ─── */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.25rem;
+    margin: 2.5rem 0;
+  }
+
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .stat-card:hover {
+    border-color: var(--border-bright);
+    transform: translateY(-2px);
+  }
+
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--amber), transparent);
+  }
+
+  .stat-card.blue::before { background: linear-gradient(90deg, var(--blue-bright), transparent); }
+
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  .stat-num span { color: var(--amber); }
+  .stat-card.blue .stat-num span { color: var(--blue-bright); }
+
+  .stat-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+  }
+
+  /* ─── PILLAR CARDS ─── */
+  .pillar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+    margin: 2rem 0;
+  }
+
+  .pillar-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    transition: border-color 0.2s, transform 0.2s;
+    position: relative;
+  }
+
+  .pillar-card:hover {
+    border-color: rgba(245,166,35,0.3);
+    transform: translateY(-3px);
+  }
+
+  .pillar-num {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--amber);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+    opacity: 0.7;
+  }
+
+  .pillar-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+    line-height: 1.25;
+  }
+
+  .pillar-card p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .pillar-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .pillar-tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    padding: 3px 10px;
+    border-radius: 100px;
+    background: var(--amber-dim);
+    color: var(--amber);
+    border: 1px solid rgba(245,166,35,0.2);
+  }
+
+  /* ─── PHASE TIMELINE ─── */
+  .phase-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+    margin: 2rem 0;
+  }
+
+  .phase-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .phase-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+  }
+
+  .phase-card.p1::after { background: var(--amber); }
+  .phase-card.p2::after { background: var(--blue-bright); }
+  .phase-card.p3::after { background: var(--success); }
+
+  .phase-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .p1 .phase-label { color: var(--amber); }
+  .p2 .phase-label { color: var(--blue-bright); }
+  .p3 .phase-label { color: var(--success); }
+
+  .phase-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 1rem;
+  }
+
+  .phase-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .phase-card ul li {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    padding-left: 1rem;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .phase-card ul li::before {
+    content: '//';
+    position: absolute;
+    left: 0;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    top: 3px;
+  }
+  .p1 li::before { color: var(--amber); }
+  .p2 li::before { color: var(--blue-bright); }
+  .p3 li::before { color: var(--success); }
+
+  /* ─── RISK MATRIX ─── */
+  .risk-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+
+  .risk-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+  }
+
+  .risk-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .risk-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .risk-high { background: var(--danger); box-shadow: 0 0 8px var(--danger); }
+  .risk-medium { background: var(--amber); box-shadow: 0 0 8px var(--amber); }
+
+  .risk-card h4 {
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .risk-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
+
+  /* ─── PALETTE SWATCH ─── */
+  .palette-grid {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin: 2rem 0;
+  }
+
+  .swatch {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    min-width: 90px;
+  }
+
+  .swatch-color {
+    width: 80px; height: 80px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+  }
+
+  .swatch-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  /* ─── KPI GRID ─── */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .kpi-platform {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--blue-bright);
+    margin-bottom: 0.5rem;
+  }
+
+  .kpi-val {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--amber);
+    margin-bottom: 0.25rem;
+  }
+
+  .kpi-label { font-size: 0.78rem; color: var(--text-muted); }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    padding: clamp(3rem, 6vw, 5rem) 0;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    position: relative;
+  }
+
+  .footer-name {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -0.025em;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-name em { font-style: normal; color: var(--amber); }
+
+  .footer-role {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-email {
+    font-size: 0.9rem;
+    color: var(--blue-bright);
+    text-decoration: none;
+    font-family: var(--font-mono);
+  }
+  .footer-email:hover { color: var(--amber); }
+
+  .footer-line {
+    width: 80px; height: 1px;
+    background: var(--amber);
+    margin: 2rem auto;
+    opacity: 0.4;
+  }
+
+  .footer-copy {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+  }
+
+  /* ─── PROSE ─── */
+  .prose {
+    max-width: 72ch;
+    color: var(--text-dim);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .prose strong { color: var(--white); }
+
+  h4.sub-heading {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--white);
+    margin: 2.5rem 0 1rem;
+    letter-spacing: -0.01em;
+  }
+
+  /* ─── GOLDEN RULE BOX ─── */
+  .golden-rule {
+    background: linear-gradient(135deg, rgba(245,166,35,0.1), rgba(245,166,35,0.04));
+    border: 1px solid rgba(245,166,35,0.3);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    margin: 2rem 0;
+    text-align: center;
+  }
+
+  .golden-rule p {
+    font-family: var(--font-display);
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    font-weight: 700;
+    color: var(--amber);
+    letter-spacing: -0.01em;
+  }
+
+  /* ─── RESPONSE PROTOCOL ─── */
+  .protocol-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+
+  .protocol-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+  }
+
+  .protocol-type {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .type-positive { color: var(--success); }
+  .type-question { color: var(--blue-bright); }
+  .type-complaint { color: var(--danger); }
+
+  .protocol-card h4 {
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+
+  .protocol-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
+
+  /* ─── BUDGET TABLE HIGHLIGHT ─── */
+  .total-row td { color: var(--white) !important; font-weight: 500; }
+  .total-row td:last-child { color: var(--amber) !important; font-family: var(--font-mono); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    .pillar-grid { grid-template-columns: 1fr; }
+    .phase-grid { grid-template-columns: 1fr; }
+    .risk-grid { grid-template-columns: 1fr; }
+    .protocol-grid { grid-template-columns: 1fr; }
+    .palette-grid { justify-content: flex-start; }
+    table { font-size: 0.8rem; }
+    th, td { padding: 10px 12px; }
+  }
+
+  @media (max-width: 480px) {
+    .stat-grid { grid-template-columns: 1fr 1fr; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero-meta { gap: 1rem; }
+  }
+
+  /* ─── FADE IN ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero > * { animation: fadeUp 0.7s ease both; }
+  .hero .hero-meta { animation-delay: 0.1s; }
+  .hero h1 { animation-delay: 0.2s; }
+  .hero .hero-sub { animation-delay: 0.3s; }
+  .hero .hero-badges { animation-delay: 0.4s; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════════ -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-meta">
+    <span>Booking.com</span>
+    SOCIAL MEDIA STRATEGY
+    <span>//</span>
+    2026 &ndash; 2027
+    <span>//</span>
+    Version 2.0
+  </div>
+
+  <h1>Social Media <em>Strategy</em></h1>
+
+  <p class="hero-sub">
+    A comprehensive platform-by-platform strategy built on the Trust Paradox insight —
+    transforming Booking.com's social presence from broadcast channel into
+    a relationship-building engine.
+  </p>
+
+  <div class="hero-badges">
+    <span class="badge badge-amber">Portfolio Document</span>
+    <span class="badge badge-blue">563.8M Monthly Visits</span>
+    <span class="badge badge-blue">$25B Brand Value</span>
+    <span class="badge badge-dim">Feb 2026 · Njabulo Mahumane</span>
+  </div>
+
+  <div class="hero-divider"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     STICKY NAV
+════════════════════════════════════════════════ -->
+<nav class="toc-bar">
+  <div class="toc-inner">
+    <a href="#exec">Executive Summary</a>
+    <a href="#foundation">Strategic Foundation</a>
+    <a href="#platforms">Platform Strategy</a>
+    <a href="#pillars">Content Pillars</a>
+    <a href="#cadence">Cadence</a>
+    <a href="#visual">Visual Identity</a>
+    <a href="#community">Community Mgmt</a>
+    <a href="#measurement">Measurement</a>
+    <a href="#budget">Budget</a>
+    <a href="#risk">Risk</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#conclusion">Conclusion</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+  <!-- ═══════════ 00: EXECUTIVE SUMMARY ═══════════ -->
+  <section class="section" id="exec">
+    <div class="section-header">
+      <span class="section-num">00</span>
+      <h2 class="section-title">Executive <em>Summary</em></h2>
+    </div>
+
+    <p class="prose">
+      This strategy is built on a rigorous 5-step brand analysis that identified a fundamental tension
+      at the heart of Booking.com's market position: the <strong>Trust Paradox</strong>. While Booking.com
+      has achieved dominant market leadership, it faces systematic failures in service recovery that
+      undermine its core value of "Absolute Integrity."
+    </p>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-num"><span>563.8M</span></div>
+        <div class="stat-label">Monthly website visits</div>
+      </div>
+      <div class="stat-card blue">
+        <div class="stat-num"><span>3.5x</span></div>
+        <div class="stat-label">Larger than Tripadvisor</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num"><span>$25B</span></div>
+        <div class="stat-label">Brand value (+50% YoY)</div>
+      </div>
+      <div class="stat-card blue">
+        <div class="stat-num"><span>8.6M<span style="font-size:1.2rem">+</span></span></div>
+        <div class="stat-label">Properties listed</div>
+      </div>
+    </div>
+
+    <h4 class="sub-heading">Three Foundational Insights</h4>
+
+    <div class="insight-card">
+      <div class="insight-label">Insight 01 &mdash; The Trust Paradox</div>
+      <p><strong>Strong pre-booking experience vs. weak post-booking service recovery.</strong>
+      Content must proactively address trust gaps and demonstrate commitment to resolution.</p>
+    </div>
+
+    <div class="insight-card">
+      <div class="insight-label">Insight 02 &mdash; Platform Evolution</div>
+      <p><strong>61% of travelers book after Instagram discovery; 32% after TikTok.</strong>
+      Under-35 now start trip planning on TikTok — platform-native content with appropriate
+      tone and format for each channel is non-negotiable.</p>
+    </div>
+
+    <div class="insight-card">
+      <div class="insight-label">Insight 03 &mdash; AI &amp; Personalization</div>
+      <p><strong>80% of travelers open to AI-designed itineraries; 94% in India.</strong>
+      Showcase AI tools (Trip Planner) while maintaining human-centric transparency.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════ 01: STRATEGIC FOUNDATION ═══════════ -->
+  <section class="section" id="foundation">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2 class="section-title">Strategic <em>Foundation</em></h2>
+    </div>
+
+    <p class="prose">
+      Booking.com's 2025–2026 campaign platform <strong>"book whoever you want to be"</strong>
+      (featuring Tina Fey) taps into the insight that 64% of travelers feel more 'main character
+      energy' while on vacation, and 50% say they have a travel alter-ego. This aligns with the
+      <strong>Era of You</strong> &mdash; hyper-personalized travel experiences.
+    </p>
+
+    <h4 class="sub-heading">Strategic Objectives</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr>
+          <th>Objective</th>
+          <th>Target Metric</th>
+          <th>Rationale</th>
+        </tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Strengthen Pre-Booking Engagement</strong></td>
+            <td class="td-metric">+25% engagement rate</td>
+            <td>Leverage AI-driven personalization to deliver tailored content</td>
+          </tr>
+          <tr>
+            <td><strong>Address Service Recovery Gap</strong></td>
+            <td class="td-metric">-40% negative sentiment</td>
+            <td>Proactive community management addressing the Trust Paradox</td>
+          </tr>
+          <tr>
+            <td><strong>Drive Direct Platform Traffic</strong></td>
+            <td class="td-metric">+15% CTR</td>
+            <td>Reduce OTA dependency through owned channel growth</td>
+          </tr>
+          <tr>
+            <td><strong>Build Trust Through Transparency</strong></td>
+            <td class="td-metric">+20% positive sentiment</td>
+            <td>Counteract review-filtering perceptions</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4 class="sub-heading">Target Audience Personas</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr>
+          <th>Persona</th>
+          <th>Demographics</th>
+          <th>Platforms</th>
+          <th>Content Focus</th>
+        </tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>The Spontaneous Booker</strong></td>
+            <td>18–34, urban, app-dependent</td>
+            <td class="td-platform">TikTok · Instagram Reels</td>
+            <td>Last-minute deals, room reveals</td>
+          </tr>
+          <tr>
+            <td><strong>The Deal-Seeking Family Planner</strong></td>
+            <td>35–54, suburban, price-sensitive</td>
+            <td class="td-platform">Facebook · Instagram Feed</td>
+            <td>Value content, family travel guides</td>
+          </tr>
+          <tr>
+            <td><strong>The Business/Leisure Hybrid</strong></td>
+            <td>30–45, professional, dual-purpose</td>
+            <td class="td-platform">LinkedIn · Instagram · YouTube</td>
+            <td>Connected trip content, loyalty benefits</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ═══════════ 02: PLATFORM STRATEGY ═══════════ -->
+  <section class="section" id="platforms">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Platform <em>Strategy</em></h2>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr>
+          <th>Platform</th>
+          <th>Primary Role</th>
+          <th>Content Mix</th>
+          <th>Frequency</th>
+        </tr></thead>
+        <tbody>
+          <tr>
+            <td class="td-platform">Instagram</td>
+            <td><strong>Inspiration + Research Hub</strong></td>
+            <td>40% Reels · 30% Carousels · 20% Static · 10% Stories</td>
+            <td class="td-metric">5–7x / week</td>
+          </tr>
+          <tr>
+            <td class="td-platform">TikTok</td>
+            <td><strong>Discovery + Viral Reach</strong></td>
+            <td>90% short-form video · 10% trending</td>
+            <td class="td-metric">3–5x / week</td>
+          </tr>
+          <tr>
+            <td class="td-platform">Facebook</td>
+            <td><strong>Loyalty + Community Building</strong></td>
+            <td>50% value · 30% community · 20% events</td>
+            <td class="td-metric">3–4x / week</td>
+          </tr>
+          <tr>
+            <td class="td-platform">YouTube</td>
+            <td><strong>Deep Dives + Trust Building</strong></td>
+            <td>Virtual tours · destination guides · AI tutorials</td>
+            <td class="td-metric">2x / month</td>
+          </tr>
+          <tr>
+            <td class="td-platform">X (Twitter)</td>
+            <td><strong>Customer Service + Real-Time</strong></td>
+            <td>70% support · 20% personality · 10% promo</td>
+            <td class="td-metric">Daily</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="insight-card" style="border-left-color: var(--blue-bright); margin-top: 2rem;">
+      <div class="insight-label" style="color: var(--blue-bright);">Instagram Insight</div>
+      <p><strong>61% of travelers have booked a hotel after seeing it on Instagram.</strong>
+      This platform is non-negotiable. Reels reach non-followers and drive discovery;
+      Carousels drive saves and returns; Link Stickers convert.</p>
+    </div>
+
+    <div class="insight-card" style="margin-top: 1rem;">
+      <div class="insight-label">TikTok Insight</div>
+      <p><strong>42% of TikTok users who planned trips on the platform converted to bookings</strong>
+      — outperforming most traditional advertising channels. Among under-35s,
+      TikTok now surpasses Google as the starting point for trip planning.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════ 03: CONTENT PILLARS ═══════════ -->
+  <section class="section" id="pillars">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Content <em>Pillar Architecture</em></h2>
+    </div>
+
+    <p class="prose">Six core content pillars address both brand analysis findings and
+    Booking.com's campaign positioning across all platforms.</p>
+
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <div class="pillar-num">Pillar 01</div>
+        <h3>"Book Whoever You Want to Be"</h3>
+        <p>Extend the Tina Fey campaign into owned channels. Showcase how travel
+        enables personal transformation and identity exploration.</p>
+        <div class="pillar-tags">
+          <span class="pillar-tag">Instagram</span>
+          <span class="pillar-tag">TikTok</span>
+          <span class="pillar-tag">YouTube</span>
+        </div>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-num">Pillar 02</div>
+        <h3>Property Showcases</h3>
+        <p>Highlight 8.6M+ properties and unique accommodations through room tours,
+        hidden gem series, and amenity spotlights.</p>
+        <div class="pillar-tags">
+          <span class="pillar-tag">All Platforms</span>
+        </div>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-num">Pillar 03</div>
+        <h3>Guest Experiences</h3>
+        <p>Leverage UGC and testimonials to build trust — critical given the service
+        recovery deficits identified in the brand analysis.</p>
+        <div class="pillar-tags">
+          <span class="pillar-tag">Instagram</span>
+          <span class="pillar-tag">Facebook</span>
+          <span class="pillar-tag">TikTok</span>
+        </div>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-num">Pillar 04</div>
+        <h3>Behind-the-Scenes</h3>
+        <p>Directly address trust gaps from the brand analysis. AI Trip Planner demos,
+        CS spotlights, and review system transparency.</p>
+        <div class="pillar-tags">
+          <span class="pillar-tag">Instagram</span>
+          <span class="pillar-tag">YouTube</span>
+          <span class="pillar-tag">LinkedIn</span>
+        </div>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-num">Pillar 05</div>
+        <h3>Local Guides</h3>
+        <p>Position Booking.com as a trusted destination authority. Restaurant picks,
+        hidden gems, and seasonal itineraries.</p>
+        <div class="pillar-tags">
+          <span class="pillar-tag">Instagram</span>
+          <span class="pillar-tag">YouTube</span>
+          <span class="pillar-tag">Blog</span>
+        </div>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-num">Pillar 06</div>
+        <h3>Seasonal &amp; Event Content</h3>
+        <p>Capture demand around travel periods, life events, and major occasions.
+        Holiday packages, wedding showcases, and last-minute series.</p>
+        <div class="pillar-tags">
+          <span class="pillar-tag">All Platforms</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ 04: CONTENT CADENCE ═══════════ -->
+  <section class="section" id="cadence">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Content Mix <em>&amp; Cadence</em></h2>
+    </div>
+
+    <h4 class="sub-heading">Monthly Content Schedule</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr>
+          <th>Week</th>
+          <th>Monday</th>
+          <th>Tuesday</th>
+          <th>Wednesday</th>
+          <th>Thursday</th>
+          <th>Friday</th>
+          <th>Weekend</th>
+        </tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Week 1</strong></td>
+            <td>Property Showcase (Reel)</td>
+            <td>Local Guide (Carousel)</td>
+            <td>UGC Repost (Static)</td>
+            <td>Behind-the-Scenes (Reel)</td>
+            <td>Campaign Content</td>
+            <td>Destination Inspiration</td>
+          </tr>
+          <tr>
+            <td><strong>Week 2</strong></td>
+            <td>AI Tool Demo (Reel)</td>
+            <td>Guest Feature (Carousel)</td>
+            <td>Seasonal Content</td>
+            <td>Property Showcase (Reel)</td>
+            <td>Local Guide</td>
+            <td>User Challenge</td>
+          </tr>
+          <tr>
+            <td><strong>Week 3</strong></td>
+            <td>Behind-the-Scenes (Reel)</td>
+            <td>UGC Repost (Static)</td>
+            <td>AI Tool Demo (Reel)</td>
+            <td>Property Showcase</td>
+            <td>Campaign Content</td>
+            <td>Weekend Getaways</td>
+          </tr>
+          <tr>
+            <td><strong>Week 4</strong></td>
+            <td>Local Guide (Reel)</td>
+            <td>Guest Feature (Static)</td>
+            <td>Seasonal Carousel</td>
+            <td>Behind-the-Scenes (Reel)</td>
+            <td>UGC Roundup</td>
+            <td>Monthly Highlights</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4 class="sub-heading">Quarterly Themes</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Quarter</th><th>Theme</th><th>Campaign Integration</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Q1 (Jan–Mar)</strong></td>
+            <td>New Year, New You</td>
+            <td>"book whoever you want to be" — identity-focused, resolution travel</td>
+          </tr>
+          <tr>
+            <td><strong>Q2 (Apr–Jun)</strong></td>
+            <td>Spring Discovery</td>
+            <td>Destination guides, hidden gems, Father's Day gift focus</td>
+          </tr>
+          <tr>
+            <td><strong>Q3 (Jul–Sep)</strong></td>
+            <td>Peak Season</td>
+            <td>Family travel, last-minute bookings, back-to-school transitions</td>
+          </tr>
+          <tr>
+            <td><strong>Q4 (Oct–Dec)</strong></td>
+            <td>Holiday Planning</td>
+            <td>Seasonal destinations, holiday events, year-end travel, gift guides</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ═══════════ 05: VISUAL IDENTITY ═══════════ -->
+  <section class="section" id="visual">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <h2 class="section-title">Visual Identity <em>&amp; Creative Guidelines</em></h2>
+    </div>
+
+    <h4 class="sub-heading">Brand Colour Palette</h4>
+    <div class="palette-grid">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#003580;"></div>
+        <div class="swatch-label">Core Blue<br>#003580</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#0071c2;"></div>
+        <div class="swatch-label">Vibrant Cobalt<br>#0071c2</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#FF6B35;"></div>
+        <div class="swatch-label">Warm Orange<br>#FF6B35</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#FDB913;"></div>
+        <div class="swatch-label">Golden Hour<br>#FDB913</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#E6F0FA; border: 1px solid #ccc;"></div>
+        <div class="swatch-label">Soft Sky<br>#E6F0FA</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#1E293B;"></div>
+        <div class="swatch-label">Deep Navy<br>#1E293B</div>
+      </div>
+    </div>
+
+    <h4 class="sub-heading">Typography System</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Element</th><th>Font</th><th>Size</th><th>Usage</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Display Headlines</strong></td>
+            <td>Sohne / GT America Display</td>
+            <td class="td-metric">48–72pt Bold</td>
+            <td>Campaign headers, hero content</td>
+          </tr>
+          <tr>
+            <td><strong>Section Headers</strong></td>
+            <td>Playfair Display</td>
+            <td class="td-metric">32–40pt Bold</td>
+            <td>Carousel titles, section breaks</td>
+          </tr>
+          <tr>
+            <td><strong>Body Text</strong></td>
+            <td>Inter</td>
+            <td class="td-metric">14–18pt Regular</td>
+            <td>Captions, descriptions</td>
+          </tr>
+          <tr>
+            <td><strong>Data / Statistics</strong></td>
+            <td>JetBrains Mono</td>
+            <td class="td-metric">Variable Medium</td>
+            <td>Metrics, trust indicators</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4 class="sub-heading">Imagery Principles</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Principle</th><th>Guideline</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Authenticity</strong></td><td>Real people in real places. Candid, not staged. No stiff poses or obvious stock.</td></tr>
+          <tr><td><strong>Diversity</strong></td><td>Represent diverse travelers: age, ethnicity, body type, and travel styles.</td></tr>
+          <tr><td><strong>Golden Hour Lighting</strong></td><td>Prioritize warm, natural lighting — especially for destination shots.</td></tr>
+          <tr><td><strong>Composition</strong></td><td>Leave space for text overlay (safe zones: bottom third, center).</td></tr>
+          <tr><td><strong>No Embedded Text</strong></td><td>All text added as overlay in design tools — never burned into photos.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ═══════════ 06: COMMUNITY MANAGEMENT ═══════════ -->
+  <section class="section" id="community">
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <h2 class="section-title">Community Management <em>&amp; Response Protocol</em></h2>
+    </div>
+
+    <h4 class="sub-heading">Response Time Standards</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Platform</th><th>Response Goal</th><th>Escalation Path</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="td-platform">X (Twitter)</td>
+            <td class="td-metric">&lt;30 min (business) · &lt;2hr (after hours)</td>
+            <td>Direct to customer support team</td>
+          </tr>
+          <tr>
+            <td class="td-platform">Facebook</td>
+            <td class="td-metric">&lt;2 hours</td>
+            <td>Messenger for sensitive issues</td>
+          </tr>
+          <tr>
+            <td class="td-platform">Instagram</td>
+            <td class="td-metric">&lt;4 hours</td>
+            <td>DMs for issue resolution</td>
+          </tr>
+          <tr>
+            <td class="td-platform">TikTok</td>
+            <td class="td-metric">&lt;6 hours</td>
+            <td>Comments addressed; DMs for complex issues</td>
+          </tr>
+          <tr>
+            <td class="td-platform">YouTube</td>
+            <td class="td-metric">&lt;24 hours</td>
+            <td>Public response; DMs if needed</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4 class="sub-heading">Comment Moderation Protocol</h4>
+    <div class="protocol-grid">
+      <div class="protocol-card">
+        <div class="protocol-type type-positive">Positive Comment</div>
+        <h4>Acknowledge &amp; Amplify</h4>
+        <p>"So glad you loved your stay! Which room did you book?" Encourage sharing and tagging.</p>
+      </div>
+      <div class="protocol-card">
+        <div class="protocol-type type-question">Pre-Booking Question</div>
+        <h4>Help + Convert</h4>
+        <p>"The pool is open year-round! Here's where to book [link]" — helpful info with a soft CTA.</p>
+      </div>
+      <div class="protocol-card">
+        <div class="protocol-type type-question">Post-Booking Question</div>
+        <h4>Troubleshoot + Escalate</h4>
+        <p>"Let us help — DM us your booking number." Move to private channel quickly.</p>
+      </div>
+      <div class="protocol-card">
+        <div class="protocol-type type-complaint">Complaint (Any Type)</div>
+        <h4>Acknowledge → DM</h4>
+        <p>"We're sorry to hear this. Please DM us so we can make it right." Never argue publicly.</p>
+      </div>
+    </div>
+
+    <div class="golden-rule">
+      <p>Golden Rule: Never argue publicly. Always move to DM.</p>
+    </div>
+
+    <h4 class="sub-heading">Crisis Communication Protocol</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Step</th><th>Action</th><th>Timeline</th></tr></thead>
+        <tbody>
+          <tr><td><strong>1. Acknowledge</strong></td><td>Post initial response on affected platforms</td><td class="td-metric">Within 1 hour</td></tr>
+          <tr><td><strong>2. Inform</strong></td><td>Provide factual information — no speculation</td><td class="td-metric">Hour 1–2</td></tr>
+          <tr><td><strong>3. Escalate</strong></td><td>Hand off to dedicated crisis team for coordinated response</td><td class="td-metric">Hour 2–4</td></tr>
+          <tr><td><strong>4. Update</strong></td><td>Regular updates as situation develops</td><td class="td-metric">Ongoing</td></tr>
+          <tr><td><strong>5. Resolve</strong></td><td>Post-resolution summary to rebuild trust</td><td class="td-metric">Post-incident</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ═══════════ 07: MEASUREMENT ═══════════ -->
+  <section class="section" id="measurement">
+    <div class="section-header">
+      <span class="section-num">07</span>
+      <h2 class="section-title">Measurement <em>Framework</em></h2>
+    </div>
+
+    <h4 class="sub-heading">12-Month Platform KPI Targets</h4>
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-platform">Instagram ER</div>
+        <div class="kpi-val">2.3%</div>
+        <div class="kpi-label">Target (from 1.8%)</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-platform">Instagram CTR</div>
+        <div class="kpi-val">1.5%</div>
+        <div class="kpi-label">Target (from 1.2%)</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-platform">TikTok Views</div>
+        <div class="kpi-val">250K</div>
+        <div class="kpi-label">Per video (from 150K)</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-platform">TikTok ER</div>
+        <div class="kpi-val">5.0%</div>
+        <div class="kpi-label">Target (from 4.2%)</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-platform">Facebook CTR</div>
+        <div class="kpi-val">1.0%</div>
+        <div class="kpi-label">Target (from 0.8%)</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-platform">X Response</div>
+        <div class="kpi-val">&lt;30m</div>
+        <div class="kpi-label">Response time (from 45m)</div>
+      </div>
+    </div>
+
+    <h4 class="sub-heading">Trust Metrics Dashboard</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Metric</th><th>Current Baseline</th><th>12-Month Target</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Positive Comment Ratio</strong></td><td>72%</td><td class="td-metric">80%</td></tr>
+          <tr><td><strong>Service Complaint Visibility</strong></td><td>15% of comments</td><td class="td-metric">&lt;8%</td></tr>
+          <tr><td><strong>Response Rate to Complaints</strong></td><td>65%</td><td class="td-metric">95%</td></tr>
+          <tr><td><strong>Trustpilot Score</strong></td><td>2.1 / 5</td><td class="td-metric">2.5 / 5</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4 class="sub-heading">Reporting Cadence</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Report Type</th><th>Frequency</th><th>Audience</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Daily Dashboard</strong></td><td>Daily</td><td>Social Team</td></tr>
+          <tr><td><strong>Weekly Pulse</strong></td><td>Weekly</td><td>Marketing Managers</td></tr>
+          <tr><td><strong>Monthly Report</strong></td><td>Monthly</td><td>Marketing Leadership</td></tr>
+          <tr><td><strong>Quarterly Review</strong></td><td>Quarterly</td><td>Executive Team</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ═══════════ 08: BUDGET ═══════════ -->
+  <section class="section" id="budget">
+    <div class="section-header">
+      <span class="section-num">08</span>
+      <h2 class="section-title">Budget <em>&amp; Resources</em></h2>
+    </div>
+
+    <h4 class="sub-heading">Recommended Team Structure</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Role</th><th>Responsibilities</th><th>Headcount</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Social Media Director</strong></td><td>Strategy, governance, executive reporting</td><td class="td-metric">1</td></tr>
+          <tr><td><strong>Platform Managers</strong></td><td>Daily management per platform</td><td class="td-metric">4</td></tr>
+          <tr><td><strong>Community Managers</strong></td><td>Response handling, engagement</td><td class="td-metric">2</td></tr>
+          <tr><td><strong>Content Creators</strong></td><td>Video production, design, copywriting</td><td class="td-metric">3</td></tr>
+          <tr><td><strong>Analytics Specialist</strong></td><td>Reporting, insights, optimization</td><td class="td-metric">1</td></tr>
+          <tr><td><strong>Paid Social Specialist</strong></td><td>Campaign amplification, budget management</td><td class="td-metric">1</td></tr>
+          <tr class="total-row"><td>Total</td><td></td><td>12</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4 class="sub-heading">Content Production Budget</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Category</th><th>Monthly</th><th>Annual</th></tr></thead>
+        <tbody>
+          <tr><td><strong>In-House Production</strong></td><td>$8,000</td><td class="td-metric">$96,000</td></tr>
+          <tr><td><strong>Agency Partnerships</strong></td><td>$15,000</td><td class="td-metric">$180,000</td></tr>
+          <tr><td><strong>Influencer Collaborations</strong></td><td>$10,000</td><td class="td-metric">$120,000</td></tr>
+          <tr><td><strong>Paid Amplification</strong></td><td>$25,000</td><td class="td-metric">$300,000</td></tr>
+          <tr><td><strong>UGC Acquisition</strong></td><td>$2,000</td><td class="td-metric">$24,000</td></tr>
+          <tr class="total-row"><td>Total</td><td>$60,000</td><td>$720,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4 class="sub-heading">Technology Stack</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Tool</th><th>Purpose</th><th>Est. Annual Cost</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Social Media Management Platform</strong></td><td>Scheduling, monitoring, reporting</td><td class="td-metric">$15,000</td></tr>
+          <tr><td><strong>Social Listening Tool</strong></td><td>Sentiment analysis, trend detection</td><td class="td-metric">$12,000</td></tr>
+          <tr><td><strong>Content Creation Software</strong></td><td>Design, video editing</td><td class="td-metric">$5,000</td></tr>
+          <tr><td><strong>Analytics Platform</strong></td><td>Custom dashboards, attribution</td><td class="td-metric">$8,000</td></tr>
+          <tr><td><strong>Influencer Management Tool</strong></td><td>Partnership tracking, payment</td><td class="td-metric">$4,000</td></tr>
+          <tr class="total-row"><td>Total</td><td></td><td>$44,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ═══════════ 09: RISK MANAGEMENT ═══════════ -->
+  <section class="section" id="risk">
+    <div class="section-header">
+      <span class="section-num">09</span>
+      <h2 class="section-title">Risk Management <em>&amp; Contingencies</em></h2>
+    </div>
+
+    <div class="risk-grid">
+      <div class="risk-card">
+        <div class="risk-header">
+          <div class="risk-dot risk-high"></div>
+          <h4>Security / Scam Incidents</h4>
+        </div>
+        <p>Proactive communication, rapid response protocol, and ongoing educational content to inform users.</p>
+      </div>
+      <div class="risk-card">
+        <div class="risk-header">
+          <div class="risk-dot risk-high"></div>
+          <h4>Viral Negative Complaint</h4>
+        </div>
+        <p>Crisis protocol activated, empowered response team, transparent public follow-up.</p>
+      </div>
+      <div class="risk-card">
+        <div class="risk-header">
+          <div class="risk-dot risk-medium"></div>
+          <h4>Platform Algorithm Changes</h4>
+        </div>
+        <p>Diversified platform investment and owned audience development to reduce single-platform dependency.</p>
+      </div>
+      <div class="risk-card">
+        <div class="risk-header">
+          <div class="risk-dot risk-medium"></div>
+          <h4>AI Trust Concerns</h4>
+        </div>
+        <p>Educational content series, full transparency about AI use, and clear opt-out options for users.</p>
+      </div>
+      <div class="risk-card">
+        <div class="risk-header">
+          <div class="risk-dot risk-medium"></div>
+          <h4>Regulatory Scrutiny</h4>
+        </div>
+        <p>Transparent content approach with a built-in compliance review process for all major campaigns.</p>
+      </div>
+    </div>
+
+    <h4 class="sub-heading">Contingency Budget Allocation</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Scenario</th><th>Allocation</th><th>Activation Criteria</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Crisis Response</strong></td><td class="td-metric">$25,000</td><td>Major incident requiring paid amplification of response</td></tr>
+          <tr><td><strong>Platform Shift</strong></td><td class="td-metric">$50,000</td><td>Major algorithm change requiring content pivot</td></tr>
+          <tr><td><strong>Competitive Threat</strong></td><td class="td-metric">$75,000</td><td>Aggressive competitor campaign requiring response</td></tr>
+          <tr><td><strong>Regulatory Requirement</strong></td><td class="td-metric">$20,000</td><td>New compliance needs requiring content updates</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ═══════════ 10: ROADMAP ═══════════ -->
+  <section class="section" id="roadmap">
+    <div class="section-header">
+      <span class="section-num">10</span>
+      <h2 class="section-title">90-Day Implementation <em>Roadmap</em></h2>
+    </div>
+
+    <div class="phase-grid">
+      <div class="phase-card p1">
+        <div class="phase-label">Phase 1 — Weeks 1–4</div>
+        <h3>Foundation</h3>
+        <ul>
+          <li>Finalize team structure; onboard missing roles</li>
+          <li>Configure full technology stack</li>
+          <li>Complete content gap analysis and audit</li>
+          <li>Create visual templates and brand guidelines doc</li>
+          <li>Pilot launch on Instagram and TikTok</li>
+        </ul>
+      </div>
+      <div class="phase-card p2">
+        <div class="phase-label">Phase 2 — Weeks 5–8</div>
+        <h3>Optimization</h3>
+        <ul>
+          <li>Launch enhanced Facebook and YouTube strategies</li>
+          <li>Implement new community response standards</li>
+          <li>Train full team on crisis protocols</li>
+          <li>Full rollout of all six content pillars</li>
+          <li>Analyze Month 1 data and optimize</li>
+        </ul>
+      </div>
+      <div class="phase-card p3">
+        <div class="phase-label">Phase 3 — Weeks 9–12</div>
+        <h3>Scale</h3>
+        <ul>
+          <li>Launch influencer partnerships for "BWYWB"</li>
+          <li>Launch #MyTravelAlterEgo UGC campaign</li>
+          <li>Begin weekly AI Trip Planner tutorial series</li>
+          <li>Comprehensive Q1 performance report</li>
+          <li>Q2 planning and strategy refresh</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ 11: CONCLUSION ═══════════ -->
+  <section class="section" id="conclusion">
+    <div class="section-header">
+      <span class="section-num">11</span>
+      <h2 class="section-title">Success <em>Measures</em></h2>
+    </div>
+
+    <p class="prose">
+      This strategy transforms Booking.com's social presence from a broadcast channel into a
+      relationship-building engine that addresses critical trust gaps while leveraging AI innovation
+      and the emotional power of the <strong>"Booking.yeah"</strong> moment.
+    </p>
+
+    <h4 class="sub-heading">Success at 12 Months</h4>
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-num"><span>+25%</span></div>
+        <div class="stat-label">Engagement rate across all platforms</div>
+      </div>
+      <div class="stat-card blue">
+        <div class="stat-num"><span>2.5+</span></div>
+        <div class="stat-label">Trustpilot score (from 2.1)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num"><span>+15%</span></div>
+        <div class="stat-label">Click-through to direct booking pages</div>
+      </div>
+      <div class="stat-card blue">
+        <div class="stat-num"><span>95%</span></div>
+        <div class="stat-label">Response rate to public complaints</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num"><span>3M+</span></div>
+        <div class="stat-label">TikTok followers target</div>
+      </div>
+      <div class="stat-card blue">
+        <div class="stat-num"><span>8M+</span></div>
+        <div class="stat-label">Instagram followers target</div>
+      </div>
+    </div>
+
+    <div class="insight-card" style="margin-top: 2rem;">
+      <div class="insight-label">Analysis to Action</div>
+      <p>Every recommendation in this strategy traces directly back to a specific brand analysis finding —
+      from the Trust Paradox addressed through Pillar 4 and community protocols, to the AI leadership opportunity
+      activated through Trip Planner content and educational series.</p>
+    </div>
+  </section>
+
+</div><!-- /page-wrap -->
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="footer">
+  <div class="page-wrap">
+    <div class="footer-name">Njabulo <em>Mahumane</em></div>
+    <div class="footer-role">Digital Marketing Strategist</div>
+    <a class="footer-email" href="mailto:njabmahu@gmail.com">njabmahu@gmail.com</a>
+    <div class="footer-line"></div>
+    <div class="footer-copy">Version 2.0 &mdash; Final Strategy Document &mdash; February 2026</div>
+  </div>
+</footer>
+
+</body>
+</html>

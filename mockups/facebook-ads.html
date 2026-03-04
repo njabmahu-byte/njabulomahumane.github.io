@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Facebook & Instagram Static Ads — Njabulo Mahumane</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0d0d0d;color:#f0ede8;font-family:'DM Sans',sans-serif;}
+.back{display:inline-flex;align-items:center;gap:8px;padding:28px 40px;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(240,237,232,.55);text-decoration:none;transition:color .2s;}
+.back:hover{color:#e8a020;}
+.hero{padding:20px 40px 60px;max-width:900px;}
+.tag{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#e8a020;margin-bottom:16px;}
+.title{font-family:'Syne',sans-serif;font-size:clamp(36px,6vw,72px);font-weight:800;line-height:.95;letter-spacing:-.02em;margin-bottom:20px;}
+.subtitle{color:rgba(240,237,232,.6);font-size:17px;line-height:1.7;max-width:560px;}
+
+.ads-section{padding:0 40px 80px;max-width:1200px;}
+.ads-label{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(240,237,232,.4);margin-bottom:32px;}
+.ads-grid{display:flex;flex-direction:column;gap:80px;}
+
+/* Single ad block */
+.ad-block{}
+.ad-block-header{margin-bottom:28px;}
+.ad-num{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#e8a020;margin-bottom:8px;}
+.ad-title{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;letter-spacing:-.01em;margin-bottom:8px;}
+.ad-objective{font-size:14px;color:rgba(240,237,232,.55);}
+.ad-layout{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;}
+@media(max-width:768px){.ad-layout{grid-template-columns:1fr;}}
+
+/* Ad Creative */
+.ad-creative{border-radius:16px;overflow:hidden;position:relative;aspect-ratio:1/1;border:1px solid rgba(255,255,255,.08);}
+
+/* AD 1 — Benefit */
+.ad1{background:linear-gradient(135deg,#0d1520 0%,#1a0a30 50%,#0d2040 100%);}
+.ad1-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(61,127,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(61,127,255,.04) 1px,transparent 1px);background-size:24px 24px;}
+.ad1-content{position:relative;z-index:1;padding:36px;height:100%;display:flex;flex-direction:column;}
+.ad1-logo{font-family:'Syne',sans-serif;font-size:13px;font-weight:800;letter-spacing:.1em;color:rgba(240,237,232,.4);margin-bottom:auto;}
+.ad1-badge{display:inline-block;background:rgba(232,160,32,.15);border:1px solid rgba(232,160,32,.3);border-radius:20px;padding:6px 14px;font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;color:#e8a020;margin-bottom:16px;width:fit-content;}
+.ad1-headline{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;line-height:1.05;letter-spacing:-.02em;margin-bottom:12px;}
+.ad1-headline span{color:#e8a020;}
+.ad1-sub{font-size:13px;color:rgba(240,237,232,.6);line-height:1.55;margin-bottom:20px;}
+.ad1-cta{display:inline-block;background:#e8a020;color:#0d0d0d;font-family:'Syne',sans-serif;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:12px 22px;border-radius:8px;width:fit-content;}
+
+/* AD 2 — Social Proof */
+.ad2{background:linear-gradient(145deg,#0a1a0a,#0d2010);}
+.ad2-content{padding:36px;height:100%;display:flex;flex-direction:column;}
+.ad2-logo{font-family:'Syne',sans-serif;font-size:13px;font-weight:800;letter-spacing:.1em;color:rgba(240,237,232,.4);margin-bottom:auto;}
+.ad2-stars{font-size:18px;margin-bottom:12px;}
+.ad2-quote{font-family:'Syne',sans-serif;font-size:20px;font-weight:700;line-height:1.2;margin-bottom:14px;}
+.ad2-quote span{color:#27ae60;}
+.ad2-person{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.ad2-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#27ae60,#3d7fff);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:13px;color:#0d0d0d;}
+.ad2-person-info .name{font-size:13px;font-weight:600;}
+.ad2-person-info .role{font-size:11px;color:rgba(240,237,232,.5);}
+.ad2-cta{display:inline-block;background:#27ae60;color:#0d0d0d;font-family:'Syne',sans-serif;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:12px 22px;border-radius:8px;width:fit-content;}
+
+/* AD 3 — Urgency */
+.ad3{background:linear-gradient(145deg,#1a0505,#2a0d0d);}
+.ad3-content{padding:36px;height:100%;display:flex;flex-direction:column;}
+.ad3-logo{font-family:'Syne',sans-serif;font-size:13px;font-weight:800;letter-spacing:.1em;color:rgba(240,237,232,.4);margin-bottom:auto;}
+.ad3-timer{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#ff5f5f;margin-bottom:10px;}
+.ad3-headline{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;line-height:1.05;letter-spacing:-.02em;margin-bottom:12px;}
+.ad3-headline span{color:#ff5f5f;}
+.ad3-list{display:flex;flex-direction:column;gap:6px;margin-bottom:20px;}
+.ad3-item{font-size:13px;color:rgba(240,237,232,.7);display:flex;align-items:center;gap:8px;}
+.ad3-check{color:#ff5f5f;font-weight:700;}
+.ad3-cta{display:inline-block;background:#ff5f5f;color:#fff;font-family:'Syne',sans-serif;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:12px 22px;border-radius:8px;width:fit-content;}
+
+/* Copy panel */
+.ad-copy{background:#141414;border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:32px;}
+.copy-section{margin-bottom:24px;}
+.copy-section:last-child{margin-bottom:0;}
+.copy-label{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#e8a020;margin-bottom:8px;}
+.copy-text{font-size:14px;color:rgba(240,237,232,.75);line-height:1.65;}
+.copy-text strong{color:#f0ede8;}
+.targeting-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px;}
+.targeting-pill{background:#1a1a1a;border:1px solid rgba(255,255,255,.06);border-radius:6px;padding:6px 10px;font-size:12px;color:rgba(240,237,232,.6);}
+.divider{height:1px;background:rgba(255,255,255,.06);margin:20px 0;}
+
+.section-header{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;margin-bottom:24px;letter-spacing:-.01em;}
+</style>
+</head>
+<body>
+
+<a class="back" href="../index.html">← Back to Portfolio</a>
+
+<div class="hero">
+  <div class="tag">Paid Social · Facebook & Instagram Ads</div>
+  <h1 class="title">Static Ad<br><span style="color:#e8a020">Creatives</span></h1>
+  <p class="subtitle">Three static ad creatives for a fictitious online digital marketing short course (Brand: <strong>SkillBridge SA</strong>). Each ad uses a different conversion hook — benefit-first, social proof, and urgency/scarcity. Full copy and targeting rationale included.</p>
+</div>
+
+<div class="ads-section">
+  <div class="ads-label">3 Ad Creatives — Full Mockups with Copy</div>
+  <div class="ads-grid">
+
+    <!-- AD 1: BENEFIT -->
+    <div class="ad-block">
+      <div class="ad-block-header">
+        <div class="ad-num">Ad 01 / 03</div>
+        <div class="ad-title">The Benefit Hook</div>
+        <div class="ad-objective">Objective: Awareness → Lead Generation · Format: Facebook/IG Feed 1:1</div>
+      </div>
+      <div class="ad-layout">
+        <div class="ad-creative ad1">
+          <div class="ad1-grid"></div>
+          <div class="ad1-content">
+            <div class="ad1-logo">SKILLBRIDGE SA</div>
+            <div>
+              <div class="ad1-badge">🚀 NEW COHORT OPEN</div>
+              <div class="ad1-headline">Learn digital marketing.<br><span>Get hired.</span><br>In 12 weeks.</div>
+              <div class="ad1-sub">Industry-led curriculum. Real briefs. A certificate that actually opens doors.</div>
+              <div class="ad1-cta">Explore the Course →</div>
+            </div>
+          </div>
+        </div>
+        <div class="ad-copy">
+          <div class="copy-section">
+            <div class="copy-label">Primary Text</div>
+            <div class="copy-text">Tired of watching others land the marketing jobs you want? <strong>SkillBridge SA</strong> teaches you exactly what South African companies are hiring for — not the theory, the practical stuff. 12 weeks. Real skills. Your first portfolio piece by week 3.</div>
+          </div>
+          <div class="divider"></div>
+          <div class="copy-section">
+            <div class="copy-label">Headline</div>
+            <div class="copy-text"><strong>Learn Digital Marketing in 12 Weeks — Guaranteed Interview-Ready</strong></div>
+          </div>
+          <div class="divider"></div>
+          <div class="copy-section">
+            <div class="copy-label">Description</div>
+            <div class="copy-text">Flexible online schedule. SA-focused curriculum. Start any Monday.</div>
+          </div>
+          <div class="divider"></div>
+          <div class="copy-section">
+            <div class="copy-label">CTA Button</div>
+            <div class="copy-text">Learn More</div>
+          </div>
+          <div class="divider"></div>
+          <div class="copy-section">
+            <div class="copy-label">Audience Targeting</div>
+            <div class="targeting-grid">
+              <div class="targeting-pill">Age 18–30</div>
+              <div class="targeting-pill">South Africa</div>
+              <div class="targeting-pill">Career interests</div>
+              <div class="targeting-pill">Digital marketing</div>
+              <div class="targeting-pill">Job seeking</div>
+              <div class="targeting-pill">Students</div>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <div class="copy-section">
+            <div class="copy-label">Strategic Note</div>
+            <div class="copy-text">Benefit-first hooks work at the top of the funnel. This ad leads with the transformation (hired in 12 weeks), not the features, to immediately answer "what's in it for me?"</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AD 2: SOCIAL PROOF -->
+    <div class="ad-block">
+      <div class="ad-block-header">
+        <div class="ad-num">Ad 02 / 03</div>
+        <div class="ad-title">The Social Proof Hook</div>
+        <div class="ad-objective">Objective: Consideration / Retargeting warm audiences · Format: Instagram Feed 1:1</div>
+      </div>
+      <div class="ad-layout">
+        <div class="ad-creative ad2">
+          <div class="ad2-content">
+            <div class="ad2-logo">SKILLBRIDGE SA</div>
+            <div>
+              <div class="ad2-stars">⭐⭐⭐⭐⭐</div>
+              <div class="ad2-quote">"I went from zero to <span>landing my first marketing job</span> in 4 months."</div>
+              <div class="ad2-person">
+                <div class="ad2-avatar">TN</div>
+                <div class="ad2-person-info">
+                  <div class="name">Thabo Nkosi</div>
+                  <div class="role">Junior Digital Marketer · Cape Town</div>
+                </div>
+              </div>
+              <div class="ad2-cta">See More Stories →</div>
+            </div>
+          </div>
+        </div>
+        <div class="ad-copy">
+          <div class="copy-section">
+            <div class="copy-label">Primary Text</div>
+            <div class="copy-text">Thabo started with no experience and no portfolio. 4 months after completing SkillBridge, he was fielding interview requests. <strong>Over 800 graduates placed in marketing roles across SA since 2023.</strong> What are you waiting for?</div>
+          </div>
+          <div class="divider"></div>
+          <div class="copy-section">
+            <div class="copy-label">Headline</div>
+            <div class="copy-text"><strong>800+ SA Marketers Trained. Now It's Your Turn.</strong></div>
+          </div>
+          <div class="divider"></div>
+          <div class="copy-section">
+            <div class="copy-label">Description</div>
+            <div class="copy-text">Join the next cohort. Applications closing soon.</div>
+          </div>
+          <div class="divider"></div>
+          <div class="copy-section">
+            <div class="copy-label">CTA Button</div>
+            <div class="copy-text">Apply Now</div>
+          </div>
+          <div class="divider"></div>
+          <div class="copy-section">
+            <div class="copy-label">Audience Targeting</div>
+            <div class="targeting-grid">
+              <div class="targeting-pill">Website visitors</div>
+              <div class="targeting-pill">Video viewers 50%+</div>
+              <div class="targeting-pill">Lookalike 1%</div>
+              <div class="targeting-pill">Age 20–35</div>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <div class="copy-section">
+            <div class="copy-label">Strategic Note</div>
+            <div class="copy-text">Social proof is most effective at the consideration stage — when a warm audience is evaluating options. Real testimonials with specific outcomes and a named person outperform generic "great course!" reviews significantly.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AD 3: URGENCY -->
+    <div class="ad-block">
+      <div class="ad-block-header">
+        <div class="ad-num">Ad 03 / 03</div>
+        <div class="ad-title">The Urgency/Scarcity Hook</div>
+        <div class="ad-objective">Objective: Conversion — Bottom of funnel retargeting · Format: Facebook Feed + Stories 1:1</div>
+      </div>
+      <div class="ad-layout">
+        <div class="ad-creative ad3">
+          <div class="ad3-content">
+            <div class="ad3-logo">SKILLBRIDGE SA</div>
+            <div>
+              <div class="ad3-timer">⏰ 3 SPOTS REMAINING — COHORT 8</div>
+              <div class="ad3-headline">Last chance to<br>join <span>April's</span><br>intake.</div>
+              <div class="ad3-list">
+                <div class="ad3-item"><span class="ad3-check">✓</span>12-week intensive programme</div>
+                <div class="ad3-item"><span class="ad3-check">✓</span>Portfolio of 5 real-world projects</div>
+                <div class="ad3-item"><span class="ad3-check">✓</span>Job placement support</div>
+              </div>
+              <div class="ad3-cta">Claim Your Spot →</div>
+            </div>
+          </div>
+        </div>
+        <div class="ad-copy">
+          <div class="copy-section">
+            <div class="copy-label">Primary Text</div>
+            <div class="copy-text">You've been thinking about it. The April cohort is down to its final 3 spots. <strong>SkillBridge SA's April intake closes Friday.</strong> This is the programme that's placed 800+ marketers into real jobs. Don't wait for May.</div>
+          </div>
+          <div class="divider"></div>
+          <div class="copy-section">
+            <div class="copy-label">Headline</div>
+            <div class="copy-text"><strong>3 Spots Left in April — Closes Friday Night</strong></div>
+          </div>
+          <div class="divider"></div>
+          <div class="copy-section">
+            <div class="copy-label">Description</div>
+            <div class="copy-text">Full payment plans available. Start building your career this month.</div>
+          </div>
+          <div class="divider"></div>
+          <div class="copy-section">
+            <div class="copy-label">CTA Button</div>
+            <div class="copy-text">Sign Up</div>
+          </div>
+          <div class="divider"></div>
+          <div class="copy-section">
+            <div class="copy-label">Audience Targeting</div>
+            <div class="targeting-grid">
+              <div class="targeting-pill">Cart abandoners</div>
+              <div class="targeting-pill">Page visitors 3×+</div>
+              <div class="targeting-pill">Email list custom</div>
+              <div class="targeting-pill">Age 20–32</div>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <div class="copy-section">
+            <div class="copy-label">Strategic Note</div>
+            <div class="copy-text">Urgency/scarcity works only at the bottom of the funnel — on audiences who already know the brand and have shown intent. Using this on cold audiences reads as manipulative and destroys trust. Used correctly here, it creates a genuine reason to act now rather than later.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

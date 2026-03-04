@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The 4-Step Learning Loop</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    background: #0d0d0f;
+    overflow: hidden;
+    height: auto;
+  }
+  .card {
+    background: #0d0d0f;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 44px 60px 40px;
+    position: relative;
+  }
+  .title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 62px;
+    color: #f0f0f0;
+    letter-spacing: 3px;
+    text-align: center;
+    line-height: 1;
+  }
+  .subtitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    color: #666;
+    font-weight: 300;
+    text-align: center;
+    margin-top: 10px;
+    letter-spacing: 0.3px;
+  }
+  .diagram {
+    flex: 1;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  svg {
+    width: 720px;
+    height: 620px;
+    max-width: 100%;
+  }
+</style>
+<style id="cursor-global">
+.g-cursor-dot{position:fixed;width:8px;height:8px;background:#e8a020;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:transform .1s,background .2s;}
+.g-cursor-ring{position:fixed;width:36px;height:36px;border:2px solid rgba(232,160,32,0.55);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);}
+body.g-cursor-hover .g-cursor-dot{transform:translate(-50%,-50%) scale(2);background:#fff;}
+body.g-cursor-hover .g-cursor-ring{width:52px;height:52px;}
+@media(hover:none){.g-cursor-dot,.g-cursor-ring{display:none;}}
+</style>
+</head>
+<body>
+<div class="g-cursor-dot" id="gCursorDot"></div><div class="g-cursor-ring" id="gCursorRing"></div>
+<div class="card">
+  <div class="title">THE 4-STEP LEARNING LOOP</div>
+  <div class="subtitle">Miss any step and the skill fades. Follow all four and it sticks.</div>
+  <div class="diagram">
+    <svg viewBox="0 0 720 620" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="g1"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <filter id="g2"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <filter id="g3"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <filter id="g4"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <radialGradient id="rg1" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#ff9f43" stop-opacity="0.25"/>
+          <stop offset="100%" stop-color="#ff9f43" stop-opacity="0.05"/>
+        </radialGradient>
+        <radialGradient id="rg2" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#ff6b35" stop-opacity="0.25"/>
+          <stop offset="100%" stop-color="#ff6b35" stop-opacity="0.05"/>
+        </radialGradient>
+        <radialGradient id="rg3" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#48dbfb" stop-opacity="0.25"/>
+          <stop offset="100%" stop-color="#48dbfb" stop-opacity="0.05"/>
+        </radialGradient>
+        <radialGradient id="rg4" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#7b68ee" stop-opacity="0.25"/>
+          <stop offset="100%" stop-color="#7b68ee" stop-opacity="0.05"/>
+        </radialGradient>
+        <marker id="arr1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#ff9f43" opacity="0.8"/>
+        </marker>
+        <marker id="arr2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#ff6b35" opacity="0.8"/>
+        </marker>
+        <marker id="arr3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#48dbfb" opacity="0.8"/>
+        </marker>
+        <marker id="arr4" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#7b68ee" opacity="0.8"/>
+        </marker>
+      </defs>
+
+      <!-- Central circle -->
+      <circle cx="360" cy="300" r="70" fill="#141417" stroke="#2a2a32" stroke-width="1.5"/>
+      <text x="360" y="292" font-family="Bebas Neue, sans-serif" font-size="18" fill="#e8ff47" text-anchor="middle" letter-spacing="2">THE</text>
+      <text x="360" y="312" font-family="Bebas Neue, sans-serif" font-size="18" fill="#e8ff47" text-anchor="middle" letter-spacing="2">LEARNING</text>
+      <text x="360" y="332" font-family="Bebas Neue, sans-serif" font-size="18" fill="#e8ff47" text-anchor="middle" letter-spacing="2">LOOP</text>
+
+      <!-- Curved arrows between steps -->
+      <path d="M 455 175 A 165 165 0 0 1 530 370" fill="none" stroke="#ff9f43" stroke-width="2" stroke-opacity="0.5" marker-end="url(#arr1)" stroke-dasharray="6,4"/>
+      <path d="M 510 440 A 165 165 0 0 1 330 470" fill="none" stroke="#ff6b35" stroke-width="2" stroke-opacity="0.5" marker-end="url(#arr2)" stroke-dasharray="6,4"/>
+      <path d="M 240 450 A 165 165 0 0 1 175 260" fill="none" stroke="#48dbfb" stroke-width="2" stroke-opacity="0.5" marker-end="url(#arr3)" stroke-dasharray="6,4"/>
+      <path d="M 205 195 A 165 165 0 0 1 390 140" fill="none" stroke="#7b68ee" stroke-width="2" stroke-opacity="0.5" marker-end="url(#arr4)" stroke-dasharray="6,4"/>
+
+      <!-- STEP 1 - TOP - CONSUME -->
+      <circle cx="360" cy="130" r="90" fill="url(#rg1)"/>
+      <circle cx="360" cy="130" r="88" fill="none" stroke="#ff9f43" stroke-width="2" filter="url(#g1)"/>
+      <circle cx="360" cy="130" r="88" fill="none" stroke="#ff9f43" stroke-width="1.5"/>
+      <text x="360" y="108" font-family="DM Mono, monospace" font-size="11" fill="#ff9f43" text-anchor="middle" letter-spacing="3" opacity="0.8">STEP 01</text>
+      <text x="360" y="132" font-family="Bebas Neue, sans-serif" font-size="30" fill="#ff9f43" text-anchor="middle" letter-spacing="2">CONSUME</text>
+      <text x="360" y="152" font-family="DM Sans, sans-serif" font-size="12" fill="#ccc" text-anchor="middle" font-weight="300">Hunt, don't browse</text>
+
+      <!-- STEP 2 - RIGHT - COMPRESS -->
+      <circle cx="570" cy="310" r="90" fill="url(#rg2)"/>
+      <circle cx="570" cy="310" r="88" fill="none" stroke="#ff6b35" stroke-width="2" filter="url(#g2)"/>
+      <circle cx="570" cy="310" r="88" fill="none" stroke="#ff6b35" stroke-width="1.5"/>
+      <text x="570" y="288" font-family="DM Mono, monospace" font-size="11" fill="#ff6b35" text-anchor="middle" letter-spacing="3" opacity="0.8">STEP 02</text>
+      <text x="570" y="312" font-family="Bebas Neue, sans-serif" font-size="30" fill="#ff6b35" text-anchor="middle" letter-spacing="2">COMPRESS</text>
+      <text x="570" y="332" font-family="DM Sans, sans-serif" font-size="12" fill="#ccc" text-anchor="middle" font-weight="300">Make it yours</text>
+
+      <!-- STEP 3 - BOTTOM - CREATE -->
+      <circle cx="360" cy="478" r="90" fill="url(#rg3)"/>
+      <circle cx="360" cy="478" r="88" fill="none" stroke="#48dbfb" stroke-width="2" filter="url(#g3)"/>
+      <circle cx="360" cy="478" r="88" fill="none" stroke="#48dbfb" stroke-width="1.5"/>
+      <text x="360" y="456" font-family="DM Mono, monospace" font-size="11" fill="#48dbfb" text-anchor="middle" letter-spacing="3" opacity="0.8">STEP 03</text>
+      <text x="360" y="480" font-family="Bebas Neue, sans-serif" font-size="30" fill="#48dbfb" text-anchor="middle" letter-spacing="2">CREATE</text>
+      <text x="360" y="500" font-family="DM Sans, sans-serif" font-size="12" fill="#ccc" text-anchor="middle" font-weight="300">Build something real</text>
+
+      <!-- STEP 4 - LEFT - CALIBRATE -->
+      <circle cx="150" cy="310" r="90" fill="url(#rg4)"/>
+      <circle cx="150" cy="310" r="88" fill="none" stroke="#7b68ee" stroke-width="2" filter="url(#g4)"/>
+      <circle cx="150" cy="310" r="88" fill="none" stroke="#7b68ee" stroke-width="1.5"/>
+      <text x="150" y="288" font-family="DM Mono, monospace" font-size="11" fill="#7b68ee" text-anchor="middle" letter-spacing="3" opacity="0.8">STEP 04</text>
+      <text x="150" y="312" font-family="Bebas Neue, sans-serif" font-size="28" fill="#7b68ee" text-anchor="middle" letter-spacing="2">CALIBRATE</text>
+      <text x="150" y="332" font-family="DM Sans, sans-serif" font-size="12" fill="#ccc" text-anchor="middle" font-weight="300">Close the gap</text>
+
+      <!-- Step descriptors -->
+      <text x="480" y="108" font-family="DM Sans, sans-serif" font-size="11" fill="#666" text-anchor="middle">20% rule ·</text>
+      <text x="480" y="121" font-family="DM Sans, sans-serif" font-size="11" fill="#666" text-anchor="middle">intentional input</text>
+      <text x="640" y="200" font-family="DM Sans, sans-serif" font-size="11" fill="#666" text-anchor="middle">Feynman method ·</text>
+      <text x="640" y="213" font-family="DM Sans, sans-serif" font-size="11" fill="#666" text-anchor="middle">one-page summary</text>
+      <text x="480" y="570" font-family="DM Sans, sans-serif" font-size="11" fill="#666" text-anchor="middle">1hr consume =</text>
+      <text x="480" y="583" font-family="DM Sans, sans-serif" font-size="11" fill="#666" text-anchor="middle">1hr create minimum</text>
+      <text x="80" y="200" font-family="DM Sans, sans-serif" font-size="11" fill="#666" text-anchor="middle">feedback loops ·</text>
+      <text x="80" y="213" font-family="DM Sans, sans-serif" font-size="11" fill="#666" text-anchor="middle">metrics · peers</text>
+    </svg>
+  </div>
+</div>
+<script id="cursor-global-js">
+(function(){
+  var dot=document.getElementById("gCursorDot"),ring=document.getElementById("gCursorRing");
+  if(!dot||!ring)return;
+  var mx=0,my=0,rx=0,ry=0;
+  document.addEventListener("mousemove",function(e){mx=e.clientX;my=e.clientY;dot.style.left=mx+"px";dot.style.top=my+"px";});
+  (function ani(){rx+=(mx-rx)*.13;ry+=(my-ry)*.13;ring.style.left=rx+"px";ring.style.top=ry+"px";requestAnimationFrame(ani);})();
+  document.querySelectorAll("a,button,[onclick]").forEach(function(el){
+    el.addEventListener("mouseenter",function(){document.body.classList.add("g-cursor-hover");});
+    el.addEventListener("mouseleave",function(){document.body.classList.remove("g-cursor-hover");});
+  });
+  document.body.style.cursor="none";
+})();
+</script>
+</body>
+</html>

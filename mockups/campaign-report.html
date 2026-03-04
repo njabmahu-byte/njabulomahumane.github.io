@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Campaign Performance Report Q1 2026 — Njabulo Mahumane</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+<style>
+:root{
+  --bg:#09080a;--surface:#111013;--card:#181620;
+  --border:#2c2838;--border2:#221f2d;
+  --warm:#e8a020;--warm-sub:rgba(232,160,32,.07);
+  --cold:#5b9dff;--cold-sub:rgba(91,157,255,.07);
+  --terra:#c45c3a;--terra-sub:rgba(196,92,58,.07);
+  --sage:#6aad7a;--sage-sub:rgba(106,173,122,.07);
+  --violet:#9b7fe8;--violet-sub:rgba(155,127,232,.07);
+  --text:#eae5f0;--text-dim:#b0a8c0;--muted:#6a6278;--muted2:#9088a0;
+  --fd:'Syne',sans-serif;--fb:'DM Sans',sans-serif;--fm:'DM Mono',monospace;
+  --nav-h:58px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:15px;line-height:1.7;overflow-x:hidden;}
+a{color:var(--warm);text-decoration:none;}
+strong{color:var(--text);font-weight:500;}
+
+#prog{position:fixed;top:0;left:0;height:2px;width:0%;z-index:1000;background:linear-gradient(90deg,var(--violet),var(--warm),var(--cold));}
+
+.nav{position:sticky;top:0;z-index:100;height:var(--nav-h);background:rgba(9,8,10,.94);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 28px;}
+.nav-l{display:flex;align-items:center;gap:12px;}
+.nav-brand{font-family:var(--fm);font-size:11px;letter-spacing:3px;color:var(--warm);text-transform:uppercase;}
+.nav-pipe{width:1px;height:16px;background:var(--border);}
+.nav-doc{font-family:var(--fm);font-size:9.5px;letter-spacing:1.5px;color:var(--muted2);text-transform:uppercase;display:none;}
+@media(min-width:620px){.nav-doc{display:block;}}
+.nav-r{display:flex;align-items:center;gap:10px;}
+.nav-email{font-family:var(--fm);font-size:10px;color:var(--muted);display:none;}
+@media(min-width:860px){.nav-email{display:block;}}
+.toc-btn{background:none;border:1px solid var(--border);border-radius:4px;color:var(--muted2);font-family:var(--fm);font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;padding:5px 11px;cursor:pointer;transition:all .2s;}
+.toc-btn:hover{border-color:var(--warm);color:var(--warm);}
+
+.wrap{max-width:1180px;margin:0 auto;}
+.layout{display:grid;grid-template-columns:220px 1fr;align-items:start;}
+
+.sb{position:sticky;top:var(--nav-h);height:calc(100vh - var(--nav-h));overflow-y:auto;border-right:1px solid var(--border);padding:22px 0;scrollbar-width:none;}
+.sb::-webkit-scrollbar{display:none;}
+.sb-head{font-family:var(--fm);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);padding:0 18px 10px;border-bottom:1px solid var(--border);margin-bottom:6px;}
+.sb-list{list-style:none;}
+.sb-list li a{display:block;font-family:var(--fm);font-size:10px;color:var(--muted);padding:5px 18px;border-left:2px solid transparent;transition:all .18s;line-height:1.4;}
+.sb-list li a:hover,.sb-list li a.active{color:var(--warm);border-color:var(--warm);}
+.sb-list li a.sub{padding-left:28px;font-size:9.5px;}
+.sb-card{margin:18px 12px 0;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:13px;position:relative;overflow:hidden;}
+.sb-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--violet),var(--warm));}
+.sb-name{font-family:var(--fd);font-size:12px;font-weight:700;color:var(--text);}
+.sb-role{font-family:var(--fm);font-size:9px;letter-spacing:1.5px;color:var(--violet);text-transform:uppercase;margin:3px 0 5px;}
+.sb-email{font-size:11px;color:var(--warm);}
+@media(max-width:940px){
+  .layout{grid-template-columns:1fr;}
+  .sb{position:fixed;left:-240px;top:var(--nav-h);width:240px;height:calc(100vh - var(--nav-h));background:#0c0b0e;z-index:90;border-right:1px solid var(--border);transition:left .3s cubic-bezier(.22,1,.36,1);}
+  .sb.open{left:0;}
+}
+
+.main{padding:0 40px 100px;min-width:0;}
+@media(max-width:660px){.main{padding:0 16px 80px;}.nav{padding:0 16px;}}
+
+.sec{padding-top:64px;scroll-margin-top:calc(var(--nav-h) + 12px);}
+.sec-lbl{font-family:var(--fm);font-size:9.5px;letter-spacing:4px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;display:flex;align-items:center;gap:10px;}
+.sec-lbl::before{content:'';width:20px;height:1px;background:var(--muted);}
+.sec-title{font-family:var(--fd);font-size:clamp(22px,3vw,34px);font-weight:800;line-height:1.1;letter-spacing:-.3px;margin-bottom:18px;}
+.body-p{font-size:15px;color:var(--text-dim);font-weight:300;line-height:1.82;margin-bottom:18px;max-width:640px;}
+hr.rule{border:none;border-top:1px solid var(--border);margin:56px 0;}
+.sub-h{font-family:var(--fd);font-size:17px;font-weight:800;color:var(--text);margin:30px 0 13px;}
+
+/* HERO */
+.hero{padding:70px 40px 0;border-bottom:1px solid var(--border);position:relative;overflow:hidden;background:radial-gradient(ellipse 60% 50% at 80% 20%,rgba(155,127,232,.06),transparent 60%),radial-gradient(ellipse 40% 40% at 10% 80%,rgba(232,160,32,.05),transparent 60%);}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--fm);font-size:9.5px;letter-spacing:3px;text-transform:uppercase;color:var(--violet);margin-bottom:16px;padding:5px 12px;background:var(--violet-sub);border:1px solid rgba(155,127,232,.22);border-radius:4px;}
+.hero-eyebrow{font-family:var(--fm);font-size:9.5px;letter-spacing:4px;color:var(--warm);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--warm);}
+.hero-title{font-family:var(--fd);font-size:clamp(34px,5.5vw,66px);font-weight:800;line-height:1.0;letter-spacing:-1px;margin-bottom:14px;}
+.hero-sub{font-size:16px;color:var(--muted2);font-weight:300;margin-bottom:32px;line-height:1.65;max-width:560px;opacity:0;}
+.hero-meta{display:flex;flex-wrap:wrap;gap:26px;padding:20px 0;border-top:1px solid var(--border);}
+.hm-lbl{font-family:var(--fm);font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:3px;}
+.hm-val{font-size:13px;color:var(--text-dim);}
+.hm-val.warm{color:var(--warm);font-weight:500;}
+@media(max-width:660px){.hero{padding:44px 16px 0;}}
+
+/* BADGES */
+.badge{display:inline-block;font-family:var(--fm);font-size:8.5px;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:3px;}
+.badge.ex{background:var(--sage-sub);color:var(--sage);border:1px solid rgba(106,173,122,.25);}
+.badge.pr{background:var(--warm-sub);color:var(--warm);border:1px solid rgba(232,160,32,.2);}
+.badge.nm{background:var(--terra-sub);color:var(--terra);border:1px solid rgba(196,92,58,.2);}
+
+/* CALLOUT */
+.callout{margin:22px 0;padding:15px 20px;border-radius:8px;display:flex;gap:10px;align-items:flex-start;}
+.callout.cold{background:var(--cold-sub);border:1px solid rgba(91,157,255,.18);}
+.callout.warm{background:var(--warm-sub);border:1px solid rgba(232,160,32,.2);}
+.callout.terra{background:var(--terra-sub);border:1px solid rgba(196,92,58,.2);}
+.callout.sage{background:var(--sage-sub);border:1px solid rgba(106,173,122,.2);}
+.callout.violet{background:var(--violet-sub);border:1px solid rgba(155,127,232,.2);}
+.co-ico{font-size:15px;flex-shrink:0;margin-top:1px;}
+.callout p{font-size:13px;color:var(--text-dim);line-height:1.65;margin:0;}
+
+/* INSIGHT BANNER */
+.insight-banner{margin:28px 0;padding:24px 28px;background:rgba(155,127,232,.07);border:1px solid rgba(155,127,232,.25);border-left:4px solid var(--violet);border-radius:0 10px 10px 0;position:relative;overflow:hidden;}
+.insight-banner::before{content:'"';font-family:var(--fd);font-size:100px;font-weight:800;color:var(--violet);opacity:.06;position:absolute;top:-14px;left:12px;line-height:1;}
+.ib-lbl{font-family:var(--fm);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--violet);margin-bottom:8px;}
+.ib-text{font-size:clamp(13px,1.7vw,16px);color:var(--text);line-height:1.6;font-style:italic;position:relative;z-index:1;}
+
+/* KPI CARDS */
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:28px 0;}
+.kc{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px 16px;position:relative;overflow:hidden;cursor:default;opacity:0;transform:translateY(40px);}
+.kc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
+.kc.ex::before{background:var(--sage);}
+.kc.pr::before{background:var(--warm);}
+.kc.nm::before{background:var(--terra);}
+.kc-lbl{font-family:var(--fm);font-size:8.5px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+.kc.ex .kc-lbl{color:var(--sage);}
+.kc.pr .kc-lbl{color:var(--warm);}
+.kc.nm .kc-lbl{color:var(--terra);}
+.kc-val{font-family:var(--fd);font-size:28px;font-weight:800;line-height:1;margin-bottom:4px;}
+.kc.ex .kc-val{color:var(--sage);}
+.kc.pr .kc-val{color:var(--warm);}
+.kc.nm .kc-val{color:var(--terra);}
+.kc-target{font-family:var(--fm);font-size:9.5px;color:var(--muted);margin-bottom:6px;}
+.kc-desc{font-size:11px;color:var(--muted2);font-weight:300;line-height:1.5;}
+
+/* DATA TABLES */
+.tbl-wrap{margin:18px 0;border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.tbl{min-width:460px;width:100%;border-collapse:collapse;}
+.tbl th{background:var(--surface);font-family:var(--fm);font-size:8.5px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);padding:10px 13px;border-bottom:1px solid var(--border);text-align:left;white-space:nowrap;}
+.tbl td{padding:10px 13px;font-size:12.5px;color:var(--text-dim);font-weight:300;border-bottom:1px solid var(--border2);vertical-align:top;line-height:1.5;}
+.tbl tr:last-child td{border-bottom:none;}
+.tbl tbody tr:hover{background:rgba(24,22,32,.5);}
+.tbl td.pos{font-family:var(--fm);font-size:11px;color:var(--sage);}
+.tbl td.neg{font-family:var(--fm);font-size:11px;color:var(--terra);}
+.tbl td.num{font-family:var(--fm);font-size:11px;color:var(--muted2);}
+.tbl td.tot{font-weight:600;color:var(--warm);font-family:var(--fm);font-size:12px;}
+.tbl td.strong{font-weight:500;color:var(--text);}
+
+/* PLATFORM CARDS */
+.plat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:20px 0;}
+.plat-card{background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:transform .25s;}
+.plat-card:hover{transform:translateY(-3px);}
+.plat-head{padding:13px 15px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:9px;}
+.plat-ico{font-size:17px;}
+.plat-name{font-family:var(--fd);font-size:13px;font-weight:800;color:var(--text);}
+.plat-role{font-family:var(--fm);font-size:8.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);}
+.plat-body{padding:12px 15px;}
+.plat-row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid var(--border2);}
+.plat-row:last-child{border-bottom:none;}
+.plat-lbl{font-size:11.5px;color:var(--muted2);font-weight:300;}
+.plat-v{font-family:var(--fm);font-size:10.5px;}
+.plat-v.up{color:var(--sage);}
+.plat-v.hi{color:var(--warm);}
+
+/* PILLAR BARS */
+.pillar-item{margin:9px 0;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:13px 15px;}
+.pi-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;flex-wrap:wrap;gap:6px;}
+.pi-name{font-family:var(--fd);font-size:13px;font-weight:700;color:var(--text);}
+.pi-mets{display:flex;gap:12px;align-items:center;}
+.pi-er{font-family:var(--fm);font-size:10.5px;color:var(--warm);}
+.eff-badge{font-family:var(--fm);font-size:8.5px;letter-spacing:1px;text-transform:uppercase;padding:2px 7px;border-radius:3px;}
+.eff-h{background:var(--sage-sub);color:var(--sage);border:1px solid rgba(106,173,122,.25);}
+.eff-m{background:var(--warm-sub);color:var(--warm);border:1px solid rgba(232,160,32,.2);}
+.eff-l{background:var(--terra-sub);color:var(--terra);border:1px solid rgba(196,92,58,.2);}
+.pi-track{height:5px;background:var(--border);border-radius:3px;overflow:hidden;}
+.pi-fill{height:100%;border-radius:3px;width:0;}
+
+/* PROGRESS BARS */
+.prog-item{margin:12px 0;}
+.prog-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;flex-wrap:wrap;gap:4px;}
+.prog-name{font-size:13px;color:var(--text-dim);font-weight:300;}
+.prog-vals{display:flex;gap:10px;}
+.pvc{font-family:var(--fm);font-size:10.5px;color:var(--muted2);}
+.pvt{font-family:var(--fm);font-size:10.5px;color:var(--warm);}
+.prog-track{height:6px;background:var(--border);border-radius:3px;overflow:hidden;position:relative;}
+.prog-fill{height:100%;border-radius:3px;width:0;}
+.prog-mark{position:absolute;top:0;bottom:0;width:2px;background:rgba(232,160,32,.35);}
+
+/* CIRCULAR PROGRESS */
+.circles-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:14px;margin:24px 0;}
+.circ-wrap{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px 12px;text-align:center;}
+.circ-svg{position:relative;width:80px;height:80px;margin:0 auto 10px;}
+.circ-svg svg{transform:rotate(-90deg);}
+.circ-bg{fill:none;stroke:var(--border2);stroke-width:7;}
+.circ-ring{fill:none;stroke-width:7;stroke-linecap:round;stroke-dasharray:201;stroke-dashoffset:201;}
+.circ-inner{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:15px;font-weight:800;}
+.circ-lbl{font-family:var(--fm);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:3px;}
+.circ-sub{font-size:11px;color:var(--muted2);font-weight:300;line-height:1.4;}
+
+/* WINS/MISS GRID */
+.wm-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin:22px 0;}
+.wm-card{background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.wm-head{padding:12px 17px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:9px;}
+.wm-ico{font-size:15px;}
+.wm-title{font-family:var(--fd);font-size:13px;font-weight:800;}
+.wm-card.win .wm-head{background:rgba(106,173,122,.05);}
+.wm-card.win .wm-title{color:var(--sage);}
+.wm-card.lrn .wm-head{background:rgba(196,92,58,.05);}
+.wm-card.lrn .wm-title{color:var(--terra);}
+.wm-body{padding:12px 17px;}
+.wm-item{display:flex;gap:9px;padding:7px 0;border-bottom:1px solid var(--border2);font-size:12.5px;color:var(--text-dim);font-weight:300;line-height:1.55;}
+.wm-item:last-child{border-bottom:none;}
+.wm-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:7px;}
+.wm-card.win .wm-dot{background:var(--sage);}
+.wm-card.lrn .wm-dot{background:var(--terra);}
+@media(max-width:560px){.wm-grid{grid-template-columns:1fr;}}
+
+/* STORY CARD */
+.story{margin:26px 0;padding:26px 30px;background:linear-gradient(135deg,rgba(155,127,232,.07),rgba(91,157,255,.05) 100%);border:1px solid rgba(155,127,232,.22);border-radius:12px;position:relative;overflow:hidden;}
+.story::before{content:'✦';font-size:56px;color:var(--violet);opacity:.06;position:absolute;top:-8px;right:18px;line-height:1;}
+.story-lbl{font-family:var(--fm);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--violet);margin-bottom:8px;}
+.story-title{font-family:var(--fd);font-size:17px;font-weight:800;color:var(--text);margin-bottom:10px;}
+.story-text{font-size:14px;color:var(--text-dim);font-weight:300;line-height:1.75;max-width:600px;}
+
+/* ROI PANEL */
+.roi-box{margin:22px 0;background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+.roi-top{padding:22px 26px;border-bottom:1px solid var(--border);display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:18px;}
+.roi-m-lbl{font-family:var(--fm);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+.roi-m-val{font-family:var(--fd);font-size:clamp(14px,1.8vw,22px);font-weight:800;line-height:1.2;word-break:break-word;white-space:nowrap;}
+.roi-m-desc{font-size:11px;color:var(--muted2);margin-top:3px;}
+.roi-bottom{padding:14px 26px;background:var(--surface);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.roi-note{font-size:13px;color:var(--muted2);font-weight:300;}
+
+/* DEMOGRAPHIC */
+.demo-wrap{margin:18px 0;border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.demo-row{display:grid;grid-template-columns:64px 1fr 60px 64px;align-items:center;padding:8px 15px;border-bottom:1px solid var(--border2);transition:background .15s;}
+.demo-row:last-child{border-bottom:none;}
+.demo-row:hover{background:rgba(24,22,32,.5);}
+.demo-row.hdr{background:var(--surface);border-bottom:1px solid var(--border);}
+.demo-cell{font-size:12px;color:var(--text-dim);font-weight:300;}
+.demo-cell.hdr{font-family:var(--fm);font-size:8.5px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);}
+.demo-cell.dn{font-weight:500;color:var(--text);}
+.demo-bar-cell{padding-right:6px;}
+.demo-track{height:5px;background:var(--border);border-radius:3px;overflow:hidden;}
+.demo-fill{height:100%;border-radius:3px;}
+.dchg.pos{font-family:var(--fm);font-size:10.5px;color:var(--sage);}
+.dchg.neg{font-family:var(--fm);font-size:10.5px;color:var(--terra);}
+@media(max-width:480px){.demo-row{grid-template-columns:56px 1fr 50px;}.demo-cell:nth-child(3){display:none;}}
+
+/* Q2 CARDS */
+.q2-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:22px 0;}
+.q2c{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:17px;position:relative;overflow:hidden;}
+.q2c::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
+.q2c:nth-child(1)::before{background:var(--warm);}
+.q2c:nth-child(2)::before{background:var(--sage);}
+.q2c:nth-child(3)::before{background:var(--cold);}
+.q2c:nth-child(4)::before{background:var(--violet);}
+.q2c:nth-child(5)::before{background:var(--terra);}
+.q2c-n{font-family:var(--fd);font-size:32px;font-weight:800;opacity:.12;line-height:1;margin-bottom:2px;color:var(--text);}
+.q2c-title{font-family:var(--fd);font-size:12.5px;font-weight:700;color:var(--text);margin-bottom:5px;line-height:1.3;}
+.q2c-impact{font-size:11.5px;color:var(--muted2);font-weight:300;line-height:1.5;}
+
+/* TIMELINE */
+.timeline{position:relative;margin:28px 0;padding-left:24px;}
+.timeline::before{content:'';position:absolute;left:4px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,var(--violet),transparent);}
+.tl-item{position:relative;padding:0 0 22px 20px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-20px;top:5px;width:9px;height:9px;border-radius:50%;background:var(--violet);border:2px solid var(--bg);cursor:pointer;transition:transform .3s;}
+.tl-month{font-family:var(--fm);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--violet);margin-bottom:3px;}
+.tl-event{font-size:13px;color:var(--text);font-weight:500;margin-bottom:2px;}
+.tl-detail{font-size:12px;color:var(--muted2);font-weight:300;line-height:1.5;}
+
+/* APPENDIX TABLE */
+.app-wrap{margin:18px 0;border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.app-row{display:grid;grid-template-columns:160px 1fr 1fr;border-bottom:1px solid var(--border2);transition:background .15s;}
+.app-row:last-child{border-bottom:none;}
+.app-row:hover{background:rgba(24,22,32,.5);}
+.app-row.hdr{background:var(--surface);border-bottom:1px solid var(--border);}
+.app-cell{padding:11px 15px;font-size:12.5px;color:var(--text-dim);font-weight:300;border-right:1px solid var(--border2);line-height:1.5;}
+.app-cell:last-child{border-right:none;}
+.app-cell.hdr{font-family:var(--fm);font-size:8.5px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);}
+.app-cell.strong{font-weight:500;color:var(--text);}
+@media(max-width:560px){.app-row{grid-template-columns:1fr;}.app-row.hdr{display:none;}}
+
+/* AUTHOR */
+.author{margin-top:50px;padding:26px 30px;background:var(--card);border:1px solid var(--border);border-radius:12px;display:grid;grid-template-columns:62px 1fr;gap:20px;align-items:center;position:relative;overflow:hidden;}
+.author::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--violet),var(--warm),var(--cold));}
+.av{width:62px;height:62px;border-radius:50%;background:var(--violet-sub);border:2px solid var(--violet);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:18px;font-weight:800;color:var(--violet);flex-shrink:0;}
+.a-name{font-family:var(--fd);font-size:18px;font-weight:800;margin-bottom:2px;}
+.a-role{font-family:var(--fm);font-size:9.5px;letter-spacing:2px;color:var(--violet);text-transform:uppercase;margin-bottom:7px;}
+.a-bio{font-size:13px;color:var(--muted2);font-weight:300;line-height:1.6;}
+.a-email{margin-top:6px;font-size:13px;color:var(--warm);}
+@media(max-width:460px){.author{grid-template-columns:1fr;}.av{display:none;}}
+
+/* PARTICLES */
+.ptcl{position:fixed;border-radius:50%;pointer-events:none;z-index:1;opacity:.35;}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(18px);}
+
+footer{background:var(--surface);border-top:1px solid var(--border);padding:22px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.ft-brand{font-family:var(--fd);font-size:12px;font-weight:800;}
+.ft-brand span{color:var(--warm);}
+.ft-note{font-family:var(--fm);font-size:9.5px;letter-spacing:1px;color:var(--muted);}
+.ft-email{font-size:12.5px;color:var(--warm);}
+@media(max-width:660px){footer{padding:18px 16px;flex-direction:column;}}
+</style>
+</head>
+<body>
+
+<div class="ptcl" style="width:3px;height:3px;background:var(--warm);top:25%;left:8%;"></div>
+<div class="ptcl" style="width:2px;height:2px;background:var(--cold);top:55%;left:88%;"></div>
+<div class="ptcl" style="width:4px;height:4px;background:var(--violet);top:75%;left:6%;"></div>
+<div class="ptcl" style="width:2px;height:2px;background:var(--sage);top:15%;left:72%;"></div>
+<div class="ptcl" style="width:3px;height:3px;background:var(--warm);top:88%;left:42%;"></div>
+
+<div id="prog"></div>
+
+<header class="nav">
+  <div class="nav-l">
+    <div class="nav-brand">MBN.</div>
+    <div class="nav-pipe"></div>
+    <div class="nav-doc">CPR · Q1 2026 · Booking.com</div>
+  </div>
+  <div class="nav-r">
+    <span class="nav-email">njabmahu@gmail.com</span>
+    <button class="toc-btn" id="tocBtn">Contents</button>
+  </div>
+</header>
+
+<div class="wrap">
+<div class="layout">
+
+  <aside class="sb" id="sidebar">
+    <div class="sb-head">Contents</div>
+    <ul class="sb-list" id="sbList">
+      <li><a href="#hero" class="sbl">Overview</a></li>
+      <li><a href="#exec" class="sbl">Executive Summary</a></li>
+      <li><a href="#kpis" class="sbl">KPI Dashboard</a></li>
+      <li><a href="#platforms" class="sbl">Platform Analysis</a></li>
+      <li><a href="#instagram" class="sbl sub">Instagram</a></li>
+      <li><a href="#tiktok" class="sbl sub">TikTok</a></li>
+      <li><a href="#facebook" class="sbl sub">Facebook</a></li>
+      <li><a href="#twitter" class="sbl sub">X (Twitter)</a></li>
+      <li><a href="#youtube" class="sbl sub">YouTube</a></li>
+      <li><a href="#content" class="sbl">Content Performance</a></li>
+      <li><a href="#trust" class="sbl">Trust Metrics</a></li>
+      <li><a href="#audience" class="sbl">Audience Insights</a></li>
+      <li><a href="#roi" class="sbl">ROI & Business Impact</a></li>
+      <li><a href="#learnings" class="sbl">Learnings</a></li>
+      <li><a href="#q2" class="sbl">Q2 Recommendations</a></li>
+      <li><a href="#appendix" class="sbl">Appendix</a></li>
+    </ul>
+    <div class="sb-card">
+      <div class="sb-name">Njabulo Mahumane</div>
+      <div class="sb-role">Digital Marketing Strategist</div>
+      <div class="sb-email">njabmahu@gmail.com</div>
+    </div>
+  </aside>
+
+  <main class="main">
+
+    <!-- HERO -->
+    <section id="hero" style="padding-top:68px;padding-bottom:0;border-bottom:1px solid var(--border);position:relative;overflow:hidden;background:radial-gradient(ellipse 60% 50% at 80% 20%,rgba(155,127,232,.06),transparent 60%),radial-gradient(ellipse 40% 40% at 10% 80%,rgba(232,160,32,.05),transparent 60%);">
+      <div style="position:relative;z-index:1;">
+        <div class="hero-badge">Campaign Performance Report · Portfolio Document</div>
+        <div class="hero-eyebrow">Q1 2026 · January – March · Njabulo Mahumane</div>
+        <h1 class="hero-title" id="heroTitle" style="opacity:0;transform:translateY(30px);">Booking.com<br><span style="color:var(--warm);">Campaign</span><br><span style="color:var(--violet);">Performance Report</span></h1>
+        <p class="hero-sub" id="heroSub">"Book Whoever You Want to Be" launch phase — Q1 2026. Engagement targets exceeded by 18%. First measurable trust improvement in 18 months. 105.8x ROAS on $180K spend.</p>
+        <div class="hero-meta">
+          <div><div class="hm-lbl">Analyst</div><div class="hm-val">Njabulo Mahumane</div></div>
+          <div><div class="hm-lbl">Contact</div><div class="hm-val warm">njabmahu@gmail.com</div></div>
+          <div><div class="hm-lbl">Campaign</div><div class="hm-val">"Book Whoever You Want to Be"</div></div>
+          <div><div class="hm-lbl">Period</div><div class="hm-val">Jan 1 – Mar 31, 2026</div></div>
+          <div><div class="hm-lbl">Budget</div><div class="hm-val">$180,000</div></div>
+          <div><div class="hm-lbl">Platforms</div><div class="hm-val">IG · TikTok · FB · YT · X</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXEC SUMMARY -->
+    <section class="sec reveal" id="exec">
+      <div class="sec-lbl">01 — Executive Summary</div>
+      <h2 class="sec-title">A Quarter That <span style="color:var(--warm);">Moved the Needle</span></h2>
+      <p class="body-p">Q1 2026 exceeded engagement targets by 18% and drove the first measurable improvement in trust metrics after 12 months of decline. Trustpilot moved from 2.1 to 2.3 — the first upward movement in 18 months. Average response time improved 51%, dropping from 45 minutes to 22.</p>
+
+      <div class="insight-banner reveal">
+        <div class="ib-lbl">Quarter Headline Finding</div>
+        <p class="ib-text">"Behind-the-Scenes content generated +34% higher positive sentiment than any other pillar and directly correlated with the first Trustpilot improvement in 18 months. Transparency is not a soft brand value — it is a measurable trust lever with quantifiable commercial impact."</p>
+      </div>
+
+      <div class="wm-grid reveal">
+        <div class="wm-card win">
+          <div class="wm-head"><div class="wm-ico">🏆</div><div class="wm-title">Top 3 Wins</div></div>
+          <div class="wm-body">
+            <div class="wm-item"><div class="wm-dot"></div><div>Reels drove <strong>73% of total Instagram engagement</strong> at only 40% of posting volume — 2.3x outperformance versus all other formats</div></div>
+            <div class="wm-item"><div class="wm-dot"></div><div>Behind-the-Scenes pillar generated <strong>+34% positive sentiment</strong> above average and directly correlated with Trustpilot improvement</div></div>
+            <div class="wm-item"><div class="wm-dot"></div><div>#MyTravelAlterEgo UGC reached <strong>8,200 posts</strong> — 64% above the 5,000 target</div></div>
+          </div>
+        </div>
+        <div class="wm-card lrn">
+          <div class="wm-head"><div class="wm-ico">📋</div><div class="wm-title">Critical Learnings</div></div>
+          <div class="wm-body">
+            <div class="wm-item"><div class="wm-dot"></div><div>AI Trip Planner demos underperformed at <strong>0.9% engagement</strong> vs 2.4% average — requires tutorial-first pivot in Q2</div></div>
+            <div class="wm-item"><div class="wm-dot"></div><div>TikTok room tour format exceeded expectations at <strong>5.3% engagement</strong>, validating discovery platform role</div></div>
+            <div class="wm-item"><div class="wm-dot"></div><div>Response time improvement generated <strong>+28% positive sentiment</strong> on X support interactions</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="rule">
+
+    <!-- KPI DASHBOARD -->
+    <section class="sec" id="kpis">
+      <div class="sec-lbl reveal">02 — KPI Performance Dashboard</div>
+      <h2 class="sec-title reveal">Results <span style="color:var(--cold);">by the Numbers</span></h2>
+      <p class="body-p reveal">Seven primary KPIs tracked across the quarter. Four exceeded targets. Two are in progress on trajectory. One near-miss requires Q2 iteration.</p>
+
+      <div class="kpi-grid" id="kpiGrid">
+        <div class="kc ex">
+          <div class="kc-lbl">Engagement Rate</div>
+          <div class="kc-val"><span class="ctr" data-v="29.5" data-s="%" data-f="true">0%</span></div>
+          <div class="kc-target">Target +25% · Actual +29.5%</div>
+          <div class="kc-desc">+4.5% above target. Reels format drove majority of gains.</div>
+          <span class="badge ex" style="margin-top:8px;">Exceeded +4.5%</span>
+        </div>
+        <div class="kc nm">
+          <div class="kc-lbl">Neg. Sentiment</div>
+          <div class="kc-val"><span class="ctr" data-v="32" data-p="-" data-s="%">0%</span></div>
+          <div class="kc-target">Target -40% · Actual -32%</div>
+          <div class="kc-desc">8% short of target. Trust recovery underway but below pace.</div>
+          <span class="badge nm" style="margin-top:8px;">Near Miss −8%</span>
+        </div>
+        <div class="kc ex">
+          <div class="kc-lbl">CTR to Bookings</div>
+          <div class="kc-val"><span class="ctr" data-v="18.2" data-p="+" data-s="%" data-f="true">0%</span></div>
+          <div class="kc-target">Target +15% · Actual +18.2%</div>
+          <div class="kc-desc">Destination guide videos drove highest link click-through.</div>
+          <span class="badge ex" style="margin-top:8px;">Exceeded +3.2%</span>
+        </div>
+        <div class="kc pr">
+          <div class="kc-lbl">Trustpilot Score</div>
+          <div class="kc-val"><span class="ctr" data-v="2.3" data-s="" data-f="true">0</span></div>
+          <div class="kc-target">Target 2.5 · Was 2.1 · Now 2.3</div>
+          <div class="kc-desc">First upward movement in 18 months. On trajectory.</div>
+          <span class="badge pr" style="margin-top:8px;">In Progress +0.2</span>
+        </div>
+        <div class="kc pr">
+          <div class="kc-lbl">Complaint Response</div>
+          <div class="kc-val"><span class="ctr" data-v="82" data-s="%">0%</span></div>
+          <div class="kc-target">Target 95% · Was 65% · Now 82%</div>
+          <div class="kc-desc">+17% improvement. Expanded hours needed to close the gap.</div>
+          <span class="badge pr" style="margin-top:8px;">In Progress +17%</span>
+        </div>
+        <div class="kc ex">
+          <div class="kc-lbl">Avg Response Time</div>
+          <div class="kc-val"><span class="ctr" data-v="22" data-s="min">0min</span></div>
+          <div class="kc-target">Target &lt;30min · Was 45min</div>
+          <div class="kc-desc">51% improvement. Protocol implemented Week 3 January.</div>
+          <span class="badge ex" style="margin-top:8px;">Exceeded 22 min</span>
+        </div>
+        <div class="kc ex">
+          <div class="kc-lbl">UGC Submissions</div>
+          <div class="kc-val"><span class="ctr" data-v="8200" data-s="" data-comma="true">0</span></div>
+          <div class="kc-target">Target 5,000 posts</div>
+          <div class="kc-desc">#MyTravelAlterEgo 64% above target. Campaign resonated.</div>
+          <span class="badge ex" style="margin-top:8px;">Exceeded +64%</span>
+        </div>
+      </div>
+    </section>
+
+    <hr class="rule">
+
+    <!-- PLATFORM OVERVIEW -->
+    <section class="sec reveal" id="platforms">
+      <div class="sec-lbl">03 — Platform-by-Platform Analysis</div>
+      <h2 class="sec-title">Where Growth <span style="color:var(--terra);">Came From</span></h2>
+      <p class="body-p">Every platform grew, but not equally. TikTok delivered a 400% follower growth rate improvement. Instagram drove the highest booking attribution. X showed the strongest correlation between response speed and trust sentiment.</p>
+      <div class="plat-grid reveal">
+        <div class="plat-card">
+          <div class="plat-head"><div class="plat-ico">📸</div><div><div class="plat-name">Instagram</div><div class="plat-role">Primary Conversion Engine</div></div></div>
+          <div class="plat-body">
+            <div class="plat-row"><div class="plat-lbl">Engagement Rate</div><div class="plat-v up">1.8% → 2.4% (+33%)</div></div>
+            <div class="plat-row"><div class="plat-lbl">Reels Views/Post</div><div class="plat-v up">85K → 210K (+147%)</div></div>
+            <div class="plat-row"><div class="plat-lbl">Followers</div><div class="plat-v up">6.4M → 6.9M</div></div>
+            <div class="plat-row"><div class="plat-lbl">Top Post ER</div><div class="plat-v hi">4.2% (employee spotlight)</div></div>
+          </div>
+        </div>
+        <div class="plat-card">
+          <div class="plat-head"><div class="plat-ico">🎵</div><div><div class="plat-name">TikTok</div><div class="plat-role">Discovery Engine</div></div></div>
+          <div class="plat-body">
+            <div class="plat-row"><div class="plat-lbl">Engagement Rate</div><div class="plat-v up">4.2% → 4.8% (+14%)</div></div>
+            <div class="plat-row"><div class="plat-lbl">Video Views/Post</div><div class="plat-v up">150K → 280K (+87%)</div></div>
+            <div class="plat-row"><div class="plat-lbl">Followers</div><div class="plat-v up">1.9M → 2.4M (+400%)</div></div>
+            <div class="plat-row"><div class="plat-lbl">Top Post ER</div><div class="plat-v hi">6.1% (Costa Rica reveal)</div></div>
+          </div>
+        </div>
+        <div class="plat-card">
+          <div class="plat-head"><div class="plat-ico">👥</div><div><div class="plat-name">Facebook</div><div class="plat-role">Loyalty & Community</div></div></div>
+          <div class="plat-body">
+            <div class="plat-row"><div class="plat-lbl">Engagement Rate</div><div class="plat-v up">0.6% → 0.7% (+17%)</div></div>
+            <div class="plat-row"><div class="plat-lbl">Video Views</div><div class="plat-v up">25K → 38K (+52%)</div></div>
+            <div class="plat-row"><div class="plat-lbl">Link CTR</div><div class="plat-v up">0.8% → 0.9% (+13%)</div></div>
+            <div class="plat-row"><div class="plat-lbl">Group ER (early)</div><div class="plat-v hi">18%</div></div>
+          </div>
+        </div>
+        <div class="plat-card">
+          <div class="plat-head"><div class="plat-ico">🐦</div><div><div class="plat-name">X (Twitter)</div><div class="plat-role">Trust Front Line</div></div></div>
+          <div class="plat-body">
+            <div class="plat-row"><div class="plat-lbl">Response Time</div><div class="plat-v up">45min → 22min (−51%)</div></div>
+            <div class="plat-row"><div class="plat-lbl">Response Rate</div><div class="plat-v up">65% → 82% (+17%)</div></div>
+            <div class="plat-row"><div class="plat-lbl">Support Sentiment</div><div class="plat-v up">58% → 74% (+28%)</div></div>
+            <div class="plat-row"><div class="plat-lbl">Follower gain (post-res)</div><div class="plat-v hi">22% of interactions</div></div>
+          </div>
+        </div>
+        <div class="plat-card">
+          <div class="plat-head"><div class="plat-ico">▶️</div><div><div class="plat-name">YouTube</div><div class="plat-role">Authority & Trust</div></div></div>
+          <div class="plat-body">
+            <div class="plat-row"><div class="plat-lbl">Avg Views/Video</div><div class="plat-v up">50K → 68K (+36%)</div></div>
+            <div class="plat-row"><div class="plat-lbl">Watch Time</div><div class="plat-v up">4:30 → 5:15 (+17%)</div></div>
+            <div class="plat-row"><div class="plat-lbl">Subscribers</div><div class="plat-v up">875K → 960K (+240%)</div></div>
+            <div class="plat-row"><div class="plat-lbl">End Screen CTR</div><div class="plat-v hi">1.2% → 2.1% (+75%)</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INSTAGRAM DEEP DIVE -->
+    <section class="sec reveal" id="instagram">
+      <div class="sec-lbl">03a — Instagram Deep Dive</div>
+      <h2 class="sec-title" style="font-size:clamp(18px,2.5vw,26px);">📸 Instagram — <span style="color:var(--warm);">Primary Conversion Engine</span></h2>
+      <div class="tbl-wrap"><div class="tbl-scroll"><table class="tbl">
+        <thead><tr><th>Metric</th><th>Pre-Campaign</th><th>Post-Campaign</th><th>Change</th></tr></thead>
+        <tbody>
+          <tr><td class="strong">Engagement Rate</td><td class="num">1.8%</td><td class="pos">2.4%</td><td class="pos">+33%</td></tr>
+          <tr><td class="strong">Follower Growth</td><td class="num">6.2M → 6.4M</td><td class="pos">6.4M → 6.9M</td><td class="pos">+210% growth rate</td></tr>
+          <tr><td class="strong">Reels Views/Post</td><td class="num">85K</td><td class="pos">210K</td><td class="pos">+147%</td></tr>
+          <tr><td class="strong">Link CTR</td><td class="num">1.2%</td><td class="pos">1.6%</td><td class="pos">+33%</td></tr>
+        </tbody>
+      </table></div></div>
+      <div class="story">
+        <div class="story-lbl">Top Performing Post — Instagram</div>
+        <div class="story-title">"Meet Thandi – She's one of 10,000+ real people ready to help, 24/7."</div>
+        <p class="story-text">Behind-the-Scenes employee spotlight. ER: <strong style="color:var(--warm);">4.2%</strong> · Saves: <strong style="color:var(--warm);">12,400</strong> · Comments: 340 (94% positive). This post became the clearest proof that Behind-the-Scenes content is the most efficient trust-building format in the entire content mix.</p>
+      </div>
+      <div class="callout warm">
+        <div class="co-ico">💡</div>
+        <p><strong>Key Insight:</strong> Reels accounted for 73% of total engagement at only 40% of posting volume — a 2.3x outperformance ratio. Carousel posts underperformed in February (0.9% ER) but recovered in March with "Meet the Mixes" (2.8% ER). Behind-the-Scenes content generated 34% higher positive sentiment than the platform average.</p>
+      </div>
+    </section>
+
+    <!-- TIKTOK DEEP DIVE -->
+    <section class="sec reveal" id="tiktok">
+      <div class="sec-lbl">03b — TikTok Deep Dive</div>
+      <h2 class="sec-title" style="font-size:clamp(18px,2.5vw,26px);">🎵 TikTok — <span style="color:var(--cold);">Discovery Engine</span></h2>
+      <div class="tbl-wrap"><div class="tbl-scroll"><table class="tbl">
+        <thead><tr><th>Metric</th><th>Pre-Campaign</th><th>Post-Campaign</th><th>Change</th></tr></thead>
+        <tbody>
+          <tr><td class="strong">Engagement Rate</td><td class="num">4.2%</td><td class="pos">4.8%</td><td class="pos">+14%</td></tr>
+          <tr><td class="strong">Video Views/Post</td><td class="num">150K</td><td class="pos">280K</td><td class="pos">+87%</td></tr>
+          <tr><td class="strong">Follower Growth</td><td class="num">1.8M → 1.9M</td><td class="pos">1.9M → 2.4M</td><td class="pos">+400% rate</td></tr>
+          <tr><td class="strong">Completion Rate (15s)</td><td class="num">58%</td><td class="pos">67%</td><td class="pos">+9%</td></tr>
+        </tbody>
+      </table></div></div>
+      <div class="story">
+        <div class="story-lbl">Top Performing Post — TikTok</div>
+        <div class="story-title">"Door open reveal: Treehouse in Costa Rica" — 15-second room tour</div>
+        <p class="story-text">Views: <strong style="color:var(--warm);">1.2M</strong> · ER: <strong style="color:var(--warm);">6.1%</strong> · Shares: <strong style="color:var(--warm);">48,000</strong>. This single post validates the weekly "Room Tour Tuesday" series for Q2. Room tour format delivered 5.3% engagement — highest of any content type on any platform in Q1.</p>
+      </div>
+      <div class="callout cold">
+        <div class="co-ico">⚠️</div>
+        <p><strong>Critical Learning:</strong> AI Trip Planner demos underperformed significantly at <strong>0.9% vs 4.8% platform average</strong>. Trend participation (duets with travel creators) drove 34% of new follower acquisition. Saturday/Sunday showed 2.1x higher engagement than weekdays — schedule accordingly in Q2.</p>
+      </div>
+    </section>
+
+    <!-- FACEBOOK -->
+    <section class="sec reveal" id="facebook">
+      <div class="sec-lbl">03c — Facebook Deep Dive</div>
+      <h2 class="sec-title" style="font-size:clamp(18px,2.5vw,26px);">👥 Facebook — <span style="color:var(--terra);">Loyalty & Community</span></h2>
+      <div class="tbl-wrap"><div class="tbl-scroll"><table class="tbl">
+        <thead><tr><th>Metric</th><th>Pre-Campaign</th><th>Post-Campaign</th><th>Change</th></tr></thead>
+        <tbody>
+          <tr><td class="strong">Engagement Rate</td><td class="num">0.6%</td><td class="pos">0.7%</td><td class="pos">+17%</td></tr>
+          <tr><td class="strong">Video Views/Post</td><td class="num">25K</td><td class="pos">38K</td><td class="pos">+52%</td></tr>
+          <tr><td class="strong">Link CTR</td><td class="num">0.8%</td><td class="pos">0.9%</td><td class="pos">+13%</td></tr>
+          <tr><td class="strong">Event Responses</td><td class="num">N/A</td><td class="pos">1,200</td><td class="pos">New</td></tr>
+        </tbody>
+      </table></div></div>
+      <div class="callout sage">
+        <div class="co-ico">💡</div>
+        <p><strong>Key Insights:</strong> Family-focused content outperformed other categories by 2.1x. Facebook Groups strategy launched mid-quarter; early 18% engagement rate within group. The 45–54 demographic responded strongly to "Free Cancellation Promise" content — this persona requires dedicated messaging in Q2.</p>
+      </div>
+    </section>
+
+    <!-- TWITTER -->
+    <section class="sec reveal" id="twitter">
+      <div class="sec-lbl">03d — X (Twitter) Deep Dive</div>
+      <h2 class="sec-title" style="font-size:clamp(18px,2.5vw,26px);">🐦 X (Twitter) — <span style="color:var(--sage);">Trust Front Line</span></h2>
+      <div class="tbl-wrap"><div class="tbl-scroll"><table class="tbl">
+        <thead><tr><th>Metric</th><th>Pre-Campaign</th><th>Post-Campaign</th><th>Change</th></tr></thead>
+        <tbody>
+          <tr><td class="strong">Avg Response Time</td><td class="neg">45 min</td><td class="pos">22 min</td><td class="pos">−51%</td></tr>
+          <tr><td class="strong">Response Rate</td><td class="num">65%</td><td class="pos">82%</td><td class="pos">+17%</td></tr>
+          <tr><td class="strong">Positive Sentiment (Support)</td><td class="num">58%</td><td class="pos">74%</td><td class="pos">+28%</td></tr>
+          <tr><td class="strong">Mentions Volume</td><td class="num">2,100/month</td><td class="pos">2,800/month</td><td class="pos">+33%</td></tr>
+        </tbody>
+      </table></div></div>
+      <div class="callout terra">
+        <div class="co-ico">🔑</div>
+        <p><strong>Platform-Changing Insight:</strong> Public complaint resolution threads — where the issue was resolved visibly in the thread instead of immediately moved to DM — generated <strong>4.2x higher positive sentiment</strong>. 22% of resolved interactions resulted in the user following the account post-resolution. Visibility of resolution matters as much as the resolution itself.</p>
+      </div>
+    </section>
+
+    <!-- YOUTUBE -->
+    <section class="sec reveal" id="youtube">
+      <div class="sec-lbl">03e — YouTube Deep Dive</div>
+      <h2 class="sec-title" style="font-size:clamp(18px,2.5vw,26px);">▶️ YouTube — <span style="color:var(--violet);">Authority & Trust</span></h2>
+      <div class="tbl-wrap"><div class="tbl-scroll"><table class="tbl">
+        <thead><tr><th>Metric</th><th>Pre-Campaign</th><th>Post-Campaign</th><th>Change</th></tr></thead>
+        <tbody>
+          <tr><td class="strong">Avg Views/Video</td><td class="num">50K</td><td class="pos">68K</td><td class="pos">+36%</td></tr>
+          <tr><td class="strong">Watch Time</td><td class="num">4:30</td><td class="pos">5:15</td><td class="pos">+17%</td></tr>
+          <tr><td class="strong">Subscriber Growth</td><td class="num">850K → 875K</td><td class="pos">875K → 960K</td><td class="pos">+240% rate</td></tr>
+          <tr><td class="strong">End Screen CTR</td><td class="num">1.2%</td><td class="pos">2.1%</td><td class="pos">+75%</td></tr>
+        </tbody>
+      </table></div></div>
+      <div class="callout violet">
+        <div class="co-ico">✨</div>
+        <p><strong>Late-Quarter Signal:</strong> "Master Perfumer" educational series launched late March shows 78% completion rate. Destination guide videos generated the highest click-through to booking pages. YouTube Shorts outperformed traditional landscape uploads for discovery — a format shift worth accelerating in Q2.</p>
+      </div>
+    </section>
+
+    <hr class="rule">
+
+    <!-- CONTENT PERFORMANCE -->
+    <section class="sec reveal" id="content">
+      <div class="sec-lbl">04 — Content Performance Analysis</div>
+      <h2 class="sec-title">Which Pillars <span style="color:var(--warm);">Earned Their Budget</span></h2>
+      <p class="body-p">The Efficiency Index compares share of engagement generated to share of content volume. Above 1.0 = punching above weight. Below 1.0 = underperforming relative to production investment.</p>
+
+      <div class="sub-h">Content Pillar Efficiency</div>
+      <div id="pillarSection">
+        <div class="pillar-item"><div class="pi-row"><div class="pi-name">Property Showcases</div><div class="pi-mets"><div class="pi-er">4.1% ER · 1.52 Index</div><span class="eff-badge eff-h">High Efficiency</span></div></div><div class="pi-track"><div class="pi-fill pbar" data-w="76" style="background:var(--sage);"></div></div></div>
+        <div class="pillar-item"><div class="pi-row"><div class="pi-name">Behind-the-Scenes</div><div class="pi-mets"><div class="pi-er">3.4% ER · 1.40 Index</div><span class="eff-badge eff-h">High Efficiency</span></div></div><div class="pi-track"><div class="pi-fill pbar" data-w="68" style="background:var(--violet);"></div></div></div>
+        <div class="pillar-item"><div class="pi-row"><div class="pi-name">Identity Explorer</div><div class="pi-mets"><div class="pi-er">3.2% ER · 1.40 Index</div><span class="eff-badge eff-h">High Efficiency</span></div></div><div class="pi-track"><div class="pi-fill pbar" data-w="64" style="background:var(--warm);"></div></div></div>
+        <div class="pillar-item"><div class="pi-row"><div class="pi-name">Guest Experiences</div><div class="pi-mets"><div class="pi-er">2.8% ER · 1.00 Index</div><span class="eff-badge eff-m">On Target</span></div></div><div class="pi-track"><div class="pi-fill pbar" data-w="50" style="background:var(--muted2);"></div></div></div>
+        <div class="pillar-item"><div class="pi-row"><div class="pi-name">Seasonal Events</div><div class="pi-mets"><div class="pi-er">2.1% ER · 0.80 Index</div><span class="eff-badge eff-l">Low Efficiency</span></div></div><div class="pi-track"><div class="pi-fill pbar" data-w="38" style="background:var(--terra);opacity:.65;"></div></div></div>
+        <div class="pillar-item"><div class="pi-row"><div class="pi-name">Local Guides</div><div class="pi-mets"><div class="pi-er">1.9% ER · 0.60 Index</div><span class="eff-badge eff-l">Needs Iteration</span></div></div><div class="pi-track"><div class="pi-fill pbar" data-w="26" style="background:var(--terra);"></div></div></div>
+      </div>
+
+      <div class="sub-h">Format Cost Efficiency</div>
+      <div class="tbl-wrap reveal"><div class="tbl-scroll"><table class="tbl">
+        <thead><tr><th>Format</th><th>ER</th><th>Prod. Cost</th><th>Cost Efficiency</th><th>Q2 Action</th></tr></thead>
+        <tbody>
+          <tr><td class="strong">Stories</td><td class="pos">3.8%</td><td class="num">$100</td><td class="pos">1,267 eng/$</td><td><span class="badge ex">Scale +20%</span></td></tr>
+          <tr><td class="strong">Carousels (5–7 slides)</td><td class="pos">2.4%</td><td class="num">$400</td><td class="pos">200 eng/$</td><td><span class="badge ex">Maintain</span></td></tr>
+          <tr><td class="strong">Reels (15–30s)</td><td class="pos">4.2%</td><td class="num">$800</td><td class="pos">190 eng/$</td><td><span class="badge ex">Scale to 50%</span></td></tr>
+          <tr><td class="strong">Static Posts</td><td class="num">1.1%</td><td class="num">$150</td><td class="num">245 eng/$</td><td><span class="badge pr">Evergreen Only</span></td></tr>
+          <tr><td class="strong">Long-form Video (3–5 min)</td><td class="neg">2.1%</td><td class="neg">$2,500</td><td class="neg">28 eng/$</td><td><span class="badge nm">Cut / Redirect</span></td></tr>
+        </tbody>
+      </table></div></div>
+
+      <div class="callout warm reveal">
+        <div class="co-ico">💡</div>
+        <p><strong>Budget Insight:</strong> Stories produce <strong>1,267 engagements per dollar</strong> — 45x more efficient than long-form video. Reallocating 10% of long-form production budget to Stories and Reels production would generate an estimated 18x increase in total engagement output for the same spend.</p>
+      </div>
+    </section>
+
+    <hr class="rule">
+
+    <!-- TRUST METRICS -->
+    <section class="sec reveal" id="trust">
+      <div class="sec-lbl">05 — Trust Metrics Update</div>
+      <h2 class="sec-title">The Trust Paradox <span style="color:var(--sage);">Begins to Resolve</span></h2>
+      <p class="body-p">For the first time in 18 months, every tracked trust metric moved in the right direction. The correlation between Behind-the-Scenes content (launched Week 3, January) and the Trustpilot improvement is statistically meaningful.</p>
+
+      <div class="circles-grid" id="circlesGrid">
+        <div class="circ-wrap">
+          <div class="circ-svg"><svg viewBox="0 0 80 80" width="80" height="80"><circle class="circ-bg" cx="40" cy="40" r="32"/><circle class="circ-ring" cx="40" cy="40" r="32" data-prog="0.46" style="stroke:var(--terra);"/></svg><div class="circ-inner" style="color:var(--terra);">2.3</div></div>
+          <div class="circ-lbl">Trustpilot</div>
+          <div class="circ-sub">Was 2.1 · Target 2.5<br>+0.2 first gain in 18mo</div>
+        </div>
+        <div class="circ-wrap">
+          <div class="circ-svg"><svg viewBox="0 0 80 80" width="80" height="80"><circle class="circ-bg" cx="40" cy="40" r="32"/><circle class="circ-ring" cx="40" cy="40" r="32" data-prog="0.76" style="stroke:var(--warm);"/></svg><div class="circ-inner" style="color:var(--warm);">76%</div></div>
+          <div class="circ-lbl">Pos. Comments</div>
+          <div class="circ-sub">Was 72% · Target 80%<br>+4% improvement</div>
+        </div>
+        <div class="circ-wrap">
+          <div class="circ-svg"><svg viewBox="0 0 80 80" width="80" height="80"><circle class="circ-bg" cx="40" cy="40" r="32"/><circle class="circ-ring" cx="40" cy="40" r="32" data-prog="0.82" style="stroke:var(--cold);"/></svg><div class="circ-inner" style="color:var(--cold);">82%</div></div>
+          <div class="circ-lbl">Response Rate</div>
+          <div class="circ-sub">Was 65% · Target 95%<br>+17% improvement</div>
+        </div>
+        <div class="circ-wrap">
+          <div class="circ-svg"><svg viewBox="0 0 80 80" width="80" height="80"><circle class="circ-bg" cx="40" cy="40" r="32"/><circle class="circ-ring" cx="40" cy="40" r="32" data-prog="0.73" style="stroke:var(--sage);"/></svg><div class="circ-inner" style="color:var(--sage);">11%</div></div>
+          <div class="circ-lbl">Complaint Vis.</div>
+          <div class="circ-sub">Was 15% · Target &lt;8%<br>−4% improvement</div>
+        </div>
+      </div>
+
+      <div class="sub-h">Trust Progress Toward 12-Month Targets</div>
+      <div id="trustProgress">
+        <div class="prog-item"><div class="prog-header"><div class="prog-name">Trustpilot Score</div><div class="prog-vals"><span class="pvc">2.3 current</span><span class="pvt">→ 2.5 target</span></div></div><div class="prog-track"><div class="prog-fill pbr" data-pct="46" style="background:var(--terra);"></div><div class="prog-mark" style="left:50%;"></div></div></div>
+        <div class="prog-item"><div class="prog-header"><div class="prog-name">Positive Comment Ratio</div><div class="prog-vals"><span class="pvc">76% current</span><span class="pvt">→ 80% target</span></div></div><div class="prog-track"><div class="prog-fill pbr" data-pct="76" style="background:var(--warm);"></div><div class="prog-mark" style="left:80%;"></div></div></div>
+        <div class="prog-item"><div class="prog-header"><div class="prog-name">Complaint Response Rate</div><div class="prog-vals"><span class="pvc">82% current</span><span class="pvt">→ 95% target</span></div></div><div class="prog-track"><div class="prog-fill pbr" data-pct="82" style="background:var(--cold);"></div><div class="prog-mark" style="left:95%;"></div></div></div>
+        <div class="prog-item"><div class="prog-header"><div class="prog-name">Service Complaint Visibility</div><div class="prog-vals"><span class="pvc">11% current</span><span class="pvt">→ &lt;8% target</span></div></div><div class="prog-track"><div class="prog-fill pbr" data-pct="73" style="background:var(--sage);"></div><div class="prog-mark" style="left:80%;"></div></div></div>
+        <div class="prog-item"><div class="prog-header"><div class="prog-name">Review System — Positive Mentions</div><div class="prog-vals"><span class="pvc">+12% shift</span><span class="pvt">→ +20% target</span></div></div><div class="prog-track"><div class="prog-fill pbr" data-pct="60" style="background:var(--violet);"></div><div class="prog-mark" style="left:80%;"></div></div></div>
+      </div>
+
+      <div class="tbl-wrap reveal" style="margin-top:28px;"><div class="tbl-scroll"><table class="tbl">
+        <thead><tr><th>Trust Finding</th><th>Implication</th></tr></thead>
+        <tbody>
+          <tr><td class="strong">Trustpilot improvement correlated directly with Behind-the-Scenes content launch (Week 3 Jan)</td><td>Transparency content drives measurable trust gains — this pillar must never be reduced</td></tr>
+          <tr><td class="strong">+17% response rate generated +28% increase in positive support sentiment</td><td>Speed and visibility matter more than perfect resolution. Fast acknowledgement > delayed perfection</td></tr>
+          <tr><td class="strong">Review system mentions improved but remain polarized</td><td>Continued focus on "Verified Reviewer" badge campaign needed throughout Q2</td></tr>
+        </tbody>
+      </table></div></div>
+
+      <div class="story reveal">
+        <div class="story-lbl">Trust Building Case Study — February 2026</div>
+        <div class="story-title">The Viral Complaint That Became an Internal Brand Template</div>
+        <p class="story-text">A user posted a viral booking dispute with 12,000 likes. The community team responded within 18 minutes, moved to DM, and resolved the issue within 4 hours. The user returned to the public thread to post a positive update — and became a brand advocate, posting UGC content in March. <strong>Resolution speed + public visibility generates compounding trust returns that no paid campaign can replicate.</strong></p>
+      </div>
+    </section>
+
+    <hr class="rule">
+
+    <!-- AUDIENCE -->
+    <section class="sec reveal" id="audience">
+      <div class="sec-lbl">06 — Audience Insights</div>
+      <h2 class="sec-title">Who We <span style="color:var(--cold);">Reached and Shifted</span></h2>
+
+      <div class="sub-h">Demographic Shifts</div>
+      <div class="demo-wrap reveal">
+        <div class="demo-row hdr"><div class="demo-cell hdr">Age</div><div class="demo-cell hdr">Reach Share</div><div class="demo-cell hdr">Share %</div><div class="demo-cell hdr">Change</div></div>
+        <div class="demo-row"><div class="demo-cell dn">18–24</div><div class="demo-bar-cell"><div class="demo-track"><div class="demo-fill" style="width:26%;background:var(--sage);"></div></div></div><div class="demo-cell">26%</div><div class="demo-cell"><span class="dchg pos">+4%</span></div></div>
+        <div class="demo-row"><div class="demo-cell dn">25–34</div><div class="demo-bar-cell"><div class="demo-track"><div class="demo-fill" style="width:35%;background:var(--warm);"></div></div></div><div class="demo-cell">35%</div><div class="demo-cell"><span class="dchg pos">+1%</span></div></div>
+        <div class="demo-row"><div class="demo-cell dn">35–44</div><div class="demo-bar-cell"><div class="demo-track"><div class="demo-fill" style="width:22%;background:var(--cold);"></div></div></div><div class="demo-cell">22%</div><div class="demo-cell"><span class="dchg neg">−2%</span></div></div>
+        <div class="demo-row"><div class="demo-cell dn">45–54</div><div class="demo-bar-cell"><div class="demo-track"><div class="demo-fill" style="width:11%;background:var(--muted);"></div></div></div><div class="demo-cell">11%</div><div class="demo-cell"><span class="dchg neg">−1%</span></div></div>
+        <div class="demo-row"><div class="demo-cell dn">55+</div><div class="demo-bar-cell"><div class="demo-track"><div class="demo-fill" style="width:6%;background:var(--muted);"></div></div></div><div class="demo-cell">6%</div><div class="demo-cell"><span class="dchg neg">−2%</span></div></div>
+      </div>
+
+      <div class="sub-h">Behavioral Improvements</div>
+      <div class="tbl-wrap reveal"><div class="tbl-scroll"><table class="tbl">
+        <thead><tr><th>Behavior</th><th>Pre-Campaign</th><th>Post-Campaign</th><th>Change</th></tr></thead>
+        <tbody>
+          <tr><td class="strong">Mobile Traffic to Site</td><td class="num">68%</td><td class="pos">74%</td><td class="pos">+6%</td></tr>
+          <tr><td class="strong">Return Visitor Rate</td><td class="num">22%</td><td class="pos">28%</td><td class="pos">+6%</td></tr>
+          <tr><td class="strong">Pages per Session</td><td class="num">3.2</td><td class="pos">3.8</td><td class="pos">+19%</td></tr>
+          <tr><td class="strong">Time on Site</td><td class="num">2:45</td><td class="pos">3:15</td><td class="pos">+18%</td></tr>
+        </tbody>
+      </table></div></div>
+
+      <div class="callout cold reveal">
+        <div class="co-ico">🌍</div>
+        <p><strong>Geographic Standout:</strong> India grew <strong>34% organically</strong> from AI content with zero paid amplification. U.S. grew 18% (strategic priority). Canada grew 12% from road trip content. Users who engaged with "Connected Trip" content (flights + cars) were <strong>2.3x more likely to return</strong> to the site.</p>
+      </div>
+    </section>
+
+    <hr class="rule">
+
+    <!-- ROI -->
+    <section class="sec reveal" id="roi">
+      <div class="sec-lbl">07 — ROI & Business Impact</div>
+      <h2 class="sec-title">$19M Revenue from <span style="color:var(--warm);">$180K Spend</span></h2>
+
+      <div class="roi-box">
+        <div class="roi-top">
+          <div><div class="roi-m-lbl">Campaign Spend</div><div class="roi-m-val" style="color:var(--text-dim);font-size:22px;">$180,000</div><div class="roi-m-desc">$60K production · $120K amplification</div></div>
+          <div><div class="roi-m-lbl">Attributed Revenue</div><div class="roi-m-val" style="color:var(--warm);"><span class="ctr" data-v="19035000" data-p="$" data-s="" data-comma="true">$0</span></div><div class="roi-m-desc">42,300 bookings × $450 avg</div></div>
+          <div><div class="roi-m-lbl">ROAS</div><div class="roi-m-val" style="color:var(--sage);"><span class="ctr" data-v="105.8" data-s="x" data-f="true">0x</span></div><div class="roi-m-desc">Return on ad spend</div></div>
+          <div><div class="roi-m-lbl">Cost Per Acquisition</div><div class="roi-m-val" style="color:var(--cold);font-size:24px;">$4.25</div><div class="roi-m-desc">Industry benchmark: $12–15</div></div>
+        </div>
+        <div class="roi-bottom">
+          <div class="roi-note">CPA of <strong style="color:var(--warm);">$4.25</strong> is 3–4x better than industry benchmark of $12–15. Attribution: UTM parameters + GA4, 7-day window.</div>
+          <span class="badge ex" style="font-size:9.5px;padding:5px 11px;">105.8x ROAS</span>
+        </div>
+      </div>
+
+      <div class="sub-h">Direct Booking Attribution by Channel</div>
+      <div class="tbl-wrap reveal"><div class="tbl-scroll"><table class="tbl">
+        <thead><tr><th>Channel</th><th>Assisted</th><th>Direct</th><th>Total</th><th>Share</th></tr></thead>
+        <tbody>
+          <tr><td class="strong">Instagram</td><td class="num">12,400</td><td class="num">8,200</td><td class="pos">20,600</td><td class="num">48.7%</td></tr>
+          <tr><td class="strong">TikTok</td><td class="num">8,100</td><td class="num">4,300</td><td class="pos">12,400</td><td class="num">29.3%</td></tr>
+          <tr><td class="strong">Facebook</td><td class="num">3,200</td><td class="num">1,800</td><td class="pos">5,000</td><td class="num">11.8%</td></tr>
+          <tr><td class="strong">YouTube</td><td class="num">2,100</td><td class="num">1,200</td><td class="pos">3,300</td><td class="num">7.8%</td></tr>
+          <tr><td class="strong">X (Twitter)</td><td class="num">800</td><td class="num">200</td><td class="pos">1,000</td><td class="num">2.4%</td></tr>
+          <tr><td class="tot">TOTAL</td><td class="tot">26,600</td><td class="tot">15,700</td><td class="tot">42,300</td><td class="tot">100%</td></tr>
+        </tbody>
+      </table></div></div>
+    </section>
+
+    <hr class="rule">
+
+    <!-- LEARNINGS -->
+    <section class="sec reveal" id="learnings">
+      <div class="sec-lbl">08 — Learnings & Recommendations</div>
+      <h2 class="sec-title">Scale, Iterate, <span style="color:var(--terra);">Cut</span></h2>
+
+      <div class="sub-h">Campaign Timeline — Key Events</div>
+      <div class="timeline reveal">
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-month">January · Week 1</div><div class="tl-event">Campaign Launch — "Book Whoever You Want to Be"</div><div class="tl-detail">All platforms activated simultaneously. #MyTravelAlterEgo UGC challenge launched. Tina Fey campaign live.</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-month">January · Week 3</div><div class="tl-event">Behind-the-Scenes Pillar + Rapid Response Protocol</div><div class="tl-detail">Customer service spotlights began. Response time dropped from 45min to sub-30min within 7 days of protocol launch.</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-month">February</div><div class="tl-event">Viral Complaint Case Study + Carousel Engagement Dip</div><div class="tl-detail">18-minute viral complaint resolution became internal template. Carousel ER dropped to 0.9% — attributed to format fatigue.</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-month">March</div><div class="tl-event">Carousel Recovery · YouTube Series Launch · UGC Target Exceeded</div><div class="tl-detail">"Meet the Mixes" carousel (2.8% ER). YouTube "Master Perfumer" educational series launched. UGC hit 8,200 — 64% above target.</div></div>
+      </div>
+
+      <div class="sub-h">What Worked — Scale These</div>
+      <div class="tbl-wrap reveal"><div class="tbl-scroll"><table class="tbl">
+        <thead><tr><th>Finding</th><th>Recommended Action</th></tr></thead>
+        <tbody>
+          <tr><td class="strong">Reels drive 73% of Instagram engagement</td><td>Increase Reels to 50% of Instagram content mix. Redirect long-form video budget to Reels production.</td></tr>
+          <tr><td class="strong">Room tour format on TikTok delivers 5.3% ER</td><td>Launch weekly "Room Tour Tuesday" series. Partner with 5 new travel creators aligned to this format.</td></tr>
+          <tr><td class="strong">Behind-the-Scenes content builds measurable trust</td><td>Monthly "Meet the Team" series. Expand to "Day in the Life" format. Never reduce this pillar's volume.</td></tr>
+          <tr><td class="strong">Rapid response improved sentiment 28%</td><td>Reduce response time target to 20 minutes. Expand community team hours to cover weekend peaks.</td></tr>
+        </tbody>
+      </table></div></div>
+
+      <div class="sub-h">What to Iterate — Refine These</div>
+      <div class="tbl-wrap reveal"><div class="tbl-scroll"><table class="tbl">
+        <thead><tr><th>Problem</th><th>Recommended Iteration</th></tr></thead>
+        <tbody>
+          <tr><td class="strong">AI Trip Planner demos at 0.9% (vs 2.4% avg)</td><td>Pivot to tutorial format: "How to plan a trip in 60 seconds." Use real user examples, not product demos.</td></tr>
+          <tr><td class="strong">Local Guides underperforming at 1.9% ER</td><td>Shift from "top 10" to "insider secrets" angle. Partner with local creators who have genuine authority.</td></tr>
+          <tr><td class="strong">Carousel engagement declined in February</td><td>A/B test 3-slide micro-carousels vs 7-slide deep dives. Test headline formats for Slide 1.</td></tr>
+        </tbody>
+      </table></div></div>
+
+      <div class="sub-h">What to Stop — Cut These</div>
+      <div class="tbl-wrap reveal"><div class="tbl-scroll"><table class="tbl">
+        <thead><tr><th>Format</th><th>Rationale</th></tr></thead>
+        <tbody>
+          <tr><td class="strong">Long-form video (3–5 min) on Instagram</td><td>28 eng/$ vs Reels at 190/$. The cost-efficiency gap cannot be justified at this stage of the strategy.</td></tr>
+          <tr><td class="strong">Generic "destination inspiration" static posts</td><td>1.1% engagement. Every dollar here produces 45x less engagement than Stories. Reallocate immediately.</td></tr>
+          <tr><td class="strong">Facebook boosted posts without video</td><td>Video posts drive 3.2x higher ROI than static on Facebook. No exceptions to this rule in Q2.</td></tr>
+        </tbody>
+      </table></div></div>
+    </section>
+
+    <hr class="rule">
+
+    <!-- Q2 RECOMMENDATIONS -->
+    <section class="sec reveal" id="q2">
+      <div class="sec-lbl">09 — Q2 2026 Strategic Recommendations</div>
+      <h2 class="sec-title">Five Priorities for <span style="color:var(--cold);">Q2</span></h2>
+      <div class="q2-grid reveal">
+        <div class="q2c"><div class="q2c-n">01</div><div class="q2c-title">Launch "Verified Reviewer" Badge Campaign</div><div class="q2c-impact">Expected: +0.2 Trustpilot improvement. Directly addresses review system credibility gap.</div></div>
+        <div class="q2c"><div class="q2c-n">02</div><div class="q2c-title">Weekly "Room Tour Tuesday" Series on TikTok</div><div class="q2c-impact">Expected: +15% TikTok engagement. Builds on 6.1% top-post from the Costa Rica reveal.</div></div>
+        <div class="q2c"><div class="q2c-n">03</div><div class="q2c-title">Partner with 5 India-Based Travel Creators</div><div class="q2c-impact">Expected: +25% India audience growth. Capitalise on 34% organic India growth already achieved.</div></div>
+        <div class="q2c"><div class="q2c-n">04</div><div class="q2c-title">A/B Test AI Tutorial Format (3 Variants)</div><div class="q2c-impact">Expected: Improve AI content from 0.9% to 2.5%+ ER. Tutorial vs demo vs testimonial.</div></div>
+        <div class="q2c"><div class="q2c-n">05</div><div class="q2c-title">Stories-First Approach on Facebook</div><div class="q2c-impact">Expected: +20% Facebook engagement. Leverage proven 1,267 eng/$ Stories efficiency.</div></div>
+      </div>
+
+      <div class="sub-h">Q2 Learning Agenda</div>
+      <div class="tbl-wrap reveal"><div class="tbl-scroll"><table class="tbl">
+        <thead><tr><th>Research Question</th><th>How We'll Answer It</th></tr></thead>
+        <tbody>
+          <tr><td class="strong">Can we sustain Trustpilot momentum toward 2.5?</td><td>Monthly sentiment tracking; correlation analysis with content types per platform</td></tr>
+          <tr><td class="strong">What is the optimal Reels-to-Carousel ratio?</td><td>A/B test: 50/50 vs 60/40 vs 70/30 splits over 6-week periods</td></tr>
+          <tr><td class="strong">Which AI format drives highest engagement?</td><td>Tutorial vs demo vs user testimonial across 3 markets simultaneously</td></tr>
+          <tr><td class="strong">Does UGC submission correlate with booking intent?</td><td>Survey campaign participants; track conversion rates from UGC-engaged users</td></tr>
+          <tr><td class="strong">What is the ROI of influencer partnerships?</td><td>Track promo codes, UTM links, and engagement metrics per individual partner</td></tr>
+        </tbody>
+      </table></div></div>
+    </section>
+
+    <hr class="rule">
+
+    <!-- APPENDIX -->
+    <section class="sec reveal" id="appendix">
+      <div class="sec-lbl">10 — Appendix: Data Sources & Methodology</div>
+      <h2 class="sec-title">How the Data <span style="color:var(--muted2);">Was Collected</span></h2>
+      <div class="app-wrap">
+        <div class="app-row hdr"><div class="app-cell hdr">Metric</div><div class="app-cell hdr">Source</div><div class="app-cell hdr">Methodology</div></div>
+        <div class="app-row"><div class="app-cell strong">Engagement Rate</div><div class="app-cell">Native platform analytics</div><div class="app-cell">(likes + comments + shares) / impressions</div></div>
+        <div class="app-row"><div class="app-cell strong">Sentiment Analysis</div><div class="app-cell">Brandwatch + manual sampling</div><div class="app-cell">500 comments/month coded by sentiment category</div></div>
+        <div class="app-row"><div class="app-cell strong">Trustpilot Score</div><div class="app-cell">Trustpilot API</div><div class="app-cell">Monthly average; self-selected respondents (noted limitation)</div></div>
+        <div class="app-row"><div class="app-cell strong">Response Time</div><div class="app-cell">Native platform analytics</div><div class="app-cell">Time from comment to first published response</div></div>
+        <div class="app-row"><div class="app-cell strong">Conversion Tracking</div><div class="app-cell">UTM parameters + GA4</div><div class="app-cell">7-day attribution window; assisted + direct tracked</div></div>
+        <div class="app-row"><div class="app-cell strong">UGC Volume</div><div class="app-cell">Native search + hashtag tracking</div><div class="app-cell">#MyTravelAlterEgo + all branded hashtag variants</div></div>
+      </div>
+
+      <div class="callout terra reveal">
+        <div class="co-ico">⚠️</div>
+        <p><strong>Data Limitations:</strong> Attribution model may undercount cross-platform influence. Sentiment sampling limited to English-language comments. Trustpilot data reflects self-selected respondents disproportionately motivated by extreme experiences. 7-day attribution window may undercount longer consideration cycles.</p>
+      </div>
+
+      <div class="author reveal">
+        <div class="av">NM</div>
+        <div>
+          <div class="a-name">Njabulo Mahumane</div>
+          <div class="a-role">Digital Marketing Strategist & Data Analyst</div>
+          <p class="a-bio">This campaign performance report demonstrates campaign analysis, data interpretation, KPI tracking, trust metric evaluation, and strategic recommendation skills applicable to senior digital marketing roles. Produced as part of a digital marketing portfolio.</p>
+          <div class="a-email">njabmahu@gmail.com</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+</div>
+
+<footer>
+  <div class="ft-brand">MBN<span>.</span></div>
+  <div class="ft-note">Booking.com CPR · Q1 2026 · "Book Whoever You Want to Be" · Portfolio Document</div>
+  <div class="ft-email">njabmahu@gmail.com</div>
+</footer>
+
+<script>
+// SCROLL PROGRESS
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement.scrollHeight-window.innerHeight;
+  document.getElementById('prog').style.width=(h>0?(window.scrollY/h)*100:0)+'%';
+});
+
+// SIDEBAR TOGGLE
+const tocBtn=document.getElementById('tocBtn'),sb=document.getElementById('sidebar');
+let sbOpen=false;
+tocBtn.addEventListener('click',()=>{
+  sbOpen=!sbOpen;
+  sb.classList.toggle('open',sbOpen);
+  tocBtn.textContent=sbOpen?'Close':'Contents';
+});
+document.querySelectorAll('.sbl').forEach(l=>l.addEventListener('click',()=>{
+  if(window.innerWidth<=940){sbOpen=false;sb.classList.remove('open');tocBtn.textContent='Contents';}
+}));
+
+// ACTIVE TOC
+const secIds=['hero','exec','kpis','platforms','instagram','tiktok','facebook','twitter','youtube','content','trust','audience','roi','learnings','q2','appendix'];
+window.addEventListener('scroll',()=>{
+  let cur='';
+  secIds.forEach(id=>{const el=document.getElementById(id);if(el&&window.scrollY>=el.offsetTop-80)cur=id;});
+  document.querySelectorAll('.sbl').forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+cur));
+});
+
+// FLOATING PARTICLES (anime.js #14)
+anime({
+  targets:'.ptcl',
+  translateX:()=>anime.random(-500,500),
+  translateY:()=>anime.random(-500,500),
+  scale:()=>anime.random(0.4,1.8),
+  opacity:()=>anime.random(0.1,0.4),
+  duration:()=>anime.random(7000,14000),
+  loop:true,easing:'linear',
+  delay:anime.stagger(500)
+});
+
+// HERO TEXT REVEAL (anime.js #9 text split)
+anime.timeline({easing:'easeOutExpo'})
+  .add({targets:'#heroTitle',translateY:[30,0],opacity:[0,1],duration:900},200)
+  .add({targets:'#heroSub',translateY:[20,0],opacity:[0,1],duration:700},600);
+
+// GENERIC SECTION REVEAL
+const ro=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      anime({targets:e.target,translateY:[18,0],opacity:[0,1],duration:680,easing:'easeOutExpo'});
+      ro.unobserve(e.target);
+    }
+  });
+},{threshold:0.05,rootMargin:'0px 0px -24px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+// COUNTER HELPER
+function runCtrs(root){
+  root.querySelectorAll('.ctr').forEach(el=>{
+    const v=parseFloat(el.dataset.v);
+    const p=el.dataset.p||'';
+    const s=el.dataset.s||'';
+    const isF=el.dataset.f==='true';
+    const useC=el.dataset.comma==='true';
+    let t0=null;const dur=1800;
+    (function step(ts){
+      if(!t0)t0=ts;
+      const pr=Math.min((ts-t0)/dur,1);
+      const ease=1-Math.pow(1-pr,3);
+      const cur=ease*v;
+      let d=isF?cur.toFixed(1):Math.floor(cur);
+      if(useC)d=Math.floor(cur).toLocaleString();
+      el.textContent=p+d+s;
+      if(pr<1)requestAnimationFrame(step);
+    })(performance.now());
+  });
+}
+
+// KPI GRID — STAGGERED from centre (anime.js #1)
+const kpiObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      anime({
+        targets:'#kpiGrid .kc',
+        translateY:[40,0],opacity:[0,1],
+        delay:anime.stagger(80,{grid:[4,2],from:'center'}),
+        duration:700,easing:'easeOutExpo'
+      });
+      runCtrs(document.getElementById('kpiGrid'));
+      kpiObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.1});
+const kg=document.getElementById('kpiGrid');
+if(kg)kpiObs.observe(kg);
+
+// ROI COUNTER TRIGGER
+const roiObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){runCtrs(e.target);roiObs.unobserve(e.target);}
+  });
+},{threshold:0.15});
+document.querySelectorAll('.roi-box').forEach(el=>roiObs.observe(el));
+
+// PILLAR BARS (anime.js stagger)
+const pillarObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      document.querySelectorAll('.pbar').forEach((bar,i)=>{
+        setTimeout(()=>anime({targets:bar,width:[0,bar.dataset.w+'%'],duration:1200,easing:'easeOutExpo'}),i*90);
+      });
+      pillarObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.15});
+const ps=document.getElementById('pillarSection');
+if(ps)pillarObs.observe(ps);
+
+// PROGRESS BARS — spring physics (anime.js #5)
+const prObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      document.querySelectorAll('.pbr').forEach((bar,i)=>{
+        setTimeout(()=>anime({targets:bar,width:[0,bar.dataset.pct+'%'],duration:1400,easing:'spring(1,80,10,0)'}),i*120);
+      });
+      prObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.2});
+const tp=document.getElementById('trustProgress');
+if(tp)prObs.observe(tp);
+
+// CIRCULAR PROGRESS SVG (anime.js #13)
+const circObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      document.querySelectorAll('.circ-ring').forEach((ring,i)=>{
+        const prog=parseFloat(ring.dataset.prog);
+        const circ=2*Math.PI*32;
+        const offset=circ*(1-prog);
+        setTimeout(()=>anime({targets:ring,strokeDashoffset:[circ,offset],duration:1600,easing:'easeOutExpo'}),i*150);
+      });
+      circObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.2});
+const cg=document.getElementById('circlesGrid');
+if(cg)circObs.observe(cg);
+
+// CARD HOVER LIFT & GLOW (anime.js #8)
+document.querySelectorAll('.kc,.plat-card,.q2c').forEach(card=>{
+  card.addEventListener('mouseenter',()=>anime({targets:card,scale:1.03,boxShadow:'0 14px 32px rgba(0,0,0,.4)',duration:260,easing:'easeOutQuad'}));
+  card.addEventListener('mouseleave',()=>anime({targets:card,scale:1,boxShadow:'0 0 0 rgba(0,0,0,0)',duration:260,easing:'easeOutQuad'}));
+});
+
+// TIMELINE MARKER SPRING (anime.js #15)
+document.querySelectorAll('.tl-item').forEach(item=>{
+  const dot=item.querySelector('.tl-dot');
+  item.addEventListener('mouseenter',()=>anime({targets:dot,scale:1.8,duration:300,easing:'spring(1,80,10,0)'}));
+  item.addEventListener('mouseleave',()=>anime({targets:dot,scale:1,duration:300,easing:'spring(1,80,10,0)'}));
+});
+</script>
+</body>
+</html>

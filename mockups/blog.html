@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — How to Learn New Skills Fast — Njabulo Mahumane</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--warm:#e8a020;--cold:#3d7fff;--bg:#0d0d0d;--surface:#141414;--surface2:#1c1c1c;--border:rgba(255,255,255,0.08);--text:#e8e2d9;--dim:rgba(232,226,217,0.72);--muted:rgba(232,226,217,0.45);}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.65;}
+a{color:inherit;text-decoration:none;}
+
+/* NAV */
+.nav{display:flex;align-items:center;justify-content:space-between;padding:18px 48px;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(13,13,13,0.96);backdrop-filter:blur(20px);z-index:100;}
+.nav-logo{font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:800;}
+.nav-logo span{color:var(--warm);}
+.scroll-bar{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--warm),var(--cold));z-index:200;width:0;}
+.back-btn{padding:7px 18px;border:1px solid var(--border);border-radius:7px;font-size:0.82rem;color:var(--dim);transition:all .2s;}
+.back-btn:hover{border-color:var(--warm);color:var(--warm);}
+
+/* LISTING */
+#blogListing{}
+.blog-hero{padding:72px 48px 56px;border-bottom:1px solid var(--border);}
+.sec-label{font-size:0.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--warm);margin-bottom:18px;}
+.blog-hero-title{font-family:'Syne',sans-serif;font-size:clamp(3rem,7vw,6.5rem);font-weight:800;line-height:.92;text-transform:uppercase;margin-bottom:22px;}
+.blog-hero-title span{color:var(--warm);}
+.blog-hero-sub{font-size:1rem;color:var(--dim);max-width:480px;line-height:1.75;}
+
+.blog-body{display:grid;grid-template-columns:1fr 300px;max-width:1200px;margin:0 auto;padding:0 48px;}
+.blog-main{padding:52px 52px 80px 0;border-right:1px solid var(--border);}
+.blog-sidebar{padding:52px 0 80px 40px;}
+
+/* FEATURED */
+.featured-badge{display:inline-block;padding:4px 12px;background:rgba(232,160,32,0.1);border:1px solid rgba(232,160,32,0.22);border-radius:20px;font-size:0.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--warm);margin-bottom:14px;}
+.post-tag{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:var(--cold);margin-bottom:10px;}
+.post-title{font-family:'Syne',sans-serif;font-size:clamp(1.6rem,3vw,2.3rem);font-weight:800;line-height:1.12;margin-bottom:14px;cursor:pointer;transition:color .2s;}
+.post-title:hover{color:var(--warm);}
+.post-meta{font-size:0.75rem;color:var(--muted);margin-bottom:18px;}
+.post-excerpt{font-size:0.97rem;color:var(--dim);line-height:1.8;margin-bottom:26px;max-width:580px;}
+.read-btn{display:inline-block;padding:11px 24px;background:var(--warm);color:#0d0d0d;font-weight:700;font-size:0.85rem;border-radius:8px;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;transition:all .2s;}
+.read-btn:hover{background:#f0b030;transform:translateY(-2px);}
+.featured-sep{margin:40px 0;border:none;border-top:1px solid var(--border);}
+
+/* GRAPHICS LIST */
+.graphics-header{margin-bottom:20px;}
+.graphics-header h3{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:6px;}
+.graphics-header p{font-size:0.85rem;color:var(--muted);line-height:1.6;}
+.graphics-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.graphic-card{display:block;padding:18px;background:var(--surface);border:1px solid var(--border);border-radius:12px;transition:all .2s;}
+.graphic-card:hover{border-color:var(--warm);transform:translateY(-3px);}
+.gc-icon{font-size:1.6rem;margin-bottom:8px;}
+.gc-title{font-family:'Syne',sans-serif;font-size:0.84rem;font-weight:700;margin-bottom:5px;line-height:1.3;}
+.gc-desc{font-size:0.76rem;color:var(--muted);line-height:1.5;}
+.gc-link{font-size:0.78rem;color:var(--warm);margin-top:8px;display:block;}
+
+/* SIDEBAR */
+.sw{margin-bottom:36px;}
+.sw-title{font-family:'Syne',sans-serif;font-size:0.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);}
+.about-card{padding:18px;background:var(--surface);border:1px solid var(--border);border-radius:12px;text-align:center;}
+.avatar{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--warm),var(--cold));font-family:'Syne',sans-serif;font-size:.9rem;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;color:#0d0d0d;}
+.ab-name{font-family:'Syne',sans-serif;font-size:.88rem;font-weight:700;margin-bottom:3px;}
+.ab-role{font-size:.7rem;color:var(--warm);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;}
+.ab-bio{font-size:.78rem;color:var(--dim);line-height:1.6;}
+.tags{display:flex;flex-wrap:wrap;gap:7px;}
+.tag{padding:5px 12px;background:var(--surface);border:1px solid var(--border);border-radius:20px;font-size:.73rem;color:var(--dim);transition:all .2s;cursor:default;}
+.tag:hover{border-color:var(--warm);color:var(--warm);}
+.qlinks{display:flex;flex-direction:column;gap:7px;}
+.qlink{display:flex;justify-content:space-between;align-items:center;padding:9px 12px;background:var(--surface);border:1px solid var(--border);border-radius:9px;font-size:.8rem;transition:border-color .2s;}
+.qlink:hover{border-color:var(--cold);}
+.qlink-arr{color:var(--cold);}
+
+/* ARTICLE VIEW */
+#articleView{display:none;}
+.article-wrap{max-width:1100px;margin:0 auto;padding:48px 48px 80px;display:grid;grid-template-columns:1fr 280px;gap:64px;}
+.article-main{}
+.article-sidebar{position:sticky;top:72px;height:fit-content;}
+
+.art-back{font-size:.82rem;color:var(--muted);cursor:pointer;transition:color .2s;margin-bottom:32px;display:inline-flex;align-items:center;gap:6px;}
+.art-back:hover{color:var(--warm);}
+.art-tag{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:var(--cold);margin-bottom:10px;}
+.art-title{font-family:'Syne',sans-serif;font-size:clamp(2rem,4.5vw,3.6rem);font-weight:800;line-height:1.03;margin-bottom:20px;}
+.art-meta{display:flex;flex-wrap:wrap;gap:18px;padding:18px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:36px;}
+.art-meta-item{font-size:.76rem;color:var(--muted);}
+.art-meta-item strong{color:var(--warm);}
+
+/* Article body */
+.art-body h2{font-family:'Syne',sans-serif;font-size:1.45rem;font-weight:800;margin:44px 0 14px;line-height:1.2;}
+.art-body h3{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;margin:28px 0 10px;color:var(--warm);}
+.art-body p{font-size:.98rem;color:var(--dim);line-height:1.88;margin-bottom:16px;}
+.art-body strong{color:var(--text);}
+.art-body ul,.art-body ol{padding-left:20px;margin-bottom:16px;}
+.art-body li{font-size:.93rem;color:var(--dim);line-height:1.8;margin-bottom:5px;}
+.callout{background:var(--surface);border-left:3px solid var(--warm);padding:18px 22px;border-radius:0 10px 10px 0;margin:24px 0;}
+.callout p{margin:0;font-size:.93rem;color:var(--text);font-style:italic;}
+
+/* GRAPHIC EMBEDS */
+.graphic-embed{margin:40px 0;background:var(--surface);border:2px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.4);}
+.ge-header{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.03);}
+.ge-label{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--cold);}
+.ge-title{font-family:'Syne',sans-serif;font-size:.92rem;font-weight:700;}
+.ge-open{font-size:.75rem;color:var(--warm);padding:6px 14px;border:1px solid rgba(232,160,32,0.4);border-radius:6px;transition:all .2s;white-space:nowrap;}
+.ge-open:hover{background:var(--warm);color:#0d0d0d;}
+
+/* KEY FIX: iframes have no scrollbar, height set by JS */
+.ge-frame{
+  width:100%;
+  height:600px; /* fallback */
+  border:none;
+  display:block;
+  background:#0d0d0d;
+  overflow:hidden;
+  scrollbar-width: none;
+}
+.ge-frame::-webkit-scrollbar { display: none; }
+
+/* COMMENT SECTION */
+.comment-section{margin-top:56px;padding-top:40px;border-top:1px solid var(--border);}
+.comment-section h3{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;margin-bottom:6px;}
+.comment-count{font-size:.82rem;color:var(--muted);margin-bottom:28px;}
+.comment-form{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px;margin-bottom:36px;}
+.cf-title{font-family:'Syne',sans-serif;font-size:.88rem;font-weight:700;margin-bottom:16px;color:var(--warm);}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
+.cf-field input,.cf-field textarea{width:100%;background:#0d0d0d;border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.88rem;outline:none;transition:border-color .2s,box-shadow .2s;}
+.cf-field input:focus,.cf-field textarea:focus{border-color:var(--warm);box-shadow:0 0 0 3px rgba(232,160,32,0.1);}
+.cf-field textarea{height:100px;resize:vertical;margin-bottom:12px;}
+.cf-rating{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.cf-rating-label{font-size:.8rem;color:var(--muted);}
+.stars{display:flex;gap:4px;}
+.star{font-size:1.3rem;cursor:pointer;transition:transform .15s;filter:grayscale(1);opacity:.5;}
+.star.active,.star:hover{filter:grayscale(0);opacity:1;transform:scale(1.15);}
+.cf-submit{padding:10px 24px;background:var(--warm);color:#0d0d0d;font-weight:700;font-size:.85rem;border:none;border-radius:8px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;}
+.cf-submit:hover{background:#f0b030;transform:translateY(-2px);}
+.cf-note{font-size:.72rem;color:var(--muted);margin-top:8px;}
+.comments-list{display:flex;flex-direction:column;gap:18px;}
+.comment{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;}
+.comment-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;}
+.comment-author{display:flex;align-items:center;gap:10px;}
+.comment-avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:.75rem;font-weight:800;color:#0d0d0d;flex-shrink:0;}
+.comment-name{font-family:'Syne',sans-serif;font-size:.88rem;font-weight:700;}
+.comment-date{font-size:.72rem;color:var(--muted);}
+.comment-stars{display:flex;gap:2px;font-size:.9rem;}
+.comment-text{font-size:.9rem;color:var(--dim);line-height:1.75;}
+.comment-reply{font-size:.75rem;color:var(--cold);cursor:pointer;margin-top:8px;display:inline-block;transition:color .2s;}
+.comment-reply:hover{color:var(--warm);}
+.success-msg{display:none;background:rgba(76,175,135,0.1);border:1px solid rgba(76,175,135,0.25);border-radius:8px;padding:14px 18px;font-size:.88rem;color:#4caf87;margin-top:12px;}
+
+/* Article sidebar TOC */
+.art-toc-title{font-family:'Syne',sans-serif;font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);}
+.art-toc-list{list-style:none;}
+.art-toc-list li a{display:block;font-size:.8rem;color:var(--muted);padding:5px 0 5px 12px;border-left:2px solid transparent;transition:all .18s;line-height:1.4;}
+.art-toc-list li a:hover,.art-toc-list li a.active-toc{color:var(--warm);border-left-color:var(--warm);}
+.reading-progress{margin-bottom:20px;}
+.rp-label{font-size:.72rem;color:var(--muted);margin-bottom:6px;}
+.rp-bar{height:4px;background:var(--surface2);border-radius:2px;overflow:hidden;}
+.rp-fill{height:100%;background:linear-gradient(90deg,var(--warm),var(--cold));width:0%;transition:width .2s;}
+
+/* FOOTER */
+footer{padding:36px 48px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.f-logo{font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:800;}
+.f-logo span{color:var(--warm);}
+footer p{font-size:.76rem;color:var(--muted);}
+
+@media(max-width:960px){
+  .blog-body,.article-wrap{grid-template-columns:1fr;}
+  .blog-main{border-right:none;padding-right:0;}
+  .blog-sidebar,.article-sidebar{padding-left:0;border-top:1px solid var(--border);padding-top:32px;}
+  .article-sidebar{position:static;}
+}
+@media(max-width:700px){
+  .nav,.blog-hero,.blog-body,.article-wrap,footer{padding-left:20px;padding-right:20px;}
+  .blog-main{padding-left:0;}
+  .graphics-grid{grid-template-columns:1fr;}
+  .cf-row{grid-template-columns:1fr;}
+}
+</style>
+<style id="cursor-global">
+.g-cursor-dot{position:fixed;width:8px;height:8px;background:#e8a020;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:transform .1s,background .2s;}
+.g-cursor-ring{position:fixed;width:36px;height:36px;border:2px solid rgba(232,160,32,0.55);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);}
+body.g-cursor-hover .g-cursor-dot{transform:translate(-50%,-50%) scale(2);background:#fff;}
+body.g-cursor-hover .g-cursor-ring{width:52px;height:52px;}
+@media(hover:none){.g-cursor-dot,.g-cursor-ring{display:none;}}
+</style>
+</head>
+<body>
+<div class="g-cursor-dot" id="gCursorDot"></div><div class="g-cursor-ring" id="gCursorRing"></div>
+<div class="scroll-bar" id="scrollBar"></div>
+
+<nav class="nav">
+  <div class="nav-logo">NM<span>.</span></div>
+  <a href="../index.html" class="back-btn">← Portfolio</a>
+</nav>
+
+<!-- ══════════════ BLOG LISTING ══════════════ -->
+<div id="blogListing">
+  <div class="blog-hero">
+    <div class="sec-label">Blog</div>
+    <h1 class="blog-hero-title">MARKETING<br><span>INSIGHTS.</span></h1>
+    <p class="blog-hero-sub">Practical frameworks, honest takes and real strategic thinking. Written for marketers who want to keep growing.</p>
+  </div>
+
+  <div class="blog-body">
+    <main class="blog-main">
+      <div class="featured-badge">⭐ Featured Article</div>
+      <div class="post-tag">Learning · Career · Marketing</div>
+      <h2 class="post-title" onclick="openArticle()">How to Learn New Skills Fast and Actually Make Them Stick</h2>
+      <div class="post-meta">February 2026 · 12 min read · Njabulo Mahumane</div>
+      <p class="post-excerpt">A practical framework for busy professionals who don't have time to waste. No fluff — just the methods that actually build skills that stick, built around the science of how brains learn and forget. Includes 5 original visual assets.</p>
+      <button class="read-btn" onclick="openArticle()">Read Article →</button>
+      <hr class="featured-sep">
+      <div class="graphics-header">
+        <h3>🎨 5 Original Visual Assets</h3>
+        <p>Standalone infographics created for this article — open each one directly or read them embedded in the article.</p>
+      </div>
+      <div class="graphics-grid">
+        <a href="forgetting_curve.html" target="_blank" class="graphic-card"><div class="gc-icon">📉</div><div class="gc-title">The Forgetting Curve</div><div class="gc-desc">How memory decays and how to stop it with spaced repetition.</div><span class="gc-link">Open ↗</span></a>
+        <a href="fourteen_day_plan.html" target="_blank" class="graphic-card"><div class="gc-icon">📅</div><div class="gc-title">14-Day Skill Launch Plan</div><div class="gc-desc">A day-by-day action plan for any new skill in two weeks.</div><span class="gc-link">Open ↗</span></a>
+        <a href="deliberate_practice.html" target="_blank" class="graphic-card"><div class="gc-icon">🎯</div><div class="gc-title">Deliberate vs Mindless Practice</div><div class="gc-desc">What separates experts from people who plateau.</div><span class="gc-link">Open ↗</span></a>
+        <a href="learning_loop.html" target="_blank" class="graphic-card"><div class="gc-icon">🔄</div><div class="gc-title">The 4-Step Learning Loop</div><div class="gc-desc">The repeatable cycle that accelerates skill acquisition.</div><span class="gc-link">Open ↗</span></a>
+        <a href="portfolio_day_planner.html" target="_blank" class="graphic-card"><div class="gc-icon">🗓️</div><div class="gc-title">Portfolio Day Planner</div><div class="gc-desc">The exact daily template I used to build this portfolio.</div><span class="gc-link">Open ↗</span></a>
+      </div>
+    </main>
+
+    <aside class="blog-sidebar">
+      <div class="sw">
+        <div class="sw-title">About the Author</div>
+        <div class="about-card">
+          <div class="avatar">NM</div>
+          <div class="ab-name">Njabulo Mahumane</div>
+          <div class="ab-role">Digital Marketing Student</div>
+          <p class="ab-bio">Rosebank College, Cape Town. Writing about marketing strategy, content and what actually works in digital. Seeking my first professional role.</p>
+        </div>
+      </div>
+      <div class="sw">
+        <div class="sw-title">Topics</div>
+        <div class="tags">
+          <span class="tag">Content Strategy</span><span class="tag">SEO</span><span class="tag">Learning</span><span class="tag">Marketing</span><span class="tag">Analytics</span><span class="tag">Career</span><span class="tag">Productivity</span>
+        </div>
+      </div>
+      <div class="sw">
+        <div class="sw-title">Portfolio</div>
+        <div class="qlinks">
+          <a href="campaign-report.html" class="qlink">Campaign Report Q1 2026 <span class="qlink-arr">↗</span></a>
+          <a href="brand-analysis.html" class="qlink">Brand Analysis <span class="qlink-arr">↗</span></a>
+          <a href="social-media-strategy.html" class="qlink">Social Media Strategy <span class="qlink-arr">↗</span></a>
+          <a href="instagram-carousel.html" class="qlink">Instagram Carousel <span class="qlink-arr">↗</span></a>
+          <a href="tiktok-storyboards.html" class="qlink">TikTok Storyboards <span class="qlink-arr">↗</span></a>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<!-- ══════════════ FULL ARTICLE ══════════════ -->
+<div id="articleView">
+  <div class="article-wrap">
+    <article class="article-main">
+      <span class="art-back" onclick="closeArticle()">← Back to Blog</span>
+      <div class="art-tag">Learning · Career · Marketing</div>
+      <h1 class="art-title">How to Learn New Skills Fast and Actually Make Them Stick</h1>
+      <div class="art-meta">
+        <span class="art-meta-item"><strong>Author:</strong> Njabulo Mahumane</span>
+        <span class="art-meta-item"><strong>Published:</strong> February 2026</span>
+        <span class="art-meta-item"><strong>Read time:</strong> 12 minutes</span>
+        <span class="art-meta-item"><strong>Keywords:</strong> how to learn new skills fast, skill acquisition, deliberate practice</span>
+      </div>
+
+      <div class="art-body">
+        <p>Every year, millions of people start learning something new — a language, a software tool, a professional skill — and quit within three weeks. Not because they lack intelligence or motivation, but because they're using the wrong method. This article is about the right method.</p>
+        <div class="callout"><p>"The ability to learn faster than your competitors may be the only sustainable competitive advantage." — Arie de Geus</p></div>
+
+        <h2 id="why-wrong">Why Most People Learn Wrong</h2>
+        <p>The traditional approach to learning — reading, re-reading, highlighting — feels productive but isn't. It creates the <strong>illusion of competence</strong>: you feel like you know it because you recognise it on the page. Recognition is not recall. Recall is not application.</p>
+        <p>The science is clear: passive learning produces weak, quickly-fading memory traces. The discomfort of not knowing the answer before you check it is actually the signal that real learning is happening.</p>
+
+        <!-- GRAPHIC 1: Forgetting Curve -->
+        <div class="graphic-embed">
+          <div class="ge-header">
+            <div><div class="ge-label">📊 Visual Asset 1 of 5</div><div class="ge-title">The Forgetting Curve — Why You Forget and How to Stop It</div></div>
+            <a href="forgetting_curve.html" target="_blank" class="ge-open">Open full ↗</a>
+          </div>
+          <iframe class="ge-frame" src="forgetting_curve.html" scrolling="no" onload="resizeIframe(this)" loading="eager" sandbox="allow-same-origin allow-scripts" title="The Forgetting Curve"></iframe>
+        </div>
+
+        <h2 id="four-principles">The Four Principles That Actually Work</h2>
+        <h3>1. Spaced Repetition</h3>
+        <p>Instead of cramming in one long session, spread your practice across multiple shorter sessions over days and weeks. Each time you return to material just as you're about to forget it, you strengthen the memory trace.</p>
+
+        <h3>2. Retrieval Practice</h3>
+        <p>Instead of reviewing your notes, close them and try to recall everything you know. Test yourself. Write it down from memory. The effort of trying to retrieve information — even when you fail — is more powerful for learning than passively re-reading it.</p>
+
+        <!-- GRAPHIC 2: Deliberate Practice -->
+        <div class="graphic-embed">
+          <div class="ge-header">
+            <div><div class="ge-label">📊 Visual Asset 2 of 5</div><div class="ge-title">Deliberate Practice vs Mindless Repetition</div></div>
+            <a href="deliberate_practice.html" target="_blank" class="ge-open">Open full ↗</a>
+          </div>
+          <iframe class="ge-frame" src="deliberate_practice.html" scrolling="no" onload="resizeIframe(this)" loading="lazy" title="Deliberate Practice"></iframe>
+        </div>
+
+        <h3>3. Deliberate Practice</h3>
+        <p>Deliberate practice means working at the edge of your current ability — not in your comfort zone. It requires focused attention, immediate feedback, and constant adjustment. An hour of deliberate practice beats ten hours of mindless repetition every time.</p>
+
+        <h3>4. The Learning Loop</h3>
+        <p>The most effective learners follow a consistent cycle: <strong>study → test → review errors → study again.</strong> Each loop tightens your knowledge and surfaces gaps you didn't know existed. Most people skip the review errors step — which is exactly where the most valuable learning happens.</p>
+
+        <!-- GRAPHIC 3: Learning Loop -->
+        <div class="graphic-embed">
+          <div class="ge-header">
+            <div><div class="ge-label">📊 Visual Asset 3 of 5</div><div class="ge-title">The 4-Step Learning Loop</div></div>
+            <a href="learning_loop.html" target="_blank" class="ge-open">Open full ↗</a>
+          </div>
+          <iframe class="ge-frame" src="learning_loop.html" scrolling="no" onload="resizeIframe(this)" loading="lazy" title="The 4-Step Learning Loop"></iframe>
+        </div>
+
+        <h2 id="fourteen-days">The 14-Day Skill Launch Framework</h2>
+        <p>Most skills aren't mastered in 14 days — but they can be <em>launched</em> in 14 days. The goal of the first two weeks isn't mastery. It's building the mental model, the vocabulary, and the habits that make continued learning efficient.</p>
+        <ul>
+          <li><strong>Days 1–3:</strong> Map the skill landscape. What are its sub-components? Which 20% of inputs produce 80% of outputs?</li>
+          <li><strong>Days 4–7:</strong> Build the foundation. Focus only on the highest-leverage fundamentals.</li>
+          <li><strong>Days 8–11:</strong> Apply immediately. Find a real project to apply the skill to. Failure at this stage is the curriculum.</li>
+          <li><strong>Days 12–14:</strong> Review and consolidate. What do you know? What are your gaps?</li>
+        </ul>
+
+        <!-- GRAPHIC 4: 14-Day Plan -->
+        <div class="graphic-embed">
+          <div class="ge-header">
+            <div><div class="ge-label">📊 Visual Asset 4 of 5</div><div class="ge-title">14-Day Skill Launch Plan</div></div>
+            <a href="fourteen_day_plan.html" target="_blank" class="ge-open">Open full ↗</a>
+          </div>
+          <iframe class="ge-frame" src="fourteen_day_plan.html" scrolling="no" onload="resizeIframe(this)" loading="lazy" title="14-Day Skill Launch Plan"></iframe>
+        </div>
+
+        <h2 id="building-day">Building It Into Your Day</h2>
+        <p>Knowledge without a system stays theoretical. The single most important thing you can do after reading this is to protect a learning block in your daily schedule — even 30 focused minutes, at the same time every day, with no distractions. Consistency beats intensity over any period longer than a week.</p>
+        <p>This isn't just theory for me — the Portfolio Day Planner below is the exact daily time-block template I used to research, plan and produce every piece in this marketing portfolio. Each mockup, strategy document, campaign report and infographic you see on my portfolio site was created inside a protected creative block structured by this planner.</p>
+        <div class="callout"><p>You don't need more time. You need better structure for the time you already have. The Portfolio Day Planner below was built specifically for this — and it's the same one I used to build this entire portfolio.</p></div>
+
+        <!-- GRAPHIC 5: Day Planner -->
+        <div class="graphic-embed">
+          <div class="ge-header">
+            <div><div class="ge-label">📊 Visual Asset 5 of 5</div><div class="ge-title">Portfolio Day Planner — The exact template used to build this portfolio</div></div>
+            <a href="portfolio_day_planner.html" target="_blank" class="ge-open">Open full ↗</a>
+          </div>
+          <iframe class="ge-frame" src="portfolio_day_planner.html" scrolling="no" onload="resizeIframe(this)" loading="lazy" title="Portfolio Day Planner"></iframe>
+        </div>
+
+        <h2 id="bottom-line">The Bottom Line</h2>
+        <p>Learning fast isn't about being naturally smart. It's about using methods that match how memory actually works. Space your practice. Test yourself relentlessly. Work at the edge of your ability. Apply what you're learning to real problems as quickly as possible.</p>
+        <p>Every week you spend using passive methods is a week of compounding you're leaving on the table. Start with one change: after your next learning session, close your notes and write down everything you can remember. That one shift will outperform any other study technique you've ever used.</p>
+
+        <!-- AUTHOR BIO -->
+        <div style="margin-top:44px;padding:24px;background:var(--surface);border:1px solid var(--border);border-radius:12px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;">
+          <div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--warm),var(--cold));display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;color:#0d0d0d;flex-shrink:0;">NM</div>
+          <div>
+            <div style="font-family:'Syne',sans-serif;font-weight:700;margin-bottom:3px;">Njabulo Mahumane</div>
+            <div style="font-size:.8rem;color:var(--muted);">Digital Marketing Student · Rosebank College, Cape Town · <a href="mailto:njabmahu@gmail.com">njabmahu@gmail.com</a> · 079-169-8794</div>
+          </div>
+        </div>
+
+        <!-- COMMENT SECTION -->
+        <div class="comment-section">
+          <h3>Thoughts & Reactions</h3>
+          <p class="comment-count" id="commentCount">3 comments</p>
+
+          <div class="comments-list" id="commentsList">
+            <div class="comment">
+              <div class="comment-header">
+                <div class="comment-author"><div class="comment-avatar" style="background:#4d8fff;">TM</div><div><div class="comment-name">Thandeka M.</div><div class="comment-date">Feb 18, 2026</div></div></div>
+                <div class="comment-stars">⭐⭐⭐⭐⭐</div>
+              </div>
+              <p class="comment-text">The deliberate practice graphic genuinely changed how I think about studying. I've been doing mindless repetition for years and wondering why nothing sticks. Saving this whole article.</p>
+              <span class="comment-reply" onclick="focusReply(this)">↩ Reply</span>
+            </div>
+            <div class="comment">
+              <div class="comment-header">
+                <div class="comment-author"><div class="comment-avatar" style="background:#4caf87;">KN</div><div><div class="comment-name">Kagiso N.</div><div class="comment-date">Feb 21, 2026</div></div></div>
+                <div class="comment-stars">⭐⭐⭐⭐⭐</div>
+              </div>
+              <p class="comment-text">Really practical framework. I'm a second-year marketing student and the 14-day plan is exactly what I needed for learning GA4. Already on day 3 and it's working.</p>
+              <span class="comment-reply" onclick="focusReply(this)">↩ Reply</span>
+            </div>
+            <div class="comment">
+              <div class="comment-header">
+                <div class="comment-author"><div class="comment-avatar" style="background:#9b7fe8;">LP</div><div><div class="comment-name">Lebo P.</div><div class="comment-date">Feb 25, 2026</div></div></div>
+                <div class="comment-stars">⭐⭐⭐⭐</div>
+              </div>
+              <p class="comment-text">Solid article. The day planner is a nice touch — love that it ties back to the actual portfolio work. Would have liked more on how to handle learning slumps mid-way through a skill.</p>
+              <span class="comment-reply" onclick="focusReply(this)">↩ Reply</span>
+            </div>
+          </div>
+
+          <div class="comment-form" style="margin-top:32px;">
+            <div class="cf-title">Leave a Comment</div>
+            <div class="cf-row">
+              <div class="cf-field"><input type="text" id="cfName" placeholder="Your Name" /></div>
+              <div class="cf-field"><input type="email" id="cfEmail" placeholder="Your Email (not published)" /></div>
+            </div>
+            <div class="cf-field"><textarea id="cfComment" placeholder="Share your thoughts on the article..."></textarea></div>
+            <div class="cf-rating">
+              <span class="cf-rating-label">Rate this article:</span>
+              <div class="stars" id="starRating">
+                <span class="star" data-v="1" onclick="setRating(1)">⭐</span>
+                <span class="star" data-v="2" onclick="setRating(2)">⭐</span>
+                <span class="star" data-v="3" onclick="setRating(3)">⭐</span>
+                <span class="star" data-v="4" onclick="setRating(4)">⭐</span>
+                <span class="star" data-v="5" onclick="setRating(5)">⭐</span>
+              </div>
+            </div>
+            <button class="cf-submit" onclick="submitComment()">Post Comment →</button>
+            <p class="cf-note">Your comment will appear immediately. Email is never published.</p>
+            <div class="success-msg" id="successMsg">✅ Comment posted! Thanks for sharing your thoughts.</div>
+          </div>
+        </div>
+
+      </div>
+    </article>
+
+    <!-- Article sidebar -->
+    <aside class="article-sidebar">
+      <div class="reading-progress">
+        <div class="rp-label">Reading progress</div>
+        <div class="rp-bar"><div class="rp-fill" id="rpFill"></div></div>
+      </div>
+      <div class="art-toc-title">In This Article</div>
+      <ul class="art-toc-list">
+        <li><a href="#why-wrong" class="toc-a">Why Most People Learn Wrong</a></li>
+        <li><a href="#four-principles" class="toc-a">The Four Principles</a></li>
+        <li><a href="#fourteen-days" class="toc-a">14-Day Framework</a></li>
+        <li><a href="#building-day" class="toc-a">Building It Into Your Day</a></li>
+        <li><a href="#bottom-line" class="toc-a">The Bottom Line</a></li>
+      </ul>
+      <div style="margin-top:24px;padding:16px;background:var(--surface);border:1px solid var(--border);border-radius:10px;">
+        <div style="font-family:'Syne',sans-serif;font-size:.78rem;font-weight:700;margin-bottom:8px;">About the Author</div>
+        <div style="font-size:.75rem;color:var(--dim);line-height:1.6;">Njabulo Mahumane<br>Digital Marketing Student<br>Rosebank College, Cape Town<br><a href="mailto:njabmahu@gmail.com">njabmahu@gmail.com</a></div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<footer>
+  <div class="f-logo">NM<span>.</span></div>
+  <p>© 2026 Njabulo Mahumane · Cape Town, South Africa</p>
+</footer>
+
+<script>
+
+// ── IMPROVED iframe resize ──────────────────────────────────────────────────
+// Retries 3 times with increasing delays to account for fonts/images loading
+function resizeIframe(iframe) {
+  function attempt() {
+    try {
+      var doc = iframe.contentDocument || iframe.contentWindow.document;
+      var h = Math.max(
+        doc.documentElement.scrollHeight,
+        doc.documentElement.offsetHeight,
+        doc.body ? doc.body.scrollHeight : 0,
+        doc.body ? doc.body.offsetHeight : 0
+      );
+      if (h > 100) {
+        iframe.style.height = h + 'px';
+      }
+    } catch(e) {}
+  }
+  attempt();
+  setTimeout(attempt, 300);
+  setTimeout(attempt, 800);
+  setTimeout(attempt, 1800);
+}
+
+// Also resize all iframes once page fonts have loaded
+if (document.fonts && document.fonts.ready) {
+  document.fonts.ready.then(function() {
+    document.querySelectorAll('.ge-frame').forEach(function(iframe) {
+      resizeIframe(iframe);
+    });
+  });
+}
+
+// Scroll bar
+window.addEventListener('scroll', function() {
+  var d = document.documentElement;
+  document.getElementById('scrollBar').style.width = ((d.scrollTop / (d.scrollHeight - d.clientHeight)) * 100) + '%';
+  if (document.getElementById('articleView').style.display !== 'none') {
+    var art = document.querySelector('.article-main');
+    if (art) {
+      var rect = art.getBoundingClientRect();
+      var total = art.offsetHeight - window.innerHeight;
+      var scrolled = Math.max(0, -rect.top);
+      document.getElementById('rpFill').style.width = Math.min(100, (scrolled / total) * 100) + '%';
+    }
+  }
+});
+
+// Open/close article
+function openArticle() {
+  document.getElementById('blogListing').style.display = 'none';
+  document.getElementById('articleView').style.display = 'block';
+  window.scrollTo(0, 0);
+  // Trigger resize after article becomes visible
+  setTimeout(function() {
+    document.querySelectorAll('.ge-frame').forEach(function(iframe) {
+      resizeIframe(iframe);
+    });
+  }, 100);
+}
+function closeArticle() {
+  document.getElementById('blogListing').style.display = 'block';
+  document.getElementById('articleView').style.display = 'none';
+  window.scrollTo(0, 0);
+}
+
+// Star rating
+var currentRating = 0;
+function setRating(v) {
+  currentRating = v;
+  document.querySelectorAll('.star').forEach(function(s, i) {
+    s.classList.toggle('active', i < v);
+  });
+}
+
+// Submit comment
+function submitComment() {
+  var name = document.getElementById('cfName').value.trim();
+  var comment = document.getElementById('cfComment').value.trim();
+  if (!name || !comment) { alert('Please enter your name and a comment.'); return; }
+  var stars = currentRating > 0 ? '⭐'.repeat(currentRating) : '';
+  var initials = name.split(' ').map(function(w){ return w[0]; }).join('').toUpperCase().slice(0, 2);
+  var colors = ['#e8a020','#4d8fff','#4caf87','#9b7fe8','#c45c3a'];
+  var color = colors[Math.floor(Math.random() * colors.length)];
+  var now = new Date();
+  var dateStr = now.toLocaleDateString('en-GB', {day:'numeric',month:'short',year:'numeric'});
+  var newComment = document.createElement('div');
+  newComment.className = 'comment';
+  newComment.style.opacity = '0'; newComment.style.transform = 'translateY(16px)';
+  newComment.innerHTML = '<div class="comment-header"><div class="comment-author"><div class="comment-avatar" style="background:' + color + ';">' + initials + '</div><div><div class="comment-name">' + name + '</div><div class="comment-date">' + dateStr + '</div></div></div><div class="comment-stars">' + stars + '</div></div><p class="comment-text">' + comment + '</p><span class="comment-reply" onclick="focusReply(this)">↩ Reply</span>';
+  document.getElementById('commentsList').appendChild(newComment);
+  setTimeout(function(){ newComment.style.transition = 'all .4s ease'; newComment.style.opacity = '1'; newComment.style.transform = 'translateY(0)'; }, 50);
+  var existing = document.getElementById('commentsList').children.length;
+  document.getElementById('commentCount').textContent = existing + ' comment' + (existing !== 1 ? 's' : '');
+  document.getElementById('cfName').value = '';
+  document.getElementById('cfEmail').value = '';
+  document.getElementById('cfComment').value = '';
+  currentRating = 0;
+  document.querySelectorAll('.star').forEach(function(s){ s.classList.remove('active'); });
+  var msg = document.getElementById('successMsg');
+  msg.style.display = 'block';
+  setTimeout(function(){ msg.style.display = 'none'; }, 4000);
+}
+
+function focusReply(el) {
+  document.getElementById('cfComment').focus();
+  document.getElementById('cfComment').placeholder = 'Replying to comment...';
+}
+
+// TOC active
+var tocLinks = document.querySelectorAll('.toc-a');
+var artHeadings = document.querySelectorAll('#articleView h2[id]');
+var tocObs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      var id = entry.target.getAttribute('id');
+      tocLinks.forEach(function(a) {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+}, {rootMargin:'-20% 0px -70% 0px'});
+artHeadings.forEach(function(h){ tocObs.observe(h); });
+
+</script>
+<script id="cursor-global-js">
+(function(){
+  var dot=document.getElementById("gCursorDot"),ring=document.getElementById("gCursorRing");
+  if(!dot||!ring)return;
+  var mx=0,my=0,rx=0,ry=0;
+  document.addEventListener("mousemove",function(e){mx=e.clientX;my=e.clientY;dot.style.left=mx+"px";dot.style.top=my+"px";});
+  (function ani(){rx+=(mx-rx)*.13;ry+=(my-ry)*.13;ring.style.left=rx+"px";ring.style.top=ry+"px";requestAnimationFrame(ani);})();
+  document.querySelectorAll("a,button,[onclick]").forEach(function(el){
+    el.addEventListener("mouseenter",function(){document.body.classList.add("g-cursor-hover");});
+    el.addEventListener("mouseleave",function(){document.body.classList.remove("g-cursor-hover");});
+  });
+  document.body.style.cursor="none";
+})();
+</script>
+</body>
+</html>

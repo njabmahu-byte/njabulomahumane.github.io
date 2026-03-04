@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>14-Day Skill Launch Plan</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    background: #0d0d0f;
+    overflow: hidden;
+    height: auto;
+  }
+  .card {
+    background: #0d0d0f;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 44px 60px 44px;
+  }
+  .title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 62px;
+    color: #f0f0f0;
+    letter-spacing: 3px;
+    text-align: center;
+    line-height: 1;
+  }
+  .subtitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    color: #666;
+    font-weight: 300;
+    margin-top: 10px;
+    letter-spacing: 0.3px;
+  }
+
+  /* Timeline */
+  .timeline {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0;
+    margin-top: 36px;
+  }
+
+  /* Progress bar at top */
+  .progress-track {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .progress-line {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #1e1e26;
+    z-index: 0;
+  }
+  .day-markers {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1;
+  }
+  .day-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #2a2a32;
+    border: 2px solid #0d0d0f;
+    flex-shrink: 0;
+  }
+  .day-dot.p1 { background: #ff9f43; }
+  .day-dot.p2 { background: #48dbfb; }
+  .day-dot.p3 { background: #7b68ee; }
+
+  /* Three phase blocks */
+  .phases {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .phase {
+    border-radius: 14px;
+    padding: 28px 28px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .phase::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    border-radius: 14px 14px 0 0;
+  }
+
+  .phase-1 { background: #17100a; border: 1px solid #2e1f10; }
+  .phase-1::before { background: #ff9f43; }
+
+  .phase-2 { background: #0a1519; border: 1px solid #102030; }
+  .phase-2::before { background: #48dbfb; }
+
+  .phase-3 { background: #100f1a; border: 1px solid #1e1a2e; }
+  .phase-3::before { background: #7b68ee; }
+
+  .phase-days {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    white-space: nowrap;
+    padding-right: 44px; /* space for the number badge */
+  }
+  .p1 .phase-days { color: #ff9f43; }
+  .p2 .phase-days { color: #48dbfb; }
+  .p3 .phase-days { color: #7b68ee; }
+
+  .phase-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    letter-spacing: 2px;
+    line-height: 1;
+    margin-bottom: 6px;
+    color: #f0f0f0;
+  }
+
+  .phase-goal {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: #888;
+    font-weight: 300;
+    font-style: italic;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .bullet-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .bullet-list li {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13.5px;
+    color: #bbb;
+    font-weight: 400;
+    line-height: 1.4;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .bullet-list li::before {
+    content: '→';
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .p1 .bullet-list li::before { color: #ff9f43; }
+  .p2 .bullet-list li::before { color: #48dbfb; }
+  .p3 .bullet-list li::before { color: #7b68ee; }
+
+  /* FIX: Added display:flex + centering so the number sits properly inside the circle */
+  .phase-label {
+    position: absolute;
+    top: 16px;
+    right: 10px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+  .p1 .phase-label { background: rgba(255,159,67,0.15); color: #ff9f43; border: 1px solid rgba(255,159,67,0.3); }
+  .p2 .phase-label { background: rgba(72,219,251,0.12); color: #48dbfb; border: 1px solid rgba(72,219,251,0.25); }
+  .p3 .phase-label { background: rgba(123,104,238,0.15); color: #7b68ee; border: 1px solid rgba(123,104,238,0.3); }
+
+  .footer-rule {
+    margin-top: 28px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .footer-rule::before, .footer-rule::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #1e1e26;
+  }
+  .footer-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    color: #e8ff47;
+    letter-spacing: 2px;
+    white-space: nowrap;
+  }
+</style>
+<style id="cursor-global">
+.g-cursor-dot{position:fixed;width:8px;height:8px;background:#e8a020;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:transform .1s,background .2s;}
+.g-cursor-ring{position:fixed;width:36px;height:36px;border:2px solid rgba(232,160,32,0.55);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);}
+body.g-cursor-hover .g-cursor-dot{transform:translate(-50%,-50%) scale(2);background:#fff;}
+body.g-cursor-hover .g-cursor-ring{width:52px;height:52px;}
+@media(hover:none){.g-cursor-dot,.g-cursor-ring{display:none;}}
+</style>
+</head>
+<body>
+<div class="g-cursor-dot" id="gCursorDot"></div><div class="g-cursor-ring" id="gCursorRing"></div>
+<div class="card">
+  <div class="title">YOUR 14-DAY SKILL LAUNCH PLAN</div>
+  <div class="subtitle">A concrete structure for your next skill. Use it, adapt it, break it where it doesn't fit.</div>
+
+  <div class="timeline">
+    <div class="phases">
+
+      <!-- Phase 1 -->
+      <div class="phase phase-1 p1">
+        <div class="phase-label">1</div>
+        <div class="phase-days">Days 1 — 3</div>
+        <div class="phase-title">Explore & Scope</div>
+        <div class="phase-goal">Goal: understand the landscape and define your first project</div>
+        <ul class="bullet-list">
+          <li>Find the 20% of the skill that gives 80% of results — ask ChatGPT: "What are the core concepts to start with [skill]?"</li>
+          <li>Watch or read 2–3 high-quality overviews. No more.</li>
+          <li>Define one specific thing you'll build by Day 7</li>
+          <li>Create your one-page summary of key concepts</li>
+        </ul>
+      </div>
+
+      <!-- Phase 2 -->
+      <div class="phase phase-2 p2">
+        <div class="phase-label">2</div>
+        <div class="phase-days">Days 4 — 7</div>
+        <div class="phase-title">Build Something Real</div>
+        <div class="phase-goal">Goal: create your first output, regardless of quality</div>
+        <ul class="bullet-list">
+          <li>Open the tool. No tutorials running in the background.</li>
+          <li>Build the thing you defined. When stuck, search for that specific problem — not a general tutorial.</li>
+          <li>Finish it. Even if it's bad. Especially if it's bad.</li>
+          <li>Show it to someone — peer, mentor, or internet stranger</li>
+        </ul>
+      </div>
+
+      <!-- Phase 3 -->
+      <div class="phase phase-3 p3">
+        <div class="phase-label">3</div>
+        <div class="phase-days">Days 8 — 14</div>
+        <div class="phase-title">Teach Someone Else</div>
+        <div class="phase-goal">Goal: lock in learning through explanation</div>
+        <ul class="bullet-list">
+          <li>Find one person to walk through it with — a colleague, friend, or online community</li>
+          <li>Prepare a 10-minute explanation of what you built and learned</li>
+          <li>Answer their questions — their confusion is your gap map</li>
+          <li>Update your one-page summary with what you missed</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-rule">
+      <span class="footer-text">Bad work today enables good work tomorrow.</span>
+    </div>
+  </div>
+</div>
+<script id="cursor-global-js">
+(function(){
+  var dot=document.getElementById("gCursorDot"),ring=document.getElementById("gCursorRing");
+  if(!dot||!ring)return;
+  var mx=0,my=0,rx=0,ry=0;
+  document.addEventListener("mousemove",function(e){mx=e.clientX;my=e.clientY;dot.style.left=mx+"px";dot.style.top=my+"px";});
+  (function ani(){rx+=(mx-rx)*.13;ry+=(my-ry)*.13;ring.style.left=rx+"px";ring.style.top=ry+"px";requestAnimationFrame(ani);})();
+  document.querySelectorAll("a,button,[onclick]").forEach(function(el){
+    el.addEventListener("mouseenter",function(){document.body.classList.add("g-cursor-hover");});
+    el.addEventListener("mouseleave",function(){document.body.classList.remove("g-cursor-hover");});
+  });
+  document.body.style.cursor="none";
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Instagram Carousel — Njabulo Mahumane</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0d0d0d;color:#f0ede8;font-family:'DM Sans',sans-serif;min-height:100vh;}
+.back{display:inline-flex;align-items:center;gap:8px;padding:28px 40px;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(240,237,232,.55);text-decoration:none;transition:color .2s;}
+.back:hover{color:#e8a020;}
+.hero{padding:20px 40px 60px;max-width:900px;}
+.tag{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#e8a020;margin-bottom:16px;}
+.title{font-family:'Syne',sans-serif;font-size:clamp(36px,6vw,72px);font-weight:800;line-height:.95;letter-spacing:-.02em;margin-bottom:20px;}
+.subtitle{color:rgba(240,237,232,.6);font-size:17px;line-height:1.7;max-width:560px;}
+
+/* Carousel viewer */
+.carousel-section{padding:40px;max-width:1100px;}
+.carousel-label{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(240,237,232,.4);margin-bottom:20px;}
+.carousel-viewer{display:flex;align-items:center;gap:32px;}
+.carousel-btn{width:48px;height:48px;border-radius:50%;background:#1a1a1a;border:1px solid rgba(255,255,255,.08);color:#e8a020;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .2s;}
+.carousel-btn:hover{background:#e8a020;color:#0d0d0d;}
+.slide-wrap{flex:1;display:flex;justify-content:center;}
+.slide{width:360px;height:450px;border-radius:16px;overflow:hidden;position:relative;flex-shrink:0;}
+
+/* Individual slide designs */
+.slide-1{background:linear-gradient(145deg,#1a1a2e,#16213e);border:1px solid rgba(61,127,255,.2);}
+.slide-2{background:linear-gradient(145deg,#1a1209,#2a1f05);border:1px solid rgba(232,160,32,.2);}
+.slide-3,.slide-5,.slide-7{background:linear-gradient(145deg,#111,#1a1a1a);border:1px solid rgba(255,255,255,.06);}
+.slide-4,.slide-6{background:linear-gradient(145deg,#0d1a0d,#0a1a12);border:1px solid rgba(61,255,127,.1);}
+
+.slide-inner{padding:36px;height:100%;display:flex;flex-direction:column;}
+.slide-num{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;color:rgba(240,237,232,.3);margin-bottom:auto;}
+.slide-eyebrow{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#3d7fff;margin-bottom:12px;}
+.slide-headline{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;line-height:1.1;letter-spacing:-.01em;margin-bottom:16px;}
+.slide-headline .hl{color:#e8a020;}
+.slide-body{color:rgba(240,237,232,.65);font-size:14px;line-height:1.65;flex:1;}
+.slide-cta{margin-top:20px;font-family:'Syne',sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#e8a020;}
+.slide-brand{font-family:'Syne',sans-serif;font-size:13px;font-weight:800;letter-spacing:.06em;color:rgba(240,237,232,.4);margin-bottom:16px;}
+
+/* Cover slide */
+.slide-1 .slide-inner{justify-content:flex-end;background:linear-gradient(to top,rgba(0,0,0,.6) 0%,transparent 60%);}
+.cover-bg{position:absolute;inset:0;background:linear-gradient(135deg,#1a1a2e 0%,#0d2040 50%,#1a0a30 100%);}
+.cover-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(61,127,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(61,127,255,.05) 1px,transparent 1px);background-size:30px 30px;}
+.cover-blob{position:absolute;width:200px;height:200px;background:radial-gradient(circle,rgba(232,160,32,.15),transparent 70%);top:20%;right:10%;border-radius:50%;}
+.cover-content{position:relative;z-index:1;padding:36px;display:flex;flex-direction:column;height:100%;}
+.cover-tag{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#3d7fff;margin-bottom:auto;padding-top:10px;}
+.cover-save{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(240,237,232,.4);margin-bottom:12px;}
+.cover-title{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;line-height:1.05;letter-spacing:-.02em;margin-bottom:16px;}
+.cover-title span{color:#e8a020;}
+.cover-sub{color:rgba(240,237,232,.6);font-size:13px;line-height:1.6;}
+
+/* Stat slide */
+.stat-row{display:flex;gap:16px;margin:16px 0;}
+.stat-box{flex:1;background:rgba(232,160,32,.08);border:1px solid rgba(232,160,32,.2);border-radius:10px;padding:14px;text-align:center;}
+.stat-box .n{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;color:#e8a020;}
+.stat-box .l{font-size:11px;color:rgba(240,237,232,.5);margin-top:4px;}
+
+/* Tips slide */
+.tip-list{display:flex;flex-direction:column;gap:10px;margin-top:8px;}
+.tip-item{display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.5;color:rgba(240,237,232,.7);}
+.tip-icon{width:20px;height:20px;border-radius:50%;background:#e8a020;display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0;color:#0d0d0d;font-weight:700;}
+
+/* Indicators */
+.indicators{display:flex;justify-content:center;gap:8px;margin-top:24px;}
+.dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.15);cursor:pointer;transition:background .2s,transform .2s;}
+.dot.active{background:#e8a020;transform:scale(1.3);}
+
+/* Rationale section */
+.rationale{padding:40px;max-width:900px;}
+.rationale h2{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;margin-bottom:24px;letter-spacing:-.01em;}
+.rat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;}
+.rat-card{background:#141414;border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:24px;}
+.rat-card h3{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:#e8a020;margin-bottom:8px;}
+.rat-card p{font-size:13px;color:rgba(240,237,232,.6);line-height:1.6;}
+</style>
+</head>
+<body>
+
+<a class="back" href="../index.html">← Back to Portfolio</a>
+
+<div class="hero">
+  <div class="tag">Instagram Carousel · Social Content</div>
+  <h1 class="title">7-Slide Instagram<br><span style="color:#e8a020">Carousel</span></h1>
+  <p class="subtitle">An educational carousel targeting young South African professionals. Topic: <em>5 Digital Marketing Skills That Will Get You Hired in 2026.</em> Built around a thumb-stopping hook, progressive value delivery, and a save-and-share CTA on the final slide.</p>
+</div>
+
+<div class="carousel-section">
+  <div class="carousel-label">Interactive Preview — Click arrows to navigate</div>
+  <div class="carousel-viewer">
+    <button class="carousel-btn" id="prevBtn">‹</button>
+    <div class="slide-wrap">
+
+      <!-- SLIDE 1: COVER -->
+      <div class="slide slide-1" id="slide-0" style="display:flex;">
+        <div class="cover-bg"></div>
+        <div class="cover-grid"></div>
+        <div class="cover-blob"></div>
+        <div class="cover-content">
+          <div class="cover-tag">Digital Marketing · 2026</div>
+          <div>
+            <div class="cover-save">SAVE THIS 👆</div>
+            <div class="cover-title">5 Skills That'll<br>Get You <span>Hired</span><br>in Digital Marketing</div>
+            <div class="cover-sub">Most people focus on the wrong things. Here's what recruiters are actually looking for right now.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 2 -->
+      <div class="slide slide-2" id="slide-1" style="display:none;">
+        <div class="slide-inner">
+          <div class="slide-num">02 / 07</div>
+          <div>
+            <div class="slide-eyebrow" style="color:#e8a020">The Reality Check</div>
+            <div class="slide-headline">The market has <span class="hl">changed.</span></div>
+            <div class="slide-body">Digital marketing jobs in SA grew 34% in 2025. But so did competition. The difference between getting hired and getting ignored? The skills you can actually prove.</div>
+          </div>
+          <div class="stat-row">
+            <div class="stat-box"><div class="n">34%</div><div class="l">Job growth</div></div>
+            <div class="stat-box"><div class="n">3×</div><div class="l">More applicants</div></div>
+          </div>
+          <div class="slide-cta">Swipe to see what works →</div>
+        </div>
+      </div>
+
+      <!-- SLIDE 3 -->
+      <div class="slide slide-3" id="slide-2" style="display:none;">
+        <div class="slide-inner">
+          <div class="slide-num">03 / 07</div>
+          <div>
+            <div class="slide-eyebrow">Skill #1</div>
+            <div class="slide-headline">Short-Form <span class="hl">Video</span> Strategy</div>
+            <div class="slide-body">Not just posting on TikTok — understanding hooks, retention, and how to brief a creator. Brands that nail short-form get 3× more organic reach than those that don't.</div>
+          </div>
+          <div class="tip-list">
+            <div class="tip-item"><div class="tip-icon">✓</div>Write scroll-stopping hooks</div>
+            <div class="tip-item"><div class="tip-icon">✓</div>Understand platform-native formats</div>
+            <div class="tip-item"><div class="tip-icon">✓</div>Brief creators with clear objectives</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 4 -->
+      <div class="slide slide-4" id="slide-3" style="display:none;">
+        <div class="slide-inner">
+          <div class="slide-num">04 / 07</div>
+          <div>
+            <div class="slide-eyebrow" style="color:#27ae60">Skill #2</div>
+            <div class="slide-headline">Data Literacy &amp; <span class="hl">GA4</span></div>
+            <div class="slide-body">You don't need to be a data scientist. But you do need to read a GA4 report, identify what's working, and explain it to a non-technical manager. That alone puts you ahead of 60% of applicants.</div>
+          </div>
+          <div class="tip-list" style="margin-top:16px;">
+            <div class="tip-item"><div class="tip-icon" style="background:#27ae60">✓</div>Set up goals and conversion tracking</div>
+            <div class="tip-item"><div class="tip-icon" style="background:#27ae60">✓</div>Build basic dashboards</div>
+            <div class="tip-item"><div class="tip-icon" style="background:#27ae60">✓</div>Present insights, not just data</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 5 -->
+      <div class="slide slide-5" id="slide-4" style="display:none;">
+        <div class="slide-inner">
+          <div class="slide-num">05 / 07</div>
+          <div>
+            <div class="slide-eyebrow">Skill #3 & #4</div>
+            <div class="slide-headline">SEO + <span class="hl">Paid Ads</span></div>
+            <div class="slide-body">Organic reach is declining. Knowing how to run a Meta or Google Ads campaign — even with a small budget — is now a baseline expectation. Pair it with basic SEO and you're unstoppable.</div>
+          </div>
+          <div class="stat-row" style="margin-top:16px;">
+            <div class="stat-box" style="background:rgba(61,127,255,.08);border-color:rgba(61,127,255,.2);">
+              <div class="n" style="color:#3d7fff;font-size:18px;">SEO</div>
+              <div class="l">Long-term traffic</div>
+            </div>
+            <div class="stat-box">
+              <div class="n" style="font-size:18px;">PPC</div>
+              <div class="l">Instant visibility</div>
+            </div>
+          </div>
+          <div class="slide-cta">Both. Always both.</div>
+        </div>
+      </div>
+
+      <!-- SLIDE 6 -->
+      <div class="slide slide-4" id="slide-5" style="display:none;">
+        <div class="slide-inner">
+          <div class="slide-num">06 / 07</div>
+          <div>
+            <div class="slide-eyebrow" style="color:#27ae60">Skill #5</div>
+            <div class="slide-headline">Copywriting That <span class="hl">Converts</span></div>
+            <div class="slide-body">Headlines, CTAs, ad copy, email subject lines — the ability to write words that make people act is the highest-leverage skill in digital marketing. It touches everything.</div>
+          </div>
+          <div class="tip-list" style="margin-top:16px;">
+            <div class="tip-item"><div class="tip-icon" style="background:#27ae60">✓</div>Write benefit-first headlines</div>
+            <div class="tip-item"><div class="tip-icon" style="background:#27ae60">✓</div>Use social proof naturally</div>
+            <div class="tip-item"><div class="tip-icon" style="background:#27ae60">✓</div>A/B test your CTAs</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 7: CTA -->
+      <div class="slide slide-2" id="slide-6" style="display:none;">
+        <div class="slide-inner">
+          <div class="slide-num">07 / 07</div>
+          <div class="slide-brand">NJABULO MAHUMANE</div>
+          <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
+            <div class="slide-headline" style="font-size:26px;">Save this. Share it with someone who needs it. <span class="hl">Then go build something.</span></div>
+          </div>
+          <div style="display:flex;gap:10px;margin-bottom:16px;">
+            <div style="flex:1;background:rgba(232,160,32,.1);border:1px solid rgba(232,160,32,.3);border-radius:8px;padding:12px;text-align:center;font-family:'Syne',sans-serif;font-size:12px;font-weight:700;">💾 SAVE</div>
+            <div style="flex:1;background:rgba(232,160,32,.1);border:1px solid rgba(232,160,32,.3);border-radius:8px;padding:12px;text-align:center;font-family:'Syne',sans-serif;font-size:12px;font-weight:700;">📤 SHARE</div>
+          </div>
+          <div style="font-size:12px;color:rgba(240,237,232,.4);">Follow for more marketing insights ✦</div>
+        </div>
+      </div>
+
+    </div>
+    <button class="carousel-btn" id="nextBtn">›</button>
+  </div>
+  <div class="indicators" id="indicators">
+    <div class="dot active" data-i="0"></div>
+    <div class="dot" data-i="1"></div>
+    <div class="dot" data-i="2"></div>
+    <div class="dot" data-i="3"></div>
+    <div class="dot" data-i="4"></div>
+    <div class="dot" data-i="5"></div>
+    <div class="dot" data-i="6"></div>
+  </div>
+</div>
+
+<div class="rationale">
+  <h2>Strategic Rationale</h2>
+  <div class="rat-grid">
+    <div class="rat-card">
+      <h3>Target Audience</h3>
+      <p>SA students and junior professionals aged 20–28 looking to break into or advance in digital marketing. Platform: Instagram Reels/Carousels.</p>
+    </div>
+    <div class="rat-card">
+      <h3>Hook Strategy</h3>
+      <p>Slide 1 uses a "save this" prompt and a specific promise — "5 skills that'll get you hired." Specificity drives saves, which signals high-quality content to the algorithm.</p>
+    </div>
+    <div class="rat-card">
+      <h3>Value Architecture</h3>
+      <p>Each slide delivers one complete idea. No padding. Progressive revelation keeps users swiping, and the final CTA payoff rewards their attention.</p>
+    </div>
+    <div class="rat-card">
+      <h3>Visual System</h3>
+      <p>Dark editorial colour palette. Amber and blue accents for hierarchy. Consistent slide numbering builds trust and completion. Brand signature on final slide only — not distracting early.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+let current = 0;
+const total = 7;
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.dot');
+function goTo(n) {
+  slides[current].style.display = 'none';
+  dots[current].classList.remove('active');
+  current = (n + total) % total;
+  slides[current].style.display = 'flex';
+  dots[current].classList.add('active');
+}
+document.getElementById('prevBtn').addEventListener('click', () => goTo(current - 1));
+document.getElementById('nextBtn').addEventListener('click', () => goTo(current + 1));
+dots.forEach(d => d.addEventListener('click', () => goTo(parseInt(d.dataset.i))));
+</script>
+</body>
+</html>

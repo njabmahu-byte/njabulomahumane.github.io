@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TikTok Storyboards — Njabulo Mahumane</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0d0d0d;color:#f0ede8;font-family:'DM Sans',sans-serif;}
+.back{display:inline-flex;align-items:center;gap:8px;padding:28px 40px;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(240,237,232,.55);text-decoration:none;transition:color .2s;}
+.back:hover{color:#e8a020;}
+.hero{padding:20px 40px 60px;max-width:900px;}
+.tag{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#e8a020;margin-bottom:16px;}
+.title{font-family:'Syne',sans-serif;font-size:clamp(36px,6vw,72px);font-weight:800;line-height:.95;letter-spacing:-.02em;margin-bottom:20px;}
+.subtitle{color:rgba(240,237,232,.6);font-size:17px;line-height:1.7;max-width:560px;}
+
+.video-section{padding:0 40px 80px;max-width:1200px;}
+.video-section + .video-section{padding-top:0;}
+.vs-header{margin-bottom:40px;}
+.vs-num{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#e8a020;margin-bottom:8px;}
+.vs-title{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;letter-spacing:-.01em;margin-bottom:8px;}
+.vs-meta{font-size:14px;color:rgba(240,237,232,.55);}
+
+/* Storyboard frames strip */
+.storyboard{display:flex;gap:16px;overflow-x:auto;padding-bottom:16px;margin-bottom:40px;}
+.storyboard::-webkit-scrollbar{height:4px;}.storyboard::-webkit-scrollbar-track{background:#1a1a1a;}.storyboard::-webkit-scrollbar-thumb{background:#e8a020;border-radius:2px;}
+
+.frame{flex-shrink:0;width:160px;}
+.frame-screen{width:160px;height:284px;border-radius:12px;border:1px solid rgba(255,255,255,.08);overflow:hidden;position:relative;margin-bottom:10px;}
+.frame-num{position:absolute;top:8px;left:8px;font-family:'Syne',sans-serif;font-size:10px;font-weight:700;background:rgba(0,0,0,.7);padding:3px 7px;border-radius:4px;letter-spacing:.06em;}
+.frame-time{position:absolute;top:8px;right:8px;font-family:'Syne',sans-serif;font-size:10px;font-weight:700;background:rgba(232,160,32,.8);color:#0d0d0d;padding:3px 7px;border-radius:4px;}
+.frame-text-overlay{position:absolute;bottom:0;left:0;right:0;padding:12px;background:linear-gradient(transparent,rgba(0,0,0,.85));}
+.frame-overlay-text{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;line-height:1.3;text-align:center;}
+.frame-caption{font-size:11px;color:rgba(240,237,232,.5);line-height:1.5;}
+.frame-scene{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;color:rgba(240,237,232,.35);letter-spacing:.06em;margin-bottom:4px;text-transform:uppercase;}
+
+/* Frame backgrounds */
+.f-hook{background:linear-gradient(145deg,#1a0a2e,#0d1a40);display:flex;align-items:center;justify-content:center;}
+.f-hook .icon{font-size:48px;}
+.f-problem{background:linear-gradient(145deg,#1a0505,#2a1010);display:flex;align-items:center;justify-content:center;}
+.f-solution{background:linear-gradient(145deg,#0a1a0a,#0d2010);display:flex;align-items:center;justify-content:center;}
+.f-steps{background:linear-gradient(145deg,#0d1520,#1a1209);}
+.f-result{background:linear-gradient(145deg,#1a1a0d,#2a2010);display:flex;align-items:center;justify-content:center;}
+.f-cta{background:linear-gradient(145deg,#1a0d05,#2a1a00);}
+.f-intro{background:linear-gradient(145deg,#0d0d0d,#1a1a1a);display:flex;align-items:center;justify-content:center;}
+.f-stat{background:linear-gradient(145deg,#0d1a2e,#1a0a2e);display:flex;align-items:center;justify-content:center;}
+.f-proof{background:linear-gradient(145deg,#0a1a0a,#0d2010);display:flex;align-items:center;justify-content:center;}
+.f-reveal{background:linear-gradient(145deg,#1a1a0a,#2a2810);}
+
+.step-lines{padding:12px;display:flex;flex-direction:column;gap:8px;}
+.step-line{height:3px;border-radius:2px;background:rgba(232,160,32,.3);}
+.step-line.done{background:#e8a020;}
+
+.big-stat{font-family:'Syne',sans-serif;font-size:48px;font-weight:800;color:#e8a020;text-align:center;}
+.big-stat-sub{font-size:11px;color:rgba(240,237,232,.5);text-align:center;font-family:'Syne',sans-serif;}
+
+.checkmark{font-size:52px;}
+
+/* Script panel */
+.script-panel{background:#141414;border:1px solid rgba(255,255,255,.06);border-radius:16px;overflow:hidden;margin-bottom:40px;}
+.script-header{padding:20px 28px;border-bottom:1px solid rgba(255,255,255,.06);font-family:'Syne',sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(240,237,232,.4);display:flex;gap:32px;}
+.script-col{flex:1;}
+.script-row{display:grid;grid-template-columns:60px 1fr 1fr 1fr;gap:0;border-bottom:1px solid rgba(255,255,255,.04);}
+.script-row:last-child{border-bottom:none;}
+.script-cell{padding:16px 20px;font-size:13px;line-height:1.55;color:rgba(240,237,232,.7);}
+.script-cell:first-child{font-family:'Syne',sans-serif;font-weight:700;font-size:12px;color:#e8a020;display:flex;align-items:flex-start;justify-content:center;padding-top:18px;}
+.script-cell strong{color:#f0ede8;}
+.script-header-row{display:grid;grid-template-columns:60px 1fr 1fr 1fr;background:#1a1a1a;}
+.script-header-cell{padding:12px 20px;font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(240,237,232,.35);}
+
+/* Production notes */
+.prod-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-bottom:60px;}
+.prod-card{background:#141414;border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:20px;}
+.prod-card h4{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#e8a020;margin-bottom:8px;}
+.prod-card p{font-size:13px;color:rgba(240,237,232,.6);line-height:1.55;}
+
+.section-divider{height:1px;background:rgba(255,255,255,.06);margin:0 40px 60px;}
+</style>
+</head>
+<body>
+
+<a class="back" href="../index.html">← Back to Portfolio</a>
+
+<div class="hero">
+  <div class="tag">TikTok · Video Storyboards</div>
+  <h1 class="title">TikTok<br><span style="color:#e8a020">Storyboards</span></h1>
+  <p class="subtitle">Two storyboarded TikTok concepts for <strong>SkillBridge SA</strong> — a fictional digital marketing short course. Each storyboard includes scene-by-scene breakdowns, on-screen text overlays, voiceover script, camera direction, and audio mood notes.</p>
+</div>
+
+<!-- VIDEO 1 -->
+<div class="video-section">
+  <div class="vs-header">
+    <div class="vs-num">Video 01 / 02</div>
+    <div class="vs-title">"The 3 Reasons You're Not Getting Hired" — Problem/Solution Hook</div>
+    <div class="vs-meta">Duration: ~25 seconds &nbsp;·&nbsp; Format: TikTok 9:16 &nbsp;·&nbsp; Style: Talking-head + text overlay &nbsp;·&nbsp; Objective: Awareness / Top-of-funnel</div>
+  </div>
+
+  <div class="storyboard">
+    <!-- Frame 1 -->
+    <div class="frame">
+      <div class="frame-screen f-hook">
+        <div class="frame-num">01</div>
+        <div class="frame-time">0:00–0:03</div>
+        <div class="icon">🎯</div>
+        <div class="frame-text-overlay">
+          <div class="frame-overlay-text">3 reasons you're not getting hired in marketing</div>
+        </div>
+      </div>
+      <div class="frame-scene">HOOK</div>
+      <div class="frame-caption">Bold text appears instantly. No intro.</div>
+    </div>
+    <!-- Frame 2 -->
+    <div class="frame">
+      <div class="frame-screen f-problem">
+        <div class="frame-num">02</div>
+        <div class="frame-time">0:03–0:08</div>
+        <div class="icon">😫</div>
+        <div class="frame-text-overlay">
+          <div class="frame-overlay-text">Reason #1: Your portfolio is empty (or fake)</div>
+        </div>
+      </div>
+      <div class="frame-scene">PROBLEM 1</div>
+      <div class="frame-caption">Creator looks directly at camera, frustrated expression.</div>
+    </div>
+    <!-- Frame 3 -->
+    <div class="frame">
+      <div class="frame-screen f-problem">
+        <div class="frame-num">03</div>
+        <div class="frame-time">0:08–0:12</div>
+        <div class="icon">📊</div>
+        <div class="frame-text-overlay">
+          <div class="frame-overlay-text">Reason #2: You can't read a single analytics report</div>
+        </div>
+      </div>
+      <div class="frame-scene">PROBLEM 2</div>
+      <div class="frame-caption">Cut to screen recording mock of GA4 dashboard.</div>
+    </div>
+    <!-- Frame 4 -->
+    <div class="frame">
+      <div class="frame-screen f-problem">
+        <div class="frame-num">04</div>
+        <div class="frame-time">0:12–0:16</div>
+        <div class="icon">✍️</div>
+        <div class="frame-text-overlay">
+          <div class="frame-overlay-text">Reason #3: Your copy doesn't make anyone want to act</div>
+        </div>
+      </div>
+      <div class="frame-scene">PROBLEM 3</div>
+      <div class="frame-caption">Cut back to creator. Lean forward for emphasis.</div>
+    </div>
+    <!-- Frame 5 -->
+    <div class="frame">
+      <div class="frame-screen f-solution">
+        <div class="frame-num">05</div>
+        <div class="frame-time">0:16–0:21</div>
+        <div class="checkmark">✅</div>
+        <div class="frame-text-overlay">
+          <div class="frame-overlay-text">SkillBridge SA fixed all 3 for me in 12 weeks</div>
+        </div>
+      </div>
+      <div class="frame-scene">PIVOT</div>
+      <div class="frame-caption">Tone shift. Warm lighting. Creator smiles.</div>
+    </div>
+    <!-- Frame 6 -->
+    <div class="frame">
+      <div class="frame-screen f-cta">
+        <div class="frame-num">06</div>
+        <div class="frame-time">0:21–0:25</div>
+        <div class="step-lines" style="padding:20px 16px;">
+          <div style="font-family:'Syne',sans-serif;font-size:14px;font-weight:800;text-align:center;margin-bottom:12px;color:#e8a020;">Link in bio 🔗</div>
+          <div style="font-size:12px;text-align:center;color:rgba(240,237,232,.6);">April cohort closing soon</div>
+        </div>
+        <div class="frame-text-overlay">
+          <div class="frame-overlay-text">Comment "INFO" for the link 👇</div>
+        </div>
+      </div>
+      <div class="frame-scene">CTA</div>
+      <div class="frame-caption">Comment CTA drives engagement signal.</div>
+    </div>
+  </div>
+
+  <!-- Script Table -->
+  <div class="script-panel">
+    <div class="script-header-row">
+      <div class="script-header-cell">#</div>
+      <div class="script-header-cell">Voiceover / Script</div>
+      <div class="script-header-cell">On-Screen Text</div>
+      <div class="script-header-cell">Camera / Direction</div>
+    </div>
+    <div class="script-row">
+      <div class="script-cell">01</div>
+      <div class="script-cell"><strong>"Stop applying for marketing jobs until you've fixed these 3 things."</strong></div>
+      <div class="script-cell">3 REASONS YOU'RE NOT GETTING HIRED IN MARKETING</div>
+      <div class="script-cell">Medium shot, direct eye contact. No music yet — silence for 1s, then beat drops.</div>
+    </div>
+    <div class="script-row">
+      <div class="script-cell">02</div>
+      <div class="script-cell"><strong>"Number one: your portfolio is either empty or it's fake projects no one cares about."</strong></div>
+      <div class="script-cell">REASON #1: EMPTY PORTFOLIO 😬</div>
+      <div class="script-cell">Cut to close-up. Quick zoom for emphasis.</div>
+    </div>
+    <div class="script-row">
+      <div class="script-cell">03</div>
+      <div class="script-cell"><strong>"Number two: you can't read analytics. Recruiters will literally ask you to interpret data in the interview."</strong></div>
+      <div class="script-cell">REASON #2: CAN'T READ ANALYTICS 📊</div>
+      <div class="script-cell">B-roll: screen record of GA4, then cut back.</div>
+    </div>
+    <div class="script-row">
+      <div class="script-cell">04</div>
+      <div class="script-cell"><strong>"And three: your copywriting is forgettable. No hook. No action."</strong></div>
+      <div class="script-cell">REASON #3: FORGETTABLE COPY ✍️</div>
+      <div class="script-cell">Creator leans into camera. Emphatic pause after.</div>
+    </div>
+    <div class="script-row">
+      <div class="script-cell">05</div>
+      <div class="script-cell"><strong>"SkillBridge SA fixed all three for me in 12 weeks. Real projects. Real skills. Real certificate."</strong></div>
+      <div class="script-cell">SKILLBRIDGE SA FIXED ALL 3 ✅</div>
+      <div class="script-cell">Cut to brighter frame. Creator relaxed, positive energy.</div>
+    </div>
+    <div class="script-row">
+      <div class="script-cell">06</div>
+      <div class="script-cell"><strong>"April intake is almost full — link in bio, or comment INFO and I'll send it."</strong></div>
+      <div class="script-cell">COMMENT "INFO" 👇 LINK IN BIO 🔗</div>
+      <div class="script-cell">Point down toward comment section. Hold for 2s.</div>
+    </div>
+  </div>
+
+  <div class="prod-grid">
+    <div class="prod-card"><h4>Audio Mood</h4><p>Starts silent (1s) for pattern interrupt. Upbeat lo-fi hip-hop beat drops on scene 2 and carries through to end. Keep VO loud — 70% of TikTok views are sound-on.</p></div>
+    <div class="prod-card"><h4>Text Overlays</h4><p>Bold white text, black drop shadow, top-centre placement. Use TikTok's built-in text with bounce animation for each scene cut.</p></div>
+    <div class="prod-card"><h4>Editing Rhythm</h4><p>Hard cuts — no transitions. Keep it snappy. Scene 1–4 at ~1 cut/second pace. Scenes 5–6 slower to let the pivot land. Total: 25 seconds max.</p></div>
+    <div class="prod-card"><h4>Creator Brief</h4><p>Energetic but relatable. No corporate tone. Speak like you're texting a friend. Facial expressions carry the message — recruiters see a LOT of stiff talking heads.</p></div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- VIDEO 2 -->
+<div class="video-section">
+  <div class="vs-header">
+    <div class="vs-num">Video 02 / 02</div>
+    <div class="vs-title">"POV: You Just Landed Your First Marketing Job" — Aspirational/Transformation</div>
+    <div class="vs-meta">Duration: ~20 seconds &nbsp;·&nbsp; Format: TikTok 9:16 &nbsp;·&nbsp; Style: POV text-led + lifestyle B-roll &nbsp;·&nbsp; Objective: Brand awareness / community building</div>
+  </div>
+
+  <div class="storyboard">
+    <div class="frame">
+      <div class="frame-screen f-intro">
+        <div class="frame-num">01</div>
+        <div class="frame-time">0:00–0:02</div>
+        <div style="font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:#e8a020;text-align:center;padding:20px;">POV:</div>
+        <div class="frame-text-overlay">
+          <div class="frame-overlay-text">You just got the call.</div>
+        </div>
+      </div>
+      <div class="frame-scene">HOOK</div>
+      <div class="frame-caption">Black screen → text appears. Silence first.</div>
+    </div>
+    <div class="frame">
+      <div class="frame-screen f-stat">
+        <div class="frame-num">02</div>
+        <div class="frame-time">0:02–0:06</div>
+        <div style="padding:20px;text-align:center;">
+          <div class="big-stat">3M+</div>
+          <div class="big-stat-sub">digital marketing jobs<br>open globally right now</div>
+        </div>
+        <div class="frame-text-overlay">
+          <div class="frame-overlay-text">The demand is there. Are you?</div>
+        </div>
+      </div>
+      <div class="frame-scene">CONTEXT</div>
+      <div class="frame-caption">Stat card style. Fast cut after 4s.</div>
+    </div>
+    <div class="frame">
+      <div class="frame-screen f-steps">
+        <div class="frame-num">03</div>
+        <div class="frame-time">0:06–0:10</div>
+        <div class="step-lines" style="padding:20px;">
+          <div style="font-family:'Syne',sans-serif;font-size:12px;color:rgba(240,237,232,.5);margin-bottom:10px;">12 WEEKS LATER...</div>
+          <div class="step-line done"></div>
+          <div style="font-size:11px;color:rgba(240,237,232,.6);margin:2px 0 8px;">Week 1–4: Portfolio built</div>
+          <div class="step-line done"></div>
+          <div style="font-size:11px;color:rgba(240,237,232,.6);margin:2px 0 8px;">Week 5–8: Campaigns launched</div>
+          <div class="step-line done"></div>
+          <div style="font-size:11px;color:rgba(240,237,232,.6);margin:2px 0 8px;">Week 9–12: Interview prep</div>
+        </div>
+      </div>
+      <div class="frame-scene">JOURNEY</div>
+      <div class="frame-caption">Progress lines animate in one by one.</div>
+    </div>
+    <div class="frame">
+      <div class="frame-screen f-proof">
+        <div class="frame-num">04</div>
+        <div class="frame-time">0:10–0:15</div>
+        <div class="checkmark" style="font-size:60px;">🎉</div>
+        <div class="frame-text-overlay">
+          <div class="frame-overlay-text">"I had 3 interviews in my first week of applying."</div>
+        </div>
+      </div>
+      <div class="frame-scene">SOCIAL PROOF</div>
+      <div class="frame-caption">Graduate testimonial card. Real name + photo preferred.</div>
+    </div>
+    <div class="frame">
+      <div class="frame-screen f-reveal">
+        <div class="frame-num">05</div>
+        <div class="frame-time">0:15–0:18</div>
+        <div class="step-lines" style="padding:16px;justify-content:center;display:flex;flex-direction:column;align-items:center;height:100%;">
+          <div style="font-family:'Syne',sans-serif;font-size:13px;font-weight:800;color:#e8a020;text-align:center;margin-bottom:8px;">SKILLBRIDGE SA</div>
+          <div style="font-size:11px;text-align:center;color:rgba(240,237,232,.5);line-height:1.5;">12-week Digital Marketing<br>Programme</div>
+        </div>
+        <div class="frame-text-overlay">
+          <div class="frame-overlay-text">This could be your story.</div>
+        </div>
+      </div>
+      <div class="frame-scene">BRAND REVEAL</div>
+      <div class="frame-caption">First brand mention. Subtle logo appearance.</div>
+    </div>
+    <div class="frame">
+      <div class="frame-screen f-cta">
+        <div class="frame-num">06</div>
+        <div class="frame-time">0:18–0:20</div>
+        <div style="padding:20px;text-align:center;display:flex;flex-direction:column;justify-content:center;height:100%;gap:12px;">
+          <div style="font-family:'Syne',sans-serif;font-size:15px;font-weight:800;color:#e8a020;">Apply for April 🔗</div>
+          <div style="font-size:11px;color:rgba(240,237,232,.5);">Link in bio</div>
+        </div>
+        <div class="frame-text-overlay">
+          <div class="frame-overlay-text">Comment "READY" to start 👇</div>
+        </div>
+      </div>
+      <div class="frame-scene">CTA</div>
+      <div class="frame-caption">Comment CTA boosts algorithmic reach.</div>
+    </div>
+  </div>
+
+  <div class="script-panel">
+    <div class="script-header-row">
+      <div class="script-header-cell">#</div>
+      <div class="script-header-cell">Voiceover / Script</div>
+      <div class="script-header-cell">On-Screen Text</div>
+      <div class="script-header-cell">Camera / Direction</div>
+    </div>
+    <div class="script-row">
+      <div class="script-cell">01</div>
+      <div class="script-cell"><em>No VO — text only for first 2 seconds</em></div>
+      <div class="script-cell">POV: You just got the call. ☎️</div>
+      <div class="script-cell">Black screen. Text fades in slowly. Then music hits.</div>
+    </div>
+    <div class="script-row">
+      <div class="script-cell">02</div>
+      <div class="script-cell"><strong>"There are 3 million digital marketing jobs open globally. The question isn't if there's a spot for you — it's whether you're ready for it."</strong></div>
+      <div class="script-cell">3M+ digital marketing jobs open right now</div>
+      <div class="script-cell">Upbeat music enters. Stat card style visual.</div>
+    </div>
+    <div class="script-row">
+      <div class="script-cell">03</div>
+      <div class="script-cell"><strong>"12 weeks. A portfolio of real work. Campaigns you actually ran. That's what SkillBridge builds."</strong></div>
+      <div class="script-cell">WEEK 1–4 / WEEK 5–8 / WEEK 9–12 (progress lines)</div>
+      <div class="script-cell">Animated checklist reveals in sync with VO beats.</div>
+    </div>
+    <div class="script-row">
+      <div class="script-cell">04</div>
+      <div class="script-cell"><strong>"Lindiwe had three interviews her first week of applying. Thabo got hired before he even graduated."</strong></div>
+      <div class="script-cell">Graduate quote: "3 interviews in my first week"</div>
+      <div class="script-cell">Photo/video of graduate if available. Otherwise text card.</div>
+    </div>
+    <div class="script-row">
+      <div class="script-cell">05</div>
+      <div class="script-cell"><strong>"This could be your story."</strong></div>
+      <div class="script-cell">SKILLBRIDGE SA — This could be your story.</div>
+      <div class="script-cell">Brand reveal. Warm, cinematic moment. Music softens slightly.</div>
+    </div>
+    <div class="script-row">
+      <div class="script-cell">06</div>
+      <div class="script-cell"><strong>"April cohort is open. Link's in my bio. Drop READY in the comments and I'll send you the info."</strong></div>
+      <div class="script-cell">Comment "READY" 👇 Apply for April 🔗</div>
+      <div class="script-cell">Point down, direct to camera, high energy close.</div>
+    </div>
+  </div>
+
+  <div class="prod-grid">
+    <div class="prod-card"><h4>Audio Mood</h4><p>Starts silent (pattern interrupt). Then an aspirational, upbeat trending sound enters — something like a cinematic piano or popular lo-fi trending audio. Match cuts to the beat where possible.</p></div>
+    <div class="prod-card"><h4>Visual Style</h4><p>POV style mixed with stat cards and text-only frames. Avoid stock photography — it reads as inauthentic on TikTok. Real graduate photos or creator-filmed content only.</p></div>
+    <div class="prod-card"><h4>Comment CTA Strategy</h4><p>Asking users to comment "READY" serves dual purpose: it boosts engagement signals to the algorithm, and it creates a DM list the brand can follow up with directly.</p></div>
+    <div class="prod-card"><h4>Brand Placement</h4><p>Brand mention intentionally held until frame 5 (75% through). The watch time retention signal is better when you deliver value before the reveal — it feels earned, not like an ad.</p></div>
+  </div>
+</div>
+
+</body>
+</html>

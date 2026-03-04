@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AETHER — Q2 2026 Editorial Content Calendar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Portfolio palette */
+      --bg:        #0d0b0a;
+      --surface:   #131109;
+      --card:      #1a1612;
+      --border:    #2a2318;
+      --warm:      #e8a020;
+      --cold:      #4d8fff;
+      --terra-p:   #c45c3a;
+      --text:      #ede8e2;
+      --text-dim:  #b8b0a6;
+      --muted:     #6b6058;
+      --muted2:    #948880;
+      /* AETHER brand accents */
+      --sage:      #849974;
+      --terra:     #C17C5A;
+      --cream:     #c8bfa8;
+      --aether-bg: #1a1c18;
+      /* Fonts */
+      --fd: 'Syne', sans-serif;
+      --fb: 'DM Sans', sans-serif;
+      --fm: 'DM Mono', monospace;
+      --fe: 'Cormorant Garamond', serif;
+    }
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--fb);
+      font-size: 15px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── SCROLL PROGRESS ── */
+    #prog {
+      position: fixed; top:0; left:0; height:2px; width:0%;
+      background: linear-gradient(90deg, var(--warm), var(--sage));
+      z-index: 999;
+    }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      position: sticky; top:0; z-index:100;
+      background: rgba(13,11,10,0.94);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 32px;
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .topbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .topbar-logo {
+      font-family: var(--fm);
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: var(--warm);
+      text-transform: uppercase;
+    }
+
+    .topbar-divider {
+      width: 1px;
+      height: 20px;
+      background: var(--border);
+    }
+
+    .topbar-title {
+      font-family: var(--fe);
+      font-size: 15px;
+      color: var(--text-dim);
+      letter-spacing: 0.5px;
+    }
+
+    .topbar-right {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .filter-btn {
+      font-family: var(--fm);
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      background: none;
+      color: var(--muted2);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      border-color: var(--warm);
+      color: var(--warm);
+      background: rgba(232,160,32,0.06);
+    }
+    .filter-btn.month-all.active { border-color: var(--warm); color: var(--warm); }
+    .filter-btn[data-month="april"].active { border-color: var(--sage); color: var(--sage); background: rgba(132,153,116,0.06); }
+    .filter-btn[data-month="may"].active { border-color: var(--terra); color: var(--terra); background: rgba(193,124,90,0.06); }
+    .filter-btn[data-month="june"].active { border-color: var(--cold); color: var(--cold); background: rgba(77,143,255,0.06); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 72px 48px 60px;
+      max-width: 1300px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 60px;
+      align-items: end;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-eyebrow {
+      font-family: var(--fm);
+      font-size: 10px;
+      letter-spacing: 4px;
+      color: var(--sage);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hero-eyebrow::before { content:''; width:28px; height:1px; background:var(--sage); }
+
+    .hero-title {
+      font-family: var(--fd);
+      font-size: clamp(40px, 5vw, 64px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+    .hero-title .warm { color: var(--warm); }
+    .hero-title .sage { color: var(--sage); }
+
+    .hero-tagline {
+      font-family: var(--fe);
+      font-size: 22px;
+      color: var(--muted2);
+      font-style: italic;
+      margin-bottom: 28px;
+    }
+
+    .hero-desc {
+      font-size: 15px;
+      color: var(--muted2);
+      font-weight: 300;
+      line-height: 1.75;
+      max-width: 540px;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .stat-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .stat-card::before {
+      content:'';
+      position: absolute;
+      top:0; left:0; right:0;
+      height: 2px;
+    }
+    .stat-card.warm-card::before { background: var(--warm); }
+    .stat-card.sage-card::before { background: var(--sage); }
+    .stat-card.terra-card::before { background: var(--terra); }
+    .stat-card.cold-card::before { background: var(--cold); }
+
+    .stat-num {
+      font-family: var(--fd);
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat-card.warm-card .stat-num { color: var(--warm); }
+    .stat-card.sage-card .stat-num { color: var(--sage); }
+    .stat-card.terra-card .stat-num { color: var(--terra); }
+    .stat-card.cold-card .stat-num { color: var(--cold); }
+
+    .stat-label {
+      font-family: var(--fm);
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── MONTH HEADERS ── */
+    .month-block {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 48px 48px;
+    }
+
+    .month-header {
+      padding: 48px 0 28px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 20px;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 28px;
+    }
+
+    .month-num {
+      font-family: var(--fm);
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .month-name {
+      font-family: var(--fd);
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+    .month-block.april .month-name { color: var(--sage); }
+    .month-block.may .month-name { color: var(--terra); }
+    .month-block.june .month-name { color: var(--cold); }
+
+    .month-theme {
+      font-family: var(--fe);
+      font-size: 14px;
+      color: var(--muted2);
+      font-style: italic;
+      text-align: right;
+    }
+
+    .month-objective {
+      font-family: var(--fm);
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-align: right;
+    }
+    .month-block.april .month-objective { color: var(--sage); }
+    .month-block.may .month-objective { color: var(--terra); }
+    .month-block.june .month-objective { color: var(--cold); }
+
+    /* ── TABLE WRAPPER ── */
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 40px;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 960px;
+    }
+
+    thead tr {
+      background: var(--surface);
+    }
+
+    th {
+      font-family: var(--fm);
+      font-size: 9px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 14px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid rgba(42,35,24,0.7);
+      transition: background 0.15s ease;
+    }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: rgba(26,22,18,0.8); }
+
+    td {
+      padding: 14px 16px;
+      vertical-align: top;
+      font-size: 13px;
+      color: var(--text-dim);
+      font-weight: 300;
+      line-height: 1.55;
+    }
+
+    /* Week cell */
+    .week-cell {
+      white-space: nowrap;
+    }
+    .week-num {
+      font-family: var(--fd);
+      font-size: 18px;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 3px;
+    }
+    .week-dates {
+      font-family: var(--fm);
+      font-size: 9px;
+      letter-spacing: 1px;
+      color: var(--muted);
+    }
+
+    /* Platform badge */
+    .platform {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--fm);
+      font-size: 9px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 9px;
+      border-radius: 3px;
+      white-space: nowrap;
+      margin-bottom: 3px;
+    }
+    .platform.ig    { background: rgba(196,92,58,0.12); color: #d4826a; border: 1px solid rgba(196,92,58,0.25); }
+    .platform.tt    { background: rgba(132,153,116,0.1); color: #9aad8e; border: 1px solid rgba(132,153,116,0.25); }
+    .platform.li    { background: rgba(77,143,255,0.08); color: #6da5f5; border: 1px solid rgba(77,143,255,0.2); }
+    .platform.em    { background: rgba(232,160,32,0.08); color: #d4922a; border: 1px solid rgba(232,160,32,0.2); }
+    .platform.wb    { background: rgba(200,191,168,0.08); color: #b8ae98; border: 1px solid rgba(200,191,168,0.2); }
+
+    .platform-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    /* Content type badge */
+    .ctype {
+      display: inline-block;
+      font-family: var(--fm);
+      font-size: 9px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 3px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      color: var(--muted2);
+      white-space: nowrap;
+      margin-bottom: 2px;
+    }
+
+    /* Campaign theme */
+    .campaign {
+      font-family: var(--fd);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 3px;
+    }
+    .campaign-sub {
+      font-size: 11px;
+      color: var(--muted2);
+    }
+
+    /* Visual description */
+    .visual { font-size: 12px; line-height: 1.55; max-width: 200px; }
+
+    /* Caption */
+    .caption {
+      font-family: var(--fe);
+      font-size: 12.5px;
+      font-style: italic;
+      color: var(--cream);
+      line-height: 1.55;
+      max-width: 220px;
+    }
+    .caption-note {
+      font-family: var(--fb);
+      font-style: normal;
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    /* Goal badge */
+    .goal {
+      display: inline-block;
+      font-family: var(--fm);
+      font-size: 9px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+    .goal.awareness   { background: rgba(132,153,116,0.1); color: var(--sage); border: 1px solid rgba(132,153,116,0.25); }
+    .goal.engagement  { background: rgba(193,124,90,0.1); color: var(--terra); border: 1px solid rgba(193,124,90,0.25); }
+    .goal.conversion  { background: rgba(232,160,32,0.1); color: var(--warm); border: 1px solid rgba(232,160,32,0.25); }
+    .goal.retention   { background: rgba(77,143,255,0.08); color: var(--cold); border: 1px solid rgba(77,143,255,0.2); }
+
+    /* Status badge */
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--fm);
+      font-size: 9px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .status::before {
+      content:'';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .status.idea::before        { background: var(--muted); }
+    .status.in-dev::before      { background: var(--warm); box-shadow: 0 0 6px rgba(232,160,32,0.5); }
+    .status.ready::before       { background: var(--sage); box-shadow: 0 0 6px rgba(132,153,116,0.5); }
+
+    /* ── CONTENT MIX BAR ── */
+    .mix-section {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 48px 60px;
+    }
+
+    .mix-label {
+      font-family: var(--fm);
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .mix-label::before { content:''; width:20px; height:1px; background:var(--muted); }
+
+    .mix-bar-wrap {
+      display: flex;
+      height: 8px;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 12px;
+      gap: 2px;
+    }
+    .mix-seg { border-radius: 2px; height: 100%; }
+    .mix-seg.edu  { width: 60%; background: var(--sage); }
+    .mix-seg.insp { width: 30%; background: var(--terra); }
+    .mix-seg.promo{ width: 10%; background: var(--warm); }
+
+    .mix-legend {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+    .mix-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--fm);
+      font-size: 10px;
+      letter-spacing: 1px;
+      color: var(--muted2);
+    }
+    .mix-dot { width: 8px; height: 8px; border-radius: 2px; }
+
+    /* ── RATIONALE SECTION ── */
+    .rationale {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 48px 80px;
+      border-top: 1px solid var(--border);
+    }
+
+    .rationale-header {
+      padding: 52px 0 36px;
+    }
+
+    .rationale-eyebrow {
+      font-family: var(--fm);
+      font-size: 10px;
+      letter-spacing: 4px;
+      color: var(--terra);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .rationale-eyebrow::before { content:''; width:24px; height:1px; background: var(--terra); }
+
+    .rationale-title {
+      font-family: var(--fd);
+      font-size: 36px;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.3px;
+    }
+    .rationale-title span { color: var(--warm); }
+
+    .rationale-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 48px;
+    }
+
+    .rationale-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .rationale-card::before {
+      content: '';
+      position: absolute;
+      top:0; left:0; right:0;
+      height: 3px;
+    }
+    .rationale-card.april-card::before { background: var(--sage); }
+    .rationale-card.may-card::before   { background: var(--terra); }
+    .rationale-card.june-card::before  { background: var(--cold); }
+
+    .rc-month {
+      font-family: var(--fm);
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .rationale-card.april-card .rc-month { color: var(--sage); }
+    .rationale-card.may-card .rc-month   { color: var(--terra); }
+    .rationale-card.june-card .rc-month  { color: var(--cold); }
+
+    .rc-title {
+      font-family: var(--fd);
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .rc-body {
+      font-size: 13px;
+      color: var(--muted2);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    .rc-body strong { color: var(--text-dim); font-weight: 500; }
+
+    .platform-strategy {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+
+    .ps-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 16px;
+    }
+
+    .ps-platform {
+      font-family: var(--fm);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .ps-card.ig-card .ps-platform { color: #d4826a; }
+    .ps-card.tt-card .ps-platform { color: #9aad8e; }
+    .ps-card.li-card .ps-platform { color: #6da5f5; }
+    .ps-card.em-card .ps-platform { color: #d4922a; }
+    .ps-card.wb-card .ps-platform { color: #b8ae98; }
+
+    .ps-role {
+      font-size: 12px;
+      color: var(--text-dim);
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .ps-desc {
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 32px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-brand { font-family: var(--fd); font-size: 14px; font-weight: 800; color: var(--text); }
+    .footer-brand span { color: var(--warm); }
+    .footer-note { font-family: var(--fm); font-size: 10px; letter-spacing: 1px; color: var(--muted); }
+    .footer-aether { font-family: var(--fe); font-size: 15px; font-style: italic; color: var(--muted2); }
+
+    /* ── HIDDEN ROWS FOR FILTER ── */
+    tr.hidden { display: none; }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1), transform 0.6s cubic-bezier(0.22,1,0.36,1);
+    }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .topbar { padding: 0 16px; }
+      .topbar-title { display: none; }
+      .hero { grid-template-columns: 1fr; gap: 32px; padding: 48px 20px 40px; }
+      .hero-stats { grid-template-columns: 1fr 1fr; }
+      .month-block { padding: 0 20px 40px; }
+      .mix-section { padding: 0 20px 40px; }
+      .rationale { padding: 0 20px 60px; }
+      .rationale-grid { grid-template-columns: 1fr; }
+      .platform-strategy { grid-template-columns: 1fr 1fr; }
+      footer { padding: 24px 20px; flex-direction: column; }
+    }
+
+    @media (max-width: 600px) {
+      .topbar-right { gap: 4px; }
+      .filter-btn { padding: 5px 9px; font-size: 9px; }
+      .hero-title { font-size: 36px; }
+      .hero-stats { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .platform-strategy { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="prog"></div>
+
+<!-- TOP BAR -->
+<header class="topbar">
+  <div class="topbar-brand">
+    <div class="topbar-logo">MBN.</div>
+    <div class="topbar-divider"></div>
+    <div class="topbar-title">AETHER — Q2 2026 Editorial Calendar</div>
+  </div>
+  <div class="topbar-right">
+    <button class="filter-btn month-all active" data-month="all">All</button>
+    <button class="filter-btn" data-month="april">April</button>
+    <button class="filter-btn" data-month="may">May</button>
+    <button class="filter-btn" data-month="june">June</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero reveal">
+  <div>
+    <div class="hero-eyebrow">Q2 2026 · Content Strategy</div>
+    <h1 class="hero-title">AETHER<br><span class="sage">Content</span><br><span class="warm">Blueprint.</span></h1>
+    <div class="hero-tagline">"Pure. Minimal. Essential."</div>
+    <p class="hero-desc">A 12-week editorial strategy built for a sustainable minimalist skincare brand launching into Q2. April builds trust through story. May earns authority through education. June converts through scarcity and season.</p>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-card warm-card">
+      <div class="stat-num">48</div>
+      <div class="stat-label">Content Pieces</div>
+    </div>
+    <div class="stat-card sage-card">
+      <div class="stat-num">5</div>
+      <div class="stat-label">Platforms</div>
+    </div>
+    <div class="stat-card terra-card">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Phases</div>
+    </div>
+    <div class="stat-card cold-card">
+      <div class="stat-num">60%</div>
+      <div class="stat-label">Educational Mix</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENT MIX -->
+<section class="mix-section reveal">
+  <div class="mix-label">Content Mix</div>
+  <div class="mix-bar-wrap">
+    <div class="mix-seg edu"></div>
+    <div class="mix-seg insp"></div>
+    <div class="mix-seg promo"></div>
+  </div>
+  <div class="mix-legend">
+    <div class="mix-item"><div class="mix-dot" style="background:var(--sage)"></div>60% Educational / Value-Add</div>
+    <div class="mix-item"><div class="mix-dot" style="background:var(--terra)"></div>30% Inspirational / Lifestyle</div>
+    <div class="mix-item"><div class="mix-dot" style="background:var(--warm)"></div>10% Promotional</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ APRIL ═══════════════════════════════════════════ -->
+<section class="month-block april reveal" id="april">
+  <div class="month-header">
+    <div>
+      <div class="month-num">Month 01 · Q2 Phase 1</div>
+      <div class="month-name">April</div>
+    </div>
+    <div></div>
+    <div>
+      <div class="month-theme">"The Origin Story"</div>
+      <div class="month-objective">Primary Goal: Awareness</div>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:80px">Week</th>
+          <th style="width:130px">Platform</th>
+          <th style="width:100px">Content Type</th>
+          <th style="width:160px">Campaign / Theme</th>
+          <th style="width:210px">Visual Description</th>
+          <th style="width:230px">Caption / Key Message</th>
+          <th style="width:100px">Goal</th>
+          <th style="width:90px">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <!-- WEEK 1 -->
+        <tr data-month="april">
+          <td class="week-cell" rowspan="4">
+            <div class="week-num" style="color:var(--sage)">W1</div>
+            <div class="week-dates">Apr 1–5</div>
+          </td>
+          <td><div class="platform-wrap"><span class="platform ig">Instagram</span></div></td>
+          <td><span class="ctype">Static Post</span></td>
+          <td><div class="campaign">Brand Launch</div><div class="campaign-sub">Who is AETHER?</div></td>
+          <td class="visual">All-white flat lay: cleanser bottle centred on raw linen cloth, single sprig of dried botanicals, morning window light casting soft shadow. No text overlay.</td>
+          <td><div class="caption">"Five ingredients. One ritual. Everything you actually need."</div><div class="caption-note">Bio link + #AETHERSkin launch</div></td>
+          <td><span class="goal awareness">Awareness</span></td>
+          <td><span class="status ready">Ready</span></td>
+        </tr>
+
+        <tr data-month="april">
+          <td><div class="platform-wrap"><span class="platform ig">Instagram</span></div></td>
+          <td><span class="ctype">Reel</span></td>
+          <td><div class="campaign">Behind the Origin</div><div class="campaign-sub">Founder story</div></td>
+          <td class="visual">15-sec product formation montage: ingredients in raw form (clay, oat, rosehip), then finished cleanser bottle. Slow-motion pour. Warm sage-toned grade. Instrumental audio.</td>
+          <td><div class="caption">"Most skincare has 47 ingredients. We chose 5. Here's why."</div><div class="caption-note">Hook in first 2 seconds. Caption explains sourcing.</div></td>
+          <td><span class="goal awareness">Awareness</span></td>
+          <td><span class="status ready">Ready</span></td>
+        </tr>
+
+        <tr data-month="april">
+          <td><div class="platform-wrap"><span class="platform em">Email</span></div></td>
+          <td><span class="ctype">Newsletter</span></td>
+          <td><div class="campaign">Welcome Series 1/3</div><div class="campaign-sub">Brand manifesto</div></td>
+          <td class="visual">Plain text aesthetic. Cream background (#FDF6E9). Cormorant Garamond heading. Single hero image: product trio on slate. No decorative clutter.</td>
+          <td><div class="caption">"You signed up because you're done with noise. So are we. Welcome to AETHER."</div><div class="caption-note">Introduce 5-product line. No sales CTA yet.</div></td>
+          <td><span class="goal awareness">Awareness</span></td>
+          <td><span class="status in-dev">In Dev</span></td>
+        </tr>
+
+        <tr data-month="april">
+          <td><div class="platform-wrap"><span class="platform wb">Blog</span></div></td>
+          <td><span class="ctype">Article</span></td>
+          <td><div class="campaign">The Clean Ingredients Edit</div><div class="campaign-sub">Education cornerstone</div></td>
+          <td class="visual">Long-form article. Hero image: ingredient flat lay (oat, rosehip oil vial, clay powder). Pull-quote callouts in sage. Minimalist layout, wide margins.</td>
+          <td><div class="caption">"What does 'clean skincare' actually mean — and what are brands hiding behind the label?"</div><div class="caption-note">SEO target: 'clean skincare ingredients'. 900 words.</div></td>
+          <td><span class="goal awareness">Awareness</span></td>
+          <td><span class="status idea">Idea</span></td>
+        </tr>
+
+        <!-- WEEK 2 -->
+        <tr data-month="april">
+          <td class="week-cell" rowspan="4">
+            <div class="week-num" style="color:var(--sage)">W2</div>
+            <div class="week-dates">Apr 8–12</div>
+          </td>
+          <td><div class="platform-wrap"><span class="platform ig">Instagram</span></div></td>
+          <td><span class="ctype">Carousel</span></td>
+          <td><div class="campaign">Zero-Waste Packaging</div><div class="campaign-sub">Sustainability proof</div></td>
+          <td class="visual">6-slide carousel. Slide 1: bold claim on sage background. Slides 2–5: each packaging element with material label (recycled glass, seed-paper label, etc.). Slide 6: full product line on wood grain surface.</td>
+          <td><div class="caption">"The packaging is part of the ritual. Swipe to see how every element of AETHER ends up back in the earth."</div><div class="caption-note">Engagement prompt: 'Save this for your next skincare shop'</div></td>
+          <td><span class="goal engagement">Engagement</span></td>
+          <td><span class="status in-dev">In Dev</span></td>
+        </tr>
+
+        <tr data-month="april">
+          <td><div class="platform-wrap"><span class="platform tt">TikTok</span></div></td>
+          <td><span class="ctype">Video</span></td>
+          <td><div class="campaign">#AETHERChallenge</div><div class="campaign-sub">UGC seed</div></td>
+          <td class="visual">30-sec "shelfie audit" format. Camera slowly pans existing bathroom shelf (cluttered), cuts to minimalist AETHER shelf (5 products only). Text overlay: "The edit." Trending audio.</td>
+          <td><div class="caption">"You don't need 22 products. You need 5 good ones. #AETHERSkin #MinimalistSkincare"</div><div class="caption-note">Designed to inspire reshoot UGC. Duet-friendly.</div></td>
+          <td><span class="goal awareness">Awareness</span></td>
+          <td><span class="status idea">Idea</span></td>
+        </tr>
+
+        <tr data-month="april">
+          <td><div class="platform-wrap"><span class="platform li">LinkedIn</span></div></td>
+          <td><span class="ctype">Static Post</span></td>
+          <td><div class="campaign">The Business of Transparency</div><div class="campaign-sub">B2B credibility</div></td>
+          <td class="visual">Clean white graphic with one bold stat: "67% of consumers distrust skincare ingredient labels." — followed by AETHER's full ingredient policy as a branded infographic.</td>
+          <td><div class="caption">"We publish every ingredient. Every source. Every reason it's there. Because 'trust us' is not a skincare strategy."</div><div class="caption-note">Target: wellness industry professionals + eco-conscious buyers</div></td>
+          <td><span class="goal awareness">Awareness</span></td>
+          <td><span class="status idea">Idea</span></td>
+        </tr>
+
+        <tr data-month="april">
+          <td><div class="platform-wrap"><span class="platform em">Email</span></div></td>
+          <td><span class="ctype">Newsletter</span></td>
+          <td><div class="campaign">Welcome Series 2/3</div><div class="campaign-sub">Ingredient deep-dive</div></td>
+          <td class="visual">Feature ingredient: Nordic Rosehip Oil. Close-up product photography. Cream background. Ingredient origin map graphic (hand-drawn style, sage lines).</td>
+          <td><div class="caption">"This ingredient was chosen because it works. Not because it's trendy. Here's the science."</div><div class="caption-note">Link to blog article. Soft CTA: 'Meet the Serum'</div></td>
+          <td><span class="goal awareness">Awareness</span></td>
+          <td><span class="status idea">Idea</span></td>
+        </tr>
+
+        <!-- WEEK 3 -->
+        <tr data-month="april">
+          <td class="week-cell" rowspan="4">
+            <div class="week-num" style="color:var(--sage)">W3</div>
+            <div class="week-dates">Apr 15–19</div>
+          </td>
+          <td><div class="platform-wrap"><span class="platform ig">Instagram</span></div></td>
+          <td><span class="ctype">Carousel</span></td>
+          <td><div class="campaign">Meet the 5</div><div class="campaign-sub">Product introduction</div></td>
+          <td class="visual">5-slide carousel + cover. Each slide: one product on textured stone surface, ingredient name in Cormorant Garamond, one-sentence purpose. Consistent sage/terracotta toning throughout.</td>
+          <td><div class="caption">"Five products. Five purposes. No overlap, no redundancy. Swipe to meet your new routine."</div><div class="caption-note">Tag each product. Save-worthy format.</div></td>
+          <td><span class="goal awareness">Awareness</span></td>
+          <td><span class="status in-dev">In Dev</span></td>
+        </tr>
+
+        <tr data-month="april">
+          <td><div class="platform-wrap"><span class="platform tt">TikTok</span></div></td>
+          <td><span class="ctype">Video</span></td>
+          <td><div class="campaign">Ingredient Origins</div><div class="campaign-sub">Sustainability proof</div></td>
+          <td class="visual">Montage style. Footage of Scottish oat fields, Icelandic rosehip harvest, Nordic glacier water source. Text overlays in white Montserrat. Calm documentary feel.</td>
+          <td><div class="caption">"We sourced our ingredients before we designed a single bottle. #EthicalBeauty #AETHER"</div><div class="caption-note">Educational hook. Strong comment bait.</div></td>
+          <td><span class="goal awareness">Awareness</span></td>
+          <td><span class="status idea">Idea</span></td>
+        </tr>
+
+        <tr data-month="april">
+          <td><div class="platform-wrap"><span class="platform ig">Instagram</span></div></td>
+          <td><span class="ctype">Story</span></td>
+          <td><div class="campaign">Earth Day Activation</div><div class="campaign-sub">Apr 22 — Values moment</div></td>
+          <td class="visual">5-story sequence. Story 1: "Today we plant 500 trees." Stories 2–4: facts about AETHER's zero-waste commitments. Story 5: "Our packaging. Your garden." (seed paper label close-up). Swipe-up to blog.</td>
+          <td><div class="caption">"Earth Day isn't a campaign for us. It's a reminder of why we exist."</div><div class="caption-note">Authentic, non-performative tone. No promotional element.</div></td>
+          <td><span class="goal awareness">Awareness</span></td>
+          <td><span class="status in-dev">In Dev</span></td>
+        </tr>
+
+        <tr data-month="april">
+          <td><div class="platform-wrap"><span class="platform wb">Blog</span></div></td>
+          <td><span class="ctype">Article</span></td>
+          <td><div class="campaign">Why Minimalism is the Future of Skincare</div><div class="campaign-sub">Thought leadership</div></td>
+          <td class="visual">Longform editorial. Hero: empty bathroom counter — one AETHER product visible. Infographic: 'The cost of overcomplicating your routine'. Sage pull-quote styling.</td>
+          <td><div class="caption">"More products don't mean better skin. Here's what the research — and your skin barrier — actually want."</div><div class="caption-note">SEO: 'minimalist skincare routine'. Internal link to product pages.</div></td>
+          <td><span class="goal awareness">Awareness</span></td>
+          <td><span class="status idea">Idea</span></td>
+        </tr>
+
+        <!-- WEEK 4 -->
+        <tr data-month="april">
+          <td class="week-cell" rowspan="4">
+            <div class="week-num" style="color:var(--sage)">W4</div>
+            <div class="week-dates">Apr 22–26</div>
+          </td>
+          <td><div class="platform-wrap"><span class="platform ig">Instagram</span></div></td>
+          <td><span class="ctype">Reel</span></td>
+          <td><div class="campaign">The Unboxing Ritual</div><div class="campaign-sub">Product experience</div></td>
+          <td class="visual">30-sec ASMR unboxing. Seed paper crinkle, glass bottle reveal, linen wrap. Warm amber morning light. No voiceover. Sound-driven. Ends on full product lineup on wooden tray.</td>
+          <td><div class="caption">"The unboxing is part of the ritual. No plastic. No waste. Just intention."</div><div class="caption-note">Link in bio: Shop the full line</div></td>
+          <td><span class="goal engagement">Engagement</span></td>
+          <td><span class="status ready">Ready</span></td>
+        </tr>
+
+        <tr data-month="april">
+          <td><div class="platform-wrap"><span class="platform li">LinkedIn</span></div></td>
+          <td><span class="ctype">Article</span></td>
+          <td><div class="campaign">How We Built a Transparent Supply Chain</div><div class="campaign-sub">Thought leadership</div></td>
+          <td class="visual">Text-lead LinkedIn article. Hero image: raw ingredient closeup. Branded pull-quote card. Minimal formatting — reads as editorial, not corporate.</td>
+          <td><div class="caption">"Every AETHER ingredient has a name, a source, and a reason. We're publishing all of it. Here's why transparency became our only marketing strategy."</div><div class="caption-note">Target: sustainability-focused professionals, brand builders</div></td>
+          <td><span class="goal awareness">Awareness</span></td>
+          <td><span class="status idea">Idea</span></td>
+        </tr>
+
+        <tr data-month="april">
+          <td><div class="platform-wrap"><span class="platform em">Email</span></div></td>
+          <td><span class="ctype">Newsletter</span></td>
+          <td><div class="campaign">Welcome Series 3/3</div><div class="campaign-sub">First purchase nudge</div></td>
+          <td class="visual">Ritual-focused. Photography: product on bedside table at night, warm candlelight. Header in Cormorant Garamond: "Begin the edit." Terracotta CTA button.</td>
+          <td><div class="caption">"Three weeks ago you found us. Today, your skin is ready. Start with the Cleanser — it's the ritual that makes all others work."</div><div class="caption-note">Soft first-purchase CTA. 10% welcome discount offered.</div></td>
+          <td><span class="goal conversion">Conversion</span></td>
+          <td><span class="status in-dev">In Dev</span></td>
+        </tr>
+
+        <tr data-month="april">
+          <td><div class="platform-wrap"><span class="platform tt">TikTok</span></div></td>
+          <td><span class="ctype">Video</span></td>
+          <td><div class="campaign">What's Actually in Your Cleanser?</div><div class="campaign-sub">Ingredient transparency</div></td>
+          <td class="visual">"Reading the label" format. Hold up a competitor's cleanser, read the ingredient list fast. Cut: hold up AETHER, read 5 ingredients slowly. No brand-shaming, just contrast.</td>
+          <td><div class="caption">"We're not saying theirs is bad. We're saying you deserve to understand what you're putting on your face. #CleanBeauty #SkincareTok"</div><div class="caption-note">High-virality format. Comment bait: 'What cleanser do you use?'</div></td>
+          <td><span class="goal awareness">Awareness</span></td>
+          <td><span class="status idea">Idea</span></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ MAY ═══════════════════════════════════════════ -->
+<section class="month-block may reveal" id="may">
+  <div class="month-header">
+    <div>
+      <div class="month-num">Month 02 · Q2 Phase 2</div>
+      <div class="month-name">May</div>
+    </div>
+    <div></div>
+    <div>
+      <div class="month-theme">"The Education Arc"</div>
+      <div class="month-objective">Primary Goal: Engagement</div>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:80px">Week</th>
+          <th style="width:130px">Platform</th>
+          <th style="width:100px">Content Type</th>
+          <th style="width:160px">Campaign / Theme</th>
+          <th style="width:210px">Visual Description</th>
+          <th style="width:230px">Caption / Key Message</th>
+          <th style="width:100px">Goal</th>
+          <th style="width:90px">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <!-- WEEK 5 -->
+        <tr data-month="may">
+          <td class="week-cell" rowspan="4">
+            <div class="week-num" style="color:var(--terra)">W5</div>
+            <div class="week-dates">Apr 29–May 3</div>
+          </td>
+          <td><div class="platform-wrap"><span class="platform ig">Instagram</span></div></td>
+          <td><span class="ctype">Carousel</span></td>
+          <td><div class="campaign">The AETHER Routine</div><div class="campaign-sub">Layering guide</div></td>
+          <td class="visual">6-slide visual sequence. Each slide: one product, step number (01–05), application instruction. Clean white backgrounds. Product photographed from above. Terracotta step numbers.</td>
+          <td><div class="caption">"Order matters. Layering matters. Here's the sequence that makes every product work harder."</div><div class="caption-note">Save prompt. High educational value. Pin to grid.</div></td>
+          <td><span class="goal engagement">Engagement</span></td>
+          <td><span class="status in-dev">In Dev</span></td>
+        </tr>
+
+        <tr data-month="may">
+          <td><div class="platform-wrap"><span class="platform tt">TikTok</span></div></td>
+          <td><span class="ctype">Video</span></td>
+          <td><div class="campaign">60-Second AM Routine</div><div class="campaign-sub">Routine demonstration</div></td>
+          <td class="visual">POV bathroom counter shot. Hands applying all 5 products in sequence. Real-time 60 seconds. No music — only ASMR textures (pump click, serum drop, gentle pat). Text: "The full ritual. 60 seconds."</td>
+          <td><div class="caption">"5 products. 60 seconds. Every morning. That's it. #SkincareTok #MinimalistBeauty #AETHER"</div><div class="caption-note">Duet-friendly. Designed to inspire replications.</div></td>
+          <td><span class="goal engagement">Engagement</span></td>
+          <td><span class="status idea">Idea</span></td>
+        </tr>
+
+        <tr data-month="may">
+          <td><div class="platform-wrap"><span class="platform em">Email</span></div></td>
+          <td><span class="ctype">Newsletter</span></td>
+          <td><div class="campaign">The Routine Edit</div><div class="campaign-sub">Post-welcome education</div></td>
+          <td class="visual">Split-section email. AM routine visual left, PM routine visual right. Clean grid layout. Ingredient spotlight: Hyaluronic Acid source. Warm terracotta header band.</td>
+          <td><div class="caption">"Your skin has two jobs — repair by night, protect by day. Here's how to let it do both."</div><div class="caption-note">Link to routine builder on website. Educational, no hard sell.</div></td>
+          <td><span class="goal engagement">Engagement</span></td>
+          <td><span class="status idea">Idea</span></td>
+        </tr>
+
+        <tr data-month="may">
+          <td><div class="platform-wrap"><span class="platform wb">Blog</span></div></td>
+          <td><span class="ctype">Article</span></td>
+          <td><div class="campaign">AM vs PM — Why Your Routine Needs to Change at Night</div><div class="campaign-sub">Education cornerstone</div></td>
+          <td class="visual">Two-panel hero image: morning window light (bright, clean) vs evening candlelight (warm, amber). Infographic: circadian rhythm and skin cycle. Sage quote cards.</td>
+          <td><div class="caption">"Your skin is repairing itself right now while you sleep. Here's what it needs — and what's in your way."</div><div class="caption-note">SEO: 'PM skincare routine'. Internal link to Serum + Eye Cream.</div></td>
+          <td><span class="goal engagement">Engagement</span></td>
+          <td><span class="status idea">Idea</span></td>
+        </tr>
+
+        <!-- WEEK 6 -->
+        <tr data-month="may">
+          <td class="week-cell" rowspan="4">
+            <div class="week-num" style="color:var(--terra)">W6</div>
+            <div class="week-dates">May 6–10</div>
+          </td>
+          <td><div class="platform-wrap"><span class="platform ig">Instagram</span></div></td>
+          <td><span class="ctype">Reel</span></td>
+          <td><div class="campaign">The Science of Less</div><div class="campaign-sub">Skin barrier education</div></td>
+          <td class="visual">30-sec split screen. Left: diagram of healthy skin barrier (illustrated, clean line art in sage). Right: product application. Text overlay explains each ingredient's barrier function.</td>
+          <td><div class="caption">"Your skin barrier is the most important thing you're not protecting. Here's what AETHER does about it."</div><div class="caption-note">Save-worthy. Tag a dermatologist if possible for credibility.</div></td>
+          <td><span class="goal engagement">Engagement</span></td>
+          <td><span class="status in-dev">In Dev</span></td>
+        </tr>
+
+        <tr data-month="may">
+          <td><div class="platform-wrap"><span class="platform tt">TikTok</span></div></td>
+          <td><span class="ctype">Video</span></td>
+          <td><div class="campaign">Skincare Myths Debunked</div><div class="campaign-sub">Education series</div></td>
+          <td class="visual">Rapid-cut format. 5 myths, 5 cuts, 5 facts. Text overlay each myth then correction. AETHER product subtly visible in background. Clean, confident, no preachiness.</td>
+          <td><div class="caption">"'Natural' doesn't mean safe. 'Fragrance-free' doesn't mean gentle. 5 skincare myths we need to retire. #SkincareMyths #AETHER"</div><div class="caption-note">Part 1 of 3. Comment: 'Drop a myth below'</div></td>
+          <td><span class="goal engagement">Engagement</span></td>
+          <td><span class="status idea">Idea</span></td>
+        </tr>
+
+        <tr data-month="may">
+          <td><div class="platform-wrap"><span class="platform li">LinkedIn</span></div></td>
+          <td><span class="ctype">Static Post</span></td>
+          <td><div class="campaign">The Wellness Economy & Clean Beauty</div><div class="campaign-sub">Industry insight</div></td>
+          <td class="visual">Data-led graphic. Stat: 'The clean beauty market will reach $22B by 2028.' AETHER position statement below. Sage brand bar. Professional, editorial feel.</td>
+          <td><div class="caption">"The wellness generation isn't spending less — they're spending more carefully. Here's what that means for brands who refuse to be transparent."</div><div class="caption-note">Thought leadership. Share-worthy for industry peers.</div></td>
+          <td><span class="goal awareness">Awareness</span></td>
+          <td><span class="status idea">Idea</span></td>
+        </tr>
+
+        <tr data-month="may">
+          <td><div class="platform-wrap"><span class="platform ig">Instagram</span></div></td>
+          <td><span class="ctype">Carousel</span></td>
+          <td><div class="campaign">Skin Type Edit</div><div class="campaign-sub">Personalisation</div></td>
+          <td class="visual">4-slide carousel: oily, dry, combination, sensitive. Each slide: skin type label in Cormorant Garamond, AETHER product recommendation, application tip. Terracotta tones. Clean white.</td>
+          <td><div class="caption">"Not all skin is the same. But minimalism works for all of it. Swipe to find your AETHER edit."</div><div class="caption-note">Save prompt. Drives profile visits + DMs.</div></td>
+          <td><span class="goal engagement">Engagement</span></td>
+          <td><span class="status in-dev">In Dev</span></td>
+        </tr>
+
+        <!-- WEEK 7 -->
+        <tr data-month="may">
+          <td class="week-cell" rowspan="4">
+            <div class="week-num" style="color:var(--terra)">W7</div>
+            <div class="week-dates">May 13–17</div>
+          </td>
+          <td><div class="platform-wrap"><span class="platform ig">Instagram</span></div></td>
+          <td><span class="ctype">Static Post</span></td>
+          <td><div class="campaign">The Male Skin Edit</div><div class="campaign-sub">Male audience activation</div></td>
+          <td class="visual">Flat lay styled for male aesthetic: charcoal stone, dark linen, weathered wood. AETHER Cleanser + Moisturizer only. Stripped back. Muted, masculine styling within brand palette.</td>
+          <td><div class="caption">"Skincare was never for 'her'. It was always for skin. Yours included."</div><div class="caption-note">Intentional male targeting. Reframe, don't preach.</div></td>
+          <td><span class="goal awareness">Awareness</span></td>
+          <td><span class="status in-dev">In Dev</span></td>
+        </tr>
+
+        <tr data-month="may">
+          <td><div class="platform-wrap"><span class="platform tt">TikTok</span></div></td>
+          <td><span class="ctype">Video</span></td>
+          <td><div class="campaign">Men's Skincare Starter Kit</div><div class="campaign-sub">Male education</div></td>
+          <td class="visual">"What I actually use" format. Counter cleared to bare wood. Two AETHER products placed one by one. Text: "That's it." Calm, no fluff. 20 seconds max.</td>
+          <td><div class="caption">"You don't need 8 steps. You need 2. Start here. #MensSkincare #AETHER #MinimalistMen"</div><div class="caption-note">Target: men 25–38. Low barrier to action.</div></td>
+          <td><span class="goal engagement">Engagement</span></td>
+          <td><span class="status idea">Idea</span></td>
+        </tr>
+
+        <tr data-month="may">
+          <td><div class="platform-wrap"><span class="platform em">Email</span></div></td>
+          <td><span class="ctype">Newsletter</span></td>
+          <td><div class="campaign">The Mindful Skin Edit</div><div class="campaign-sub">Lifestyle + values</div></td>
+          <td class="visual">Curated lifestyle roundup: 3 reading recommendations (slow living, ingredient science, sustainability), 1 AETHER ritual tip, 1 community highlight. Calm editorial layout.</td>
+          <td><div class="caption">"What we're reading, making, and thinking about this week. Plus the one skincare habit we'll never skip."</div><div class="caption-note">Retention-focused. No hard sales. Builds newsletter culture.</div></td>
+          <td><span class="goal retention">Retention</span></td>
+          <td><span class="status idea">Idea</span></td>
+        </tr>
+
+        <tr data-month="may">
+          <td><div class="platform-wrap"><span class="platform wb">Blog</span></div></td>
+          <td><span class="ctype">Article</span></td>
+          <td><div class="campaign">Why Men's Skincare Needs to Be Uncomplicated</div><div class="campaign-sub">Male audience SEO</div></td>
+          <td class="visual">Dark toned hero. Masculine flat lay. Pull quote: 'Skin has no gender. Complexity does.' Line-art of routine steps. AETHER product tags.</td>
+          <td><div class="caption">"The skincare industry overcomplicated itself for women and ignored men entirely. AETHER was built for both."</div><div class="caption-note">SEO: 'men's skincare routine'. Drives male demographic acquisition.</div></td>
+          <td><span class="goal engagement">Engagement</span></td>
+          <td><span class="status idea">Idea</span></td>
+        </tr>
+
+        <!-- WEEK 8 -->
+        <tr data-month="may">
+          <td class="week-cell" rowspan="4">
+            <div class="week-num" style="color:var(--terra)">W8</div>
+            <div class="week-dates">May 20–24</div>
+          </td>
+          <td><div class="platform-wrap"><span class="platform ig">Instagram</span></div></td>
+          <td><span class="ctype">Carousel</span></td>
+          <td><div class="campaign">Ingredient Spotlight Series</div><div class="campaign-sub">Serum hero</div></td>
+          <td class="visual">Deep-dive on Nordic Rosehip Oil. Slide 1: ingredient hero shot (amber oil drop on stone). Slides 2–4: where it's sourced, what it does, how much is in AETHER Serum. Slide 5: application tip. Warm amber accent.</td>
+          <td><div class="caption">"One ingredient. One country. One cold-press process. Here's what makes our Serum different from everything else on your shelf."</div><div class="caption-note">Save + share prompt. Primes Serum interest pre-June CTA.</div></td>
+          <td><span class="goal engagement">Engagement</span></td>
+          <td><span class="status in-dev">In Dev</span></td>
+        </tr>
+
+        <tr data-month="may">
+          <td><div class="platform-wrap"><span class="platform tt">TikTok</span></div></td>
+          <td><span class="ctype">Video</span></td>
+          <td><div class="campaign">Myths Debunked Pt. 2</div><div class="campaign-sub">Education series</div></td>
+          <td class="visual">Same rapid-cut format as Week 6. New 5 myths. AETHER bottle now in foreground. More confident brand placement. Comment section reference from Part 1 included.</td>
+          <td><div class="caption">"You asked for Part 2. 5 more skincare myths — including the one dermatologists actually hate. #Part2 #SkincareTok"</div><div class="caption-note">Series continuity. Reference Part 1 comments. Builds community.</div></td>
+          <td><span class="goal engagement">Engagement</span></td>
+          <td><span class="status idea">Idea</span></td>
+        </tr>
+
+        <tr data-month="may">
+          <td><div class="platform-wrap"><span class="platform em">Email</span></div></td>
+          <td><span class="ctype">Newsletter</span></td>
+          <td><div class="campaign">Something is Coming</div><div class="campaign-sub">Nordic Night teaser</div></td>
+          <td class="visual">Intentionally minimal. Black background email (departure from cream norm). Single white line of text: "Something is coming. June 2026." No product shown. Seed of intrigue planted.</div></td>
+          <td><div class="caption">"We don't do seasonal gimmicks. When we say limited, we mean 500 units. Something is coming. Watch this space."</div><div class="caption-note">Subject line: "We need to tell you something." — A/B test against "June 2026."</div></td>
+          <td><span class="goal conversion">Conversion</span></td>
+          <td><span class="status in-dev">In Dev</span></td>
+        </tr>
+
+        <tr data-month="may">
+          <td><div class="platform-wrap"><span class="platform ig">Instagram</span></div></td>
+          <td><span class="ctype">Story</span></td>
+          <td><div class="campaign">Nordic Night Tease</div><div class="campaign-sub">Limited edition warmup</div></td>
+          <td class="visual">3-story sequence. All near-black. Story 1: faint aurora borealis texture + "Coming June 2026." Story 2: Poll — "Would you like to be first to know?" Story 3: swipe-up to waitlist.</td>
+          <td><div class="caption">"The only skincare we've ever hidden. Nordic Night. June 2026. Limited to 500."</div><div class="caption-note">Build waitlist. Anticipation mechanic. No product details yet.</div></td>
+          <td><span class="goal conversion">Conversion</span></td>
+          <td><span class="status in-dev">In Dev</span></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ JUNE ═══════════════════════════════════════════ -->
+<section class="month-block june reveal" id="june">
+  <div class="month-header">
+    <div>
+      <div class="month-num">Month 03 · Q2 Phase 3</div>
+      <div class="month-name">June</div>
+    </div>
+    <div></div>
+    <div>
+      <div class="month-theme">"Nordic Night Launch"</div>
+      <div class="month-objective">Primary Goal: Conversion</div>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:80px">Week</th>
+          <th style="width:130px">Platform</th>
+          <th style="width:100px">Content Type</th>
+          <th style="width:160px">Campaign / Theme</th>
+          <th style="width:210px">Visual Description</th>
+          <th style="width:230px">Caption / Key Message</th>
+          <th style="width:100px">Goal</th>
+          <th style="width:90px">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <!-- WEEK 9 -->
+        <tr data-month="june">
+          <td class="week-cell" rowspan="4">
+            <div class="week-num" style="color:var(--cold)">W9</div>
+            <div class="week-dates">Jun 2–6</div>
+          </td>
+          <td><div class="platform-wrap"><span class="platform ig">Instagram</span></div></td>
+          <td><span class="ctype">Reel</span></td>
+          <td><div class="campaign">Nordic Night — The Reveal</div><div class="campaign-sub">Launch hero content</div></td>
+          <td class="visual">60-sec cinematic reveal. Dark navy tones. Product emerges from dry ice mist on black slate. Aurora-effect colour grading (green and blue). Cormorant Garamond title card: "Nordic Night." Slow reveal. No voiceover.</td>
+          <td><div class="caption">"500 units. One season. This is Nordic Night — AETHER's first and only limited edition. Available June 10."</div><div class="caption-note">Pin to top of grid. Maximum production value.</div></td>
+          <td><span class="goal conversion">Conversion</span></td>
+          <td><span class="status in-dev">In Dev</span></td>
+        </tr>
+
+        <tr data-month="june">
+          <td><div class="platform-wrap"><span class="platform em">Email</span></div></td>
+          <td><span class="ctype">Newsletter</span></td>
+          <td><div class="campaign">Nordic Night — Waitlist Drop</div><div class="campaign-sub">Priority access email</div></td>
+          <td class="visual">Dark email design. Deep navy background (#0d1520). White Cormorant Garamond headline: "It's here." Full-bleed product image. Cold blue CTA: "Claim Your Unit — Waitlist Only."</td>
+          <td><div class="caption">"You signed up. You're first. Nordic Night is now available — exclusively to waitlist members for the next 24 hours."</div><div class="caption-note">Urgency: "24-hour early access". Clear single CTA. No distractions.</div></td>
+          <td><span class="goal conversion">Conversion</span></td>
+          <td><span class="status in-dev">In Dev</span></td>
+        </tr>
+
+        <tr data-month="june">
+          <td><div class="platform-wrap"><span class="platform tt">TikTok</span></div></td>
+          <td><span class="ctype">Video</span></td>
+          <td><div class="campaign">What Makes Nordic Night Different</div><div class="campaign-sub">Product education</div></td>
+          <td class="visual">Flat lay reveal: Nordic Night cream on dark volcanic stone. Hand enters frame, opens lid, swirls texture. Text overlay: key ingredient (Nordic glacier extract). Dark, dramatic, premium.</td>
+          <td><div class="caption">"We made one batch. It took 8 months. This is what's inside. #NordicNight #AETHER #LimitedEdition"</div><div class="caption-note">Educate on exclusivity. Comment hook: 'How many left?'</div></td>
+          <td><span class="goal conversion">Conversion</span></td>
+          <td><span class="status idea">Idea</span></td>
+        </tr>
+
+        <tr data-month="june">
+          <td><div class="platform-wrap"><span class="platform ig">Instagram</span></div></td>
+          <td><span class="ctype">Carousel</span></td>
+          <td><div class="campaign">Nordic Night — Inside the Formula</div><div class="campaign-sub">Ingredient education</div></td>
+          <td class="visual">Dark-toned carousel. Each slide: one hero ingredient on dark stone (glacier extract, cloudberry, arctic sea kelp). Ingredient name in white Cormorant Garamond. One sentence function. Final slide: product + "500 units only."</td>
+          <td><div class="caption">"Every ingredient in Nordic Night was chosen for one reason: it does what we can't achieve in summer. Swipe to understand why this only works now."</div><div class="caption-note">Seasonal scarcity logic. Educates the urgency.</div></td>
+          <td><span class="goal conversion">Conversion</span></td>
+          <td><span class="status in-dev">In Dev</span></td>
+        </tr>
+
+        <!-- WEEK 10 -->
+        <tr data-month="june">
+          <td class="week-cell" rowspan="4">
+            <div class="week-num" style="color:var(--cold)">W10</div>
+            <div class="week-dates">Jun 9–13</div>
+          </td>
+          <td><div class="platform-wrap"><span class="platform ig">Instagram</span></div></td>
+          <td><span class="ctype">Story</span></td>
+          <td><div class="campaign">Units Counter</div><div class="campaign-sub">Scarcity mechanic</div></td>
+          <td class="visual">Daily story showing live units remaining. Dark background. Single white number (e.g. "382 remaining"). AETHER logo small at bottom. Updated daily. No additional copy needed.</td>
+          <td><div class="caption">"382 remaining." (updates daily)</div><div class="caption-note">Pure scarcity mechanic. Run daily from Jun 10 until sold out.</div></td>
+          <td><span class="goal conversion">Conversion</span></td>
+          <td><span class="status in-dev">In Dev</span></td>
+        </tr>
+
+        <tr data-month="june">
+          <td><div class="platform-wrap"><span class="platform em">Email</span></div></td>
+          <td><span class="ctype">Newsletter</span></td>
+          <td><div class="campaign">The Summer Skin Guide</div><div class="campaign-sub">Seasonal education</div></td>
+          <td class="visual">Light cream background returns (brand normalcy). Seasonal guide: AM summer routine, UV and barrier protection, why less product works better in summer. Nordic Night CTA at base only.</td>
+          <td><div class="caption">"Summer skin is different skin. Here's how to adapt your AETHER routine — and why Nordic Night fits in the evening even when it's warm."</div><div class="caption-note">Educational framing bridges product to season relevance.</div></td>
+          <td><span class="goal engagement">Engagement</span></td>
+          <td><span class="status idea">Idea</span></td>
+        </tr>
+
+        <tr data-month="june">
+          <td><div class="platform-wrap"><span class="platform li">LinkedIn</span></div></td>
+          <td><span class="ctype">Article</span></td>
+          <td><div class="campaign">What a Limited Edition Launch Taught Us About Marketing</div><div class="campaign-sub">Thought leadership</div></td>
+          <td class="visual">Text-first LinkedIn article. No product imagery until halfway. Reads as marketing case study. Pull quote: "Scarcity only works if it's honest." Sage brand accent line.</td>
+          <td><div class="caption">"We made 500 units of Nordic Night. We could have made 5,000. Here's why we didn't — and what happened next."</div><div class="caption-note">Post-launch. Builds brand credibility with industry audience.</div></td>
+          <td><span class="goal awareness">Awareness</span></td>
+          <td><span class="status idea">Idea</span></td>
+        </tr>
+
+        <tr data-month="june">
+          <td><div class="platform-wrap"><span class="platform wb">Blog</span></div></td>
+          <td><span class="ctype">Article</span></td>
+          <td><div class="campaign">The Science of Night Renewal: Why Your Skin Heals While You Sleep</div><div class="campaign-sub">Nordic Night education</div></td>
+          <td class="visual">Dark-toned hero: products on dark velvet, moonlight effect. Diagram: skin renewal cycle 11pm–3am. Arctic ingredient photographs. Cold blue pull-quote accents. Cinematic quality.</td>
+          <td><div class="caption">"Between 11pm and 3am, your skin rebuilds collagen at 3x its daytime rate. Nordic Night was formulated for exactly this window."</div><div class="caption-note">SEO: 'night renewal cream'. Drives organic discovery for launch.</div></td>
+          <td><span class="goal conversion">Conversion</span></td>
+          <td><span class="status in-dev">In Dev</span></td>
+        </tr>
+
+        <!-- WEEK 11 -->
+        <tr data-month="june">
+          <td class="week-cell" rowspan="3">
+            <div class="week-num" style="color:var(--cold)">W11</div>
+            <div class="week-dates">Jun 16–20</div>
+          </td>
+          <td><div class="platform-wrap"><span class="platform ig">Instagram</span></div></td>
+          <td><span class="ctype">Reel</span></td>
+          <td><div class="campaign">The Ritual Edit — Full 5-Product</div><div class="campaign-sub">Pre-summer lifestyle</div></td>
+          <td class="visual">45-sec lifestyle reel. Morning light. Linen sheets. Full 5-product routine on natural wood tray. Slow morning sequence. Warm amber tone returns (contrast with Nordic Night dark). Brand normalcy.</td>
+          <td><div class="caption">"June mornings. Five products. One ritual. The edit that never changes, even when the season does."</div><div class="caption-note">Lifestyle warmth. Nordic Night visible in background — normalises ownership.</div></td>
+          <td><span class="goal retention">Retention</span></td>
+          <td><span class="status idea">Idea</span></td>
+        </tr>
+
+        <tr data-month="june">
+          <td><div class="platform-wrap"><span class="platform em">Email</span></div></td>
+          <td><span class="ctype">Newsletter</span></td>
+          <td><div class="campaign">Q2 Reflection — What You Taught Us</div><div class="campaign-sub">Community appreciation</div></td>
+          <td class="visual">Handwritten-style header (brush script): "Thank you." Cream background. Simple layout. Customer words featured (comments/DMs, anonymised). No CTA. Pure relationship nurture.</td>
+          <td><div class="caption">"You showed up for the mission before we had proof it would work. Here's what three months with you has taught us about making things worth making."</div><div class="caption-note">Retention. Emotional brand equity. Zero sales intent.</div></td>
+          <td><span class="goal retention">Retention</span></td>
+          <td><span class="status idea">Idea</span></td>
+        </tr>
+
+        <tr data-month="june">
+          <td><div class="platform-wrap"><span class="platform tt">TikTok</span></div></td>
+          <td><span class="ctype">Video</span></td>
+          <td><div class="campaign">What Happened When 500 Sold Out</div><div class="campaign-sub">Social proof moment</div></td>
+          <td class="visual">Screen-recording style: inbox filling with waitlist confirmations. Cut: "0 remaining." Text overlay: "In 6 days." Simple, factual. No fanfare. Nordic Night product still shot to close.</td>
+          <td><div class="caption">"500 units. 6 days. We didn't expect this — and we're not making more. Thank you. #NordicNight #AETHER"</div><div class="caption-note">FOMO for next launch. Authentic. Sets up waitlist for future editions.</div></td>
+          <td><span class="goal awareness">Awareness</span></td>
+          <td><span class="status idea">Idea</span></td>
+        </tr>
+
+        <!-- WEEK 12 -->
+        <tr data-month="june">
+          <td class="week-cell" rowspan="3">
+            <div class="week-num" style="color:var(--cold)">W12</div>
+            <div class="week-dates">Jun 23–27</div>
+          </td>
+          <td><div class="platform-wrap"><span class="platform ig">Instagram</span></div></td>
+          <td><span class="ctype">Carousel</span></td>
+          <td><div class="campaign">Q2 — What We Built Together</div><div class="campaign-sub">Quarter close</div></td>
+          <td class="visual">Retrospective carousel. Slide 1: "Q2 by the numbers." Slides 2–5: headline milestones (followers, saves, units, trees planted). Slide 6: "Q3 is coming. Something new." Sage and terracotta tones.</td>
+          <td><div class="caption">"Three months in. Here's what happened when a 5-product brand decided that less really is more."</div><div class="caption-note">Community celebration. Q3 teaser. Retention + anticipation.</div></td>
+          <td><span class="goal retention">Retention</span></td>
+          <td><span class="status idea">Idea</span></td>
+        </tr>
+
+        <tr data-month="june">
+          <td><div class="platform-wrap"><span class="platform em">Email</span></div></td>
+          <td><span class="ctype">Newsletter</span></td>
+          <td><div class="campaign">Summer Ritual Guide + Q3 Preview</div><div class="campaign-sub">Bridge to Q3</div></td>
+          <td class="visual">Split design. Top half: cream summer guide (AM + PM, product callouts). Bottom half: dark teaser band — "Q3 is being made. Right now." Single email signup button for early access.</td>
+          <td><div class="caption">"Your summer ritual, perfected. And a quiet word about what comes next — because Q3 is already taking shape."</div><div class="caption-note">Utility + anticipation. Bridges Q2 close to Q3 open.</div></td>
+          <td><span class="goal retention">Retention</span></td>
+          <td><span class="status idea">Idea</span></td>
+        </tr>
+
+        <tr data-month="june">
+          <td><div class="platform-wrap"><span class="platform wb">Blog</span></div></td>
+          <td><span class="ctype">Article</span></td>
+          <td><div class="campaign">Building a Sustainable Skincare Brand in 2026 — What We Learned</div><div class="campaign-sub">Brand story capstone</div></td>
+          <td class="visual">Long-form editorial. Behind-the-scenes photography: ingredient sourcing, packaging process. Team voices featured. Warm, honest. Cormorant Garamond pull quotes throughout.</td>
+          <td><div class="caption">"Six months ago we had a formula and a belief. Here's everything we've learned about building a brand that refuses to compromise — and the customers who made it worth it."</div><div class="caption-note">SEO: 'sustainable skincare brand'. Archive content for long-term organic.</div></td>
+          <td><span class="goal awareness">Awareness</span></td>
+          <td><span class="status idea">Idea</span></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ RATIONALE ═══════════════════════════════════════════ -->
+<section class="rationale reveal">
+  <div class="rationale-header">
+    <div class="rationale-eyebrow">Strategic Rationale</div>
+    <h2 class="rationale-title">Why This Calendar<br><span>Works.</span></h2>
+  </div>
+
+  <div class="rationale-grid">
+    <div class="rationale-card april-card">
+      <div class="rc-month">April — Awareness</div>
+      <div class="rc-title">Trust Before Transaction</div>
+      <p class="rc-body">April is intentionally <strong>zero pressure</strong>. The audience encounters AETHER through the lens of values — sustainability proof, ingredient transparency, and Earth Day authenticity — before they're ever asked to buy. The Welcome Series email sequence ends with a soft first-purchase nudge only after the brand has established credibility across three touchpoints. The 10% welcome discount is offered once, quietly, never repeated. This mirrors how premium brands earn loyalty: by being worth knowing before being worth buying.</p>
+    </div>
+    <div class="rationale-card may-card">
+      <div class="rc-month">May — Engagement</div>
+      <div class="rc-title">Authority Through Education</div>
+      <p class="rc-body">May shifts the audience from <strong>aware to invested</strong>. The TikTok myth-debunking series builds authority without arrogance. The skin type carousel personalises the brand at scale. The male skincare content deliberately expands the demographic without alienating the core female audience — it reframes rather than pivots. The Nordic Night teaser at the end of the month is designed to <strong>plant a seed, not make a sale</strong>. The black-background email is the first visual departure from the brand norm — a deliberate signal that something different is coming.</p>
+    </div>
+    <div class="rationale-card june-card">
+      <div class="rc-month">June — Conversion</div>
+      <div class="rc-title">Scarcity That Means Something</div>
+      <p class="rc-body">The Nordic Night launch works because it was <strong>earned, not announced</strong>. Two months of trust-building mean the 500-unit limitation feels real, not manufactured. The dark visual language of June — navy, aurora tones, volcanic stone — creates a visual event that stands apart from the brand's usual aesthetic. The units counter story mechanic creates <strong>daily micro-urgency</strong> without a single "BUY NOW" message. The quarter closes with gratitude and Q3 anticipation — retaining the audience that took the hardest action: purchasing.</p>
+    </div>
+  </div>
+
+  <div style="margin-bottom:24px;">
+    <div class="mix-label">Platform Strategy</div>
+  </div>
+  <div class="platform-strategy">
+    <div class="ps-card ig-card">
+      <div class="ps-platform">Instagram</div>
+      <div class="ps-role">Brand Home</div>
+      <p class="ps-desc">Primary visual identity platform. Carousel format dominates for save-rate and educational depth. Reels drive discovery. Stories run conversion mechanics (polls, countdowns, waitlist).</p>
+    </div>
+    <div class="ps-card tt-card">
+      <div class="ps-platform">TikTok</div>
+      <div class="ps-role">Discovery Engine</div>
+      <p class="ps-desc">Acquisition-first. Myth debunking and routine demos designed for algorithmic spread. Lower brand polish, higher authenticity. Comments mined for community insight.</p>
+    </div>
+    <div class="ps-card li-card">
+      <div class="ps-platform">LinkedIn</div>
+      <div class="ps-role">Authority Builder</div>
+      <p class="ps-desc">Targets brand builders, wellness industry professionals, and corporate buyers. Thought leadership positions AETHER as a business model, not just a product.</p>
+    </div>
+    <div class="ps-card em-card">
+      <div class="ps-platform">Email</div>
+      <div class="ps-role">Relationship Core</div>
+      <p class="ps-desc">The highest-value channel. The 3-part welcome series, teaser mechanics, and launch drops happen here first. Email audience gets priority access as a reward for trust.</p>
+    </div>
+    <div class="ps-card wb-card">
+      <div class="ps-platform">Blog / Website</div>
+      <div class="ps-role">SEO Foundation</div>
+      <p class="ps-desc">Long-form content captures organic search traffic. Articles target high-value terms ('clean skincare', 'minimalist routine', 'men's skincare'). Internal links drive product page traffic.</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">MBN<span>.</span></div>
+  <div class="footer-aether">AETHER — Pure. Minimal. Essential.</div>
+  <div class="footer-note">Marketing by Njabulo · Q2 2026 Content Strategy Document</div>
+</footer>
+
+<script>
+  /* Scroll progress */
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    document.getElementById('prog').style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+  });
+
+  /* Scroll reveal */
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.05 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  /* Month filter */
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const month = btn.dataset.month;
+
+      // Show/hide month sections
+      document.querySelectorAll('.month-block').forEach(block => {
+        if (month === 'all' || block.id === month) {
+          block.style.display = '';
+        } else {
+          block.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
+</body>
+</html>

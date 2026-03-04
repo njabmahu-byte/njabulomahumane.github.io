@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Njabulo Mahumane — Marketing Portfolio</title>
+  <meta name="description" content="Digital Marketing student specialising in content strategy, SEO, campaign management and brand growth. Based in Cape Town, South Africa.">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+</head>
+<body>
+
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <div class="transition-overlay" id="transitionOverlay">
+    <div class="transition-panel"></div>
+    <div class="transition-panel"></div>
+    <div class="transition-panel"></div>
+    <div class="transition-panel"></div>
+    <div class="transition-panel"></div>
+  </div>
+
+  <nav class="nav">
+    <div class="nav-logo">NM<span>.</span></div>
+    <ul class="nav-links">
+      <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+      <li><a href="#" class="nav-link" data-page="about">About</a></li>
+      <li><a href="#" class="nav-link" data-page="portfolio">Portfolio</a></li>
+      <li><a href="mockups/blog.html" class="nav-link" target="_blank">Blog</a></li>
+      <li><a href="#" class="nav-link nav-cta" data-page="contact">Let's Talk</a></li>
+    </ul>
+  </nav>
+
+  <!-- ============ HOME PAGE ============ -->
+  <div id="page-home" class="page active">
+    <section class="hero">
+      <div class="hero-bg">
+        <div class="hero-blob-warm"></div>
+        <div class="hero-blob-cold"></div>
+        <div class="hero-grid"></div>
+      </div>
+      <div class="hero-inner">
+        <div class="hero-tag">Digital Marketing Student · Cape Town, SA</div>
+        <h1 class="hero-headline" id="heroHeadline">
+          <div class="hero-word"><span class="hero-word-inner dim">MARKETING</span></div>
+          <div class="hero-word"><span class="hero-word-inner warm">THAT</span></div>
+          <div class="hero-word"><span class="hero-word-inner">MOVES.</span></div>
+        </h1>
+        <div class="hero-typewriter" id="heroTypewriter">
+          <span id="typewriterText"></span><span class="typewriter-cursor"></span>
+        </div>
+        <div class="hero-actions">
+          <button class="btn-primary nav-link" data-page="portfolio">View My Work →</button>
+          <button class="btn-ghost nav-link" data-page="about">About Me</button>
+        </div>
+        <div class="hero-stats" id="heroStats">
+          <div class="stat">
+            <div class="stat-num" data-target="9" id="stat1">9</div>
+            <div class="stat-label">Portfolio Pieces</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">2<span style="color:var(--cold)">×PD</span></div>
+            <div class="stat-label">Distinctions Sem 2</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num" style="color:var(--cold)">1</div>
+            <div class="stat-label">Goal — Your Team</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee-wrap">
+      <div class="marquee-track">
+        <div class="marquee-item warm">Content Strategy<span class="marquee-dot"></span></div>
+        <div class="marquee-item">SEO &amp; Keyword Research<span class="marquee-dot"></span></div>
+        <div class="marquee-item cold">Campaign Analytics<span class="marquee-dot"></span></div>
+        <div class="marquee-item">Email Marketing<span class="marquee-dot"></span></div>
+        <div class="marquee-item warm">Paid Social Advertising<span class="marquee-dot"></span></div>
+        <div class="marquee-item">Competitor Analysis<span class="marquee-dot"></span></div>
+        <div class="marquee-item cold">Brand Strategy<span class="marquee-dot"></span></div>
+        <div class="marquee-item">Influencer Briefs<span class="marquee-dot"></span></div>
+        <div class="marquee-item warm">Performance Reporting<span class="marquee-dot"></span></div>
+        <div class="marquee-item">TikTok &amp; Video<span class="marquee-dot"></span></div>
+        <div class="marquee-item cold">Content Calendars<span class="marquee-dot"></span></div>
+        <div class="marquee-item">Canva · Analytics · Copywriting<span class="marquee-dot"></span></div>
+        <div class="marquee-item warm">Content Strategy<span class="marquee-dot"></span></div>
+        <div class="marquee-item">SEO &amp; Keyword Research<span class="marquee-dot"></span></div>
+        <div class="marquee-item cold">Campaign Analytics<span class="marquee-dot"></span></div>
+        <div class="marquee-item">Email Marketing<span class="marquee-dot"></span></div>
+        <div class="marquee-item warm">Paid Social Advertising<span class="marquee-dot"></span></div>
+        <div class="marquee-item">Competitor Analysis<span class="marquee-dot"></span></div>
+        <div class="marquee-item cold">Brand Strategy<span class="marquee-dot"></span></div>
+        <div class="marquee-item">Influencer Briefs<span class="marquee-dot"></span></div>
+        <div class="marquee-item warm">Performance Reporting<span class="marquee-dot"></span></div>
+        <div class="marquee-item">TikTok &amp; Video<span class="marquee-dot"></span></div>
+        <div class="marquee-item cold">Content Calendars<span class="marquee-dot"></span></div>
+        <div class="marquee-item">Canva · Analytics · Copywriting<span class="marquee-dot"></span></div>
+      </div>
+    </div>
+
+    <section class="services">
+      <div class="container">
+        <div class="section-label reveal">What I Bring</div>
+        <div class="services-headline reveal reveal-delay-1">The skills <span>employers</span> actually need.</div>
+        <div class="services-grid">
+          <div class="service-card reveal reveal-delay-1">
+            <div class="service-icon">📣</div>
+            <div class="service-title">Campaign Strategy</div>
+            <div class="service-desc">End-to-end campaign planning across paid, owned and earned channels — built around real outcomes, not vanity metrics.</div>
+          </div>
+          <div class="service-card reveal reveal-delay-2">
+            <div class="service-icon">✍️</div>
+            <div class="service-title">Content & SEO</div>
+            <div class="service-desc">Research-backed content that ranks and resonates. From keyword strategy to final copy — written to be found and read to the end.</div>
+          </div>
+          <div class="service-card reveal reveal-delay-3">
+            <div class="service-icon">📊</div>
+            <div class="service-title">Analytics & Reporting</div>
+            <div class="service-desc">Turning data into decisions. I track what matters, build clean reports, and convert insights into the next strategic move.</div>
+          </div>
+          <div class="service-card reveal reveal-delay-1">
+            <div class="service-icon">📱</div>
+            <div class="service-title">Social Media</div>
+            <div class="service-desc">Platform-native strategy for Instagram, TikTok, Facebook and beyond — content that fits the feed and builds real audiences.</div>
+          </div>
+          <div class="service-card reveal reveal-delay-2">
+            <div class="service-icon">🎨</div>
+            <div class="service-title">Creative Production</div>
+            <div class="service-desc">Canva, CapCut and Premiere Pro — from ad creative to full storyboard concepts, built with brand consistency and platform context in mind.</div>
+          </div>
+          <div class="service-card reveal reveal-delay-3">
+            <div class="service-icon">🔍</div>
+            <div class="service-title">Brand & Competitor Research</div>
+            <div class="service-desc">Deep-dive competitor analysis, brand positioning audits, and strategic recommendations grounded in publicly available data.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="featured">
+      <div class="container">
+        <div class="section-label reveal">Latest From The Blog</div>
+        <div class="featured-inner">
+          <div>
+            <div class="featured-eyebrow reveal">Featured Article</div>
+            <div class="featured-title reveal reveal-delay-1">How To Learn New Skills Fast And Actually Make Them Stick</div>
+            <div class="featured-meta reveal reveal-delay-2">February 2026 · 12 min read · Learning, Career, Marketing</div>
+            <p class="featured-excerpt reveal reveal-delay-2">A practical framework for busy professionals who don't have time to waste. No fluff — just the methods that actually build skills that stick, built around the science of how brains learn and forget.</p>
+            <a href="mockups/blog.html" target="_blank" class="btn-primary reveal reveal-delay-3">Read Article →</a>
+          </div>
+          <div class="featured-visual reveal reveal-delay-2">🧠</div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-logo">NM<span>.</span></div>
+      <div class="footer-text">© 2026 Njabulo Mahumane · Cape Town, South Africa</div>
+      <div class="footer-links">
+        <a href="https://linkedin.com/in/njabulo-mahumane" target="_blank">LinkedIn</a>
+        <a href="mailto:njabmahu@gmail.com">Email</a>
+        <a href="#" target="_blank">Hashnode</a>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ============ ABOUT PAGE ============ -->
+  <div id="page-about" class="page">
+
+    <section class="about-hero">
+      <div class="container">
+        <div class="section-label reveal">About Me</div>
+        <div class="about-grid">
+          <div>
+            <h1 class="about-headline reveal">
+              MARKETER.<br>
+              <span class="cold">STRATEGIST.</span><br>
+              <span class="warm">FAST LEARNER.</span>
+            </h1>
+            <p class="about-body reveal reveal-delay-1">I'm <strong>Njabulo Mahumane</strong>, a Digital Marketing student at Rosebank College, Cape Town — currently completing my Diploma in Digital Marketing (NQF 6, ending 2027). I finished my first year with three Pass with Distinction results and a consistent academic record across both semesters.</p>
+            <p class="about-body reveal reveal-delay-2">What drives me is the intersection of <strong>creativity and data</strong> — understanding not just what to put out into the world, but why it works, who it reaches, and how to make it better next time. I'm proficient in Canva, Google Analytics, Meta Ads Manager, CapCut and Premiere Pro.</p>
+            <p class="about-body reveal reveal-delay-2">This portfolio represents months of intentional practice — real mock-ups, real frameworks, and real thinking applied to fictional but realistic briefs. Every piece was built to demonstrate not just what I can produce, but <strong>how I think.</strong></p>
+            <p class="about-body reveal reveal-delay-3">I'm currently seeking my first professional marketing role. If you're building a team that values <strong>curiosity, initiative and a genuine passion for the craft</strong> — let's talk.</p>
+
+            <!-- WORK EXPERIENCE -->
+            <div class="section-label reveal" style="margin-top:48px;">Work Experience</div>
+            <div class="timeline reveal">
+              <div class="tl-item">
+                <div class="tl-dot warm"></div>
+                <div class="tl-body">
+                  <div class="tl-title">Shop Assistant — Clicks Pharmacy</div>
+                  <div class="tl-date">Dec 2025 – Jan 2026 · Cape Town</div>
+                  <div class="tl-desc">Provided customer service across digital and in-store channels, processing online orders, resolving inquiries and supporting in-person sales to drive customer satisfaction.</div>
+                </div>
+              </div>
+              <div class="tl-item">
+                <div class="tl-dot cold"></div>
+                <div class="tl-body">
+                  <div class="tl-title">Job Shadowing — Capitec Bank</div>
+                  <div class="tl-date">2023 · Stellenbosch · 3 Days</div>
+                  <div class="tl-desc">Participated in team meetings and observed how strategic decisions are made to improve customer experience at scale.</div>
+                </div>
+              </div>
+              <div class="tl-item">
+                <div class="tl-dot cold"></div>
+                <div class="tl-body">
+                  <div class="tl-title">Job Shadowing — Miltons Matsemela Attorneys</div>
+                  <div class="tl-date">2023 · 3 Days</div>
+                  <div class="tl-desc">Shadowed across departments, gaining insight into operational processes and professional communication frameworks.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- CERTIFICATIONS -->
+            <div class="section-label reveal" style="margin-top:48px;">Certifications & Platforms</div>
+            <div class="cert-row reveal">
+              <div class="cert-pill">HubSpot Academy</div>
+              <div class="cert-pill">Meta Blueprint</div>
+              <div class="cert-pill">Google Skill Shop</div>
+              <div class="cert-pill">Google Analytics 4</div>
+            </div>
+
+          </div>
+
+          <div class="about-sidebar">
+            <div class="profile-card reveal reveal-delay-1">
+              <div class="profile-avatar">NM</div>
+              <div class="profile-name">NJABULO MAHUMANE</div>
+              <div class="profile-role">Digital Marketing Student</div>
+              <div class="profile-details">
+                <div class="profile-detail"><strong>Location</strong> Cape Town, SA</div>
+                <div class="profile-detail"><strong>Phone</strong> 079-169-8794</div>
+                <div class="profile-detail"><strong>Email</strong> njabmahu@gmail.com</div>
+                <div class="profile-detail"><strong>Study</strong> Rosebank College, 2025–2027</div>
+                <div class="profile-detail"><strong>Degree</strong> Diploma in Digital Marketing</div>
+                <div class="profile-detail"><strong>Available</strong> Immediately</div>
+              </div>
+            </div>
+            <button class="btn-primary nav-link reveal reveal-delay-2" style="width:100%;text-align:center;display:block;padding:16px;" data-page="contact">Get In Touch →</button>
+
+            <!-- ACADEMIC RESULTS CARD -->
+            <div class="results-card reveal reveal-delay-2">
+              <div class="results-card-title">📋 Academic Results</div>
+              <div class="results-sem-label">Semester 1 · 2025</div>
+              <div class="results-grid">
+                <div class="results-row">
+                  <div class="results-module">Digital &amp; Academic Literacies</div>
+                  <div class="results-mark pd">79 · PD</div>
+                </div>
+                <div class="results-row">
+                  <div class="results-module">Digital Marketing 1A</div>
+                  <div class="results-mark pd">78 · PD</div>
+                </div>
+                <div class="results-row">
+                  <div class="results-module">Quantitative Thinking</div>
+                  <div class="results-mark pd">93 · PD</div>
+                </div>
+                <div class="results-row">
+                  <div class="results-module">Marketing 1A</div>
+                  <div class="results-mark p">54 · P</div>
+                </div>
+              </div>
+              <div class="results-sem-label" style="margin-top:14px;">Semester 2 · 2025</div>
+              <div class="results-grid">
+                <div class="results-row">
+                  <div class="results-module">Digital Marketing 1B</div>
+                  <div class="results-mark pd">85 · PD</div>
+                </div>
+                <div class="results-row">
+                  <div class="results-module">English Language Practice A</div>
+                  <div class="results-mark pd">90 · PD</div>
+                </div>
+                <div class="results-row">
+                  <div class="results-module">Business Management 1A</div>
+                  <div class="results-mark p">71 · P</div>
+                </div>
+                <div class="results-row">
+                  <div class="results-module">Marketing 1B</div>
+                  <div class="results-mark p">65 · P</div>
+                </div>
+              </div>
+              <div class="results-note">Rosebank College · IIE · NQF Level 5</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="skills-section">
+      <div class="container">
+        <div class="section-label reveal">Skills & Tools</div>
+        <div class="skills-grid">
+          <div class="skill-pill reveal reveal-delay-1">Canva</div>
+          <div class="skill-pill reveal reveal-delay-1">Google Analytics 4</div>
+          <div class="skill-pill reveal reveal-delay-1">Meta Ads Manager</div>
+          <div class="skill-pill reveal reveal-delay-1">CapCut</div>
+          <div class="skill-pill reveal reveal-delay-2">Premiere Pro</div>
+          <div class="skill-pill reveal reveal-delay-2">SEO Strategy</div>
+          <div class="skill-pill reveal reveal-delay-2">Facebook Ads</div>
+          <div class="skill-pill reveal reveal-delay-2">Content Strategy</div>
+          <div class="skill-pill reveal reveal-delay-3">Email Marketing</div>
+          <div class="skill-pill reveal reveal-delay-3">Competitor Analysis</div>
+          <div class="skill-pill reveal reveal-delay-3">Copywriting</div>
+          <div class="skill-pill reveal reveal-delay-3">Social Media Mgmt</div>
+          <div class="skill-pill reveal reveal-delay-4">Microsoft Office</div>
+          <div class="skill-pill reveal reveal-delay-4">Google Sheets/Excel</div>
+          <div class="skill-pill reveal reveal-delay-4">ClickUp / Notion</div>
+          <div class="skill-pill reveal reveal-delay-4">Ubersuggest</div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-logo">NM<span>.</span></div>
+      <div class="footer-text">© 2026 Njabulo Mahumane · Cape Town, South Africa</div>
+      <div class="footer-links"><a href="#">LinkedIn</a><a href="mailto:njabmahu@gmail.com">Email</a></div>
+    </footer>
+  </div>
+
+  <!-- ============ PORTFOLIO PAGE ============ -->
+  <div id="page-portfolio" class="page">
+    <section class="portfolio-hero">
+      <div class="container">
+        <div class="section-label reveal">Portfolio</div>
+        <h1 class="portfolio-headline reveal">THE<br><span class="warm">WORK.</span></h1>
+        <p class="portfolio-sub reveal reveal-delay-1">Nine marketing mock-ups built to demonstrate real skills across every major discipline. Each piece represents intentional practice — not just output, but strategic thinking.</p>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="portfolio-grid">
+
+        <a class="portfolio-card reveal reveal-delay-1" href="mockups/brand-analysis.html" target="_blank">
+          <div class="portfolio-card-img">🔍</div>
+          <div class="portfolio-card-body">
+            <div class="portfolio-card-tag">Brand Analysis · Strategy</div>
+            <div class="portfolio-card-title">Booking.com — The Trust Paradox</div>
+            <div class="portfolio-card-desc">A full brand perception case study. Sentiment analysis, competitive landscape, SWOT, brand alignment matrix, and three strategic imperatives for a global travel platform.</div>
+          </div>
+          <div class="portfolio-card-footer">
+            <div class="portfolio-card-tools"><span class="tool-tag">Research</span><span class="tool-tag">Strategy</span><span class="tool-tag">SWOT</span></div>
+            <span class="card-arrow">↗</span>
+          </div>
+        </a>
+
+        <a class="portfolio-card reveal reveal-delay-2" href="mockups/social-media-strategy.html" target="_blank">
+          <div class="portfolio-card-img">📱</div>
+          <div class="portfolio-card-body">
+            <div class="portfolio-card-tag">Social Media · Strategy</div>
+            <div class="portfolio-card-title">Booking.com Social Media Strategy 2026–27</div>
+            <div class="portfolio-card-desc">A full 12-month social media strategy covering platform priorities, content pillars, community management, trust recovery, and a phased implementation roadmap.</div>
+          </div>
+          <div class="portfolio-card-footer">
+            <div class="portfolio-card-tools"><span class="tool-tag">Strategy</span><span class="tool-tag">Reporting</span></div>
+            <span class="card-arrow">↗</span>
+          </div>
+        </a>
+
+        <a class="portfolio-card reveal reveal-delay-1" href="mockups/campaign-report.html" target="_blank">
+          <div class="portfolio-card-img">📊</div>
+          <div class="portfolio-card-body">
+            <div class="portfolio-card-tag">Analytics · Reporting</div>
+            <div class="portfolio-card-title">Campaign Performance Report — Q1 2026</div>
+            <div class="portfolio-card-desc">Full campaign report with realistic KPIs — 105.8x ROAS, $4.25 CPA, 42,300 attributed bookings. Platform-by-platform breakdown with three strategic Q2 recommendations.</div>
+          </div>
+          <div class="portfolio-card-footer">
+            <div class="portfolio-card-tools"><span class="tool-tag">Analytics</span><span class="tool-tag">GA4</span><span class="tool-tag">KPIs</span></div>
+            <span class="card-arrow">↗</span>
+          </div>
+        </a>
+
+        <a class="portfolio-card reveal reveal-delay-2" href="mockups/blog.html" target="_blank">
+          <div class="portfolio-card-img">✍️</div>
+          <div class="portfolio-card-body">
+            <div class="portfolio-card-tag">Content · SEO</div>
+            <div class="portfolio-card-title">SEO-Optimised Blog Post</div>
+            <div class="portfolio-card-desc">A research-backed long-form article on skill acquisition. Keyword-mapped, intent-aligned, and written to rank. Includes keyword research process documentation.</div>
+          </div>
+          <div class="portfolio-card-footer">
+            <div class="portfolio-card-tools"><span class="tool-tag">Ubersuggest</span><span class="tool-tag">Keyword Planner</span></div>
+            <span class="card-arrow">↗</span>
+          </div>
+        </a>
+
+        <a class="portfolio-card reveal reveal-delay-1" href="mockups/calendar.html" target="_blank">
+          <div class="portfolio-card-img">📅</div>
+          <div class="portfolio-card-body">
+            <div class="portfolio-card-tag">Planning · Strategy</div>
+            <div class="portfolio-card-title">3-Month Content Calendar</div>
+            <div class="portfolio-card-desc">A fully mapped editorial calendar covering campaign themes, content types, and a weekly publishing schedule across multiple channels.</div>
+          </div>
+          <div class="portfolio-card-footer">
+            <div class="portfolio-card-tools"><span class="tool-tag">Notion</span><span class="tool-tag">ClickUp</span></div>
+            <span class="card-arrow">↗</span>
+          </div>
+        </a>
+
+        <a class="portfolio-card reveal reveal-delay-2" href="mockups/infographic.html" target="_blank">
+          <div class="portfolio-card-img">📈</div>
+          <div class="portfolio-card-body">
+            <div class="portfolio-card-tag">Visual · Data</div>
+            <div class="portfolio-card-title">Marketing Infographic</div>
+            <div class="portfolio-card-desc">A visual data story translating campaign or market data into a clear, shareable infographic designed for social distribution.</div>
+          </div>
+          <div class="portfolio-card-footer">
+            <div class="portfolio-card-tools"><span class="tool-tag">Canva</span><span class="tool-tag">Flourish</span></div>
+            <span class="card-arrow">↗</span>
+          </div>
+        </a>
+
+        <a class="portfolio-card reveal reveal-delay-1" href="mockups/instagram-carousel.html" target="_blank">
+          <div class="portfolio-card-img">🖼️</div>
+          <div class="portfolio-card-body">
+            <div class="portfolio-card-tag">Social · Instagram</div>
+            <div class="portfolio-card-title">Instagram Carousel — 7 Slides</div>
+            <div class="portfolio-card-desc">A 7-slide educational carousel with a thumb-stopping hook, structured value delivery across each slide, and a clear save-and-share CTA. Consistent brand visual language throughout.</div>
+          </div>
+          <div class="portfolio-card-footer">
+            <div class="portfolio-card-tools"><span class="tool-tag">Canva</span><span class="tool-tag">Instagram</span></div>
+            <span class="card-arrow">↗</span>
+          </div>
+        </a>
+
+        <a class="portfolio-card reveal reveal-delay-2" href="mockups/facebook-ads.html" target="_blank">
+          <div class="portfolio-card-img">📱</div>
+          <div class="portfolio-card-body">
+            <div class="portfolio-card-tag">Paid Social · Creative</div>
+            <div class="portfolio-card-title">Facebook &amp; Instagram Static Ads</div>
+            <div class="portfolio-card-desc">3 static ad creatives in correct platform sizes — benefit-led, social proof, and urgency-driven hooks. Full copy, CTAs, and targeting rationale for each.</div>
+          </div>
+          <div class="portfolio-card-footer">
+            <div class="portfolio-card-tools"><span class="tool-tag">Canva</span><span class="tool-tag">Meta Ads</span></div>
+            <span class="card-arrow">↗</span>
+          </div>
+        </a>
+
+        <a class="portfolio-card reveal reveal-delay-1" href="mockups/tiktok-storyboards.html" target="_blank">
+          <div class="portfolio-card-img">🎬</div>
+          <div class="portfolio-card-body">
+            <div class="portfolio-card-tag">Video · TikTok</div>
+            <div class="portfolio-card-title">TikTok Storyboards — 2 Videos</div>
+            <div class="portfolio-card-desc">Two 15–30 second TikTok storyboards with hook, body, CTA, camera direction, text overlay notes, and audio mood specified for each scene.</div>
+          </div>
+          <div class="portfolio-card-footer">
+            <div class="portfolio-card-tools"><span class="tool-tag">Canva</span><span class="tool-tag">CapCut</span></div>
+            <span class="card-arrow">↗</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-logo">NM<span>.</span></div>
+      <div class="footer-text">© 2026 Njabulo Mahumane · Cape Town, South Africa</div>
+      <div class="footer-links"><a href="#">LinkedIn</a><a href="mailto:njabmahu@gmail.com">Email</a></div>
+    </footer>
+  </div>
+
+  <!-- ============ BLOG PAGE ============ -->
+  <div id="page-blog" class="page">
+    <section class="blog-hero">
+      <div class="container">
+        <div class="section-label reveal">Blog</div>
+        <h1 class="blog-headline reveal">MARKETING<br><span class="warm">INSIGHTS.</span></h1>
+        <p class="blog-sub reveal reveal-delay-1">Practical frameworks, honest takes, and strategic thinking for marketers who want to keep growing.</p>
+      </div>
+    </section>
+    <div class="container">
+      <div class="blog-list">
+        <div class="blog-item reveal">
+          <div>
+            <div class="blog-item-tag">Learning · Career · Marketing</div>
+            <div class="blog-item-title">How to Learn New Skills Fast and Actually Make Them Stick</div>
+            <p class="blog-item-excerpt">A practical framework for busy professionals who don't have time to waste. No fluff — just the methods that actually build skills that stick, built around the science of how brains learn and forget.</p>
+            <div class="blog-item-meta">February 2026 · 12 min read</div>
+          </div>
+          <div class="blog-item-arrow">↗</div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="footer-logo">NM<span>.</span></div>
+      <div class="footer-text">© 2026 Njabulo Mahumane · Cape Town, South Africa</div>
+      <div class="footer-links"><a href="#">LinkedIn</a><a href="mailto:njabmahu@gmail.com">Email</a></div>
+    </footer>
+  </div>
+
+  <!-- ============ CONTACT PAGE ============ -->
+  <div id="page-contact" class="page">
+    <section class="contact-hero">
+      <div class="container">
+        <div class="section-label reveal">Contact</div>
+        <div class="contact-grid">
+          <div>
+            <h1 class="contact-headline reveal">LET'S<br><span class="warm">TALK.</span></h1>
+            <p class="contact-body reveal reveal-delay-1">I'm actively looking for my first professional marketing role. If you're building a team and think there's a fit — I'd genuinely love to hear from you.</p>
+            <div class="contact-links">
+              <div class="contact-link reveal reveal-delay-1">
+                <div class="contact-link-icon">📧</div>
+                <div><div class="contact-link-label">Email</div><div class="contact-link-value">njabmahu@gmail.com</div></div>
+              </div>
+              <div class="contact-link reveal reveal-delay-2">
+                <div class="contact-link-icon">📞</div>
+                <div><div class="contact-link-label">Phone</div><div class="contact-link-value">079-169-8794</div></div>
+              </div>
+              <div class="contact-link reveal reveal-delay-3">
+                <div class="contact-link-icon">💼</div>
+                <div><div class="contact-link-label">LinkedIn</div><div class="contact-link-value">linkedin.com/in/njabulo-mahumane</div></div>
+              </div>
+              <div class="contact-link reveal reveal-delay-4">
+                <div class="contact-link-icon">📍</div>
+                <div><div class="contact-link-label">Location</div><div class="contact-link-value">Cape Town, South Africa</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="contact-form-wrap reveal reveal-delay-2">
+            <div class="form-title">SEND A MESSAGE</div>
+            <div class="form-group">
+              <label class="form-label">Your Name</label>
+              <input type="text" class="form-input" placeholder="Jane Smith">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Your Email</label>
+              <input type="email" class="form-input" placeholder="jane@company.com">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Company</label>
+              <input type="text" class="form-input" placeholder="Optional">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Message</label>
+              <textarea class="form-textarea" placeholder="Tell me about the role or what you're looking for..."></textarea>
+            </div>
+            <button class="btn-primary" style="width:100%;text-align:center;display:block;padding:16px;">Send Message →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="footer-logo">NM<span>.</span></div>
+      <div class="footer-text">© 2026 Njabulo Mahumane · Cape Town, South Africa</div>
+      <div class="footer-links"><a href="#">LinkedIn</a><a href="mailto:njabmahu@gmail.com">Email</a></div>
+    </footer>
+  </div>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  const dot  = document.getElementById('cursorDot');
+  const ring = document.getElementById('cursorRing');
+  let mouseX=0,mouseY=0,ringX=0,ringY=0;
+  document.addEventListener('mousemove',e=>{mouseX=e.clientX;mouseY=e.clientY;dot.style.left=mouseX+'px';dot.style.top=mouseY+'px';});
+  function animateCursor(){ringX+=(mouseX-ringX)*0.12;ringY+=(mouseY-ringY)*0.12;ring.style.left=ringX+'px';ring.style.top=ringY+'px';requestAnimationFrame(animateCursor);}
+  animateCursor();
+  document.querySelectorAll('a,button,.portfolio-card,.blog-item,.contact-link,.skill-pill,.service-card,.cert-pill').forEach(el=>{
+    el.addEventListener('mouseenter',()=>document.body.classList.add('cursor-hover'));
+    el.addEventListener('mouseleave',()=>document.body.classList.remove('cursor-hover'));
+  });
+
+  const progressBar=document.getElementById('scrollProgress');
+  window.addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-window.innerHeight;progressBar.style.width=(h>0?(window.scrollY/h)*100:0)+'%';});
+
+  function animateHeroWords(){anime({targets:'#heroHeadline .hero-word-inner',translateY:['110%','0%'],opacity:[0,1],duration:900,delay:anime.stagger(160,{start:400}),easing:'cubicBezier(0.22,1,0.36,1)'});}
+
+  const phrases=['I build campaigns that convert.','I write content that ranks.','I turn data into strategy.','I grow brands that matter.'];
+  let phraseIdx=0,charIdx=0,deleting=false;
+  const typeEl=document.getElementById('typewriterText');
+  function typeStep(){const current=phrases[phraseIdx];if(!deleting){typeEl.textContent=current.slice(0,++charIdx);if(charIdx===current.length){setTimeout(()=>{deleting=true;typeStep();},2200);return;}}else{typeEl.textContent=current.slice(0,--charIdx);if(charIdx===0){deleting=false;phraseIdx=(phraseIdx+1)%phrases.length;}}setTimeout(typeStep,deleting?38:68);}
+
+  function animateCounter(el,target){const obj={val:0};anime({targets:obj,val:target,duration:1800,easing:'easeOutExpo',update:()=>{el.textContent=Math.floor(obj.val);}});}
+
+  const revealObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');revealObserver.unobserve(entry.target);}});},{threshold:0.1,rootMargin:'0px 0px -48px 0px'});
+  function initReveal(){document.querySelectorAll('.reveal').forEach(el=>{el.classList.remove('visible');revealObserver.observe(el);});}
+
+  const overlay=document.getElementById('transitionOverlay');
+  const allPages=document.querySelectorAll('.page');
+  const navLinks=document.querySelectorAll('.nav-link');
+  let transitioning=false;
+
+ function showPage(pageId){
+    if(transitioning)return;
+    const target=document.getElementById('page-'+pageId);
+    const current=document.querySelector('.page.active');
+    if(!target||target===current)return;
+    transitioning=true;
+    overlay.classList.add('active');
+    // Panels slide IN from bottom
+    anime({targets:'.transition-panel',scaleY:[0,1],duration:400,delay:anime.stagger(60),easing:'easeInExpo',
+      complete:()=>{
+        allPages.forEach(p=>p.classList.remove('active'));
+        target.classList.add('active');
+        window.scrollTo(0,0);
+        navLinks.forEach(l=>l.classList.remove('active'));
+        navLinks.forEach(l=>{if(l.dataset.page===pageId)l.classList.add('active');});
+        initReveal();
+        if(pageId==='home')initHomeAnimations();
+        // Panels slide OUT to top
+        anime({targets:'.transition-panel',scaleY:[1,0],duration:400,delay:anime.stagger(60),easing:'easeOutExpo',
+          begin:()=>{document.querySelectorAll('.transition-panel').forEach(p=>p.style.transformOrigin='top');},
+          complete:()=>{overlay.classList.remove('active');document.querySelectorAll('.transition-panel').forEach(p=>p.style.transformOrigin='bottom');transitioning=false;}
+        });
+      }
+    });
+  }
+
+  function initHomeAnimations(){
+    animateHeroWords();
+    setTimeout(()=>typeStep(),1400);
+    const stat1=document.getElementById('stat1');
+    const statsSection=document.getElementById('heroStats');
+    const counterObs=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){animateCounter(stat1,9);counterObs.unobserve(entry.target);}});},{threshold:0.5});
+    if(statsSection)counterObs.observe(statsSection);
+  }
+
+  document.querySelectorAll('[data-page]').forEach(el=>{
+    el.addEventListener('click',e=>{e.preventDefault();const page=el.dataset.page;if(page)showPage(page);});
+  });
+
+  window.addEventListener('load',()=>{initReveal();initHomeAnimations();});
+  </script>
+</body>
+</html>

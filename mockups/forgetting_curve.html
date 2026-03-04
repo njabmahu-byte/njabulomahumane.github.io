@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Forgetting Curve</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    background: #f5f5f5;
+    font-family: 'DM Sans', sans-serif;
+    overflow: hidden;
+    height: auto;
+  }
+  .card {
+    background: #ffffff;
+    width: 100%;
+    padding: 32px 32px 36px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 40px rgba(0,0,0,0.08);
+  }
+  .header { text-align: center; margin-bottom: 6px; }
+  .title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 62px;
+    letter-spacing: 3px;
+    color: #0d0d0f;
+    line-height: 1;
+  }
+  .subtitle {
+    font-size: 16px;
+    color: #555;
+    font-weight: 300;
+    margin-top: 10px;
+    letter-spacing: 0.2px;
+  }
+  .subtitle strong { color: #e63946; font-weight: 600; }
+
+  .legend {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    margin: 18px 0 4px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #333;
+  }
+  .legend-line {
+    width: 38px;
+    height: 4px;
+    border-radius: 2px;
+  }
+  .chart-wrap { flex: 1; }
+
+  .footer-note {
+    text-align: center;
+    margin-top: 12px;
+    font-size: 12px;
+    color: #bbb;
+    font-weight: 300;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
+</style>
+<style id="cursor-global">
+.g-cursor-dot{position:fixed;width:8px;height:8px;background:#e8a020;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:transform .1s,background .2s;}
+.g-cursor-ring{position:fixed;width:36px;height:36px;border:2px solid rgba(232,160,32,0.55);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);}
+body.g-cursor-hover .g-cursor-dot{transform:translate(-50%,-50%) scale(2);background:#fff;}
+body.g-cursor-hover .g-cursor-ring{width:52px;height:52px;}
+@media(hover:none){.g-cursor-dot,.g-cursor-ring{display:none;}}
+</style>
+</head>
+<body>
+<div class="g-cursor-dot" id="gCursorDot"></div><div class="g-cursor-ring" id="gCursorRing"></div>
+<div class="card">
+  <div class="header">
+    <div class="title">The Forgetting Curve</div>
+    <div class="subtitle">We forget <strong>70% of new information within 24 hours</strong> — unless we actively intervene.</div>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item">
+      <div class="legend-line" style="background:#e63946;"></div>
+      Without Review
+    </div>
+    <div class="legend-item">
+      <div class="legend-line" style="background:#2d9e5f;"></div>
+      With Spaced Repetition
+    </div>
+  </div>
+
+  <div class="chart-wrap">
+    <svg viewBox="0 0 1080 580" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" width="100%" height="100%">
+      <defs>
+        <linearGradient id="redFade" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#e63946" stop-opacity="0.12"/>
+          <stop offset="100%" stop-color="#e63946" stop-opacity="0.01"/>
+        </linearGradient>
+        <linearGradient id="greenFade" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#2d9e5f" stop-opacity="0.10"/>
+          <stop offset="100%" stop-color="#2d9e5f" stop-opacity="0.01"/>
+        </linearGradient>
+      </defs>
+
+      <!-- Grid lines -->
+      <line x1="90" y1="10"  x2="1050" y2="10"  stroke="#f0f0f0" stroke-width="1.5"/>
+      <line x1="90" y1="132" x2="1050" y2="132" stroke="#f0f0f0" stroke-width="1.5"/>
+      <line x1="90" y1="255" x2="1050" y2="255" stroke="#f0f0f0" stroke-width="1.5"/>
+      <line x1="90" y1="377" x2="1050" y2="377" stroke="#f0f0f0" stroke-width="1.5"/>
+      <line x1="90" y1="500" x2="1050" y2="500" stroke="#e0e0e0" stroke-width="1.5"/>
+      <line x1="90" y1="10" x2="90" y2="500" stroke="#e0e0e0" stroke-width="1.5"/>
+
+      <!-- Vertical dashed markers -->
+      <line x1="258"  y1="10" x2="258"  y2="500" stroke="#f5f5f5" stroke-width="1" stroke-dasharray="4,4"/>
+      <line x1="498"  y1="10" x2="498"  y2="500" stroke="#f5f5f5" stroke-width="1" stroke-dasharray="4,4"/>
+      <line x1="726"  y1="10" x2="726"  y2="500" stroke="#f5f5f5" stroke-width="1" stroke-dasharray="4,4"/>
+      <line x1="1050" y1="10" x2="1050" y2="500" stroke="#f5f5f5" stroke-width="1" stroke-dasharray="4,4"/>
+
+      <!-- Y-axis labels -->
+      <text x="76" y="14"  text-anchor="end" font-family="DM Sans,sans-serif" font-size="13" fill="#aaa">100%</text>
+      <text x="76" y="136" text-anchor="end" font-family="DM Sans,sans-serif" font-size="13" fill="#aaa">75%</text>
+      <text x="76" y="259" text-anchor="end" font-family="DM Sans,sans-serif" font-size="13" fill="#aaa">50%</text>
+      <text x="76" y="381" text-anchor="end" font-family="DM Sans,sans-serif" font-size="13" fill="#aaa">25%</text>
+      <text x="76" y="504" text-anchor="end" font-family="DM Sans,sans-serif" font-size="13" fill="#aaa">0%</text>
+      <text transform="rotate(-90)" x="-255" y="20" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="12" fill="#ccc" letter-spacing="2">RETENTION %</text>
+
+      <!-- X-axis labels -->
+      <text x="90"   y="522" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="13" fill="#666" font-weight="500">Day 0</text>
+      <text x="258"  y="522" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="13" fill="#666" font-weight="500">1 Hour</text>
+      <text x="498"  y="522" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="13" fill="#666" font-weight="500">24 Hours</text>
+      <text x="726"  y="522" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="13" fill="#666" font-weight="500">Day 3</text>
+      <text x="1050" y="522" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="13" fill="#666" font-weight="500">Day 7</text>
+      <text x="570" y="558" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="12" fill="#ccc" letter-spacing="2">TIME</text>
+
+      <!-- RED CURVE -->
+      <path d="M90,10 C150,10 200,160 258,255 C320,358 420,390 498,410 C590,432 660,452 726,462 C840,476 960,484 1050,488 L1050,500 L90,500 Z" fill="url(#redFade)"/>
+      <path d="M90,10 C150,10 200,160 258,255 C320,358 420,390 498,410 C590,432 660,452 726,462 C840,476 960,484 1050,488" fill="none" stroke="#e63946" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="90"   cy="10"  r="5.5" fill="white" stroke="#e63946" stroke-width="2.5"/>
+      <circle cx="258"  cy="255" r="5.5" fill="white" stroke="#e63946" stroke-width="2.5"/>
+      <circle cx="498"  cy="410" r="5.5" fill="white" stroke="#e63946" stroke-width="2.5"/>
+      <circle cx="726"  cy="462" r="5.5" fill="white" stroke="#e63946" stroke-width="2.5"/>
+      <circle cx="1050" cy="488" r="5.5" fill="white" stroke="#e63946" stroke-width="2.5"/>
+
+      <!-- GREEN CURVE -->
+      <path d="M90,10 C150,10 210,140 258,181 C290,205 340,145 498,143 C610,141 660,158 726,151 C820,142 960,158 1050,163 L1050,500 L90,500 Z" fill="url(#greenFade)"/>
+      <path d="M90,10 C150,10 210,140 258,181 C290,205 340,145 498,143 C610,141 660,158 726,151 C820,142 960,158 1050,163" fill="none" stroke="#2d9e5f" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="90"   cy="10"  r="5.5" fill="white" stroke="#2d9e5f" stroke-width="2.5"/>
+      <circle cx="258"  cy="181" r="5.5" fill="white" stroke="#2d9e5f" stroke-width="2.5"/>
+      <circle cx="498"  cy="143" r="5.5" fill="white" stroke="#2d9e5f" stroke-width="2.5"/>
+      <circle cx="726"  cy="151" r="5.5" fill="white" stroke="#2d9e5f" stroke-width="2.5"/>
+      <circle cx="1050" cy="163" r="5.5" fill="white" stroke="#2d9e5f" stroke-width="2.5"/>
+
+      <!-- Review labels -->
+      <text x="498" y="126" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" fill="#2d9e5f" font-weight="700">↑ Review</text>
+      <text x="726" y="134" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" fill="#2d9e5f" font-weight="700">↑ Review</text>
+      <text x="1050" y="146" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" fill="#2d9e5f" font-weight="700">↑ Review</text>
+
+      <!-- Gap callout -->
+      <line x1="498" y1="143" x2="498" y2="410" stroke="#ddd" stroke-width="1" stroke-dasharray="3,3"/>
+      <rect x="508" y="264" width="96" height="42" rx="6" fill="#fafafa" stroke="#e0e0e0" stroke-width="1"/>
+      <text x="556" y="279" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="12" fill="#555" font-weight="700">~55% gap</text>
+      <text x="556" y="298" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" fill="#999">at 24 hours</text>
+
+      <!-- Annotations -->
+      <rect x="798" y="458" width="210" height="42" rx="7" fill="#fff5f5" stroke="#e63946" stroke-width="1.5"/>
+      <text x="903" y="473" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="12" fill="#e63946" font-weight="700">Almost nothing remains.</text>
+      <text x="903" y="491" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" fill="#e63946" opacity="0.8">~8% retained by Day 7</text>
+      <line x1="1050" y1="488" x2="1008" y2="479" stroke="#e63946" stroke-width="1" stroke-dasharray="3,3" opacity="0.6"/>
+
+      <rect x="798" y="60" width="218" height="42" rx="7" fill="#f0faf5" stroke="#2d9e5f" stroke-width="1.5"/>
+      <text x="907" y="75" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="12" fill="#2d9e5f" font-weight="700">Retention stays high.</text>
+      <text x="907" y="93" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" fill="#2d9e5f" opacity="0.8">~82% retained by Day 7</text>
+      <line x1="1050" y1="163" x2="1016" y2="102" stroke="#2d9e5f" stroke-width="1" stroke-dasharray="3,3" opacity="0.6"/>
+    </svg>
+  </div>
+
+  <div class="footer-note">
+    Based on Ebbinghaus Memory Research, 1885 &nbsp;·&nbsp; Skill Acquisition Series
+  </div>
+</div>
+<script id="cursor-global-js">
+(function(){
+  var dot=document.getElementById("gCursorDot"),ring=document.getElementById("gCursorRing");
+  if(!dot||!ring)return;
+  var mx=0,my=0,rx=0,ry=0;
+  document.addEventListener("mousemove",function(e){mx=e.clientX;my=e.clientY;dot.style.left=mx+"px";dot.style.top=my+"px";});
+  (function ani(){rx+=(mx-rx)*.13;ry+=(my-ry)*.13;ring.style.left=rx+"px";ring.style.top=ry+"px";requestAnimationFrame(ani);})();
+  document.querySelectorAll("a,button,[onclick]").forEach(function(el){
+    el.addEventListener("mouseenter",function(){document.body.classList.add("g-cursor-hover");});
+    el.addEventListener("mouseleave",function(){document.body.classList.remove("g-cursor-hover");});
+  });
+  document.body.style.cursor="none";
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7 Fundamentals of Good Content Writing</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #1a1614;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+    min-height: 100vh;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .infographic {
+    width: 600px;
+    background: #0f0e0c;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.6);
+  }
+
+  /* ---- HEADER ---- */
+  .header {
+    background: #13110e;
+    padding: 52px 48px 44px;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid #1e1c18;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(232,160,32,0.12) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: -40px;
+    width: 220px; height: 220px;
+    background: radial-gradient(circle, rgba(77,143,255,0.07) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .header-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #e8a020;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header-eyebrow::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: #e8a020;
+  }
+
+  .header-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #ede8e2;
+    letter-spacing: -0.5px;
+    margin-bottom: 14px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header-title span { color: #e8a020; }
+
+  .header-sub {
+    font-size: 14px;
+    font-weight: 300;
+    color: #6b6058;
+    letter-spacing: 0.3px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ---- BODY ---- */
+  .body {
+    padding: 8px 0 0;
+  }
+
+  /* ---- ITEM ---- */
+  .item {
+    padding: 28px 48px;
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    gap: 20px;
+    align-items: flex-start;
+    border-bottom: 1px solid #161410;
+    position: relative;
+    transition: background 0.2s ease;
+  }
+
+  .item:last-child { border-bottom: none; }
+
+  .item:hover { background: #131109; }
+
+  /* Accent left bar on hover */
+  .item::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--accent, #e8a020);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.3s ease;
+  }
+  .item:hover::before { transform: scaleY(1); }
+
+  /* Icon */
+  .item-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    background: var(--icon-bg, rgba(232,160,32,0.08));
+    border: 1px solid var(--icon-border, rgba(232,160,32,0.2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    margin-top: 2px;
+  }
+
+  .item-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .item-num {
+    position: absolute;
+    top: -7px;
+    right: -7px;
+    width: 18px;
+    height: 18px;
+    background: var(--accent, #e8a020);
+    border-radius: 50%;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    font-weight: 500;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #0f0e0c;
+  }
+
+  /* Content */
+  
+  .item-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #ede8e2;
+    margin-bottom: 5px;
+    letter-spacing: 0.2px;
+  }
+
+  .item-desc {
+    font-size: 13px;
+    font-weight: 300;
+    color: #6b6058;
+    line-height: 1.6;
+  }
+
+  .item-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 10px;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 3px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid #1e1c18;
+    color: #948880;
+  }
+
+  .tag.accent {
+    background: rgba(232,160,32,0.08);
+    border-color: rgba(232,160,32,0.2);
+    color: #e8a020;
+  }
+
+  .tag.cold {
+    background: rgba(77,143,255,0.06);
+    border-color: rgba(77,143,255,0.2);
+    color: #4d8fff;
+  }
+
+  /* ---- FOOTER ---- */
+  .footer {
+    background: #13110e;
+    border-top: 1px solid #1e1c18;
+    padding: 28px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .footer-cta {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    color: #ede8e2;
+    line-height: 1.3;
+  }
+
+  .footer-cta span { color: #e8a020; }
+
+  .footer-btn {
+    background: #e8a020;
+    color: #000;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 12px 20px;
+    border-radius: 6px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    cursor: pointer;
+    border: none;
+  }
+
+  /* ---- DIVIDER ---- */
+  .section-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 48px 0;
+  }
+
+  .section-divider span {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #2a2520;
+    white-space: nowrap;
+  }
+
+  .section-divider::before,
+  .section-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #1e1c18;
+  }
+</style>
+</head>
+<body>
+
+<div class="infographic">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-eyebrow">Content Strategy Framework</div>
+    <div class="header-title">7 Fundamentals of<br><span>Good Content</span> Writing</div>
+    <div class="header-sub">A blueprint for content that converts.</div>
+  </div>
+
+  <!-- ITEMS -->
+  <div class="body">
+
+    <!-- 1 -->
+    <div class="item" style="--accent:#e8a020; --icon-bg:rgba(232,160,32,0.08); --icon-border:rgba(232,160,32,0.22);">
+      <div class="item-icon">
+        <span class="item-num">1</span>
+        <!-- Bullseye icon -->
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="9" stroke="#e8a020" stroke-width="1.5"/>
+          <circle cx="12" cy="12" r="5.5" stroke="#e8a020" stroke-width="1.5" opacity="0.5"/>
+          <circle cx="12" cy="12" r="2" fill="#e8a020"/>
+        </svg>
+      </div>
+      <div class="item-content">
+        <div class="item-title">Precise Topic Selection</div>
+        <div class="item-desc">Narrow your focus. One clear topic, one clear angle. Broad topics confuse — specific topics convert.</div>
+        <div class="item-tags">
+          <span class="tag accent">Stay specific</span>
+          <span class="tag">No vague angles</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="item" style="--accent:#4d8fff; --icon-bg:rgba(77,143,255,0.07); --icon-border:rgba(77,143,255,0.2);">
+      <div class="item-icon">
+        <span class="item-num" style="background:#4d8fff;">2</span>
+        <!-- Person / target icon -->
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="7" r="3" stroke="#4d8fff" stroke-width="1.5"/>
+          <path d="M5 20c0-3.866 3.134-7 7-7s7 3.134 7 7" stroke="#4d8fff" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M19 8l2-2M17.5 6.5l1-1" stroke="#4d8fff" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="item-content">
+        <div class="item-title">Target Your Prospect</div>
+        <div class="item-desc">Know exactly who you're writing for before you write a single word. Speak to everyone and you reach no one.</div>
+        <div class="item-tags">
+          <span class="tag cold">Ideal customer</span>
+          <span class="tag">Demographics</span>
+          <span class="tag">Pain points</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="item" style="--accent:#c45c3a; --icon-bg:rgba(196,92,58,0.08); --icon-border:rgba(196,92,58,0.22);">
+      <div class="item-icon">
+        <span class="item-num" style="background:#c45c3a;">3</span>
+        <!-- Flag / objective icon -->
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 3v18" stroke="#c45c3a" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M5 4h12l-3 4 3 4H5" stroke="#c45c3a" stroke-width="1.5" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="item-content">
+        <div class="item-title">Determine the Objective</div>
+        <div class="item-desc">Every piece of content must serve a clear goal — or it shouldn't exist.</div>
+        <div class="item-tags">
+          <span class="tag" style="color:#c45c3a;border-color:rgba(196,92,58,0.25);background:rgba(196,92,58,0.07);">+ Sales</span>
+          <span class="tag">+ Brand Awareness</span>
+          <span class="tag">Added Value</span>
+          <span class="tag">Entertainment</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="item" style="--accent:#7eb8d4; --icon-bg:rgba(126,184,212,0.07); --icon-border:rgba(126,184,212,0.2);">
+      <div class="item-icon">
+        <span class="item-num" style="background:#7eb8d4;">4</span>
+        <!-- Graduation cap -->
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 3L2 8l10 5 10-5-10-5z" stroke="#7eb8d4" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M6 10.5V16c0 1.657 2.686 3 6 3s6-1.343 6-3v-5.5" stroke="#7eb8d4" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M22 8v5" stroke="#7eb8d4" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="item-content">
+        <div class="item-title">Educate the Reader</div>
+        <div class="item-desc">Teach something real. If your reader finishes and knows more than when they started, you've done your job. Information earns trust.</div>
+        <div class="item-tags">
+          <span class="tag" style="color:#7eb8d4;border-color:rgba(126,184,212,0.25);background:rgba(126,184,212,0.07);">Build trust</span>
+          <span class="tag">Practical insight</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="item" style="--accent:#e8a020; --icon-bg:rgba(232,160,32,0.08); --icon-border:rgba(232,160,32,0.22);">
+      <div class="item-icon">
+        <span class="item-num">5</span>
+        <!-- Gift box / value -->
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="3" y="10" width="18" height="11" rx="1.5" stroke="#e8a020" stroke-width="1.5"/>
+          <path d="M3 10V8.5A1.5 1.5 0 0 1 4.5 7h15A1.5 1.5 0 0 1 21 8.5V10" stroke="#e8a020" stroke-width="1.5"/>
+          <path d="M12 7V21" stroke="#e8a020" stroke-width="1.5"/>
+          <path d="M12 7c0-1.657-1.343-3-3-3S6 5.343 6 7h6z" stroke="#e8a020" stroke-width="1.5" stroke-linejoin="round" opacity="0.6"/>
+          <path d="M12 7c0-1.657 1.343-3 3-3s3 1.343 3 3h-6z" stroke="#e8a020" stroke-width="1.5" stroke-linejoin="round" opacity="0.6"/>
+        </svg>
+      </div>
+      <div class="item-content">
+        <div class="item-title">Deliver Value</div>
+        <div class="item-desc">Ask: "Would I save this?" If not, rewrite it. Content that adds no value gets ignored, forgotten, or worse — skipped before it's even finished.</div>
+        <div class="item-tags">
+          <span class="tag accent">Save-worthy</span>
+          <span class="tag">Share-worthy</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="item" style="--accent:#4d8fff; --icon-bg:rgba(77,143,255,0.07); --icon-border:rgba(77,143,255,0.2);">
+      <div class="item-icon">
+        <span class="item-num" style="background:#4d8fff;">6</span>
+        <!-- Settings / specs icon -->
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="3" stroke="#4d8fff" stroke-width="1.5"/>
+          <path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="#4d8fff" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+        </svg>
+      </div>
+      <div class="item-content">
+        <div class="item-title">Set the Specs</div>
+        <div class="item-desc">Understand who would actually buy what you're promoting. Match your format, length, and tone to that specific buyer — not a general audience.</div>
+        <div class="item-tags">
+          <span class="tag cold">Buyer profile</span>
+          <span class="tag">Format match</span>
+          <span class="tag">Channel fit</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="item" style="--accent:#c45c3a; --icon-bg:rgba(196,92,58,0.08); --icon-border:rgba(196,92,58,0.22); border-bottom:none;">
+      <div class="item-icon">
+        <span class="item-num" style="background:#c45c3a;">7</span>
+        <!-- Rocket icon -->
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C12 2 7 6 7 13l5 2 5-2c0-7-5-11-5-11z" stroke="#c45c3a" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M9 13c-2 0-3 2-3 4l3-1" stroke="#c45c3a" stroke-width="1.5" stroke-linejoin="round" opacity="0.7"/>
+          <path d="M15 13c2 0 3 2 3 4l-3-1" stroke="#c45c3a" stroke-width="1.5" stroke-linejoin="round" opacity="0.7"/>
+          <circle cx="12" cy="10" r="1.5" fill="#c45c3a" opacity="0.6"/>
+          <path d="M10 19l2 3 2-3" stroke="#c45c3a" stroke-width="1.5" stroke-linejoin="round" opacity="0.5"/>
+        </svg>
+      </div>
+      <div class="item-content">
+        <div class="item-title">Generate Action / Change Belief</div>
+        <div class="item-desc">Every piece needs a clear next step. If you don't tell your reader what to do, they'll do nothing. Make it obvious, make it easy.</div>
+        <div class="item-tags">
+          <span class="tag" style="color:#c45c3a;border-color:rgba(196,92,58,0.25);background:rgba(196,92,58,0.07);">Subscribe</span>
+          <span class="tag" style="color:#c45c3a;border-color:rgba(196,92,58,0.25);background:rgba(196,92,58,0.07);">Buy Now</span>
+          <span class="tag" style="color:#c45c3a;border-color:rgba(196,92,58,0.25);background:rgba(196,92,58,0.07);">Find Retailers</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER CTA -->
+  <div class="footer">
+    <div class="footer-cta">Save this.<br><span>Apply it. Watch it work.</span></div>
+    <button class="footer-btn">Save Checklist ↓</button>
+  </div>
+
+</div>
+
+</body>
+</html>

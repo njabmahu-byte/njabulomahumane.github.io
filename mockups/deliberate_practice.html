@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deliberate Practice vs Mindless Repetition</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    background: #0d0d0f;
+    overflow: hidden;
+    height: auto;
+  }
+  .card {
+    background: #0d0d0f;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 44px 60px 44px;
+  }
+  .title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px;
+    color: #f0f0f0;
+    letter-spacing: 3px;
+    text-align: center;
+    line-height: 1;
+  }
+  .subtitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    color: #666;
+    font-weight: 300;
+    margin-top: 10px;
+    letter-spacing: 0.3px;
+    text-align: center;
+  }
+
+  .columns {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 80px 1fr;
+    gap: 0;
+    width: 100%;
+    margin-top: 36px;
+    align-items: stretch;
+  }
+
+  .vs-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    position: relative;
+  }
+  .vs-line {
+    flex: 1;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, #2a2a32 30%, #2a2a32 70%, transparent);
+  }
+  .vs-badge {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: #e8ff47;
+    letter-spacing: 2px;
+    background: #0d0d0f;
+    padding: 8px 4px;
+    z-index: 1;
+    position: relative;
+  }
+
+  .col {
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px;
+    padding: 32px 32px 28px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .col-bad {
+    background: #0f0d0d;
+    border: 1px solid #2a1a1a;
+  }
+  .col-bad::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: #555;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .col-good {
+    background: #0a0f0d;
+    border: 1px solid #1a2e20;
+  }
+  .col-good::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: #00d4aa;
+    border-radius: 16px 16px 0 0;
+    box-shadow: 0 0 20px rgba(0,212,170,0.4);
+  }
+
+  .col-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .col-bad .col-label { color: #666; }
+  .col-good .col-label { color: #00d4aa; }
+
+  .col-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 40px;
+    letter-spacing: 2px;
+    line-height: 1;
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .col-bad .col-title { color: #555; }
+  .col-good .col-title { color: #f0f0f0; }
+
+  .row-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 1;
+  }
+
+  .row-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .row-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    font-size: 13px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .col-bad .row-icon {
+    background: rgba(100,100,100,0.12);
+    color: #555;
+    border: 1px solid #2a2a2a;
+  }
+
+  .col-good .row-icon {
+    background: rgba(0,212,170,0.1);
+    color: #00d4aa;
+    border: 1px solid rgba(0,212,170,0.2);
+  }
+
+  .row-heading {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 3px;
+  }
+  .col-bad .row-heading { color: #555; }
+  .col-good .row-heading { color: #e0e0e0; }
+
+  .row-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12.5px;
+    font-weight: 300;
+    line-height: 1.45;
+  }
+  .col-bad .row-desc { color: #444; }
+  .col-good .row-desc { color: #999; }
+
+  .callout {
+    margin-top: 28px;
+    width: 100%;
+    background: rgba(232,255,71,0.04);
+    border: 1px solid rgba(232,255,71,0.15);
+    border-radius: 10px;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .callout-marker {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    color: #e8ff47;
+    letter-spacing: 1px;
+    flex-shrink: 0;
+  }
+  .callout-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: #b0ba7a;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+  .callout-text strong {
+    color: #e8ff47;
+    font-weight: 600;
+  }
+</style>
+<style id="cursor-global">
+.g-cursor-dot{position:fixed;width:8px;height:8px;background:#e8a020;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:transform .1s,background .2s;}
+.g-cursor-ring{position:fixed;width:36px;height:36px;border:2px solid rgba(232,160,32,0.55);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);}
+body.g-cursor-hover .g-cursor-dot{transform:translate(-50%,-50%) scale(2);background:#fff;}
+body.g-cursor-hover .g-cursor-ring{width:52px;height:52px;}
+@media(hover:none){.g-cursor-dot,.g-cursor-ring{display:none;}}
+</style>
+</head>
+<body>
+<div class="g-cursor-dot" id="gCursorDot"></div><div class="g-cursor-ring" id="gCursorRing"></div>
+<div class="card">
+  <div class="title">DELIBERATE PRACTICE VS MINDLESS REPETITION</div>
+  <div class="subtitle">Both feel productive. Only one actually works.</div>
+
+  <div class="columns">
+
+    <!-- BAD COLUMN -->
+    <div class="col col-bad">
+      <div class="col-label">The trap</div>
+      <div class="col-title">MINDLESS REPETITION</div>
+      <div class="row-list">
+        <div class="row-item">
+          <div class="row-icon">✕</div>
+          <div class="row-content">
+            <div class="row-heading">Doing what's comfortable</div>
+            <div class="row-desc">You stick to skills you already have, running on autopilot without stretching your ability</div>
+          </div>
+        </div>
+        <div class="row-item">
+          <div class="row-icon">✕</div>
+          <div class="row-content">
+            <div class="row-heading">Avoiding mistakes</div>
+            <div class="row-desc">You choose tasks where you already know you'll succeed — safe, familiar, forgettable</div>
+          </div>
+        </div>
+        <div class="row-item">
+          <div class="row-icon">✕</div>
+          <div class="row-content">
+            <div class="row-heading">No feedback loop</div>
+            <div class="row-desc">Nothing tells you if you're improving. You measure effort spent, not outcomes produced</div>
+          </div>
+        </div>
+        <div class="row-item">
+          <div class="row-icon">✕</div>
+          <div class="row-content">
+            <div class="row-heading">Doing what you already can</div>
+            <div class="row-desc">Repetition without progression. You get comfortable — but you don't get better</div>
+          </div>
+        </div>
+        <div class="row-item">
+          <div class="row-icon">✕</div>
+          <div class="row-content">
+            <div class="row-heading">Measuring time, not progress</div>
+            <div class="row-desc">"I spent two hours on this." Means nothing without a measure of improvement</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VS DIVIDER -->
+    <div class="vs-col">
+      <div class="vs-line"></div>
+      <div class="vs-badge">VS</div>
+      <div class="vs-line"></div>
+    </div>
+
+    <!-- GOOD COLUMN -->
+    <div class="col col-good">
+      <div class="col-label">The method</div>
+      <div class="col-title">DELIBERATE PRACTICE</div>
+      <div class="row-list">
+        <div class="row-item">
+          <div class="row-icon">✓</div>
+          <div class="row-content">
+            <div class="row-heading">Working at the edge of your ability</div>
+            <div class="row-desc">Each session targets the specific thing you can't quite do yet — and pushes past it</div>
+          </div>
+        </div>
+        <div class="row-item">
+          <div class="row-icon">✓</div>
+          <div class="row-content">
+            <div class="row-heading">Targeting specific weaknesses</div>
+            <div class="row-desc">You identify exactly where the gap is, then focus exclusively on closing it</div>
+          </div>
+        </div>
+        <div class="row-item">
+          <div class="row-icon">✓</div>
+          <div class="row-content">
+            <div class="row-heading">Immediate, honest feedback</div>
+            <div class="row-desc">Open rates, peer review, data, expert critique — something always tells you the truth</div>
+          </div>
+        </div>
+        <div class="row-item">
+          <div class="row-icon">✓</div>
+          <div class="row-content">
+            <div class="row-heading">Attempting what you can't do yet</div>
+            <div class="row-desc">The discomfort is the signal. If it feels hard, your brain is building new pathways</div>
+          </div>
+        </div>
+        <div class="row-item">
+          <div class="row-icon">✓</div>
+          <div class="row-content">
+            <div class="row-heading">Measuring outcomes, not hours</div>
+            <div class="row-desc">Open rate went up 4%. Audit took half the time. Report needed fewer revisions. That's progress.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="callout">
+    <div class="callout-marker">!</div>
+    <div class="callout-text">The difference isn't <strong>time spent</strong> — it's <strong>attention spent.</strong> Person A writes 30 subject lines in one afternoon and learns nothing. Person B writes one a day, tracks open rates, adjusts. Same investment. Completely different result.</div>
+  </div>
+</div>
+<script id="cursor-global-js">
+(function(){
+  var dot=document.getElementById("gCursorDot"),ring=document.getElementById("gCursorRing");
+  if(!dot||!ring)return;
+  var mx=0,my=0,rx=0,ry=0;
+  document.addEventListener("mousemove",function(e){mx=e.clientX;my=e.clientY;dot.style.left=mx+"px";dot.style.top=my+"px";});
+  (function ani(){rx+=(mx-rx)*.13;ry+=(my-ry)*.13;ring.style.left=rx+"px";ring.style.top=ry+"px";requestAnimationFrame(ani);})();
+  document.querySelectorAll("a,button,[onclick]").forEach(function(el){
+    el.addEventListener("mouseenter",function(){document.body.classList.add("g-cursor-hover");});
+    el.addEventListener("mouseleave",function(){document.body.classList.remove("g-cursor-hover");});
+  });
+  document.body.style.cursor="none";
+})();
+</script>
+</body>
+</html>

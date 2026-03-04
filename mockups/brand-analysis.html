@@ -1,0 +1,1929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking.com: The Trust Paradox — Njabulo Mahumane</title>
+  <meta name="description" content="Brand Perception Analysis for Booking.com by Njabulo Mahumane. A strategic case study examining customer sentiment, trust drivers, and the gap between brand promise and reality.">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:       #0d0b0a;
+      --surface:  #131109;
+      --card:     #1a1612;
+      --card2:    #1c1a14;
+      --border:   #2a2318;
+      --border2:  #221e16;
+      --warm:     #e8a020;
+      --warm-dim: #b87c18;
+      --warm-sub: rgba(232,160,32,0.07);
+      --cold:     #4d8fff;
+      --cold-sub: rgba(77,143,255,0.07);
+      --terra:    #c45c3a;
+      --bk-blue:  #003580;
+      --bk-blue-l:#1a4fa8;
+      --text:     #ede8e2;
+      --text-dim: #b8b0a6;
+      --muted:    #6b6058;
+      --muted2:   #948880;
+      --fd: 'Syne', sans-serif;
+      --fb: 'DM Sans', sans-serif;
+      --fm: 'DM Mono', monospace;
+      --fe: 'Cormorant Garamond', serif;
+      --nav-h: 60px;
+    }
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--fb);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    a { color: var(--warm); text-decoration: none; }
+    a:hover { opacity: 0.8; }
+    strong { color: var(--text); font-weight: 500; }
+
+    /* ── SCROLL PROGRESS ── */
+    #prog {
+      position: fixed; top:0; left:0; height:2px; width:0%;
+      background: linear-gradient(90deg, var(--warm), var(--cold));
+      z-index: 1000;
+    }
+
+    /* ── TOP NAV ── */
+    .topnav {
+      position: sticky; top:0; z-index:100;
+      background: rgba(13,11,10,0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .nav-brand {
+      font-family: var(--fm);
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: var(--warm);
+      text-transform: uppercase;
+    }
+
+    .nav-sep { width:1px; height:18px; background:var(--border); }
+
+    .nav-title {
+      font-family: var(--fe);
+      font-size: 14px;
+      color: var(--muted2);
+      display: none;
+    }
+
+    @media (min-width: 640px) { .nav-title { display: block; } }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .nav-contact {
+      font-family: var(--fm);
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .toc-toggle {
+      display: none;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--muted2);
+      font-family: var(--fm);
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .toc-toggle:hover { border-color: var(--warm); color: var(--warm); }
+    @media (max-width: 960px) { .toc-toggle { display: block; } }
+
+    /* ── LAYOUT ── */
+    .page-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .content-layout {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 0;
+      align-items: start;
+    }
+
+    /* ── TOC SIDEBAR ── */
+    .toc-sidebar {
+      position: sticky;
+      top: var(--nav-h);
+      height: calc(100vh - var(--nav-h));
+      overflow-y: auto;
+      border-right: 1px solid var(--border);
+      padding: 32px 0;
+      scrollbar-width: none;
+    }
+    .toc-sidebar::-webkit-scrollbar { display: none; }
+
+    .toc-label {
+      font-family: var(--fm);
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 0 24px 12px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 8px;
+    }
+
+    .toc-list { list-style: none; }
+    .toc-list li a {
+      display: block;
+      font-family: var(--fm);
+      font-size: 11px;
+      color: var(--muted);
+      padding: 7px 24px;
+      border-left: 2px solid transparent;
+      transition: all 0.2s;
+      line-height: 1.4;
+    }
+    .toc-list li a:hover { color: var(--warm); border-color: var(--warm); opacity:1; }
+    .toc-list li a.active { color: var(--warm); border-color: var(--warm); }
+    .toc-list li a.sub { padding-left: 36px; font-size: 10px; }
+
+    .toc-author-card {
+      margin: 20px 16px 0;
+      padding: 16px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+    .toc-author-name {
+      font-family: var(--fd);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+    .toc-author-role {
+      font-family: var(--fm);
+      font-size: 9px;
+      letter-spacing: 1.5px;
+      color: var(--cold);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .toc-author-email {
+      font-size: 11px;
+      color: var(--warm);
+    }
+
+    @media (max-width: 960px) {
+      .content-layout { grid-template-columns: 1fr; }
+      .toc-sidebar {
+        position: fixed;
+        left: -260px;
+        top: var(--nav-h);
+        width: 260px;
+        height: calc(100vh - var(--nav-h));
+        background: #0f0d0b;
+        z-index: 90;
+        border-right: 1px solid var(--border);
+        transition: left 0.3s cubic-bezier(0.22,1,0.36,1);
+      }
+      .toc-sidebar.open { left: 0; }
+    }
+
+    /* ── MAIN CONTENT ── */
+    .main-content {
+      padding: 0 48px 80px;
+      min-width: 0;
+    }
+
+    @media (max-width: 700px) {
+      .main-content { padding: 0 20px 60px; }
+      .topnav { padding: 0 20px; }
+    }
+
+    /* ── SECTIONS ── */
+    .section {
+      padding-top: 72px;
+      scroll-margin-top: calc(var(--nav-h) + 16px);
+    }
+
+    .section-label {
+      font-family: var(--fm);
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-label::before { content:''; width:24px; height:1px; background:var(--muted); }
+
+    .section-title {
+      font-family: var(--fd);
+      font-size: clamp(26px, 3.5vw, 38px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.3px;
+      margin-bottom: 24px;
+    }
+    .section-title .warm { color: var(--warm); }
+    .section-title .cold { color: var(--cold); }
+    .section-title .terra { color: var(--terra); }
+
+    .body-text {
+      font-size: 16px;
+      color: var(--text-dim);
+      font-weight: 300;
+      line-height: 1.82;
+      margin-bottom: 20px;
+      max-width: 680px;
+    }
+    .body-text strong { color: var(--text); font-weight: 500; }
+
+    hr.section-rule {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 56px 0;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 80px 48px 0;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top:-100px; right:-100px;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,53,128,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom:-80px; left:20%;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(232,160,32,0.06) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index:1; }
+
+    .hero-eyebrow {
+      font-family: var(--fm);
+      font-size: 10px;
+      letter-spacing: 4px;
+      color: var(--warm);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hero-eyebrow::before { content:''; width:32px; height:1px; background:var(--warm); }
+
+    .hero-project-type {
+      font-family: var(--fm);
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--cold);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .hero-title {
+      font-family: var(--fd);
+      font-size: clamp(36px, 6vw, 72px);
+      font-weight: 800;
+      line-height: 1.0;
+      letter-spacing: -1px;
+      margin-bottom: 20px;
+    }
+
+    .hero-subtitle {
+      font-family: var(--fe);
+      font-size: clamp(18px, 2.5vw, 26px);
+      color: var(--muted2);
+      font-style: italic;
+      margin-bottom: 36px;
+      line-height: 1.4;
+    }
+
+    .hero-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      padding: 28px 0;
+      border-top: 1px solid var(--border);
+      margin-bottom: 0;
+    }
+
+        .hero-meta-label {
+      font-family: var(--fm);
+      font-size: 9px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .hero-meta-value {
+      font-size: 14px;
+      color: var(--text-dim);
+      font-weight: 400;
+    }
+    .hero-meta-value.warm { color: var(--warm); font-weight: 600; }
+
+    /* ── CORE INSIGHT CALLOUT ── */
+    .core-insight {
+      margin: 48px 0;
+      padding: 36px 40px;
+      background: rgba(0,53,128,0.08);
+      border: 1px solid rgba(0,53,128,0.3);
+      border-left: 4px solid var(--cold);
+      border-radius: 0 12px 12px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .core-insight::before {
+      content: '"';
+      font-family: var(--fd);
+      font-size: 120px;
+      font-weight: 800;
+      color: var(--cold);
+      opacity: 0.05;
+      position: absolute;
+      top: -20px;
+      left: 16px;
+      line-height: 1;
+    }
+
+    .ci-label {
+      font-family: var(--fm);
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--cold);
+      margin-bottom: 14px;
+    }
+
+    .ci-text {
+      font-family: var(--fe);
+      font-size: clamp(17px, 2.2vw, 22px);
+      color: var(--text);
+      line-height: 1.6;
+      font-style: italic;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── PULL QUOTE ── */
+    .pull-quote {
+      margin: 40px 0;
+      padding: 28px 32px;
+      background: var(--warm-sub);
+      border-left: 3px solid var(--warm);
+      border-radius: 0 8px 8px 0;
+    }
+    .pull-quote p {
+      font-family: var(--fe);
+      font-size: clamp(15px, 2vw, 19px);
+      font-style: italic;
+      color: var(--text);
+      line-height: 1.55;
+      margin: 0 0 8px;
+    }
+    .pull-quote cite {
+      font-family: var(--fm);
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      color: var(--warm);
+      font-style: normal;
+      text-transform: uppercase;
+    }
+
+    /* ── CALLOUT BOXES ── */
+    .callout {
+      margin: 32px 0;
+      padding: 20px 24px;
+      border-radius: 8px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .callout.cold { background: var(--cold-sub); border: 1px solid rgba(77,143,255,0.18); }
+    .callout.warm { background: var(--warm-sub); border: 1px solid rgba(232,160,32,0.2); }
+    .callout.terra { background: rgba(196,92,58,0.07); border: 1px solid rgba(196,92,58,0.2); }
+    .callout-icon { font-size: 18px; flex-shrink:0; margin-top:1px; }
+    .callout p { font-size: 14px; color: var(--text-dim); margin:0; line-height: 1.65; }
+    .callout p strong { color: var(--text); }
+
+    /* ── INFO CARDS ── */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin: 28px 0;
+    }
+
+    .info-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .info-card::before {
+      content:'';
+      position:absolute;
+      top:0;left:0;right:0;
+      height:2px;
+    }
+    .info-card.warm-card::before { background: var(--warm); }
+    .info-card.cold-card::before { background: var(--cold); }
+    .info-card.terra-card::before { background: var(--terra); }
+    .info-card.bk-card::before { background: var(--bk-blue-l); }
+
+    .info-card-label {
+      font-family: var(--fm);
+      font-size: 9px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .info-card.warm-card .info-card-label { color: var(--warm); }
+    .info-card.cold-card .info-card-label { color: var(--cold); }
+    .info-card.terra-card .info-card-label { color: var(--terra); }
+    .info-card.bk-card .info-card-label { color: var(--bk-blue-l); }
+
+    .info-card-val {
+      font-family: var(--fd);
+      font-size: 28px;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .info-card.warm-card .info-card-val { color: var(--warm); }
+    .info-card.cold-card .info-card-val { color: var(--cold); }
+    .info-card.terra-card .info-card-val { color: var(--terra); }
+    .info-card.bk-card .info-card-val { color: var(--bk-blue-l); }
+
+    .info-card-desc {
+      font-size: 12px;
+      color: var(--muted2);
+      font-weight: 300;
+      line-height: 1.5;
+    }
+
+    /* ── SENTIMENT VISUAL ── */
+    .sentiment-wrap {
+      margin: 40px 0;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .sentiment-header {
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .sentiment-header-label {
+      font-family: var(--fm);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .sentiment-grid {
+      display: grid;
+      grid-template-columns: 1fr 1px 1fr;
+      gap: 0;
+    }
+
+    .sentiment-panel {
+      padding: 28px 28px;
+    }
+
+    .sentiment-divider { background: var(--border); }
+
+    .sentiment-platform {
+      font-family: var(--fm);
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .sentiment-score {
+      font-family: var(--fd);
+      font-size: 56px;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .sentiment-panel.bad .sentiment-score { color: var(--terra); }
+    .sentiment-panel.good .sentiment-score { color: var(--cold); }
+
+    .sentiment-max {
+      font-family: var(--fm);
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .sentiment-bar {
+      height: 6px;
+      background: var(--border);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+    .sentiment-fill {
+      height: 100%;
+      border-radius: 3px;
+      transition: width 1s ease;
+    }
+    .sentiment-panel.bad .sentiment-fill { background: var(--terra); width: 42%; }
+    .sentiment-panel.good .sentiment-fill { background: var(--cold); width: 92%; }
+
+    .sentiment-note {
+      font-size: 12px;
+      color: var(--muted2);
+      font-weight: 300;
+      line-height: 1.55;
+    }
+
+    .sentiment-paradox {
+      padding: 20px 28px;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+    }
+    .sentiment-paradox p {
+      font-family: var(--fe);
+      font-size: 14px;
+      color: var(--muted2);
+      font-style: italic;
+      margin: 0;
+    }
+    .sentiment-paradox p strong { color: var(--warm); font-style: normal; }
+
+    /* ── ALIGNMENT MATRIX ── */
+    .alignment-table {
+      margin: 28px 0;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .alignment-row {
+      display: grid;
+      grid-template-columns: 200px 1fr 80px;
+      border-bottom: 1px solid var(--border2);
+      transition: background 0.15s;
+    }
+    .alignment-row:last-child { border-bottom: none; }
+    .alignment-row:hover { background: rgba(26,22,18,0.6); }
+    .alignment-row.header-row {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .alignment-cell {
+      padding: 14px 18px;
+      font-size: 13px;
+      color: var(--text-dim);
+      font-weight: 300;
+    }
+    .alignment-cell.header {
+      font-family: var(--fm);
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 400;
+    }
+    .alignment-cell.fundamental {
+      font-family: var(--fb);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .alignment-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--fm);
+      font-size: 9px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 8px;
+      border-radius: 3px;
+      white-space: nowrap;
+    }
+    .alignment-badge::before { content:''; width:6px; height:6px; border-radius:50%; flex-shrink:0; }
+    .alignment-badge.strong { background: rgba(77,143,255,0.08); color: var(--cold); border: 1px solid rgba(77,143,255,0.2); }
+    .alignment-badge.strong::before { background: var(--cold); }
+    .alignment-badge.partial { background: rgba(232,160,32,0.08); color: var(--warm); border: 1px solid rgba(232,160,32,0.2); }
+    .alignment-badge.partial::before { background: var(--warm); }
+    .alignment-badge.gap { background: rgba(196,92,58,0.08); color: var(--terra); border: 1px solid rgba(196,92,58,0.2); }
+    .alignment-badge.gap::before { background: var(--terra); }
+
+    @media (max-width: 600px) {
+      .alignment-row { grid-template-columns: 1fr; }
+      .alignment-cell.header { display: none; }
+    }
+
+    /* ── SWOT ── */
+    .swot-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin: 28px 0;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--border);
+    }
+
+    .swot-quad {
+      background: var(--card);
+      padding: 28px 24px;
+    }
+
+    .swot-label {
+      font-family: var(--fd);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border2);
+    }
+    .swot-quad.strengths .swot-label { color: var(--cold); }
+    .swot-quad.weaknesses .swot-label { color: var(--terra); }
+    .swot-quad.opportunities .swot-label { color: var(--warm); }
+    .swot-quad.threats .swot-label { color: #7eb8d4; }
+
+    .swot-items { list-style: none; }
+    .swot-items li {
+      font-size: 13px;
+      color: var(--text-dim);
+      font-weight: 300;
+      padding: 7px 0;
+      border-bottom: 1px solid var(--border2);
+      padding-left: 20px;
+      position: relative;
+      line-height: 1.5;
+    }
+    .swot-items li:last-child { border-bottom: none; }
+    .swot-items li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      font-family: var(--fm);
+      font-size: 11px;
+    }
+    .swot-quad.strengths .swot-items li::before { color: var(--cold); }
+    .swot-quad.weaknesses .swot-items li::before { color: var(--terra); }
+    .swot-quad.opportunities .swot-items li::before { color: var(--warm); }
+    .swot-quad.threats .swot-items li::before { color: #7eb8d4; }
+
+    .swot-items li strong { font-weight: 500; color: var(--text); }
+
+    @media (max-width: 600px) {
+      .swot-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── STRATEGIC IMPERATIVES ── */
+    .imperative {
+      margin: 32px 0;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .imperative-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .imp-num {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--fd);
+      font-size: 18px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .imperative.imp1 .imp-num { background: rgba(77,143,255,0.12); color: var(--cold); }
+    .imperative.imp2 .imp-num { background: rgba(232,160,32,0.1); color: var(--warm); }
+    .imperative.imp3 .imp-num { background: rgba(196,92,58,0.1); color: var(--terra); }
+
+    .imp-title {
+      font-family: var(--fd);
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.2;
+    }
+
+    .imp-problem {
+      font-size: 12px;
+      color: var(--muted2);
+      margin-top: 2px;
+    }
+
+    .imperative-body {
+      padding: 24px;
+    }
+
+    .imp-section-label {
+      font-family: var(--fm);
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+      margin-top: 20px;
+    }
+    .imp-section-label:first-child { margin-top: 0; }
+
+    .evidence-list { list-style: none; margin-bottom: 16px; }
+    .evidence-list li {
+      font-size: 13px;
+      color: var(--text-dim);
+      font-weight: 300;
+      padding: 7px 0 7px 22px;
+      border-bottom: 1px solid var(--border2);
+      position: relative;
+      line-height: 1.5;
+    }
+    .evidence-list li:last-child { border-bottom: none; }
+    .evidence-list li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      font-size: 10px;
+      color: var(--muted);
+      top: 9px;
+    }
+
+    .rec-list { list-style: none; }
+    .rec-list li {
+      font-size: 13px;
+      color: var(--text-dim);
+      font-weight: 300;
+      padding: 10px 0 10px 28px;
+      border-bottom: 1px solid var(--border2);
+      position: relative;
+      line-height: 1.55;
+    }
+    .rec-list li:last-child { border-bottom: none; }
+    .rec-list li::before {
+      content: attr(data-n);
+      position: absolute;
+      left: 0;
+      font-family: var(--fm);
+      font-size: 9px;
+      color: var(--muted);
+      top: 12px;
+    }
+    .rec-list li strong { font-weight: 600; }
+    .imperative.imp1 .rec-list li strong { color: var(--cold); }
+    .imperative.imp2 .rec-list li strong { color: var(--warm); }
+    .imperative.imp3 .rec-list li strong { color: var(--terra); }
+
+    .outcome-pill {
+      display: inline-block;
+      margin-top: 12px;
+      font-family: var(--fm);
+      font-size: 10px;
+      letter-spacing: 1px;
+      color: var(--muted);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 5px 12px;
+    }
+
+    /* ── ROADMAP ── */
+    .roadmap {
+      margin: 28px 0;
+      position: relative;
+    }
+
+    .roadmap-phases {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .roadmap-phase {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .phase-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+
+    .phase-header::before {
+      content: '';
+      position: absolute;
+      top:0; left:0; right:0;
+      height: 3px;
+    }
+    .roadmap-phase.p1 .phase-header::before { background: var(--cold); }
+    .roadmap-phase.p2 .phase-header::before { background: var(--warm); }
+    .roadmap-phase.p3 .phase-header::before { background: var(--terra); }
+
+    .phase-num {
+      font-family: var(--fm);
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .roadmap-phase.p1 .phase-num { color: var(--cold); }
+    .roadmap-phase.p2 .phase-num { color: var(--warm); }
+    .roadmap-phase.p3 .phase-num { color: var(--terra); }
+
+    .phase-title {
+      font-family: var(--fd);
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .phase-time {
+      font-family: var(--fm);
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 1px;
+    }
+
+    .phase-body { padding: 16px 20px; }
+
+    .phase-items { list-style: none; }
+    .phase-items li {
+      font-size: 12px;
+      color: var(--text-dim);
+      font-weight: 300;
+      padding: 6px 0 6px 16px;
+      border-bottom: 1px solid var(--border2);
+      position: relative;
+      line-height: 1.5;
+    }
+    .phase-items li:last-child { border-bottom: none; }
+    .phase-items li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--muted);
+      font-size: 10px;
+      top: 8px;
+    }
+
+    .phase-impact {
+      margin-top: 12px;
+      padding: 10px 12px;
+      border-radius: 6px;
+      font-size: 11px;
+      color: var(--muted2);
+      font-weight: 300;
+      line-height: 1.5;
+    }
+    .roadmap-phase.p1 .phase-impact { background: rgba(77,143,255,0.05); border: 1px solid rgba(77,143,255,0.12); }
+    .roadmap-phase.p2 .phase-impact { background: var(--warm-sub); border: 1px solid rgba(232,160,32,0.12); }
+    .roadmap-phase.p3 .phase-impact { background: rgba(196,92,58,0.05); border: 1px solid rgba(196,92,58,0.12); }
+
+    @media (max-width: 700px) {
+      .roadmap-phases { grid-template-columns: 1fr; }
+    }
+
+    /* ── COMPETITIVE TABLE ── */
+    .comp-table {
+      margin: 28px 0;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .comp-row {
+      display: grid;
+      grid-template-columns: 160px 1fr 1fr 1fr;
+      border-bottom: 1px solid var(--border2);
+    }
+    .comp-row:last-child { border-bottom: none; }
+    .comp-row.header-row { background: var(--surface); border-bottom: 1px solid var(--border); }
+
+    .comp-cell {
+      padding: 12px 16px;
+      font-size: 13px;
+      color: var(--text-dim);
+      font-weight: 300;
+      border-right: 1px solid var(--border2);
+      line-height: 1.5;
+    }
+    .comp-cell:last-child { border-right: none; }
+    .comp-cell.header {
+      font-family: var(--fm);
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .comp-cell.brand-name {
+      font-family: var(--fb);
+      font-weight: 600;
+      color: var(--text);
+    }
+    .comp-row.highlight { background: rgba(0,53,128,0.06); }
+    .comp-row.highlight .comp-cell.brand-name { color: var(--cold); }
+
+    @media (max-width: 600px) {
+      .comp-row { grid-template-columns: 1fr; }
+      .comp-cell.header { display: none; }
+    }
+
+    /* ── METHODOLOGY CARDS ── */
+    .method-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin: 24px 0;
+    }
+
+    .method-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    .method-icon { font-size: 20px; margin-bottom: 8px; }
+    .method-title { font-family: var(--fd); font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .method-desc { font-size: 12px; color: var(--muted2); font-weight: 300; line-height: 1.55; }
+
+    /* ── PERSONA CARDS ── */
+    .persona-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 24px 0;
+    }
+
+    .persona-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .persona-card::before {
+      content: '';
+      position: absolute;
+      top:0; left:0; right:0;
+      height: 2px;
+    }
+    .persona-card:nth-child(1)::before { background: var(--warm); }
+    .persona-card:nth-child(2)::before { background: var(--cold); }
+    .persona-card:nth-child(3)::before { background: var(--terra); }
+
+    .persona-num {
+      font-family: var(--fm);
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .persona-name {
+      font-family: var(--fd);
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .persona-desc {
+      font-size: 12px;
+      color: var(--muted2);
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 600px) {
+      .persona-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── ABOUT RESEARCHER ── */
+    .researcher-card {
+      margin-top: 56px;
+      padding: 36px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 24px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .researcher-card::before {
+      content:'';
+      position:absolute;
+      top:0;left:0;right:0;
+      height:3px;
+      background: linear-gradient(90deg, var(--warm), var(--cold));
+    }
+
+    .researcher-avatar {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: var(--warm-sub);
+      border: 2px solid var(--warm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--fd);
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--warm);
+      flex-shrink: 0;
+    }
+
+    .researcher-name { font-family: var(--fd); font-size: 20px; font-weight: 800; margin-bottom: 2px; }
+    .researcher-role { font-family: var(--fm); font-size: 10px; letter-spacing: 2px; color: var(--cold); text-transform: uppercase; margin-bottom: 10px; }
+    .researcher-bio { font-size: 13px; color: var(--muted2); font-weight: 300; line-height: 1.65; margin: 0; }
+    .researcher-contact { margin-top: 10px; font-size: 13px; color: var(--warm); }
+
+    @media (max-width: 500px) {
+      .researcher-card { grid-template-columns: 1fr; }
+      .researcher-avatar { display: none; }
+    }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1), transform 0.65s cubic-bezier(0.22,1,0.36,1);
+    }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+
+    /* ── CONCLUSION ── */
+    .conclusion-box {
+      margin: 40px 0;
+      padding: 36px 40px;
+      background: linear-gradient(135deg, rgba(0,53,128,0.08) 0%, rgba(232,160,32,0.05) 100%);
+      border: 1px solid rgba(0,53,128,0.25);
+      border-radius: 12px;
+    }
+
+    .conclusion-box h3 {
+      font-family: var(--fd);
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .conclusion-box p {
+      font-size: 15px;
+      color: var(--text-dim);
+      font-weight: 300;
+      line-height: 1.82;
+      max-width: 620px;
+      margin-bottom: 12px;
+    }
+    .conclusion-box p:last-child { margin-bottom: 0; }
+    .conclusion-box p strong { color: var(--text); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 32px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-brand { font-family: var(--fd); font-size: 14px; font-weight: 800; }
+    .footer-brand span { color: var(--warm); }
+    .footer-note { font-family: var(--fm); font-size: 10px; letter-spacing: 1px; color: var(--muted); }
+    .footer-email { font-size: 13px; color: var(--warm); }
+
+    @media (max-width: 700px) {
+      footer { padding: 24px 20px; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="prog"></div>
+
+<!-- TOP NAV -->
+<header class="topnav">
+  <div class="nav-left">
+    <div class="nav-brand">MBN.</div>
+    <div class="nav-sep"></div>
+    <div class="nav-title">Booking.com — Brand Perception Analysis</div>
+  </div>
+  <div class="nav-right">
+    <span class="nav-contact" style="display:none;" id="navContact">njabmahu@gmail.com</span>
+    <button class="toc-toggle" id="tocToggle">Contents</button>
+  </div>
+</header>
+
+<!-- SIDEBAR + CONTENT -->
+<div class="page-wrap">
+<div class="content-layout">
+
+  <!-- TOC SIDEBAR -->
+  <aside class="toc-sidebar" id="tocSidebar">
+    <div class="toc-label">Table of Contents</div>
+    <ul class="toc-list" id="tocList">
+      <li><a href="#hero" class="toc-link">Overview</a></li>
+      <li><a href="#executive-summary" class="toc-link">Executive Summary</a></li>
+      <li><a href="#methodology" class="toc-link">Research Methodology</a></li>
+      <li><a href="#brand-fundamentals" class="toc-link">Brand Fundamentals</a></li>
+      <li><a href="#audience" class="toc-link sub">Audience & Personas</a></li>
+      <li><a href="#competitive" class="toc-link sub">Competitive Landscape</a></li>
+      <li><a href="#digital-touchpoints" class="toc-link">Digital Touchpoints</a></li>
+      <li><a href="#sentiment" class="toc-link sub">Sentiment Analysis</a></li>
+      <li><a href="#trust-paradox" class="toc-link">The Trust Paradox</a></li>
+      <li><a href="#alignment" class="toc-link sub">Brand Alignment Matrix</a></li>
+      <li><a href="#swot" class="toc-link">SWOT Analysis</a></li>
+      <li><a href="#strategic-recs" class="toc-link">Strategic Recommendations</a></li>
+      <li><a href="#roadmap" class="toc-link">Implementation Roadmap</a></li>
+      <li><a href="#conclusion" class="toc-link">Conclusion</a></li>
+    </ul>
+    <div class="toc-author-card">
+      <div class="toc-author-name">Njabulo Mahumane</div>
+      <div class="toc-author-role">Sole Researcher & Strategist</div>
+      <div class="toc-author-email">njabmahu@gmail.com</div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="hero-inner">
+        <div class="hero-eyebrow">Portfolio Case Study · Brand Perception Analysis</div>
+        <div class="hero-project-type">Mock Project — 1 Week Solo Research Sprint</div>
+        <h1 class="hero-title">
+          Booking.com:<br>The Trust <span style="color:var(--warm)">Paradox</span>
+        </h1>
+        <div class="hero-subtitle">Does public perception align with the promise of<br>"making it easier for everyone to experience the world"?</div>
+        <div class="hero-meta-row">
+          <div class="hero-meta-item">
+            <div class="hero-meta-label">Researcher</div>
+            <div class="hero-meta-value">Njabulo Mahumane</div>
+          </div>
+          <div class="hero-meta-item">
+            <div class="hero-meta-label">Contact</div>
+            <div class="hero-meta-value warm">njabmahu@gmail.com</div>
+          </div>
+          <div class="hero-meta-item">
+            <div class="hero-meta-label">Project Type</div>
+            <div class="hero-meta-value">Sole Researcher & Strategist</div>
+          </div>
+          <div class="hero-meta-item">
+            <div class="hero-meta-label">Duration</div>
+            <div class="hero-meta-value">1 Week Mock Project</div>
+          </div>
+          <div class="hero-meta-item">
+            <div class="hero-meta-label">Data Period</div>
+            <div class="hero-meta-value">12–18 Months Retrospective</div>
+          </div>
+          <div class="hero-meta-item">
+            <div class="hero-meta-label">Markets</div>
+            <div class="hero-meta-value">US · CA · UK · AU</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXECUTIVE SUMMARY -->
+    <section class="section reveal" id="executive-summary">
+      <div class="section-label">01 — Executive Summary</div>
+      <h2 class="section-title">The Research <span class="warm">Question</span></h2>
+
+      <div class="core-insight">
+        <div class="ci-label">Core Insight</div>
+        <p class="ci-text">"Booking.com has achieved market leadership and remarkable brand equity, yet faces a critical 'Trust Paradox' — broad consumer trust for routine transactions undermined by systematic failures in service recovery at moments when integrity matters most."</p>
+      </div>
+
+      <p class="body-text">This analysis examines how Booking.com — the world's most visited travel platform with 563.8M monthly visitors — navigates the gap between its stated mission and its lived consumer experience. The research draws on publicly available sentiment data across five major platforms, competitive positioning analysis, and official company filings.</p>
+
+      <p class="body-text">The central finding is paradoxical: Booking.com is <strong>simultaneously the most trusted and most distrusted</strong> travel platform in the industry, depending entirely on whether the traveler encounters a routine transaction or a moment of genuine need.</p>
+
+      <div class="info-grid">
+        <div class="info-card bk-card reveal">
+          <div class="info-card-label">Monthly Visits</div>
+          <div class="info-card-val">563.8M</div>
+          <div class="info-card-desc">Most visited travel website globally — 3.5x the nearest competitor</div>
+        </div>
+        <div class="info-card warm-card reveal">
+          <div class="info-card-label">Brand Value</div>
+          <div class="info-card-val">$25B</div>
+          <div class="info-card-desc">Kantar BrandZ 2025 — 50% increase year-over-year</div>
+        </div>
+        <div class="info-card cold-card reveal">
+          <div class="info-card-label">EBITDA Margin</div>
+          <div class="info-card-val">36–37%</div>
+          <div class="info-card-desc">Vs Expedia's 22% — superior profitability despite competitive pressure</div>
+        </div>
+        <div class="info-card terra-card reveal">
+          <div class="info-card-label">Trustpilot Score</div>
+          <div class="info-card-val">2.1<span style="font-size:18px;color:var(--muted);">/5</span></div>
+          <div class="info-card-desc">"Poor" rating — yet App Store ratings of 4.6–4.8 simultaneously</div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-rule">
+
+    <!-- METHODOLOGY -->
+    <section class="section reveal" id="methodology">
+      <div class="section-label">02 — Research Methodology</div>
+      <h2 class="section-title">How This Research <span class="cold">Was Built</span></h2>
+
+      <p class="body-text">This analysis followed a structured 5-phase research process: Scope & Goals → Brand Fundamentals → Digital Touchpoints → Positioning & Perception → Synthesis & Recommendations. All data is publicly available; no proprietary sources, internal surveys, or non-English data were used.</p>
+
+      <div class="method-grid reveal">
+        <div class="method-card">
+          <div class="method-icon">📋</div>
+          <div class="method-title">Review Platforms</div>
+          <div class="method-desc">Trustpilot, iOS App Store, Google Play Store. Aggregate ratings versus qualitative complaint pattern analysis.</div>
+        </div>
+        <div class="method-card">
+          <div class="method-icon">🐦</div>
+          <div class="method-title">Social Listening</div>
+          <div class="method-desc">X (Twitter) sentiment sampling and Reddit travel community discussions (r/travel).</div>
+        </div>
+        <div class="method-card">
+          <div class="method-icon">📰</div>
+          <div class="method-title">Press & Investigation</div>
+          <div class="method-desc">Telegraph investigation into review filtering; London Free Press pricing transparency analysis.</div>
+        </div>
+        <div class="method-card">
+          <div class="method-icon">📊</div>
+          <div class="method-title">Official Sources</div>
+          <div class="method-desc">Booking Holdings 2023 Annual Report, CEO letters, brand design publications, executive interviews.</div>
+        </div>
+        <div class="method-card">
+          <div class="method-icon">🔬</div>
+          <div class="method-title">Industry Analysis</div>
+          <div class="method-desc">Skift OTA market research, Kantar BrandZ analysis, DBS Vickers competitive data, Booking.com's own 2026 Travel Predictions report.</div>
+        </div>
+      </div>
+
+      <div class="callout cold reveal">
+        <div class="callout-icon">⚠️</div>
+        <p><strong>Methodological Note:</strong> App store ratings (4.6–4.8 stars) and Trustpilot scores (2.1/5) exist in apparent contradiction. Both are valid — they reflect different populations. App ratings capture modal users with routine experiences; Trustpilot disproportionately captures users motivated by extreme dissatisfaction. Both data sets reveal truth about the same brand.</p>
+      </div>
+    </section>
+
+    <hr class="section-rule">
+
+    <!-- BRAND FUNDAMENTALS -->
+    <section class="section reveal" id="brand-fundamentals">
+      <div class="section-label">03 — Brand Fundamentals</div>
+      <h2 class="section-title">Official Identity <span class="warm">vs Reality</span></h2>
+
+      <p class="body-text">Booking.com's formal brand architecture, sourced from Booking Holdings Inc. 2023 Annual Report and official design publications, presents a coherent value proposition. The gap between this articulation and lived experience is the subject of this case study.</p>
+
+      <div class="pull-quote reveal">
+        <p>"Our mission is to make it easier for everyone to experience the world."</p>
+        <cite>Booking Holdings Inc. — Official Mission Statement</cite>
+      </div>
+
+      <div class="alignment-table reveal">
+        <div class="alignment-row header-row">
+          <div class="alignment-cell header">Core Value</div>
+          <div class="alignment-cell header">Official Statement</div>
+          <div class="alignment-cell header">Alignment</div>
+        </div>
+        <div class="alignment-row">
+          <div class="alignment-cell fundamental">Absolute Integrity</div>
+          <div class="alignment-cell">"We will always strive to do the right thing and achieve success with integrity and accountability."</div>
+          <div class="alignment-cell"><span class="alignment-badge gap">Significant Gap</span></div>
+        </div>
+        <div class="alignment-row">
+          <div class="alignment-cell fundamental">Relentless Innovation</div>
+          <div class="alignment-cell">"Every day should begin with the question — how are we going to innovate today?"</div>
+          <div class="alignment-cell"><span class="alignment-badge strong">Strong Alignment</span></div>
+        </div>
+        <div class="alignment-row">
+          <div class="alignment-cell fundamental">Experiences for Everyone</div>
+          <div class="alignment-cell">"Making it easier for everyone to experience the world… doing our part to make humanity better."</div>
+          <div class="alignment-cell"><span class="alignment-badge partial">Partial</span></div>
+        </div>
+        <div class="alignment-row">
+          <div class="alignment-cell fundamental">Diversity & Inclusion</div>
+          <div class="alignment-cell">"Absolutely committed to diverse ideas, people, and experiences."</div>
+          <div class="alignment-cell"><span class="alignment-badge partial">Partial</span></div>
+        </div>
+        <div class="alignment-row">
+          <div class="alignment-cell fundamental">Collective Strength</div>
+          <div class="alignment-cell">"Success is contingent upon our ability to work as one team."</div>
+          <div class="alignment-cell"><span class="alignment-badge partial">Partial</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AUDIENCE -->
+    <section class="section reveal" id="audience">
+      <div class="section-label">04 — Audience & Personas</div>
+      <h2 class="section-title">Who <span class="cold">BOOKING.COM</span> Serves</h2>
+
+      <p class="body-text">CEO Glenn Fogel's 2022 Annual Report letter reveals the brand's evolving audience priorities. Three hypothetical personas emerge from the data — these are informed hypotheses derived from public data, not verified internal segments.</p>
+
+      <div class="persona-grid reveal">
+        <div class="persona-card">
+          <div class="persona-num">Persona 01</div>
+          <div class="persona-name">The Spontaneous Booker</div>
+          <div class="persona-desc">Mobile-first. Books on app within minutes of decision. Values speed and ease above all. Represents approximately 45% of all room nights booked via Booking apps. Most satisfied with the routine experience.</div>
+        </div>
+        <div class="persona-card">
+          <div class="persona-num">Persona 02</div>
+          <div class="persona-name">The Deal-Seeking Family Planner</div>
+          <div class="persona-desc">Price-sensitive. Plans weeks or months ahead. Values "free cancellation" filters and transparent pricing. Most likely to encounter pricing transparency issues and the most vocal on review platforms when they do.</div>
+        </div>
+        <div class="persona-card">
+          <div class="persona-num">Persona 03</div>
+          <div class="persona-name">The US Business/Leisure Hybrid</div>
+          <div class="persona-desc">Books for work and pleasure simultaneously. Sensitive to the "connected travel" experience — flights, hotels, car rentals. The explicit target of Booking.com's strategic U.S. market expansion push.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPETITIVE -->
+    <section class="section reveal" id="competitive">
+      <div class="section-label">05 — Competitive Landscape</div>
+      <h2 class="section-title">The <span class="warm">Pincer Movement</span></h2>
+
+      <p class="body-text">Booking.com faces simultaneous competitive pressure from two directions: Expedia competes on traditional OTA terrain (price, inventory, search efficiency), while Airbnb contests "experience" and "alternative accommodations." The emerging AI threat from Google's Travel Mode represents an existential third vector.</p>
+
+      <div class="comp-table reveal">
+        <div class="comp-row header-row">
+          <div class="comp-cell header">Competitor</div>
+          <div class="comp-cell header">Strategic Position</div>
+          <div class="comp-cell header">Primary Threat</div>
+          <div class="comp-cell header">EBITDA</div>
+        </div>
+        <div class="comp-row highlight">
+          <div class="comp-cell brand-name">Booking.com ★</div>
+          <div class="comp-cell">Market leader. Ecosystem play — payments, AI, connected travel. 8.6M alt listings.</div>
+          <div class="comp-cell">AI disintermediation; DMA regulatory constraints; Google dependency</div>
+          <div class="comp-cell">36–37%</div>
+        </div>
+        <div class="comp-row">
+          <div class="comp-cell brand-name">Expedia Group</div>
+          <div class="comp-cell">Global giant. Fragmented portfolio (Hotels.com, Vrbo). Lost market share post-pandemic.</div>
+          <div class="comp-cell">Direct competitor on traditional OTA features</div>
+          <div class="comp-cell">22%</div>
+        </div>
+        <div class="comp-row">
+          <div class="comp-cell brand-name">Airbnb</div>
+          <div class="comp-cell">Experience-led. "Living like a local" USP. Community-driven brand identity.</div>
+          <div class="comp-cell">Alternative accommodations; experience-led positioning</div>
+          <div class="comp-cell">N/A</div>
+        </div>
+        <div class="comp-row">
+          <div class="comp-cell brand-name">Google Travel Mode</div>
+          <div class="comp-cell">AI-native travel planning. Threatens to disintermediate all OTAs entirely.</div>
+          <div class="comp-cell"><strong style="color:var(--terra)">Existential — disintermediation risk</strong></div>
+          <div class="comp-cell">—</div>
+        </div>
+        <div class="comp-row">
+          <div class="comp-cell brand-name">Trip.com Group</div>
+          <div class="comp-cell">Dominant in Asia-Pacific. Limited Western market penetration.</div>
+          <div class="comp-cell">Geographic expansion in APAC growth markets</div>
+          <div class="comp-cell">N/A</div>
+        </div>
+      </div>
+
+      <div class="callout warm reveal">
+        <div class="callout-icon">💡</div>
+        <p><strong>Strategic observation:</strong> Booking.com's response to the Google AI threat is notable — a partnership with OpenAI (ChatGPT App Store integration), internal GenAI tooling, and a $170M reinvestment in AI in 2025. First-mover AI advantage is real but fragile if Google executes on its Travel Mode roadmap.</p>
+      </div>
+    </section>
+
+    <hr class="section-rule">
+
+    <!-- DIGITAL TOUCHPOINTS -->
+    <section class="section reveal" id="digital-touchpoints">
+      <div class="section-label">06 — Digital Touchpoints</div>
+      <h2 class="section-title">Where the <span class="terra">Experience Lives</span></h2>
+
+      <p class="body-text">Analysis of five digital touchpoints — website, mobile app, review platforms, social media, and AI tools — reveals a brand that excels at pre-transaction design and fails systematically at post-transaction support. The "Connected Trip" vision is impressive in concept and inconsistent in execution.</p>
+
+      <div class="callout cold reveal">
+        <div class="callout-icon">📱</div>
+        <p><strong>App Scale:</strong> Approximately 45% of all room nights are booked via Booking's apps. Google Play: 4.6 stars from 3.98M reviews. iOS: 4.8 stars from 835,500 reviews. This aggregate data masks significant structural patterns in complaint types.</p>
+      </div>
+
+      <div class="pull-quote reveal">
+        <p>"Their customer service is an international line, costing $1 per minute — we spent an extra $80 trying to resolve the issue."</p>
+        <cite>Verified App Store Reviewer</cite>
+      </div>
+
+      <div class="pull-quote reveal">
+        <p>"About 17 calls with Booking customer service before my bank secured a refund through Visa. This was absolute fraud on the part of Booking."</p>
+        <cite>Documented Dispute Case — App Store Review</cite>
+      </div>
+
+      <div class="callout terra reveal">
+        <div class="callout-icon">🔍</div>
+        <p><strong>Telegraph Investigation Finding:</strong> Booking.com's review system algorithmically prioritises "most relevant" reviews, effectively filtering negative experiences to lower visibility. Users must "dig deeper" to find poor reviews. This practice directly undermines the stated value of "Absolute Integrity."</p>
+      </div>
+    </section>
+
+    <!-- SENTIMENT -->
+    <section class="section reveal" id="sentiment">
+      <div class="section-label">07 — Sentiment Analysis</div>
+      <h2 class="section-title">The <span class="cold">Data Contradiction</span></h2>
+
+      <p class="body-text">The most striking finding in this research is not a single data point — it's the contradiction between two simultaneously true data sets. Understanding this contradiction is the key to understanding the Trust Paradox.</p>
+
+      <div class="sentiment-wrap reveal">
+        <div class="sentiment-header">
+          <span class="sentiment-header-label">Platform Sentiment Comparison — Booking.com</span>
+          <span style="font-family:var(--fm);font-size:9px;color:var(--muted);">Based on publicly available data</span>
+        </div>
+        <div class="sentiment-grid">
+          <div class="sentiment-panel bad">
+            <div class="sentiment-platform">Trustpilot Rating</div>
+            <div class="sentiment-score">2.1</div>
+            <div class="sentiment-max">out of 5.0 — "Poor"</div>
+            <div class="sentiment-bar"><div class="sentiment-fill"></div></div>
+            <div class="sentiment-note">Users who seek out Trustpilot are predominantly motivated by extreme dissatisfaction. Complaint themes: difficult booking process, misleading descriptions, unresponsive customer service.</div>
+          </div>
+          <div class="sentiment-divider"></div>
+          <div class="sentiment-panel good">
+            <div class="sentiment-platform">App Store Average (iOS + Android)</div>
+            <div class="sentiment-score">4.7</div>
+            <div class="sentiment-max">out of 5.0 — 4.8M+ Reviews</div>
+            <div class="sentiment-bar"><div class="sentiment-fill"></div></div>
+            <div class="sentiment-note">Aggregate ratings from 4.7M+ reviews. Suggests the modal user experience — routine booking, no complications — remains genuinely positive. The product works for most people most of the time.</div>
+          </div>
+        </div>
+        <div class="sentiment-paradox">
+          <p><strong>The Paradox:</strong> Both scores are true simultaneously. The 4.7 reflects millions of successful bookings. The 2.1 reflects a structural pattern of failure when things go wrong — not isolated incidents, but a systemic gap in service recovery architecture.</p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-rule">
+
+    <!-- TRUST PARADOX -->
+    <section class="section reveal" id="trust-paradox">
+      <div class="section-label">08 — The Trust Paradox</div>
+      <h2 class="section-title">Two Brands <span class="warm">in One Platform</span></h2>
+
+      <p class="body-text">The central finding of this research is that Booking.com effectively operates as two distinct brand experiences depending on whether a customer encounters a <strong>routine transaction</strong> or an <strong>exceptional circumstance</strong>. The mission — "easier for everyone" — is selectively delivered.</p>
+
+      <div class="core-insight">
+        <div class="ci-label">The Paradox Explained</div>
+        <p class="ci-text">For routine transactions, Booking.com delivers on its "Booking.yeah" promise. For exceptional circumstances — disputes, complex itinerary changes, third-party failures — the experience diverges sharply from every brand promise simultaneously.</p>
+      </div>
+
+      <div class="info-grid reveal">
+        <div class="info-card cold-card">
+          <div class="info-card-label">Routine Experience</div>
+          <div class="info-card-val" style="font-size:18px;line-height:1.3;">Search → Book → Stay</div>
+          <div class="info-card-desc">Fast, intuitive, efficient. The platform excels at pre-booking discovery and transaction completion. Visual design consistently on-brand. App experience genuinely superior to competitors.</div>
+        </div>
+        <div class="info-card terra-card">
+          <div class="info-card-label">Crisis Experience</div>
+          <div class="info-card-val" style="font-size:18px;line-height:1.3;">Dispute → Frustration → Bank</div>
+          <div class="info-card-desc">International call charges at $1/minute. 17+ customer service calls documented in single cases. Review system buries complaints. Accountability diffused across platform and property. Brand promise collapses exactly when it matters most.</div>
+        </div>
+      </div>
+
+      <p class="body-text">Booking.com's own 2026 Travel Predictions report — surveying nearly 30,000 travelers across 33 countries — reveals that travellers are demanding hyper-personalisation, open to AI-driven experiences, and using travel for identity expression. This creates a dangerous expectation gap: the brand promises emotional depth while frequently delivering bureaucratic distance at moments of failure.</p>
+
+      <div class="pull-quote reveal">
+        <p>"Ultimately, GenAI should help people spend less time planning trips and more time enjoying them. And when something goes wrong — that's where we must be at our best."</p>
+        <cite>Booking.com Internal AI Strategy Document</cite>
+      </div>
+
+      <div class="callout terra reveal">
+        <div class="callout-icon">⚡</div>
+        <p>The most damaging phrase in Booking.com's own documentation: <strong>"when something goes wrong — that's where we must be at our best."</strong> The company has identified its own critical failure point and not yet fixed it. The gap between diagnosis and action is where trust erodes.</p>
+      </div>
+    </section>
+
+    <!-- ALIGNMENT -->
+    <section class="section reveal" id="alignment">
+      <div class="section-label">09 — Brand Alignment Matrix</div>
+      <h2 class="section-title">Mission vs <span class="terra">Reality</span></h2>
+
+      <div class="alignment-table reveal">
+        <div class="alignment-row header-row">
+          <div class="alignment-cell header">Brand Fundamental</div>
+          <div class="alignment-cell header">Digital Experience Reality</div>
+          <div class="alignment-cell header">Assessment</div>
+        </div>
+        <div class="alignment-row">
+          <div class="alignment-cell fundamental">Mission: Make it easier for everyone</div>
+          <div class="alignment-cell">Search and booking efficient for routine transactions. Fails the "easier" test when problems arise — complex resolutions, international call charges, inconsistent support create friction exactly when ease matters most.</div>
+          <div class="alignment-cell"><span class="alignment-badge partial">Partial</span></div>
+        </div>
+        <div class="alignment-row">
+          <div class="alignment-cell fundamental">Absolute Integrity</div>
+          <div class="alignment-cell">Significant misalignment. Review filtering practices, opaque pricing, dispute resolution favouring hosts over guests. Telegraph investigation and app reviews document systematic integrity failures.</div>
+          <div class="alignment-cell"><span class="alignment-badge gap">Significant Gap</span></div>
+        </div>
+        <div class="alignment-row">
+          <div class="alignment-cell fundamental">Relentless Innovation</div>
+          <div class="alignment-cell">Strong alignment. AI implementation (Smart Messenger, AI Trip Planner, Voice Support), payments platform (60% bookings), OpenAI partnership — genuine innovation at scale. 73% partner satisfaction increase in AI trials.</div>
+          <div class="alignment-cell"><span class="alignment-badge strong">Strong</span></div>
+        </div>
+        <div class="alignment-row">
+          <div class="alignment-cell fundamental">The Sum is Greater</div>
+          <div class="alignment-cell">Partial. Platform integration shows progress, but third-party issues create accountability gaps. Users hold Booking.com responsible for entire transaction; current support model diffuses that accountability.</div>
+          <div class="alignment-cell"><span class="alignment-badge partial">Partial</span></div>
+        </div>
+        <div class="alignment-row">
+          <div class="alignment-cell fundamental">Visual Identity</div>
+          <div class="alignment-cell">Strong alignment. "Core blue" consistently deployed. Authentic-over-perfection photography principle maintained. "Real people in real places" consistently executed across thousands of assets globally.</div>
+          <div class="alignment-cell"><span class="alignment-badge strong">Strong</span></div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-rule">
+
+    <!-- SWOT -->
+    <section class="section reveal" id="swot">
+      <div class="section-label">10 — SWOT Analysis</div>
+      <h2 class="section-title">Booking.com <span class="cold">2026</span></h2>
+
+      <p class="body-text">This SWOT synthesises findings across all five research phases. Internal factors reflect the platform's own capabilities and structural vulnerabilities; external factors reflect market dynamics and regulatory environment.</p>
+
+      <div class="swot-grid reveal">
+        <div class="swot-quad strengths">
+          <div class="swot-label">Strengths</div>
+          <ul class="swot-items">
+            <li><strong>Unassailable Market Leadership</strong> — 563.8M monthly visits, 3.5x nearest competitor</li>
+            <li><strong>Superior Profitability</strong> — 36–37% EBITDA vs Expedia's 22%</li>
+            <li><strong>Brand Equity</strong> — $25B BrandZ value, 50% YoY increase; "Most Meaningfully Different" travel brand (Kantar)</li>
+            <li><strong>AI First-Mover Advantage</strong> — OpenAI partnership, GenAI tools, $170M reinvestment in 2025</li>
+            <li><strong>Diversified Inventory</strong> — 8.6M alternative accommodation listings</li>
+          </ul>
+        </div>
+        <div class="swot-quad weaknesses">
+          <div class="swot-label">Weaknesses</div>
+          <ul class="swot-items">
+            <li><strong>Service-Perception Asymmetry</strong> — Systematic failures in service recovery undermine brand promise</li>
+            <li><strong>Trust Deficit at Critical Moments</strong> — Review filtering, international call charges, dispute complexity</li>
+            <li><strong>Google Dependency</strong> — $14B combined marketing spend creates existential distribution vulnerability</li>
+            <li><strong>Merchant Model Transition Costs</strong> — Structural shift to direct payment creates short-term friction</li>
+            <li><strong>Review System Opacity</strong> — Algorithmic filtering creates transparency credibility gap</li>
+          </ul>
+        </div>
+        <div class="swot-quad opportunities">
+          <div class="swot-label">Opportunities</div>
+          <ul class="swot-items">
+            <li><strong>AI-Driven Personalisation</strong> — 80% of travellers open to AI-curated journeys; "storybook" travel emerging</li>
+            <li><strong>Payments & Fintech Expansion</strong> — 60% bookings on proprietary platform; financing and loyalty integration</li>
+            <li><strong>Geographic Diversification</strong> — India priority market; 94% open to AI itineraries; APAC growth</li>
+            <li><strong>Review System Reform</strong> — New dynamic scoring model creates trust differentiation opportunity</li>
+            <li><strong>U.S. Direct Booking Growth</strong> — DMA creates strategic push to own customer relationship directly</li>
+          </ul>
+        </div>
+        <div class="swot-quad threats">
+          <div class="swot-label">Threats</div>
+          <ul class="swot-items">
+            <li><strong>AI Platform Disintermediation</strong> — Google AI Travel Mode threatens to disintermediate all OTAs entirely</li>
+            <li><strong>Regulatory Escalation</strong> — EU DMA "gatekeeper" designation; price parity clause prohibition</li>
+            <li><strong>Pricing Power Erosion</strong> — DMA forces shift of bookings to direct hotel channels</li>
+            <li><strong>Margin Compression</strong> — AI investment costs vs revenue uncertainty</li>
+            <li><strong>Hotelier Disintermediation Tools</strong> — Hotels increasingly building direct booking infrastructure</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-rule">
+
+    <!-- STRATEGIC RECOMMENDATIONS -->
+    <section class="section reveal" id="strategic-recs">
+      <div class="section-label">11 — Strategic Recommendations</div>
+      <h2 class="section-title">Three <span class="warm">Strategic Imperatives</span></h2>
+
+      <p class="body-text">The following three imperatives are prioritised by urgency and impact. Imperative 1 addresses the brand's most acute vulnerability. Imperative 2 protects its most valuable asset. Imperative 3 transforms its most complex constraint.</p>
+
+      <!-- IMPERATIVE 1 -->
+      <div class="imperative imp1 reveal">
+        <div class="imperative-header">
+          <div class="imp-num">1</div>
+          <div>
+            <div class="imp-title">Resolve the Service-Perception Asymmetry</div>
+            <div class="imp-problem">Critical priority — the gap between "Absolute Integrity" and the lived service recovery experience</div>
+          </div>
+        </div>
+        <div class="imperative-body">
+          <div class="imp-section-label">Evidence Base</div>
+          <ul class="evidence-list">
+            <li>International call charges for customer service documented at $1/minute — customers paying to have their complaints heard</li>
+            <li>Trustpilot "poor" rating of 2.1/5 with explicit complaint themes: "unhelpful and unresponsive interactions"</li>
+            <li>Telegraph investigation confirms algorithmic burial of negative reviews — a direct contradiction of "Absolute Integrity"</li>
+            <li>Documented dispute case: 17 calls, bank chargeback required, customer describes outcome as "absolute fraud"</li>
+          </ul>
+          <div class="imp-section-label">Recommendations</div>
+          <ul class="rec-list">
+            <li data-n="1.1"><strong>Service Recovery as Brand Differentiator:</strong> Eliminate international call charges immediately. Implement AI-assisted proactive service recovery. Create "Trusted Resolution" escalation path with single-point accountability — one contact, one outcome, one resolution.</li>
+            <li data-n="1.2"><strong>Review System Transparency Initiative:</strong> Publish transparent guidelines on review surfacing methodology. Introduce "verified reviewer" badge. Create quarterly "Trust & Transparency" public report. Transform algorithmic opacity into algorithmic credibility.</li>
+          </ul>
+          <div class="outcome-pill">📊 Target: Reduce average resolution time by 50% · Post-resolution satisfaction to 4.5+ · Reduced negative media coverage</div>
+        </div>
+      </div>
+
+      <!-- IMPERATIVE 2 -->
+      <div class="imperative imp2 reveal">
+        <div class="imperative-header">
+          <div class="imp-num">2</div>
+          <div>
+            <div class="imp-title">Double Down on AI Leadership While Managing Google Dependency</div>
+            <div class="imp-problem">First-mover AI advantage built on a fragile Google distribution dependency</div>
+          </div>
+        </div>
+        <div class="imperative-body">
+          <div class="imp-section-label">Evidence Base</div>
+          <ul class="evidence-list">
+            <li>Nearly 40% of travellers already use AI tools for trip planning; 80% open to AI-curated journeys</li>
+            <li>$14B combined marketing spend creates existential dependency on Google distribution</li>
+            <li>$170M AI reinvestment in 2025 signals commitment; OpenAI partnership validates positioning</li>
+            <li>Google AI Travel Mode is live and threatens to disintermediate OTAs entirely</li>
+          </ul>
+          <div class="imp-section-label">Recommendations</div>
+          <ul class="rec-list">
+            <li data-n="2.1"><strong>Accelerate Shift from Paid Acquisition to AI-Assisted Retention:</strong> Expand AI Trip Planner from pre-trip to in-trip and post-trip engagement. Leverage 45% app bookings for first-party data advantage. Use AI-driven personalisation to deepen relationships that survive Google's disintermediation attempt.</li>
+            <li data-n="2.2"><strong>Formalise "AI Partnership Ecosystem" Strategy:</strong> Establish dedicated AI Partnerships function. Develop APIs for seamless AI platform integration — become the layer that AI assistants book through, not around. Create "AI-Ready" certification for properties to drive supply-side adoption.</li>
+          </ul>
+          <div class="outcome-pill">📊 Target: +25% repeat booking rate · -5 percentage points marketing spend · 30%+ AI-driven bookings within 24 months</div>
+        </div>
+      </div>
+
+      <!-- IMPERATIVE 3 -->
+      <div class="imperative imp3 reveal">
+        <div class="imperative-header">
+          <div class="imp-num">3</div>
+          <div>
+            <div class="imp-title">Transform Regulatory Constraints into Competitive Advantages</div>
+            <div class="imp-problem">EU DMA "gatekeeper" designation and price parity clause prohibition threaten traditional model</div>
+          </div>
+        </div>
+        <div class="imperative-body">
+          <div class="imp-section-label">Evidence Base</div>
+          <ul class="evidence-list">
+            <li>DMA banned price parity clauses — forces bookings toward hotel direct channels</li>
+            <li>Paradox: European market share increased from 60% to 71%+ post-regulation — constraint created adaptation</li>
+            <li>Merchant model adoption gives direct control over pricing and customer relationship</li>
+            <li>Genius loyalty programme at 850,000+ properties — loyalty infrastructure already at scale</li>
+          </ul>
+          <div class="imp-section-label">Recommendations</div>
+          <ul class="rec-list">
+            <li data-n="3.1"><strong>Accelerate Merchant Model Transition with Consumer Benefits:</strong> Market as "Booking Protection" — payment security, dispute resolution, and clear accountability. Integrate payments with Genius loyalty. The merchant model gives Booking.com what it currently lacks: ownership of the service recovery moment.</li>
+            <li data-n="3.2"><strong>Genius Evolution — From Discount Programme to Ecosystem Membership:</strong> Expand benefits to experiences, flights, and car rentals. Introduce tiered membership with escalating benefits. Use AI for personalisation. Transform Genius from a discount mechanic into a relationship architecture.</li>
+            <li data-n="3.3"><strong>Proactive Regulatory Engagement:</strong> Establish "Regulatory Innovation Lab." Publish annual "Responsible Platform" report. Engage constructively on AI governance — be the company that writes the rules before they are written for you.</li>
+          </ul>
+          <div class="outcome-pill">📊 Target: Merchant model to 60%+ of bookings · Genius member share to 65%+ · Regulatory first-mover positioning</div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-rule">
+
+    <!-- ROADMAP -->
+    <section class="section reveal" id="roadmap">
+      <div class="section-label">12 — Implementation Roadmap</div>
+      <h2 class="section-title">The Path <span class="cold">Forward</span></h2>
+
+      <p class="body-text">The three imperatives are structured into a phased implementation timeline, ordered by urgency and dependency. Phase 1 quick wins create organisational momentum and immediate trust signal. Phases 2 and 3 build structural competitive advantages.</p>
+
+      <div class="roadmap reveal">
+        <div class="roadmap-phases">
+          <div class="roadmap-phase p1">
+            <div class="phase-header">
+              <div class="phase-num">Phase 1 — Quick Wins</div>
+              <div class="phase-title">Immediate Trust Repair</div>
+              <div class="phase-time">0–6 Months</div>
+            </div>
+            <div class="phase-body">
+              <ul class="phase-items">
+                <li>Eliminate international call charges for customer service</li>
+                <li>Launch "Trusted Resolution" escalation pilot</li>
+                <li>Publish transparent review surfacing guidelines</li>
+                <li>Begin quarterly Trust & Transparency reporting</li>
+              </ul>
+              <div class="phase-impact">Immediate improvement in service sentiment; measurable reduction in negative social mentions and Trustpilot volume.</div>
+            </div>
+          </div>
+          <div class="roadmap-phase p2">
+            <div class="phase-header">
+              <div class="phase-num">Phase 2 — Strategic Investment</div>
+              <div class="phase-title">Architecture Shift</div>
+              <div class="phase-time">6–18 Months</div>
+            </div>
+            <div class="phase-body">
+              <ul class="phase-items">
+                <li>Scale AI-assisted service recovery across all markets</li>
+                <li>Expand Genius ecosystem to experiences and flights</li>
+                <li>Accelerate Merchant model transition</li>
+                <li>Launch AI Partnership Ecosystem function</li>
+              </ul>
+              <div class="phase-impact">Improved retention metrics; reduced Google marketing dependency; regulatory confidence signal to EU.</div>
+            </div>
+          </div>
+          <div class="roadmap-phase p3">
+            <div class="phase-header">
+              <div class="phase-num">Phase 3 — Transformation</div>
+              <div class="phase-title">Structural Advantage</div>
+              <div class="phase-time">18–36 Months</div>
+            </div>
+            <div class="phase-body">
+              <ul class="phase-items">
+                <li>Full "self-healing trip" AI implementation at scale</li>
+                <li>AI Partnership Ecosystem maturity — become the booking layer</li>
+                <li>Regulatory Innovation Lab leadership</li>
+                <li>Genius ecosystem at full membership depth</li>
+              </ul>
+              <div class="phase-impact">Structural competitive advantages; sustainable margin profile; trust-based brand love that transcends transactional efficiency.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-rule">
+
+    <!-- CONCLUSION -->
+    <section class="section reveal" id="conclusion">
+      <div class="section-label">13 — Conclusion</div>
+      <h2 class="section-title">The Gap Between Leadership<br>and <span class="warm">Brand Love</span></h2>
+
+      <div class="conclusion-box reveal">
+        <h3>The Strategic Inflection Point</h3>
+        <p>Booking.com stands at a genuinely consequential moment in its brand history. Market leadership, financial strength, and AI capabilities provide advantages that few competitors can match. The $25B brand value and 563.8M monthly visitors are not accidents — they reflect a decade of genuine product-market fit and strategic discipline.</p>
+        <p>Yet the service-perception asymmetry, Google dependency, and regulatory pressures create vulnerabilities that market leadership alone cannot protect against. The path forward requires not incremental improvement but <strong>strategic transformation</strong> — using the platform's immense scale and technological sophistication to build trust-based relationships that transcend transactional efficiency.</p>
+        <p>The company's own words identify the challenge with rare clarity: <strong>"When something goes wrong — that's where we must be at our best."</strong> That is the gap between market leadership and genuine brand love. The research suggests Booking.com knows exactly what needs to change. The question is execution speed relative to competitive threat.</p>
+      </div>
+
+      <!-- RESEARCHER CARD -->
+      <div class="researcher-card reveal">
+        <div class="researcher-avatar">NM</div>
+        <div>
+          <div class="researcher-name">Njabulo Mahumane</div>
+          <div class="researcher-role">Sole Researcher & Strategist · Marketing Professional</div>
+          <p class="researcher-bio">This brand perception analysis was completed as a 1-week solo mock project, demonstrating research methodology, competitive analysis, sentiment evaluation, and strategic recommendation skills applicable to senior marketing roles. All data is drawn from publicly available sources.</p>
+          <div class="researcher-contact">njabmahu@gmail.com</div>
+        </div>
+      </div>
+
+    </section>
+
+  </main><!-- /main-content -->
+</div><!-- /content-layout -->
+</div><!-- /page-wrap -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">MBN<span>.</span></div>
+  <div class="footer-note">Booking.com Brand Perception Analysis · Portfolio Case Study · Njabulo Mahumane</div>
+  <div class="footer-email">njabmahu@gmail.com</div>
+</footer>
+
+<script>
+  /* Scroll progress */
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    document.getElementById('prog').style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+  });
+
+  /* Scroll reveal */
+  const revObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        revObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.06, rootMargin: '0px 0px -32px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+
+  /* TOC active state */
+  const tocLinks = document.querySelectorAll('.toc-link');
+  const sectionIds = ['hero','executive-summary','methodology','brand-fundamentals','audience','competitive',
+    'digital-touchpoints','sentiment','trust-paradox','alignment','swot','strategic-recs','roadmap','conclusion'];
+  const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    });
+    tocLinks.forEach(l => {
+      l.classList.toggle('active', l.getAttribute('href') === '#' + current);
+    });
+  });
+
+  /* Mobile TOC toggle */
+  const tocToggle = document.getElementById('tocToggle');
+  const tocSidebar = document.getElementById('tocSidebar');
+  let tocOpen = false;
+  tocToggle.addEventListener('click', () => {
+    tocOpen = !tocOpen;
+    tocSidebar.classList.toggle('open', tocOpen);
+    tocToggle.textContent = tocOpen ? 'Close' : 'Contents';
+  });
+
+  /* Close TOC when link clicked on mobile */
+  tocLinks.forEach(l => {
+    l.addEventListener('click', () => {
+      if (window.innerWidth <= 960) {
+        tocOpen = false;
+        tocSidebar.classList.remove('open');
+        tocToggle.textContent = 'Contents';
+      }
+    });
+  });
+
+  /* Show contact in nav on larger screens */
+  if (window.innerWidth >= 900) {
+    document.getElementById('navContact').style.display = 'block';
+  }
+</script>
+</body>
+</html>

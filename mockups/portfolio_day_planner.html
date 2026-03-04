@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio Day Planner</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0d0f;
+    --surface: #141417;
+    --card: #1a1a1f;
+    --border: #2a2a32;
+    --accent: #e8ff47;
+    --accent2: #ff6b35;
+    --accent3: #7b68ee;
+    --text: #f0f0f0;
+    --muted: #888;
+    --done-bg: #1a2212;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    overflow: hidden;
+    height: auto;
+    padding: 0 0 60px;
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 32px 40px 28px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .header-left h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(42px, 6vw, 72px);
+    letter-spacing: 2px;
+    line-height: 1;
+    color: var(--accent);
+  }
+
+  .header-left p {
+    color: var(--muted);
+    font-size: 14px;
+    font-weight: 300;
+    margin-top: 6px;
+    letter-spacing: 0.5px;
+  }
+
+  .header-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+  }
+
+  .progress-label {
+    font-size: 12px;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 1px;
+  }
+
+  .progress-bar-wrap {
+    width: 220px;
+    height: 8px;
+    background: var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .progress-bar-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 4px;
+    transition: width 0.4s ease;
+  }
+
+  .progress-count {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: var(--accent);
+    letter-spacing: 1px;
+  }
+
+  /* TIMELINE */
+  .timeline {
+    padding: 40px 40px 0;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .day-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+
+  .block {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 0 24px;
+    margin-bottom: 8px;
+    position: relative;
+  }
+
+  .time-col {
+    padding-top: 18px;
+    text-align: right;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+  }
+
+  .connector {
+    position: absolute;
+    left: 90px;
+    top: 0;
+    bottom: -8px;
+    width: 1px;
+    background: var(--border);
+  }
+
+  .connector::before {
+    content: '';
+    position: absolute;
+    left: -4px;
+    top: 22px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--border);
+    border: 2px solid var(--bg);
+    transition: background 0.3s;
+  }
+
+  .block.done .connector::before {
+    background: var(--accent);
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+    cursor: pointer;
+    transition: border-color 0.2s, transform 0.15s, background 0.3s;
+    position: relative;
+    overflow: hidden;
+    user-select: none;
+  }
+
+  .card:hover {
+    border-color: #3a3a48;
+    transform: translateX(3px);
+  }
+
+  .block.done .card {
+    background: var(--done-bg);
+    border-color: #2a3d1a;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: var(--accent3);
+    border-radius: 4px 0 0 4px;
+    transition: background 0.3s;
+  }
+
+  .block[data-phase="morning"] .card::before { background: #ff9f43; }
+  .block[data-phase="midmorning"] .card::before { background: var(--accent2); }
+  .block[data-phase="afternoon"] .card::before { background: var(--accent3); }
+  .block[data-phase="lateafternoon"] .card::before { background: #48dbfb; }
+  .block[data-phase="evening"] .card::before { background: #ff6b9d; }
+
+  .block.done .card::before { background: #4cd137 !important; }
+
+  .card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+
+  .task-title {
+    font-weight: 600;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .task-title .emoji { font-size: 18px; }
+
+  .duration-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    background: var(--border);
+    padding: 3px 8px;
+    border-radius: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .checkmark {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.2s;
+    font-size: 13px;
+  }
+
+  .block.done .checkmark {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #000;
+  }
+
+  .task-desc {
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  .task-tools {
+    margin-top: 10px;
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .tool-tag {
+    font-size: 11px;
+    font-family: 'DM Mono', monospace;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    padding: 3px 8px;
+    border-radius: 4px;
+    color: #aaa;
+  }
+
+  .break-card {
+    background: transparent;
+    border: 1px dashed var(--border);
+    border-radius: 12px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: default;
+  }
+
+  .break-card:hover { transform: none; border-color: var(--border); }
+
+  .break-card span {
+    font-size: 13px;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  .done-text {
+    text-decoration: line-through;
+    opacity: 0.5;
+  }
+
+  .phase-divider {
+    grid-column: 1/-1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 24px 0 12px;
+    padding-left: 114px;
+  }
+
+  .phase-divider span {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .phase-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .footer-stats {
+    max-width: 1000px;
+    margin: 40px auto 0;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+  }
+
+  .stat-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 38px;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 1px;
+    margin-top: 4px;
+  }
+
+  .tip-box {
+    max-width: 1000px;
+    margin: 24px auto 0;
+    padding: 0 40px;
+  }
+
+  .tip-inner {
+    background: rgba(232, 255, 71, 0.05);
+    border: 1px solid rgba(232, 255, 71, 0.2);
+    border-radius: 10px;
+    padding: 16px 20px;
+    font-size: 13px;
+    color: #b0ba7a;
+    line-height: 1.6;
+  }
+
+  .tip-inner strong {
+    color: var(--accent);
+    font-weight: 600;
+  }
+</style>
+<style id="cursor-global">
+.g-cursor-dot{position:fixed;width:8px;height:8px;background:#e8a020;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:transform .1s,background .2s;}
+.g-cursor-ring{position:fixed;width:36px;height:36px;border:2px solid rgba(232,160,32,0.55);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);}
+body.g-cursor-hover .g-cursor-dot{transform:translate(-50%,-50%) scale(2);background:#fff;}
+body.g-cursor-hover .g-cursor-ring{width:52px;height:52px;}
+@media(hover:none){.g-cursor-dot,.g-cursor-ring{display:none;}}
+</style>
+</head>
+<body>
+<div class="g-cursor-dot" id="gCursorDot"></div><div class="g-cursor-ring" id="gCursorRing"></div>
+
+<div class="header">
+  <div class="header-left">
+    <h1>PORTFOLIO DAY</h1>
+    <p>Marketing Mock-Up Sprint &nbsp;·&nbsp; 9 tasks &nbsp;·&nbsp; ~8.5 hours</p>
+  </div>
+  <div class="header-right">
+    <span class="progress-label">TASKS COMPLETE</span>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" id="progressFill" style="width:0%"></div>
+    </div>
+    <span class="progress-count" id="progressCount">0 / 9</span>
+  </div>
+</div>
+
+<div class="timeline">
+  <p class="day-label">Tomorrow &nbsp;·&nbsp; Full Sprint Day</p>
+
+  <div class="phase-divider"><span>Morning Warm-Up</span></div>
+
+  <div class="block" data-phase="morning" data-index="0">
+    <div class="connector"></div>
+    <div class="time-col">9:00</div>
+    <div class="card" onclick="toggle(this)">
+      <div class="card-top">
+        <div class="task-title"><span class="emoji">📝</span> <span class="title-text">SEO-Optimized Blog Post</span></div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="duration-badge">60 min</span>
+          <div class="checkmark">✓</div>
+        </div>
+      </div>
+      <div class="task-desc">Start here — it's writing-heavy and warms your brain up. Research 1 primary keyword + 2–3 secondary. Write 600–900 words. Show keyword placement in headings, intro, and meta description.</div>
+      <div class="task-tools">
+        <span class="tool-tag">Ubersuggest</span>
+        <span class="tool-tag">Google Keyword Planner</span>
+        <span class="tool-tag">Google Docs</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="block" data-phase="morning" data-index="1">
+    <div class="connector"></div>
+    <div class="time-col">10:00</div>
+    <div class="card" onclick="toggle(this)">
+      <div class="card-top">
+        <div class="task-title"><span class="emoji">🔍</span> <span class="title-text">Competitor Analysis</span></div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="duration-badge">50 min</span>
+          <div class="checkmark">✓</div>
+        </div>
+      </div>
+      <div class="task-desc">Pick a niche you know. Map 3–4 competitors: traffic, keywords, ad creatives, social presence. Summarize positioning gaps and opportunities in a clean doc or slide.</div>
+      <div class="task-tools">
+        <span class="tool-tag">SimilarWeb</span>
+        <span class="tool-tag">Ubersuggest</span>
+        <span class="tool-tag">Facebook Ad Library</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="block" data-phase="morning" style="margin-bottom:8px">
+    <div class="time-col" style="padding-top:12px">10:50</div>
+    <div class="break-card">
+      <span>☕ 10-min break — stretch, water, reset</span>
+    </div>
+  </div>
+
+  <div class="phase-divider"><span>Mid-Morning Build</span></div>
+
+  <div class="block" data-phase="midmorning" data-index="2">
+    <div class="connector"></div>
+    <div class="time-col">11:00</div>
+    <div class="card" onclick="toggle(this)">
+      <div class="card-top">
+        <div class="task-title"><span class="emoji">📅</span> <span class="title-text">3-Month Content Calendar</span></div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="duration-badge">45 min</span>
+          <div class="checkmark">✓</div>
+        </div>
+      </div>
+      <div class="task-desc">Map 3 months of campaign themes, content types (Reels, blogs, email, Stories), and a weekly publishing cadence. Use colour-coding for content pillars. Screenshot or export as PDF.</div>
+      <div class="task-tools">
+        <span class="tool-tag">Notion</span>
+        <span class="tool-tag">ClickUp</span>
+        <span class="tool-tag">Pippit</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="block" data-phase="midmorning" data-index="3">
+    <div class="connector"></div>
+    <div class="time-col">11:45</div>
+    <div class="card" onclick="toggle(this)">
+      <div class="card-top">
+        <div class="task-title"><span class="emoji">💌</span> <span class="title-text">Influencer / Creator Brief</span></div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="duration-badge">40 min</span>
+          <div class="checkmark">✓</div>
+        </div>
+      </div>
+      <div class="task-desc">Draft a professional creator brief for a fictional campaign. Include: brand overview, campaign goal, deliverables (# posts, formats), timelines, dos & don'ts, and compensation. Make it look polished.</div>
+      <div class="task-tools">
+        <span class="tool-tag">Canva</span>
+        <span class="tool-tag">Mailmodo</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="block" data-phase="midmorning" style="margin-bottom:8px">
+    <div class="time-col" style="padding-top:12px">12:25</div>
+    <div class="break-card">
+      <span>🥗 35-min lunch break — step outside if you can</span>
+    </div>
+  </div>
+
+  <div class="phase-divider"><span>Afternoon — Design Sprint</span></div>
+
+  <div class="block" data-phase="afternoon" data-index="4">
+    <div class="connector"></div>
+    <div class="time-col">1:00</div>
+    <div class="card" onclick="toggle(this)">
+      <div class="card-top">
+        <div class="task-title"><span class="emoji">📊</span> <span class="title-text">Campaign Performance Report</span></div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="duration-badge">55 min</span>
+          <div class="checkmark">✓</div>
+        </div>
+      </div>
+      <div class="task-desc">Build a report using fictional but realistic KPIs — CTR (2.4%), ROAS (3.8x), engagement rate (5.2%), open rate (24%). Include charts, a headline summary, and 3 optimization recommendations.</div>
+      <div class="task-tools">
+        <span class="tool-tag">Google Looker Studio</span>
+        <span class="tool-tag">Whatagraph</span>
+        <span class="tool-tag">Canva</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="block" data-phase="afternoon" data-index="5">
+    <div class="connector"></div>
+    <div class="time-col">1:55</div>
+    <div class="card" onclick="toggle(this)">
+      <div class="card-top">
+        <div class="task-title"><span class="emoji">📱</span> <span class="title-text">Static Facebook & Instagram Ads</span></div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="duration-badge">60 min</span>
+          <div class="checkmark">✓</div>
+        </div>
+      </div>
+      <div class="task-desc">Design 2–3 static ads. FB feed: 1080×1080. IG story: 1080×1920. Write primary text, headline, and CTA for each. Vary the hook — one benefit-led, one social proof, one urgency-driven.</div>
+      <div class="task-tools">
+        <span class="tool-tag">Canva</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="block" data-phase="afternoon" style="margin-bottom:8px">
+    <div class="time-col" style="padding-top:12px">2:55</div>
+    <div class="break-card">
+      <span>⚡ 10-min break — walk around, you're halfway!</span>
+    </div>
+  </div>
+
+  <div class="phase-divider"><span>Late Afternoon — Content</span></div>
+
+  <div class="block" data-phase="lateafternoon" data-index="6">
+    <div class="connector"></div>
+    <div class="time-col">3:05</div>
+    <div class="card" onclick="toggle(this)">
+      <div class="card-top">
+        <div class="task-title"><span class="emoji">🎬</span> <span class="title-text">TikTok Storyboards (×2)</span></div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="duration-badge">50 min</span>
+          <div class="checkmark">✓</div>
+        </div>
+      </div>
+      <div class="task-desc">Create 2 storyboards for 15–30s TikToks. For each: Hook (0–3s), Body (value/story), CTA (last 3s). Note camera angle, text overlay, audio mood. Draw rough frames or use a Canva storyboard template.</div>
+      <div class="task-tools">
+        <span class="tool-tag">Canva</span>
+        <span class="tool-tag">Figma</span>
+        <span class="tool-tag">Paper sketch OK</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="block" data-phase="lateafternoon" data-index="7">
+    <div class="connector"></div>
+    <div class="time-col">3:55</div>
+    <div class="card" onclick="toggle(this)">
+      <div class="card-top">
+        <div class="task-title"><span class="emoji">🖼️</span> <span class="title-text">Instagram Carousel (6–8 slides)</span></div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="duration-badge">55 min</span>
+          <div class="checkmark">✓</div>
+        </div>
+      </div>
+      <div class="task-desc">Tell a story or teach something valuable. Slide 1: thumb-stopping hook. Slides 2–6: value/steps. Slide 7: summary. Slide 8: CTA + save prompt. Keep a consistent colour palette throughout. 1080×1080 each.</div>
+      <div class="task-tools">
+        <span class="tool-tag">Canva</span>
+        <span class="tool-tag">Figma</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="block" data-phase="lateafternoon" style="margin-bottom:8px">
+    <div class="time-col" style="padding-top:12px">4:50</div>
+    <div class="break-card">
+      <span>☕ 15-min break — almost there, final stretch incoming</span>
+    </div>
+  </div>
+
+  <div class="phase-divider"><span>Final Block — Big Creative</span></div>
+
+  <div class="block" data-phase="evening" data-index="8">
+    <div class="connector"></div>
+    <div class="time-col">5:05</div>
+    <div class="card" onclick="toggle(this)">
+      <div class="card-top">
+        <div class="task-title"><span class="emoji">✉️</span> <span class="title-text">Email Marketing Sequence (3 emails)</span></div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="duration-badge">55 min</span>
+          <div class="checkmark">✓</div>
+        </div>
+      </div>
+      <div class="task-desc">Design a welcome → promotional → re-engagement sequence. Each email: subject line, preview text, header, body copy, CTA button. Show flow logic between emails (triggered delays/conditions).</div>
+      <div class="task-tools">
+        <span class="tool-tag">Mailchimp</span>
+        <span class="tool-tag">Stripo.email</span>
+        <span class="tool-tag">Canva</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="block" data-phase="evening" style="margin-bottom:0">
+    <div class="time-col" style="padding-top:12px">6:00</div>
+    <div class="break-card" style="background:rgba(232,255,71,0.04);border-color:rgba(232,255,71,0.2)">
+      <span style="color:#b0ba7a">🎉 Wrap up — save all files, screenshot everything, organise into folders by task name</span>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer-stats">
+  <div class="stat-box">
+    <div class="stat-num">9</div>
+    <div class="stat-label">TASKS</div>
+  </div>
+  <div class="stat-box">
+    <div class="stat-num">8.5</div>
+    <div class="stat-label">HOURS</div>
+  </div>
+  <div class="stat-box">
+    <div class="stat-num">3</div>
+    <div class="stat-label">BREAKS</div>
+  </div>
+  <div class="stat-box">
+    <div class="stat-num" id="doneCount">0</div>
+    <div class="stat-label">DONE</div>
+  </div>
+</div>
+
+<div class="tip-box">
+  <div class="tip-inner">
+    <strong>💡 Pro tips for the day:</strong> Set a timer for each block — when it ends, move on even if not perfect. Save all your work-in-progress screenshots too; showing your process is just as impressive as the final output. The unsolicited rebrand is intentionally left off today — it's a 2–3 hour project best saved for a second day when you can give it full creative energy.
+  </div>
+</div>
+
+<script>
+  function toggle(card) {
+    const block = card.closest('.block');
+    if (!block.dataset.index) return;
+    block.classList.toggle('done');
+    const titleEl = card.querySelector('.title-text');
+    const descEl = card.querySelector('.task-desc');
+    const isDone = block.classList.contains('done');
+    if (titleEl) titleEl.classList.toggle('done-text', isDone);
+    if (descEl) descEl.classList.toggle('done-text', isDone);
+    updateProgress();
+  }
+
+  function updateProgress() {
+    const total = document.querySelectorAll('[data-index]').length;
+    const done = document.querySelectorAll('[data-index].done').length;
+    const pct = (done / total) * 100;
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressCount').textContent = done + ' / ' + total;
+    document.getElementById('doneCount').textContent = done;
+  }
+</script>
+<script id="cursor-global-js">
+(function(){
+  var dot=document.getElementById("gCursorDot"),ring=document.getElementById("gCursorRing");
+  if(!dot||!ring)return;
+  var mx=0,my=0,rx=0,ry=0;
+  document.addEventListener("mousemove",function(e){mx=e.clientX;my=e.clientY;dot.style.left=mx+"px";dot.style.top=my+"px";});
+  (function ani(){rx+=(mx-rx)*.13;ry+=(my-ry)*.13;ring.style.left=rx+"px";ring.style.top=ry+"px";requestAnimationFrame(ani);})();
+  document.querySelectorAll("a,button,[onclick]").forEach(function(el){
+    el.addEventListener("mouseenter",function(){document.body.classList.add("g-cursor-hover");});
+    el.addEventListener("mouseleave",function(){document.body.classList.remove("g-cursor-hover");});
+  });
+  document.body.style.cursor="none";
+})();
+</script>
+</body>
+</html>

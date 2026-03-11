@@ -212,6 +212,15 @@ body.cursor-hover .cursor-ring{width:52px;height:52px;border-color:var(--warm);}
 .form-input,.form-textarea{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;color:var(--text);font-family:var(--font-body);font-size:15px;outline:none;transition:border-color .2s;}
 .form-input:focus,.form-textarea:focus{border-color:var(--warm);}
 .form-textarea{min-height:130px;resize:vertical;}
+@keyframes pulse-border {
+  0%   { box-shadow: 0 0 0 0 rgba(255,255,255,0.4); }
+  50%  { box-shadow: 0 0 0 8px rgba(255,255,255,0.15); }
+  100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); }
+}
+
+.pulse {
+  animation: pulse-border 0.8s ease 3;
+}
 
 /* RESPONSIVE */
 @media(max-width:1024px){
